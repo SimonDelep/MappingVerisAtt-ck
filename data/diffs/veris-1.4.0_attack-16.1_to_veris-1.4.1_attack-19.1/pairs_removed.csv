@@ -1,0 +1,36 @@
+capability_id,attack_object_id,attack_object_name
+action.hacking.variety.Disable controls,T1562,Impair Defenses
+action.hacking.variety.Disable controls,T1562.001,Disable or Modify Tools
+action.hacking.variety.Disable controls,T1562.002,Disable Windows Event Logging
+action.hacking.variety.Disable controls,T1562.003,Impair Command History Logging
+action.hacking.variety.Disable controls,T1562.004,Disable or Modify System Firewall
+action.hacking.variety.Disable controls,T1562.007,Disable or Modify Cloud Firewall
+action.hacking.variety.Disable controls,T1562.008,Disable or Modify Cloud Logs
+action.hacking.variety.Disable controls,T1562.011,Spoof Security Alerting
+action.hacking.variety.Disable controls,T1562.012,Disable or Modify Linux Audit System
+action.hacking.variety.Evade Defenses,T1014,Rootkit
+action.hacking.variety.Evade Defenses,T1562,Impair Defenses
+action.hacking.variety.Exploit misconfig,T1574.002,DLL Side-Loading
+action.hacking.variety.Exploit vuln,T1574.002,DLL Side-Loading
+action.hacking.variety.Hijack,T1574.002,DLL Side-Loading
+action.hacking.variety.Unknown,T1574.002,DLL Side-Loading
+action.malware.variety.Disable controls,T1562,Impair Defenses
+action.malware.variety.Disable controls,T1562.001,Disable or Modify Tools
+action.malware.variety.Disable controls,T1562.002,Disable Windows Event Logging
+action.malware.variety.Disable controls,T1562.003,Impair Command History Logging
+action.malware.variety.Disable controls,T1562.004,Disable or Modify System Firewall
+action.malware.variety.Disable controls,T1562.006,Indicator Blocking
+action.malware.variety.Disable controls,T1562.007,Disable or Modify Cloud Firewall
+action.malware.variety.Disable controls,T1562.008,Disable or Modify Cloud Logs
+action.malware.variety.Disable controls,T1562.011,Spoof Security Alerting
+action.malware.variety.Disable controls,T1562.012,Disable or Modify Linux Audit System
+action.malware.variety.Evade Defenses,T1562,Impair Defenses
+action.malware.variety.Modify data,T1562,Impair Defenses
+action.social.variety.Evade Defenses,T1014,Rootkit
+action.social.variety.Evade Defenses,T1562,Impair Defenses
+action.social.variety.Evade Defenses,T1656,Impersonation
+action.social.variety.Forgery,T1562.007,Disable or Modify Cloud Firewall
+action.social.variety.Phishing,T1562.007,Disable or Modify Cloud Firewall
+attribute.integrity.variety.Log tampering,T1070.001,Clear Windows Event Logs
+attribute.integrity.variety.Log tampering,T1070.002,Clear Linux or Mac System Logs
+attribute.integrity.variety.Unknown,T1531,Account Access Removal

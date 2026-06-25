@@ -5,3 +5,7 @@ matplotlib>=3.7
 seaborn>=0.13
 jupyter>=1.0
 ipykernel>=6.0
+# Deep learning (fine-tuning notebook: finetune_mapping_models.ipynb)
+torch>=2.2
+transformers>=4.40
+sentence-transformers>=2.7
