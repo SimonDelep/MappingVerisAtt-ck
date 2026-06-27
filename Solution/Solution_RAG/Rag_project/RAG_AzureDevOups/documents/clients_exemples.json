@@ -1,0 +1,100 @@
+[
+  {
+    "client_id": "CL-001",
+    "first_name": "Lucas",
+    "last_name": "Martin",
+    "email": "lucas.martin@example.com",
+    "country": "France",
+    "loyalty_level": "standard",
+    "preferred_language": "fr",
+    "created_at": "2025-11-18",
+    "risk_flags": [],
+    "notes": "Client sportif; commandes liées au trail."
+  },
+  {
+    "client_id": "CL-002",
+    "first_name": "Emma",
+    "last_name": "Dubois",
+    "email": "emma.dubois@example.com",
+    "country": "Belgique",
+    "loyalty_level": "silver",
+    "preferred_language": "fr",
+    "created_at": "2025-09-04",
+    "risk_flags": [],
+    "notes": "A déjà demandé un échange de taille accepté."
+  },
+  {
+    "client_id": "CL-003",
+    "first_name": "Antoine",
+    "last_name": "Roux",
+    "email": "antoine.roux@example.com",
+    "country": "France",
+    "loyalty_level": "standard",
+    "preferred_language": "fr",
+    "created_at": "2026-01-21",
+    "risk_flags": [],
+    "notes": "Commande récente en préparation."
+  },
+  {
+    "client_id": "CL-004",
+    "first_name": "Sophie",
+    "last_name": "Keller",
+    "email": "sophie.keller@example.com",
+    "country": "Suisse",
+    "loyalty_level": "gold",
+    "preferred_language": "fr",
+    "created_at": "2024-12-02",
+    "risk_flags": [],
+    "notes": "Cliente régulière; livraisons internationales."
+  },
+  {
+    "client_id": "CL-005",
+    "first_name": "Marc",
+    "last_name": "Gagnon",
+    "email": "marc.gagnon@example.com",
+    "country": "Canada",
+    "loyalty_level": "standard",
+    "preferred_language": "fr",
+    "created_at": "2025-08-13",
+    "risk_flags": [],
+    "notes": "A acheté une lampe frontale; retour commercial expiré."
+  },
+  {
+    "client_id": "CL-006",
+    "first_name": "Nadia",
+    "last_name": "Morel",
+    "email": "nadia.morel@example.com",
+    "country": "France",
+    "loyalty_level": "standard",
+    "preferred_language": "fr",
+    "created_at": "2026-05-15",
+    "risk_flags": [],
+    "notes": "Première commande."
+  },
+  {
+    "client_id": "CL-007",
+    "first_name": "Thomas",
+    "last_name": "Weber",
+    "email": "thomas.weber@example.com",
+    "country": "Allemagne",
+    "loyalty_level": "silver",
+    "preferred_language": "fr",
+    "created_at": "2025-07-11",
+    "risk_flags": [],
+    "notes": "A demandé conseil sur pointures de randonnée."
+  },
+  {
+    "client_id": "CL-008",
+    "first_name": "Camille",
+    "last_name": "Bernard",
+    "email": "camille.bernard@example.com",
+    "country": "France",
+    "loyalty_level": "gold",
+    "preferred_language": "fr",
+    "created_at": "2024-10-30",
+    "risk_flags": [
+      "litige_precedent_livraison"
+    ],
+    "notes": "Escalade recommandée si nouveau litige de livraison."
+  }
+]

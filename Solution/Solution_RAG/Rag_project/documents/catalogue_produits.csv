@@ -1,0 +1,11 @@
+product_id,name,category,price,currency,available_sizes,colors,stock,warranty_months,weight_g,recommended_use,waterproof,return_eligible,notes
+NTG-SHOE-001,TrailStorm X2,chaussures_trail,129.90,EUR,EU 40;EU 41;EU 42;EU 43;EU 44;EU 45;EU 46,noir;bleu nuit;vert forêt,42,24,620,trail court et moyen;sentiers techniques,non,oui,"Prévoir 0,5 à 1 cm devant les orteils."
+NTG-SHOE-002,AlpineTrek Pro Mid GTX,chaussures_randonnee,189.90,EUR,EU 39;EU 40;EU 41;EU 42;EU 43;EU 44;EU 45;EU 46;EU 47,marron;noir;gris roche,28,24,1120,randonnée longue;terrain humide;montagne,oui,oui,Prendre une demi-pointure au-dessus pour trek ou fortes descentes.
+NTG-JKT-001,RainShield 3L Jacket,veste_impermeable,219.90,EUR,XS;S;M;L;XL;XXL,noir;rouge brique;bleu glacier,35,36,410,randonnée;pluie;vent,oui,oui,Choisir une taille au-dessus si port de sous-couches épaisses.
+NTG-JKT-002,FrostPeak Down Jacket,doudoune,249.90,EUR,S;M;L;XL;XXL,noir;vert sapin;bleu nuit,18,36,520,bivouac;froid sec;campement,déperlant,oui,Ne pas laver à haute température; suivre les instructions d’entretien.
+NTG-BAG-001,SummitCarry 35,sac_a_dos,139.90,EUR,S/M;M/L,gris;vert forêt;orange brûlé,24,36,1280,randonnée journée;bivouac léger,non,oui,Housse de pluie incluse.
+NTG-BAG-002,ExpeditionPack 60,sac_a_dos,199.90,EUR,M/L;L/XL,noir;gris roche,11,36,2150,trek plusieurs jours;portage lourd,non,oui,Recommandé pour charges supérieures à 12 kg.
+NTG-LAMP-001,LumaTrail USB-C 450,lampe_frontale,59.90,EUR,unique,noir,64,24,88,trail nocturne;randonnée;bivouac,IPX5,oui,Recharge USB-C; câble inclus.
+NTG-SLEEP-001,NordSleep 0°C,sac_de_couchage,159.90,EUR,regular;long,bleu nuit;vert forêt,22,24,1180,bivouac printemps;automne doux,non,oui,Température confort 0°C; éviter compression prolongée.
+NTG-GLOVE-001,IceGrip Thermal Gloves,gants,44.90,EUR,XS;S;M;L;XL;XXL,noir,57,12,120,hiver;randonnée froide;raquettes,déperlant,oui,Ne pas choisir trop serré pour préserver l’isolation.
+NTG-POLE-001,CarbonStep Trek Poles,batons_randonnee,89.90,EUR,réglable 105-135 cm,noir;gris,33,24,480,randonnée;trek;descente,non applicable,oui,Vendus par paire.

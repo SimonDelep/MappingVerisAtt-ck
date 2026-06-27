@@ -1,0 +1,14 @@
+# Coeur du RAG
+chromadb>=1.0
+python-dotenv>=1.0
+
+# Mode LOCAL (défaut) : embeddings sentence-transformers
+sentence-transformers>=2.2
+torch>=2.0
+
+# Mode AZURE (optionnel) : embeddings + LLM Azure OpenAI
+openai>=1.40
+
+# Backend de génération "local_llm" (optionnel) : LLM local
+transformers>=4.40
+accelerate>=0.30

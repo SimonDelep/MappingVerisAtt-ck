@@ -1,0 +1,201 @@
+[
+  {
+    "order_id": "NTG-2026-000184",
+    "client_id": "CL-001",
+    "status": "livree",
+    "order_date": "2026-05-01",
+    "payment_status": "paye",
+    "shipping_country": "France",
+    "shipping_method": "standard",
+    "tracking_number": "TRK-FR-94818471",
+    "delivery_date": "2026-05-06",
+    "items": [
+      {
+        "product_id": "NTG-SHOE-001",
+        "name": "TrailStorm X2",
+        "size": "EU 45",
+        "quantity": 1,
+        "unit_price": 129.9
+      }
+    ],
+    "total_amount": 134.8,
+    "currency": "EUR",
+    "return_window_end": "2026-06-05",
+    "notes": "Client a signalé une gêne après usage extérieur."
+  },
+  {
+    "order_id": "NTG-2026-000185",
+    "client_id": "CL-002",
+    "status": "expediee",
+    "order_date": "2026-05-10",
+    "payment_status": "paye",
+    "shipping_country": "Belgique",
+    "shipping_method": "express",
+    "tracking_number": "TRK-BE-77452011",
+    "delivery_date": null,
+    "items": [
+      {
+        "product_id": "NTG-JKT-001",
+        "name": "RainShield 3L Jacket",
+        "size": "M",
+        "quantity": 1,
+        "unit_price": 219.9
+      }
+    ],
+    "total_amount": 232.8,
+    "currency": "EUR",
+    "return_window_end": null,
+    "notes": "Commande déjà remise au transporteur."
+  },
+  {
+    "order_id": "NTG-2026-000186",
+    "client_id": "CL-003",
+    "status": "en_preparation",
+    "order_date": "2026-05-14",
+    "payment_status": "paye",
+    "shipping_country": "France",
+    "shipping_method": "standard",
+    "tracking_number": null,
+    "delivery_date": null,
+    "items": [
+      {
+        "product_id": "NTG-LAMP-001",
+        "name": "LumaTrail USB-C 450",
+        "size": "unique",
+        "quantity": 1,
+        "unit_price": 59.9
+      },
+      {
+        "product_id": "NTG-GLOVE-001",
+        "name": "IceGrip Thermal Gloves",
+        "size": "L",
+        "quantity": 1,
+        "unit_price": 44.9
+      }
+    ],
+    "total_amount": 104.8,
+    "currency": "EUR",
+    "return_window_end": null,
+    "notes": "Annulation potentiellement possible si colis non emballé."
+  },
+  {
+    "order_id": "NTG-2026-000187",
+    "client_id": "CL-004",
+    "status": "livree",
+    "order_date": "2026-04-20",
+    "payment_status": "paye",
+    "shipping_country": "Suisse",
+    "shipping_method": "standard",
+    "tracking_number": "TRK-CH-31248890",
+    "delivery_date": "2026-04-29",
+    "items": [
+      {
+        "product_id": "NTG-BAG-001",
+        "name": "SummitCarry 35",
+        "size": "M/L",
+        "quantity": 1,
+        "unit_price": 139.9
+      }
+    ],
+    "total_amount": 149.8,
+    "currency": "EUR",
+    "return_window_end": "2026-05-29",
+    "notes": "Livraison internationale; frais de douane possibles."
+  },
+  {
+    "order_id": "NTG-2026-000188",
+    "client_id": "CL-005",
+    "status": "livree",
+    "order_date": "2026-02-02",
+    "payment_status": "paye",
+    "shipping_country": "Canada",
+    "shipping_method": "standard",
+    "tracking_number": "TRK-CA-88219402",
+    "delivery_date": "2026-02-12",
+    "items": [
+      {
+        "product_id": "NTG-LAMP-001",
+        "name": "LumaTrail USB-C 450",
+        "size": "unique",
+        "quantity": 1,
+        "unit_price": 59.9
+      }
+    ],
+    "total_amount": 72.8,
+    "currency": "CAD",
+    "return_window_end": "2026-03-14",
+    "notes": "Demande garantie possible; retour commercial expiré."
+  },
+  {
+    "order_id": "NTG-2026-000189",
+    "client_id": "CL-006",
+    "status": "paiement_valide",
+    "order_date": "2026-05-15",
+    "payment_status": "paye",
+    "shipping_country": "France",
+    "shipping_method": "standard",
+    "tracking_number": null,
+    "delivery_date": null,
+    "items": [
+      {
+        "product_id": "NTG-SLEEP-001",
+        "name": "NordSleep 0°C",
+        "size": "long",
+        "quantity": 1,
+        "unit_price": 159.9
+      }
+    ],
+    "total_amount": 159.9,
+    "currency": "EUR",
+    "return_window_end": null,
+    "notes": "Annulation automatique possible si préparation non commencée."
+  },
+  {
+    "order_id": "NTG-2026-000190",
+    "client_id": "CL-007",
+    "status": "livree",
+    "order_date": "2026-05-03",
+    "payment_status": "paye",
+    "shipping_country": "Allemagne",
+    "shipping_method": "standard",
+    "tracking_number": "TRK-DE-11982033",
+    "delivery_date": "2026-05-09",
+    "items": [
+      {
+        "product_id": "NTG-SHOE-002",
+        "name": "AlpineTrek Pro Mid GTX",
+        "size": "EU 42",
+        "quantity": 1,
+        "unit_price": 189.9
+      }
+    ],
+    "total_amount": 197.8,
+    "currency": "EUR",
+    "return_window_end": "2026-06-08",
+    "notes": "Client peut demander échange si chaussures essayées seulement en intérieur."
+  },
+  {
+    "order_id": "NTG-2026-000191",
+    "client_id": "CL-008",
+    "status": "livree",
+    "order_date": "2026-05-06",
+    "payment_status": "paye",
+    "shipping_country": "France",
+    "shipping_method": "standard",
+    "tracking_number": "TRK-FR-92108441",
+    "delivery_date": "2026-05-10",
+    "items": [
+      {
+        "product_id": "NTG-BAG-002",
+        "name": "ExpeditionPack 60",
+        "size": "M/L",
+        "quantity": 1,
+        "unit_price": 199.9
+      }
+    ],
+    "total_amount": 199.9,
+    "currency": "EUR",
+    "return_window_end": "2026-06-09",
+    "notes": "Produit de valeur proche du seuil d’escalade si litige."
+  }
+]

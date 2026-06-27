@@ -1,0 +1,12 @@
+dev.env
+.env
+.env.*
+!.env.example
+
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+db/
+chroma_db/
