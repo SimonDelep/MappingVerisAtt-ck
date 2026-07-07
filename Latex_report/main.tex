@@ -1,0 +1,461 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=2.54cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{eso-pic}
+\usepackage{caption}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue,anchorcolor=blue]{hyperref}
+
+\setlength\parindent{0pt}
+\captionsetup[table]{name=Tableau}
+\captionsetup[figure]{name=Figure}
+
+\definecolor{LightGray}{gray}{0.9}
+\definecolor{LightRed}{rgb}{1.0, 0.92, 0.92}
+\definecolor{LightGreen}{rgb}{0.92, 1.0, 0.92}
+
+\graphicspath{{Image/}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{8INF950: Mapping base de données d'incidents}
+\fancyhead[R]{\today}
+\fancyfoot[L]{\footnotesize XXXXXXXXXXXXXXXXXXXXXXxXXXX}
+\fancyfoot[R]{\thepage}
+
+\newcommand{\AddLogoTopRight}{
+  \AddToShipoutPictureBG*{
+    \ifnum\value{page}=1
+      \put(\LenToUnit{0.32\paperwidth},\LenToUnit{0.75\paperheight}){%
+        \includegraphics[width=8cm]{logo.jpg}%
+      }
+    \fi
+  }
+}
+
+\begin{document}
+\AddLogoTopRight
+
+\begin{titlepage}
+    \centering
+    \vspace*{5.5cm}
+    {\large\bfseries Module d'informatique et de mathématique \\
+    Département d'informatique et de mathématiques \par}
+    {\Huge\bfseries -------------------------- \par}
+    \vspace{2cm}
+    {\large\bfseries 8INF950: Sujet spécial en cybersécurité \par}
+    \vspace{1cm}
+    {\large\bfseries Cybersécurité défensive: Mapping automatique de base de données d'incident et de détection \par}
+    \vfill
+    {\large Date: \today \par}
+    {\large 8INF950: Sujet spécial en cybersécurité - Été 2026 \par}
+    {\large XXXXXXXXXXXXXXXXXXXXXXxXXXX \par}
+\end{titlepage}
+
+\newpage
+\tableofcontents
+\listoffigures
+\newpage
+
+% =============================================================================
+% Auteurs : XXXXXXXXXXX
+% =============================================================================
+%
+% --- PAGE DE TITRE ---
+% --- §1 INTRODUCTION ---
+% -> Relire / refaire toute la partie introduction
+% --- §2 MÉTHODOLOGIE ---
+% -> Relire / refaire toute la partie introduction
+% --- §3 SOLUTION ---
+% -> Relire la partie RAG 
+% --- §4 RÉSULTATS ---
+% -> à implémenter 
+% --- §5 DISCUSSION ---
+% -> à implémenter 
+% --- §6 CONCLUSION ---
+% -> à implémenter 
+
+% =============================================================================
+% FIN TODO RELECTURE
+% =============================================================================
+
+
+\newpage
+%==============================================================================
+\section{Introduction}
+%==============================================================================
+
+\subsection{Problématique et objectifs}
+
+Dans un centre d'opérations de sécurité (SOC), les analystes doivent constamment relier
+des incidents décrits dans un vocabulaire normalisé aux techniques adverses documentées
+dans des référentiels offensifs. Ce travail d'alignement sémantique est essentiel pour
+enrichir la détection, contextualiser les alertes et améliorer la conscience
+situationnelle, mais il reste en grande partie \textbf{manuel}, coûteux et peu
+reproductible.
+
+L'objectif de ce projet est de \textbf{reproduire automatiquement, à l'aide de
+l'intelligence artificielle, le mapping expert entre le vocabulaire VERIS et le
+framework MITRE ATT\&CK}, puis de mesurer la qualité des mappings produits par
+rapport à la référence officielle publiée par le CTID (\emph{Mappings Explorer}).
+
+Trois approches sont mises en concurrence~: \textbf{RAG} (Retrieval-Augmented
+Generation), \textbf{FINE\_TUNE} (fine-tuning supervisé) et \textbf{PROMPT}
+(ingénierie de prompts). Nos contributions principales sont~:
+\begin{itemize}
+    \item un pipeline reproductible (préparation des données, génération, comparaison) ;
+    \item un format de sortie standardisé \texttt{veris\_to\_mitre} (7 fichiers JSON par version) ;
+    \item des scripts de comparaison automatisée contre le mapping expert ;
+    \item une implémentation complète de la solution RAG, avec deux variantes expérimentées.
+\end{itemize}
+
+Le rapport s'organise comme suit~: l'introduction présente le contexte technique
+(§\ref{sec:contexte-veris} à §\ref{sec:contexte-formats})~; la méthodologie décrit
+la pratique actuelle, l'état de l'art et notre cadre expérimental~; la section
+\emph{Solution} détaille les trois approches retenues~; les résultats, la discussion
+et la conclusion clôturent l'analyse.
+
+\subsection{Contexte --- VERIS}
+\label{sec:contexte-veris}
+
+\textbf{VERIS} (\emph{Vocabulary for Event Recording and Incident Sharing}) est un
+vocabulaire standardisé pour décrire les incidents de sécurité~\cite{veris}~: il
+répond à la question du \emph{quoi} s'est produit. On y trouve des axes
+(\texttt{action}, \texttt{attribute}, \texttt{value\_chain}\ldots), des catégories
+(\texttt{hacking}, \texttt{malware}, \texttt{social}\ldots) et des sous-catégories
+(\texttt{variety}, \texttt{vector}, etc.).
+
+\subsection{Contexte --- MITRE ATT\&CK}
+
+\textbf{MITRE ATT\&CK}~\cite{mitre_attack} est une base de connaissance des tactiques
+et techniques adverses~: elle documente le \emph{comment} d'une attaque. Chaque
+technique possède un identifiant (\texttt{T1059}), un nom, une description, des
+tactiques associées à la kill chain, et éventuellement des sous-techniques
+(\texttt{T1059.001}).
+
+\subsection{Contexte --- Le mapping expert}
+
+Le travail des experts consiste à relier une \textbf{capacité VERIS} (par exemple
+\texttt{action.hacking.variety.SQLi}) à une ou plusieurs \textbf{techniques ATT\&CK}.
+Le CTID / MITRE Engenuity publie ces correspondances dans l'outil
+\emph{Mappings Explorer}~\cite{ctid_mappings}. Ce mapping constitue à la fois la
+\textbf{cible} que nous cherchons à reproduire et la \textbf{référence} utilisée
+pour évaluer nos solutions.
+
+\subsection{Contexte --- Les 7 capability groups}
+
+Seuls sept groupes VERIS dits «~comportementaux~» sont mappés vers ATT\&CK. Le
+Tableau~\ref{tab:capability-groups} présente les volumes pour la paire de référence
+VERIS~1.4.1 / ATT\&CK~19.1.
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{l r r}
+    \toprule
+    \textbf{Capability group} & \textbf{Paires VERIS$\leftrightarrow$ATT\&CK} & \textbf{Capacités VERIS} \\
+    \midrule
+    \texttt{action.hacking}            & 538 & 68 \\
+    \texttt{action.malware}              & 405 & 54 \\
+    \texttt{action.social}             &  78 & 23 \\
+    \texttt{attribute.integrity}       &  91 & 13 \\
+    \texttt{attribute.confidentiality} &  73 &  1 \\
+    \texttt{attribute.availability}    &  44 &  6 \\
+    \texttt{value\_chain.development}  &  25 & 12 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Les sept capability groups VERIS mappés (référence 1.4.1 / 19.1).}
+  \label{tab:capability-groups}
+\end{table}
+
+\noindent
+\textit{Cas particulier~:} pour \texttt{attribute.confidentiality}, les experts mappent
+le champ \texttt{data\_disclosure} lui-même (une seule capacité), et non des valeurs
+sous \texttt{variety}.
+
+\subsection{Contexte --- Versions et formats de données}
+\label{sec:contexte-formats}
+
+Quatre paires de versions sont supportées de bout en bout~: ATT\&CK~9.0 / VERIS~1.3.5,
+12.1 / 1.3.7, 16.1 / 1.4.0 et 19.1 / 1.4.1. La \textbf{version cible d'évaluation}
+de ce rapport est VERIS~1.4.1 / ATT\&CK~19.1 (clé
+\texttt{veris-1.4.1\_attack-19.1-enterprise}).
+
+Les entrées préparées pour chaque solution sont~:
+\begin{itemize}
+    \item \texttt{veris\_<v>.json}~: capacités VERIS dans les sept groupes (les «~questions~») ;
+    \item \texttt{attack\_<a>.json}~: techniques ATT\&CK non dépréciées (les «~candidats~»).
+\end{itemize}
+Les sorties des solutions suivent le format \texttt{veris\_to\_mitre}~; la référence
+experte utilise le format CTID (\texttt{mapping\_objects}).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.92\linewidth]{schema_du_pipeline.png}
+  \caption{Pipeline global du projet~: données brutes, trois solutions IA et comparaison aux experts.}
+  \label{fig:pipeline}
+\end{figure}
+
+%==============================================================================
+\section{Méthodologie}
+%==============================================================================
+
+\subsection{La méthode actuelle de mapping}
+
+Aujourd'hui, le mapping VERIS $\rightarrow$ ATT\&CK est réalisé par des experts du
+CTID / MITRE Engenuity~\cite{ctid_mappings}. Le processus est essentiellement
+\textbf{manuel}~: pour chaque capacité VERIS, l'expert analyse sa sémantique, consulte
+le catalogue ATT\&CK et sélectionne les techniques correspondantes (y compris les
+sous-techniques lorsque nécessaire). Les résultats sont publiés via l'outil
+\emph{Mappings Explorer} au format CTID.
+
+Cette approche présente des \textbf{avantages} indiscutables~: haute qualité,
+validation par des spécialistes et référence largement adoptée. Ses
+\textbf{limites} sont toutefois significatives~: coût en temps humain, faible
+scalabilité et nécessité de recommencer le travail à chaque nouvelle version de VERIS
+ou d'ATT\&CK. Notre projet vise précisément à automatiser cette tâche tout en
+mesurant l'écart par rapport à cette référence experte.
+
+\subsection{État de l'art --- Alarmes SIEM et modèle REACT}
+
+On distingue trois types de faux positifs (FP) dans les systèmes SIEM~\cite{react_model}~:
+\begin{itemize}
+    \item \textbf{Vraies alarmes}~: menaces réelles.
+    \item \textbf{Fausses alarmes}~: déclenchement sans raison légitime.
+    \item \textbf{Alarmes bénignes}~: techniquement correctes, mais correspondant à un comportement légitime.
+\end{itemize}
+
+La validation des alarmes repose encore largement sur l'expertise humaine. Les auteurs
+proposent le modèle \textbf{REACT}~: les alarmes doivent être \textbf{R}eliable
+(fiables), \textbf{E}xplained (explicables), \textbf{A}nalytical (analytiques),
+\textbf{C}ontextual (contextuelles) et \textbf{T}ransferable (transférables). Ce
+cadre guide la conception d'outils fondés sur l'apprentissage automatique. Dans notre
+projet, l'automatisation du mapping VERIS$\leftrightarrow$ATT\&CK vise à réduire la
+charge cognitive des analystes en normalisant plus rapidement le lien entre incidents
+et techniques adverses.
+
+\subsection{État de l'art --- Ontologies et unification (UCO)}
+
+\textbf{UCO} (\emph{Unified Cybersecurity Ontology})~\cite{uco2015} est une ontologie
+sémantique visant à unifier des données hétérogènes de cybersécurité (STIX, CVE,
+CAPEC, CybOX, \emph{Kill Chain}, etc.) en OWL/RDF, ce qui autorise le raisonnement
+automatique. L'alignement VERIS $\leftrightarrow$ ATT\&CK s'inscrit dans cette
+problématique plus large d'\textbf{unification de taxonomies cyber}~: deux vocabulaires
+distincts doivent être reliés de manière cohérente pour améliorer la conscience
+situationnelle des analystes.
+
+\subsection{État de l'art --- Approches IA pour l'alignement sémantique}
+
+Trois familles d'approches sont comparées dans ce projet~:
+\begin{itemize}
+    \item \textbf{Prompt engineering}~: un LLM généraliste produit le mapping à partir
+          d'instructions (zero-shot ou few-shot). Mise en place rapide, mais risque
+          élevé d'hallucination.
+    \item \textbf{Fine-tuning}~: un modèle est entraîné sur des paires expert
+          annotées. Spécialisation forte et faible hallucination, mais coût
+          d'entraînement plus élevé.
+    \item \textbf{RAG}~\cite{lewis2020rag}~: un contexte pertinent (techniques ATT\&CK,
+          exemples experts) est récupéré avant la décision. Compromis entre
+          interprétabilité, coût et performance.
+\end{itemize}
+
+\subsection{Notre pipeline expérimental}
+
+\subsubsection{Architecture du projet}
+
+Le dépôt SIEM s'organise en quatre zones principales~:
+\texttt{data/} (sources brutes VERIS, ATT\&CK et mappings experts),
+\texttt{data\_for\_work/} (entrées préparées par version),
+\texttt{Solution/} (code des trois approches IA) et
+\texttt{Resultat/} (sorties et scripts de comparaison).
+
+\subsubsection{Pipeline en trois étapes}
+
+\begin{enumerate}
+    \item \textbf{Préparation} --- \texttt{tools/build\_work\_inputs.py} transforme
+          les données brutes en fichiers \texttt{veris\_<v>.json} et
+          \texttt{attack\_<a>.json}.
+    \item \textbf{Génération} --- chaque solution produit \textbf{sept fichiers JSON}
+          (un par capability group) au format \texttt{veris\_to\_mitre}.
+    \item \textbf{Comparaison} --- \texttt{Resultat/compare\_veris\_mappings\_v2.py}
+          confronte les sorties au mapping expert et calcule précision, rappel et F1.
+\end{enumerate}
+
+\subsubsection{Principe anti-fuite}
+
+Pour éviter toute fuite de données, le mapping expert de la version \textbf{cible}
+(1.4.1 / 19.1) n'est \textbf{jamais} utilisé comme exemple d'entraînement ou
+d'indexation. Seules les versions antérieures (9.0, 12.1, 16.1) servent d'exemples
+analogiques dans la variante RAG \texttt{with\_examples}.
+
+\subsection{Tableau comparatif des trois solutions}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{l l l l}
+    \toprule
+    \textbf{Critère} & \textbf{RAG} & \textbf{FINE\_TUNE} & \textbf{PROMPT} \\
+    \midrule
+    Données d'apprentissage & Index vectoriel + exemples & Paires expert (v. antérieures) & Few-shot optionnel \\
+    Modèle & Embeddings + LLM (opt.) & Modèle fine-tuné & LLM généraliste \\
+    Retrieval & Oui (ChromaDB) & Non & Non \\
+    Risque d'hallucination & Modéré (validation catalogue) & Faible & Élevé \\
+    État dans le projet & \textbf{Implémenté} & Non implémenté & Non implémenté \\
+    \bottomrule
+  \end{tabular}
+  \caption{Comparaison synthétique des trois solutions.}
+  \label{tab:comparaison-solutions}
+\end{table}
+
+%==============================================================================
+\section{Solution}
+%==============================================================================
+
+Les trois solutions partagent les mêmes entrées (\texttt{veris\_<v>.json},
+\texttt{attack\_<a>.json}) et la même sortie attendue (sept fichiers
+\texttt{veris\_to\_mitre}), mais diffèrent par leur stratégie de décision IA.
+
+\subsection{Solution RAG}
+
+\subsubsection{Principe}
+
+La solution \textbf{RAG} ancre chaque décision dans du contexte récupéré via deux
+corpus vectoriels ChromaDB~:
+\begin{enumerate}
+    \item \texttt{attack\_techniques} --- catalogue ATT\&CK cible (les candidats) ;
+    \item \texttt{expert\_examples} --- mappings experts des versions antérieures
+          (exemples analogiques).
+\end{enumerate}
+Pour chaque capacité VERIS, le système récupère les techniques les plus similaires
+(top-$k$) et, le cas échéant, des exemples de mappings experts (top-$m$), puis
+produit une décision structurée en JSON.
+
+\subsubsection{Flux par capacité VERIS}
+
+Le traitement suit la chaîne suivante~: (1)~récupération des candidats ATT\&CK~;
+(2)~récupération des exemples experts (variante \texttt{with\_examples})~;
+(3)~décision via le backend configuré (\texttt{retrieval}, \texttt{local\_llm} ou
+\texttt{llm} Azure)~; (4)~validation anti-hallucination (rejet des identifiants hors
+catalogue)~; (5)~enrichissement des libellés et tactiques depuis le catalogue local~;
+(6)~agrégation en entrées \texttt{veris\_to\_mitre} regroupées par capability group.
+
+\subsubsection{Deux variantes expérimentées}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{l l l}
+    \toprule
+    \textbf{Mode} & \textbf{Corpus de récupération} & \textbf{Dossier de sortie} \\
+    \midrule
+    \texttt{attack\_only}   & ATT\&CK seul               & \texttt{...\_RAG\_attack\_only/} \\
+    \texttt{with\_examples} & ATT\&CK + exemples experts & \texttt{...\_RAG\_with\_examples/} \\
+    \bottomrule
+  \end{tabular}
+  \caption{Variantes expérimentées de la solution RAG.}
+  \label{tab:rag-variantes}
+\end{table}
+
+\subsubsection{Modules logiciels}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{l l}
+    \toprule
+    \textbf{Fichier} & \textbf{Rôle} \\
+    \midrule
+    \texttt{config.py}           & Versions, chemins, hyperparamètres \\
+    \texttt{ingest.py}           & Indexation ChromaDB \\
+    \texttt{retrieve.py}         & Récupération top-$k$ / top-$m$ \\
+    \texttt{prompt.py}           & Prompts et schéma JSON \\
+    \texttt{generator.py}        & Backends de génération \\
+    \texttt{generate\_mapping.py} & Pipeline complet $\rightarrow$ 7 fichiers \\
+    \bottomrule
+  \end{tabular}
+  \caption{Modules principaux de la solution RAG (\texttt{veris\_mapping/}).}
+  \label{tab:rag-modules}
+\end{table}
+
+\subsubsection{Technologies et configuration}
+
+En mode local (défaut), les embeddings sont produits par \texttt{sentence-transformers}
+et la génération peut s'appuyer sur la seule similarité cosinus (\texttt{retrieval}),
+sans LLM. En mode Azure (optionnel), les embeddings et la génération passent par
+Azure OpenAI. Les paramètres clés sont \texttt{RAG\_TOP\_K\_TECHNIQUES} (20 par défaut)
+et \texttt{RAG\_TOP\_M\_EXAMPLES} (5 par défaut).
+
+\subsubsection{Format de sortie}
+
+Chaque fichier de résultat contient une liste \texttt{veris\_to\_mitre} avec, pour
+chaque capacité, les techniques proposées, un score de confiance et une justification.
+Les identifiants ATT\&CK invalides sont rejetés~; noms et tactiques proviennent du
+catalogue local.
+
+\subsection{Solution Fine-tune}
+
+\subsection{Solution PROMPT}
+
+\subsection{Synthèse des trois solutions}
+
+
+%==============================================================================
+\section{Résultats}
+%==============================================================================
+
+\subsection{Configuration expérimentale}
+
+\subsection{Résultats --- Solution RAG}
+
+Le Tableau~\ref{tab:rag-resultats} résume les performances globales des deux variantes
+RAG. L'injection d'exemples experts des versions antérieures \textbf{double le F1}
+(27,4~\% contre 9,8~\%), principalement grâce à un gain de rappel.
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{l r r r}
+    \toprule
+    \textbf{Variante} & \textbf{Précision} & \textbf{Rappel} & \textbf{F1} \\
+    \midrule
+    \texttt{RAG\_with\_examples} & 18,9~\% & 49,7~\% & \textbf{27,4~\%} \\
+    \texttt{RAG\_attack\_only}     &  7,2~\% & 15,4~\% &  9,8~\% \\
+    \bottomrule
+  \end{tabular}
+  \caption{Résultats globaux RAG vs mapping expert (mode \texttt{retrieval} local).}
+  \label{tab:rag-resultats}
+\end{table}
+
+Le mode \texttt{retrieval} privilégie le rappel au détriment de la précision~: de
+nombreuses paires expertes sont retrouvées, mais beaucoup de propositions sont
+incorrectes. Certaines familles de sous-techniques (par exemple \texttt{T1546.*})
+restent partiellement couvertes lorsque le top-$k$ est insuffisant.
+
+\subsection{Résultats --- Solution Fine-tune}
+
+
+\subsection{Résultats --- Solution PROMPT}
+
+
+%==============================================================================
+\section{Discussion}
+%==============================================================================
+
+
+
+%==============================================================================
+\section{Conclusion}
+%==============================================================================
+
+
+\bibliographystyle{plain}
+\bibliography{biblio}
+
+\end{document}

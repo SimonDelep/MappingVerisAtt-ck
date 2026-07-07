@@ -1,0 +1,53 @@
+This is BibTeX, Version 0.99e
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+Reallocating 'name_of_file' (item size: 1) to 6 items.
+The style file: plain.bst
+Reallocating 'name_of_file' (item size: 1) to 7 items.
+Database file #1: biblio.bib
+Warning--to sort, need author or key in veris
+Warning--to sort, need author or key in mitre_attack
+Warning--to sort, need author or key in ctid_mappings
+Warning--to sort, need author or key in react_model
+You've used 6 entries,
+            2118 wiz_defined-function locations,
+            523 strings with 5041 characters,
+and the built_in function-call counts, 1582 in all, are:
+= -- 134
+> -- 95
+< -- 0
++ -- 40
+- -- 34
+* -- 102
+:= -- 247
+add.period$ -- 15
+call.type$ -- 6
+change.case$ -- 35
+chr.to.int$ -- 0
+cite$ -- 10
+duplicate$ -- 52
+empty$ -- 138
+format.name$ -- 34
+if$ -- 335
+int.to.chr$ -- 0
+int.to.str$ -- 6
+missing$ -- 2
+newline$ -- 30
+num.names$ -- 4
+pop$ -- 62
+preamble$ -- 1
+purify$ -- 29
+quote$ -- 0
+skip$ -- 42
+stack$ -- 0
+substring$ -- 30
+swap$ -- 7
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 24
+warning$ -- 4
+while$ -- 4
+width$ -- 7
+write$ -- 53
+(There were 4 warnings)
