@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.15)  7 JUL 2026 17:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.15)  9 JUL 2026 09:23
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -743,18 +743,10 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has b
                    \relax 
 l.69 \newpage
               [1]
-Overfull \hbox (3.40352pt too wide) in paragraph at lines 113--116
-\T1/lmr/bx/n/12 FINE_TUNE \T1/lmr/m/n/12 (fine-tuning su-per-visé) et \T1/lmr/bx/n/12 PROMPT \T1/lmr/m/n/12 (in-gé-nie-rie de prompts). Nos contri-
- []
-
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 118.
-(C:\Users\simon\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
+ (C:\Users\simon\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-Overfull \hbox (91.55107pt too wide) in paragraph at lines 149--155
-[]\T1/lmr/m/n/12 Le tra-vail des ex-perts consiste à re-lier une \T1/lmr/bx/n/12 ca-pa-cité VE-RIS \T1/lmr/m/n/12 (par exemple \T1/lmtt/m/n/12 action.hacking.variety.SQLi\T1/lmr/m/n/12 )
- []
-
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -763,14 +755,22 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [2]
-Overfull \hbox (61.13652pt too wide) in paragraph at lines 181--185
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[3]
+Overfull \hbox (61.13652pt too wide) in paragraph at lines 179--183
 \T1/lmr/m/it/12 Cas par-ti-cu-lier : \T1/lmr/m/n/12 pour \T1/lmtt/m/n/12 attribute.confidentiality\T1/lmr/m/n/12 , les ex-perts mappent le champ \T1/lmtt/m/n/12 data_disclosure
  []
 
 <Image/schema_du_pipeline.png, id=213, 1447.4075pt x 610.28pt>
 File: Image/schema_du_pipeline.png Graphic file (type png)
 <use Image/schema_du_pipeline.png>
-Package pdftex.def Info: Image/schema_du_pipeline.png  used on input line 204.
+Package pdftex.def Info: Image/schema_du_pipeline.png  used on input line 202.
 (pdftex.def)             Requested size: 416.72997pt x 175.71022pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -779,11 +779,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[3{C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc} <./Image/schema_du_pipeline.png (PNG copy)>]
-Overfull \hbox (17.39514pt too wide) in paragraph at lines 276--281
-\T1/lmr/m/n/12 ATT&CK et map-pings ex-perts), \T1/lmtt/m/n/12 data_for_work/ \T1/lmr/m/n/12 (en-trées pré-pa-rées par ver-sion), \T1/lmtt/m/n/12 Solution/
- []
-
+[4{C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -791,8 +787,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[4]
-Overfull \hbox (122.69325pt too wide) in paragraph at lines 305--316
+[5 <./Image/schema_du_pipeline.png (PNG copy)>]
+Overfull \hbox (17.39514pt too wide) in paragraph at lines 274--279
+\T1/lmr/m/n/12 ATT&CK et map-pings ex-perts), \T1/lmtt/m/n/12 data_for_work/ \T1/lmr/m/n/12 (en-trées pré-pa-rées par ver-sion), \T1/lmtt/m/n/12 Solution/
+ []
+
+
+Overfull \hbox (122.69325pt too wide) in paragraph at lines 303--314
  [][] 
  []
 
@@ -803,7 +804,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[5]
+[6]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -811,11 +812,20 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[6{C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}] (main.bbl
+[7{C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[8] (main.bbl
 Underfull \hbox (badness 2961) in paragraph at lines 4--7
 []\T1/lmr/m/n/12 CTID map-pings ex-plo-rer.  [][]$\T1/lmtt/m/n/12 https : / / center-[]for-[]threat-[]informed-[]defense .
  []
 
+)
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -823,15 +833,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[7])
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[8] (main.aux)
+[9] (main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
@@ -841,16 +843,16 @@ Package rerunfilecheck Info: File `main.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  25470 strings out of 467871
- 478200 string characters out of 5418376
- 868168 words of memory out of 5000000
- 53861 multiletter control sequences out of 15000+600000
+ 478189 string characters out of 5418376
+ 868170 words of memory out of 5000000
+ 53860 multiletter control sequences out of 15000+600000
  675428 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,11n,94p,484b,587s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,11n,94p,828b,500s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb>
-Output written on main.pdf (9 pages, 308180 bytes).
+Output written on main.pdf (10 pages, 314321 bytes).
 PDF statistics:
- 318 PDF objects out of 1000 (max. 8388607)
- 64 named destinations out of 1000 (max. 500000)
+ 320 PDF objects out of 1000 (max. 8388607)
+ 65 named destinations out of 1000 (max. 500000)
  303 words of extra memory for PDF output out of 10000 (max. 10000000)
 

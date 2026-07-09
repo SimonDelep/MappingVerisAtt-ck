@@ -100,8 +100,8 @@
 
 Dans un centre d'opérations de sécurité (SOC), les analystes doivent constamment relier
 des incidents décrits dans un vocabulaire normalisé aux techniques adverses documentées
-dans des référentiels offensifs. Ce travail d'alignement sémantique est essentiel pour
-enrichir la détection, contextualiser les alertes et améliorer la conscience
+dans des référentiels offensifs. Ce travail d'alignement sémantique permet d'enrichir la détection,
+contextualiser les alertes et améliorer la conscience
 situationnelle, mais il reste en grande partie \textbf{manuel}, coûteux et peu
 reproductible.
 
@@ -110,7 +110,7 @@ l'intelligence artificielle, le mapping expert entre le vocabulaire VERIS et le
 framework MITRE ATT\&CK}, puis de mesurer la qualité des mappings produits par
 rapport à la référence officielle publiée par le CTID (\emph{Mappings Explorer}).
 
-Trois approches sont mises en concurrence~: \textbf{RAG} (Retrieval-Augmented
+Nous avons choisi de mettre trois approches sont mises en concurrence~: \textbf{RAG} (Retrieval-Augmented
 Generation), \textbf{FINE\_TUNE} (fine-tuning supervisé) et \textbf{PROMPT}
 (ingénierie de prompts). Nos contributions principales sont~:
 \begin{itemize}
@@ -129,29 +129,27 @@ et la conclusion clôturent l'analyse.
 \subsection{Contexte --- VERIS}
 \label{sec:contexte-veris}
 
-\textbf{VERIS} (\emph{Vocabulary for Event Recording and Incident Sharing}) est un
-vocabulaire standardisé pour décrire les incidents de sécurité~\cite{veris}~: il
-répond à la question du \emph{quoi} s'est produit. On y trouve des axes
-(\texttt{action}, \texttt{attribute}, \texttt{value\_chain}\ldots), des catégories
-(\texttt{hacking}, \texttt{malware}, \texttt{social}\ldots) et des sous-catégories
-(\texttt{variety}, \texttt{vector}, etc.).
+VERIS (\emph{Vocabulary for Event Recording and Incident Sharing}) est un vocabulaire structuré conçu pour décrire de manière homogène les incidents de cybersécurité. Son objectif principal est de fournir un cadre commun pour documenter ce qui s'est produit lors d'un incident, indépendamment de l'organisation ou de l'outil utilisé. Autrement dit, VERIS sert à normaliser la description des événements de sécurité afin de faciliter leur analyse, leur comparaison et leur partage entre analystes, équipes de réponse à incident et organismes de recherche.
+
+Sur le plan de son organisation, VERIS repose sur une structure hiérarchique. Le vocabulaire est découpé en grands axes, comme \texttt{action}, \texttt{attribute}, \texttt{actor} ou encore \texttt{value\_chain}, qui correspondent à différentes dimensions d'un incident. Chaque axe contient ensuite des catégories plus précises, par exemple \texttt{hacking}, \texttt{malware} ou \texttt{social} dans l'axe \texttt{action}, puis des sous-catégories et des valeurs plus fines telles que \texttt{variety} ou \texttt{vector}. Cette organisation permet de représenter un incident avec plusieurs niveaux de granularité, depuis une vue générale jusqu'à une description beaucoup plus détaillée du comportement observé.
+
+VERIS a été développé à l'origine dans le cadre des travaux de Verizon autour du \emph{Data Breach Investigations Report} (DBIR), avec l'idée de disposer d'un schéma cohérent pour collecter et comparer les données d'incidents à grande échelle. Avec le temps, il est devenu un standard largement reconnu dans le domaine de la réponse à incident et de l'analyse cyber, notamment parce qu'il permet d'agréger des observations provenant de sources variées tout en conservant une structure commune. Dans le cadre de ce projet, VERIS joue donc le rôle de référentiel décrivant le ``quoi'' de l'incident, que l'on cherche ensuite à relier au ``comment'' représenté par les techniques de MITRE ATT\&CK.
 
 \subsection{Contexte --- MITRE ATT\&CK}
 
-\textbf{MITRE ATT\&CK}~\cite{mitre_attack} est une base de connaissance des tactiques
-et techniques adverses~: elle documente le \emph{comment} d'une attaque. Chaque
-technique possède un identifiant (\texttt{T1059}), un nom, une description, des
-tactiques associées à la kill chain, et éventuellement des sous-techniques
-(\texttt{T1059.001}).
+\textbf{MITRE ATT\&CK} (\emph{Adversarial Tactics, Techniques, and Common Knowledge}) est une base de connaissances dédiée à la description des comportements adverses observés lors d'intrusions réelles. Contrairement à un simple catalogue de vulnérabilités ou d'outils, ATT\&CK cherche à modéliser la manière dont un attaquant agit au cours d'une opération, c'est-à-dire les étapes, les objectifs intermédiaires et les techniques mobilisées. Dans cette perspective, ATT\&CK décrit le ``comment'' d'une attaque, là où d'autres référentiels, comme VERIS, décrivent davantage le ``quoi'' de l'incident.
+
+Le framework est organisé de manière hiérarchique autour de \textbf{tactiques} et de \textbf{techniques}. Les tactiques représentent les grands objectifs poursuivis par l'attaquant, par exemple l'accès initial, l'exécution, la persistance, l'élévation de privilèges ou l'impact. À l'intérieur de chaque tactique, ATT\&CK recense des techniques identifiées par un code de type \texttt{T1059}, accompagnées d'un nom, d'une description et d'un ensemble de tactiques associées. Certaines techniques sont elles-mêmes décomposées en \textbf{sous-techniques}, notées par exemple \texttt{T1059.001}, ce qui permet de représenter plus finement des variantes de comportement ou des modes opératoires particuliers.
+
+MITRE ATT\&CK est maintenu par la MITRE Corporation à partir de retours d'expérience opérationnels, de rapports d'incidents et d'observations issues du renseignement sur les menaces. Il s'est progressivement imposé comme une référence majeure en cybersécurité défensive, notamment pour la détection, la chasse aux menaces, l'évaluation de couverture et la structuration des connaissances sur les attaques. Dans le cadre de ce projet, ATT\&CK constitue le référentiel cible vers lequel les capacités VERIS sont mappées, afin de relier la description d'un incident aux techniques adverses susceptibles d'en expliquer le déroulement.
 
 \subsection{Contexte --- Le mapping expert}
 
-Le travail des experts consiste à relier une \textbf{capacité VERIS} (par exemple
-\texttt{action.hacking.variety.SQLi}) à une ou plusieurs \textbf{techniques ATT\&CK}.
-Le CTID / MITRE Engenuity publie ces correspondances dans l'outil
-\emph{Mappings Explorer}~\cite{ctid_mappings}. Ce mapping constitue à la fois la
-\textbf{cible} que nous cherchons à reproduire et la \textbf{référence} utilisée
-pour évaluer nos solutions.
+Le mapping étudié dans ce projet consiste à relier des capacités issues du vocabulaire VERIS, qui décrivent la nature et les caractéristiques d'un incident, à des techniques du framework MITRE ATT\&CK, qui décrivent les comportements et modes opératoires adverses susceptibles d'expliquer cet incident. Autrement dit, il s'agit de faire le lien entre le ``quoi'' observé dans VERIS et le ``comment'' modélisé dans ATT\&CK. Concrètement, une capacité VERIS, par exemple \texttt{action.hacking.variety.SQLi}, peut être associée à une ou plusieurs techniques ATT\&CK jugées pertinentes par les experts.
+
+Ces correspondances sont produites et publiées par le CTID / MITRE Engenuity dans l'outil \emph{Mappings Explorer}~\cite{ctid_mappings}. Elles constituent dans notre travail une double référence : d'une part, elles définissent la cible que nos solutions d'intelligence artificielle cherchent à reproduire automatiquement ; d'autre part, elles servent de base d'évaluation pour mesurer la qualité des mappings générés. Le problème traité dans ce projet n'est donc pas seulement de produire des associations plausibles entre VERIS et ATT\&CK, mais bien de se rapprocher le plus possible d'un mapping expert déjà établi.
+
+Toutefois, ce travail de correspondance ne porte pas sur l'ensemble du schéma VERIS, mais uniquement sur sept groupes dits ``comportementaux'', considérés comme les plus pertinents pour un rapprochement avec ATT\&CK. Ces capability groups couvrent principalement les actions menées lors d'un incident ainsi que certains impacts observables sur l'intégrité, la confidentialité, la disponibilité ou la chaîne de développement. Le Tableau~\\ref{tab:capability-groups} présente les volumes de référence associés à ces sept groupes pour la paire VERIS~1.4.1 / ATT\&CK~19.1.
 
 \subsection{Contexte --- Les 7 capability groups}
 
