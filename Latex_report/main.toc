@@ -3,33 +3,30 @@
 \contentsline {subsection}{\numberline {1.1}Problématique et objectifs}{2}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}Contexte --- VERIS}{2}{subsection.1.2}%
 \contentsline {subsection}{\numberline {1.3}Contexte --- MITRE ATT\&CK}{3}{subsection.1.3}%
-\contentsline {subsection}{\numberline {1.4}Contexte --- Le mapping expert}{3}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.4}Contexte --- Le mapping}{3}{subsection.1.4}%
 \contentsline {subsection}{\numberline {1.5}Contexte --- Les 7 capability groups}{4}{subsection.1.5}%
 \contentsline {subsection}{\numberline {1.6}Contexte --- Versions et formats de données}{4}{subsection.1.6}%
-\contentsline {section}{\numberline {2}Méthodologie}{5}{section.2}%
-\contentsline {subsection}{\numberline {2.1}La méthode actuelle de mapping}{5}{subsection.2.1}%
+\contentsline {section}{\numberline {2}Méthodologie}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}La méthode actuelle de mapping}{4}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}État de l'art --- Alarmes SIEM et modèle REACT}{5}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}État de l'art --- Ontologies et unification (UCO)}{6}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}État de l'art --- Approches IA pour l'alignement sémantique}{6}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}Notre pipeline expérimental}{6}{subsection.2.5}%
-\contentsline {subsubsection}{\numberline {2.5.1}Architecture du projet}{6}{subsubsection.2.5.1}%
-\contentsline {subsubsection}{\numberline {2.5.2}Pipeline en trois étapes}{6}{subsubsection.2.5.2}%
-\contentsline {subsubsection}{\numberline {2.5.3}Principe anti-fuite}{6}{subsubsection.2.5.3}%
-\contentsline {subsection}{\numberline {2.6}Tableau comparatif des trois solutions}{7}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.3}État de l'art --- Ontologies et unification (UCO)}{5}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}État de l'art --- Approches IA pour l'alignement sémantique}{5}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Notre pipeline}{5}{subsection.2.5}%
+\contentsline {subsubsection}{\numberline {2.5.1}Architecture du projet}{7}{subsubsection.2.5.1}%
 \contentsline {section}{\numberline {3}Solution}{7}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Solution RAG}{7}{subsection.3.1}%
 \contentsline {subsubsection}{\numberline {3.1.1}Principe}{7}{subsubsection.3.1.1}%
-\contentsline {subsubsection}{\numberline {3.1.2}Flux par capacité VERIS}{7}{subsubsection.3.1.2}%
-\contentsline {subsubsection}{\numberline {3.1.3}Deux variantes expérimentées}{7}{subsubsection.3.1.3}%
+\contentsline {subsubsection}{\numberline {3.1.2}Flux par capacité VERIS}{8}{subsubsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.3}Deux variantes expérimentées}{8}{subsubsection.3.1.3}%
 \contentsline {subsubsection}{\numberline {3.1.4}Modules logiciels}{8}{subsubsection.3.1.4}%
 \contentsline {subsubsection}{\numberline {3.1.5}Technologies et configuration}{8}{subsubsection.3.1.5}%
-\contentsline {subsubsection}{\numberline {3.1.6}Format de sortie}{8}{subsubsection.3.1.6}%
-\contentsline {subsection}{\numberline {3.2}Solution Fine-tune}{8}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Solution PROMPT}{8}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Synthèse des trois solutions}{8}{subsection.3.4}%
-\contentsline {section}{\numberline {4}Résultats}{8}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Configuration expérimentale}{8}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Résultats --- Solution RAG}{8}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {3.1.6}Format de sortie}{9}{subsubsection.3.1.6}%
+\contentsline {subsection}{\numberline {3.2}Solution Fine-tune}{9}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Solution PROMPT}{9}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Synthèse des trois solutions}{9}{subsection.3.4}%
+\contentsline {section}{\numberline {4}Résultats}{9}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Configuration expérimentale}{9}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Résultats --- Solution RAG}{9}{subsection.4.2}%
 \contentsline {subsection}{\numberline {4.3}Résultats --- Solution Fine-tune}{9}{subsection.4.3}%
 \contentsline {subsection}{\numberline {4.4}Résultats --- Solution PROMPT}{9}{subsection.4.4}%
 \contentsline {section}{\numberline {5}Discussion}{9}{section.5}%

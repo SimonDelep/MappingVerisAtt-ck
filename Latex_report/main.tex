@@ -102,29 +102,31 @@ Dans un centre d'opérations de sécurité (SOC), les analystes doivent constamm
 des incidents décrits dans un vocabulaire normalisé aux techniques adverses documentées
 dans des référentiels offensifs. Ce travail d'alignement sémantique permet d'enrichir la détection,
 contextualiser les alertes et améliorer la conscience
-situationnelle, mais il reste en grande partie \textbf{manuel}, coûteux et peu
+situationnelle, mais il reste en grande partie manuel, coûteux et peu
 reproductible.
 
-L'objectif de ce projet est de \textbf{reproduire automatiquement, à l'aide de
-l'intelligence artificielle, le mapping expert entre le vocabulaire VERIS et le
-framework MITRE ATT\&CK}, puis de mesurer la qualité des mappings produits par
+L'objectif de ce projet est de reproduire automatiquement, à l'aide de
+l'intelligence artificielle, le mapping entre le vocabulaire VERIS et le
+framework MITRE ATT\&CK, puis de mesurer la qualité des mappings produits par
 rapport à la référence officielle publiée par le CTID (\emph{Mappings Explorer}).
 
-Nous avons choisi de mettre trois approches sont mises en concurrence~: \textbf{RAG} (Retrieval-Augmented
-Generation), \textbf{FINE\_TUNE} (fine-tuning supervisé) et \textbf{PROMPT}
-(ingénierie de prompts). Nos contributions principales sont~:
+Nous avons choisi de mettre trois approches en concurrence~: \newline
+\textbf{- Un modèle RAG} (Retrieval-Augmented Generation)\newline
+\textbf{- Un modèle d'ia modifié pour être fine-tuné} (fine-tuning supervisé) \newline
+\textbf{- Un modèle d'ia généraliste avec prompt engineering} (ingénierie de prompts).\newline
+\newline
+Le but de notre contribution est de venir créer:
 \begin{itemize}
-    \item un pipeline reproductible (préparation des données, génération, comparaison) ;
-    \item un format de sortie standardisé \texttt{veris\_to\_mitre} (7 fichiers JSON par version) ;
-    \item des scripts de comparaison automatisée contre le mapping expert ;
-    \item une implémentation complète de la solution RAG, avec deux variantes expérimentées.
+    \item Un pipeline reproductible permettant de générer les mappings entre VERIS et MITRE ATT\&CK (préparation des données, génération, comparaison) ;
+    \item Un format de sortie standardisé pour les mappings générés par nos solutions ;
+    \item Des scripts de comparaison automatisée entre le mapping existant et les mappings générés par nos solutions ;
 \end{itemize}
 
-Le rapport s'organise comme suit~: l'introduction présente le contexte technique
-(§\ref{sec:contexte-veris} à §\ref{sec:contexte-formats})~; la méthodologie décrit
-la pratique actuelle, l'état de l'art et notre cadre expérimental~; la section
-\emph{Solution} détaille les trois approches retenues~; les résultats, la discussion
-et la conclusion clôturent l'analyse.
+Le rapport s'organise comme suit : \newline 
+- L'introduction présente le contexte technique (§\ref{sec:contexte-veris} à §\ref{sec:contexte-formats})~; \newline
+- La méthodologie décrit la pratique actuelle, l'état de l'art et notre cadre expérimental~; \newline
+- La section \emph{Solution} détaille les trois approches retenues~; \newline
+- Les résultats, la discussion et la conclusion clôturent l'analyse. \newline
 
 \subsection{Contexte --- VERIS}
 \label{sec:contexte-veris}
@@ -143,17 +145,15 @@ Le framework est organisé de manière hiérarchique autour de \textbf{tactiques
 
 MITRE ATT\&CK est maintenu par la MITRE Corporation à partir de retours d'expérience opérationnels, de rapports d'incidents et d'observations issues du renseignement sur les menaces. Il s'est progressivement imposé comme une référence majeure en cybersécurité défensive, notamment pour la détection, la chasse aux menaces, l'évaluation de couverture et la structuration des connaissances sur les attaques. Dans le cadre de ce projet, ATT\&CK constitue le référentiel cible vers lequel les capacités VERIS sont mappées, afin de relier la description d'un incident aux techniques adverses susceptibles d'en expliquer le déroulement.
 
-\subsection{Contexte --- Le mapping expert}
+\subsection{Contexte --- Le mapping}
 
 Le mapping étudié dans ce projet consiste à relier des capacités issues du vocabulaire VERIS, qui décrivent la nature et les caractéristiques d'un incident, à des techniques du framework MITRE ATT\&CK, qui décrivent les comportements et modes opératoires adverses susceptibles d'expliquer cet incident. Autrement dit, il s'agit de faire le lien entre le ``quoi'' observé dans VERIS et le ``comment'' modélisé dans ATT\&CK. Concrètement, une capacité VERIS, par exemple \texttt{action.hacking.variety.SQLi}, peut être associée à une ou plusieurs techniques ATT\&CK jugées pertinentes par les experts.
 
-Ces correspondances sont produites et publiées par le CTID / MITRE Engenuity dans l'outil \emph{Mappings Explorer}~\cite{ctid_mappings}. Elles constituent dans notre travail une double référence : d'une part, elles définissent la cible que nos solutions d'intelligence artificielle cherchent à reproduire automatiquement ; d'autre part, elles servent de base d'évaluation pour mesurer la qualité des mappings générés. Le problème traité dans ce projet n'est donc pas seulement de produire des associations plausibles entre VERIS et ATT\&CK, mais bien de se rapprocher le plus possible d'un mapping expert déjà établi.
-
-Toutefois, ce travail de correspondance ne porte pas sur l'ensemble du schéma VERIS, mais uniquement sur sept groupes dits ``comportementaux'', considérés comme les plus pertinents pour un rapprochement avec ATT\&CK. Ces capability groups couvrent principalement les actions menées lors d'un incident ainsi que certains impacts observables sur l'intégrité, la confidentialité, la disponibilité ou la chaîne de développement. Le Tableau~\\ref{tab:capability-groups} présente les volumes de référence associés à ces sept groupes pour la paire VERIS~1.4.1 / ATT\&CK~19.1.
+Ces correspondances sont produites et publiées par le CTID / MITRE Engenuity. Elles constituent dans notre travail une double référence : d'une part, elles définissent la cible que nos solutions d'intelligence artificielle cherchent à reproduire automatiquement ; d'autre part, elles servent de base d'évaluation pour mesurer la qualité des mappings générés. Le problème traité dans ce projet n'est donc pas seulement de produire des associations plausibles entre VERIS et ATT\&CK, mais bien de se rapprocher le plus possible d'un mapping expert déjà établi.
 
 \subsection{Contexte --- Les 7 capability groups}
 
-Seuls sept groupes VERIS dits «~comportementaux~» sont mappés vers ATT\&CK. Le
+Sept groupes VERIS dits «~comportementaux~» sont mappés vers ATT\&CK. Le
 Tableau~\ref{tab:capability-groups} présente les volumes pour la paire de référence
 VERIS~1.4.1 / ATT\&CK~19.1.
 
@@ -184,8 +184,12 @@ sous \texttt{variety}.
 \subsection{Contexte --- Versions et formats de données}
 \label{sec:contexte-formats}
 
-Quatre paires de versions sont supportées de bout en bout~: ATT\&CK~9.0 / VERIS~1.3.5,
-12.1 / 1.3.7, 16.1 / 1.4.0 et 19.1 / 1.4.1. La \textbf{version cible d'évaluation}
+Quatre paires de versions sont supportées de bout en bout~: 
+ATT\&CK~9.0 / VERIS~1.3.5,
+12.1 / 1.3.7,
+16.1 / 1.4.0 
+et 19.1 / 1.4.1. \newline
+La \textbf{version cible d'évaluation}
 de ce rapport est VERIS~1.4.1 / ATT\&CK~19.1 (clé
 \texttt{veris-1.4.1\_attack-19.1-enterprise}).
 
@@ -197,17 +201,12 @@ Les entrées préparées pour chaque solution sont~:
 Les sorties des solutions suivent le format \texttt{veris\_to\_mitre}~; la référence
 experte utilise le format CTID (\texttt{mapping\_objects}).
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.92\linewidth]{schema_du_pipeline.png}
-  \caption{Pipeline global du projet~: données brutes, trois solutions IA et comparaison aux experts.}
-  \label{fig:pipeline}
-\end{figure}
-
 %==============================================================================
 \section{Méthodologie}
 %==============================================================================
 
+
+%TODO peut etre à mettre dans l'introduction ????????????????????
 \subsection{La méthode actuelle de mapping}
 
 Aujourd'hui, le mapping VERIS $\rightarrow$ ATT\&CK est réalisé par des experts du
@@ -224,6 +223,7 @@ scalabilité et nécessité de recommencer le travail à chaque nouvelle version
 ou d'ATT\&CK. Notre projet vise précisément à automatiser cette tâche tout en
 mesurant l'écart par rapport à cette référence experte.
 
+%TODO utile ? 
 \subsection{État de l'art --- Alarmes SIEM et modèle REACT}
 
 On distingue trois types de faux positifs (FP) dans les systèmes SIEM~\cite{react_model}~:
@@ -242,6 +242,7 @@ projet, l'automatisation du mapping VERIS$\leftrightarrow$ATT\&CK vise à rédui
 charge cognitive des analystes en normalisant plus rapidement le lien entre incidents
 et techniques adverses.
 
+%TODO utile ? 
 \subsection{État de l'art --- Ontologies et unification (UCO)}
 
 \textbf{UCO} (\emph{Unified Cybersecurity Ontology})~\cite{uco2015} est une ontologie
@@ -257,63 +258,128 @@ situationnelle des analystes.
 Trois familles d'approches sont comparées dans ce projet~:
 \begin{itemize}
     \item \textbf{Prompt engineering}~: un LLM généraliste produit le mapping à partir
-          d'instructions (zero-shot ou few-shot). Mise en place rapide, mais risque
-          élevé d'hallucination.
+          d'instructions (zero-shot ou few-shot).
     \item \textbf{Fine-tuning}~: un modèle est entraîné sur des paires expert
-          annotées. Spécialisation forte et faible hallucination, mais coût
+          annotées. Spécialisation forte et nous supposons une faible hallucination, mais avec un coût
           d'entraînement plus élevé.
     \item \textbf{RAG}~\cite{lewis2020rag}~: un contexte pertinent (techniques ATT\&CK,
           exemples experts) est récupéré avant la décision. Compromis entre
           interprétabilité, coût et performance.
 \end{itemize}
 
-\subsection{Notre pipeline expérimental}
+\subsection{Notre pipeline}
+
+Notre pipeline expérimental s'organise en quatre étapes principales, illustrées à la
+Figure~\ref{fig:pipeline}. L'objectif est de partir de sources officielles, de produire
+des mappings automatisés VERIS $\rightarrow$ ATT\&CK à l'aide de trois approches IA, puis
+de les comparer au mapping expert CTID.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.92\linewidth]{schema_du_pipeline.png}
+  \caption{Pipeline global du projet~: données brutes, trois solutions IA et comparaison aux experts.}
+  \label{fig:pipeline}
+\end{figure}
+
+\begin{enumerate}
+    \item \textbf{Téléchargement des données brutes.}
+          Les sources officielles sont rassemblées dans le dossier \texttt{data/raw/}.
+          On y trouve les fichiers VERIS (\texttt{verisc-enum.json}, \texttt{verisc-labels.json},
+          \texttt{verisc.json}), le catalogue ATT\&CK au format STIX
+          (\texttt{enterprise-attack.json}) ainsi que les mappings experts publiés par le CTID
+          (CSV, YAML, JSON ou STIX selon la version). Quatre paires de versions sont
+          disponibles, de VERIS~1.3.5 / ATT\&CK~9.0 à VERIS~1.4.1 / ATT\&CK~19.1.
+
+    \item \textbf{Préparation des entrées.}
+          Le script \texttt{tools/build\_work\_inputs.py} transforme ces données brutes en
+          fichiers exploitables par les solutions IA, stockés dans \texttt{data\_for\_work/}.
+          Pour chaque paire de versions, il produit~:
+          \begin{itemize}
+              \item \texttt{veris\_<v>.json}~: les capacités VERIS des sept capability groups
+                    (les «~questions~» à mapper) ;
+              \item \texttt{attack\_<a>.json}~: les techniques ATT\&CK non dépréciées
+                    (les «~candidats~») ;
+              \item \texttt{mapping\_des\_experts.json}~: une copie locale du mapping de
+                    référence, utilisée pour la comparaison.
+          \end{itemize}
+
+    \item \textbf{Génération des mappings.}
+          Chacune des trois solutions (\texttt{Solution\_RAG}, \texttt{Solution\_PROMPT},
+          \texttt{Solution\_FINE\_TUNE}) ingère les fichiers préparés et produit
+          \textbf{sept fichiers JSON} au format \texttt{veris\_to\_mitre}, soit un fichier par
+          capability group (\texttt{action.hacking}, \texttt{action.malware},
+          \texttt{action.social}, \texttt{attribute.integrity},
+          \texttt{attribute.confidentiality}, \texttt{attribute.availability},
+          \texttt{value\_chain.development}). Les résultats sont écrits dans
+          \texttt{Resultat/Resultat\_<APPROCHE>/}.
+
+    \item \textbf{Comparaison aux experts.}
+          Le script \texttt{Resultat/compare\_veris\_mappings\_v2.py} confronte automatiquement
+          les sorties des solutions au mapping expert CTID
+          (\texttt{Resultat/Mapping\_des\_experts/}). Il valide la présence des sept fichiers,
+          calcule les métriques de recouvrement (précision, rappel, F1, Jaccard) sur les paires
+          \texttt{(veris\_id, attack\_id)} et classe les solutions entre elles.
+\end{enumerate}
+
+\noindent
+\textbf{Principe anti-fuite.}
+Pour la version cible d'évaluation (VERIS~1.4.1 / ATT\&CK~19.1), le mapping expert
+correspondant n'est \textbf{jamais} utilisé comme exemple d'entraînement ou d'indexation
+dans les solutions IA. Seules les versions antérieures (9.0, 12.1, 16.1) peuvent servir
+d'exemples analogiques, notamment dans la variante RAG \texttt{with\_examples}.
+
+
+
 
 \subsubsection{Architecture du projet}
 
-Le dépôt SIEM s'organise en quatre zones principales~:
-\texttt{data/} (sources brutes VERIS, ATT\&CK et mappings experts),
-\texttt{data\_for\_work/} (entrées préparées par version),
-\texttt{Solution/} (code des trois approches IA) et
-\texttt{Resultat/} (sorties et scripts de comparaison).
+Le dépôt SIEM est organisé de manière modulaire afin de séparer clairement les
+données, leur préparation, l'implémentation des solutions IA et l'évaluation des
+résultats. Cette organisation facilite la reproductibilité du pipeline et permet
+de traiter plusieurs paires de versions VERIS / ATT\&CK dans un même cadre
+expérimental.
 
-\subsubsection{Pipeline en trois étapes}
+\begin{itemize}
+    \item \texttt{data/}~: contient les \textbf{sources brutes} issues des dépôts
+          officiels. Le sous-dossier \texttt{raw/attack/} regroupe les catalogues
+          ATT\&CK au format STIX, \texttt{raw/veris/} les schémas et énumérations VERIS,
+          et \texttt{raw/mapping/} les mappings experts publiés par le CTID. Le
+          dossier \texttt{databases/} regroupe également des bases SQLite auxiliaires
+          utilisées pour certains vocabulaires et correspondances.
 
-\begin{enumerate}
-    \item \textbf{Préparation} --- \texttt{tools/build\_work\_inputs.py} transforme
-          les données brutes en fichiers \texttt{veris\_<v>.json} et
-          \texttt{attack\_<a>.json}.
-    \item \textbf{Génération} --- chaque solution produit \textbf{sept fichiers JSON}
-          (un par capability group) au format \texttt{veris\_to\_mitre}.
-    \item \textbf{Comparaison} --- \texttt{Resultat/compare\_veris\_mappings\_v2.py}
-          confronte les sorties au mapping expert et calcule précision, rappel et F1.
-\end{enumerate}
+    \item \texttt{data\_for\_work/}~: regroupe les \textbf{entrées préparées} pour
+          chaque paire de versions, dans des sous-dossiers nommés selon la convention
+          \texttt{attack-<a>\_veris-<v>}. Chaque dossier contient les fichiers
+          \texttt{veris\_<v>.json} (capacités VERIS à mapper),
+          \texttt{attack\_<a>.json} (techniques ATT\&CK candidates) et
+          \texttt{mapping\_des\_experts.json} (copie locale de la référence experte).
 
-\subsubsection{Principe anti-fuite}
+    \item \texttt{tools/}~: regroupe les \textbf{scripts de préparation et de
+          validation} du pipeline. Le script \texttt{build\_work\_inputs.py} transforme
+          les données brutes en fichiers exploitables dans
+          \texttt{data\_for\_work/}, tandis que \texttt{build\_example\_results.py}
+          génère des sorties de référence au format \texttt{veris\_to\_mitre}, utiles
+          pour valider le format attendu.
 
-Pour éviter toute fuite de données, le mapping expert de la version \textbf{cible}
-(1.4.1 / 19.1) n'est \textbf{jamais} utilisé comme exemple d'entraînement ou
-d'indexation. Seules les versions antérieures (9.0, 12.1, 16.1) servent d'exemples
-analogiques dans la variante RAG \texttt{with\_examples}.
+    \item \texttt{Solution/}~: contient le \textbf{code des trois approches IA}
+          mises en concurrence~: \texttt{Solution\_RAG}, \texttt{Solution\_PROMPT} et
+          \texttt{Solution\_FINE\_TUNE}. Chaque solution lit les mêmes entrées
+          préparées et produit sept fichiers JSON, un par capability group VERIS.
 
-\subsection{Tableau comparatif des trois solutions}
+    \item \texttt{Resultat/}~: centralise les \textbf{sorties expérimentales} et les
+          outils de comparaison. On y trouve les mappings experts officiels dans
+          \texttt{Mapping\_des\_experts/}, les résultats produits par chaque approche
+          dans \texttt{Resultat\_RAG/}, \texttt{Resultat\_PROMPT/} et
+          \texttt{Resultat\_FINE\_TUNE/}, ainsi que les scripts
+          \texttt{compare\_veris\_mappings.py} et
+          \texttt{compare\_veris\_mappings\_v2.py} utilisés pour mesurer la qualité
+          des mappings générés.
+\end{itemize}
 
-\begin{table}[H]
-  \centering
-  \begin{tabular}{l l l l}
-    \toprule
-    \textbf{Critère} & \textbf{RAG} & \textbf{FINE\_TUNE} & \textbf{PROMPT} \\
-    \midrule
-    Données d'apprentissage & Index vectoriel + exemples & Paires expert (v. antérieures) & Few-shot optionnel \\
-    Modèle & Embeddings + LLM (opt.) & Modèle fine-tuné & LLM généraliste \\
-    Retrieval & Oui (ChromaDB) & Non & Non \\
-    Risque d'hallucination & Modéré (validation catalogue) & Faible & Élevé \\
-    État dans le projet & \textbf{Implémenté} & Non implémenté & Non implémenté \\
-    \bottomrule
-  \end{tabular}
-  \caption{Comparaison synthétique des trois solutions.}
-  \label{tab:comparaison-solutions}
-\end{table}
+\noindent
+Cette architecture matérialise le flux décrit précédemment~: les données brutes
+sont d'abord normalisées, puis transformées en entrées de travail, ensuite traitées
+par les solutions IA, et enfin comparées au mapping expert CTID.
 
 %==============================================================================
 \section{Solution}
