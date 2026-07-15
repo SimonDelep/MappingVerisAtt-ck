@@ -3,6 +3,7 @@ import asyncio
 import sys
 import os
 import argparse
+import json
 from pathlib import Path
 
 # -------------------- ROOT PWD
@@ -57,7 +58,7 @@ If there is no database selected, last version of database is selected by defaul
 
 
 # --------------------- PROMPT
-def user_prompt(veris_version:str="", attack_version:str="", data_veris:str="", data_attack:str="", attack_domain:str="Enterprise", ):
+def create_user_prompt(veris_version:str="", attack_version:str="", data_veris:str="", data_attack:str="", attack_domain:str="Enterprise"):
     user_prompt="""\
 Prend en compte le system-prompt.md pour repondre
 Voici les données de référence à utiliser pour ce mapping bidirectionnel. N'utilise aucune autre source ni connaissance externe que celles indiquées ci-dessous.
@@ -68,7 +69,7 @@ Voici les données de référence à utiliser pour ce mapping bidirectionnel. N'
     - ATT&CK Domain: {attack_domain}
 
 ## Périmètre à traiter dans cette réponse
-Je veux que tu me traite toutes les données en rapport de la capability group {capability}
+Je veux que tu me traite toutes les données en rapport de la capability group TODO:capability
 
 ## Données VERIS (catégorie(s), vector(s), variety(ies) avec leurs descriptions/définitions)
 {data_veris}
@@ -80,7 +81,19 @@ Je veux que tu me traite toutes les données en rapport de la capability group {
 Produis le mapping bidirectionnel complet (VERIS → MITRE puis MITRE → VERIS) entre tous les éléments listés ci-dessus, en respectant strictement le format JSON et les règles définies dans le system prompt.
 Traite tous les éléments fournis dans les deux sens, sans en omettre aucun, même pour indiquer "no_mapping_found": true.\
          """.format(veris_version=veris_version ,attack_version=attack_version , attack_domain=attack_domain , data_veris=data_veris , data_attack=data_attack )
+    return user_prompt
 
+
+# -------------------- DB DATA
+def get_data(data_path:str) -> tuple[str, str]:
+    try:
+        with open(data_path, "r") as file:
+            data = json.load(file)
+        version = data["version"]
+        return data, version
+    except FileNotFoundError:
+        print("error:"+data_path.split("/")[-1]+"file was not found")
+"""
 # -------------------- LLM
 client = Together()
 async_client = AsyncTogether()
@@ -116,7 +129,7 @@ async def run_llm_parallel(user_prompt:str, model:str, system_prompt:str=None):
         except together.error.RateLimitError as e:
             await asyncio.sleep(sleep_time)
     return response.choices[0].message.content
-
+"""
 
 # -------------- Main
 def main() -> None:
@@ -133,8 +146,27 @@ def main() -> None:
     if path_mitre is None and path_veris is None and path_data_work is None:
         parser.error("At least -dw or -m AND -v is needed")
 
+    if (path_data_work != None):
+        data_work_fn = str(path_data_work).split("/")[-1]
+        veris_fn = data_work_fn.split("_")[0]
+        mitre_fn = data_work_fn.split("_")[1]
 
-if __name__ == "__name__":
+        path_veris = str(path_data_work) + "/" + veris_fn.replace("-", "_") + ".json"
+        path_mitre = str(path_data_work) + "/" + mitre_fn.replace("-", "_") + ".json"
+    
+    # get data from json file (mitre & veris)
+    veris_data, veris_version = get_data(path_veris)
+    mitre_data, mitre_version = get_data(path_mitre)
+    print(f"ATT&CK MITRE version: {mitre_version}\nVERIS version: {veris_version}")
+    
+    user_prompt = create_user_prompt(veris_version, mitre_version, veris_data, mitre_data)
+
+    print(user_prompt)
+
+
+
+
+if __name__ == "__main__":
     main()
 
 """
