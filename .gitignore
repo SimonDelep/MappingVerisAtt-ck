@@ -2,4 +2,13 @@
 .dev.env
 .venv/
 
+*.bib
+*.aux
+*.bbl
+*.blg
+*.lof
+*.log
+*.synctex.gz
+*.toc
+
 __pycache__/
