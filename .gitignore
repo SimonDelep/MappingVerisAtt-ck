@@ -2,6 +2,7 @@
 .dev.env
 .venv/
 
+*.out
 *.aux
 *.bbl
 *.blg
