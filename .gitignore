@@ -1,0 +1,14 @@
+.env
+.dev.env
+.venv/
+
+*.out
+*.aux
+*.bbl
+*.blg
+*.lof
+*.log
+*.synctex.gz
+*.toc
+
+__pycache__/
