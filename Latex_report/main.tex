@@ -31,25 +31,25 @@
 \fancyhf{}
 \fancyhead[L]{8INF950: Mapping base de données d'incidents}
 \fancyhead[R]{\today}
-\fancyfoot[L]{\footnotesize XXXXXXXXXXXXXXXXXXXXXXxXXXX}
 \fancyfoot[R]{\thepage}
 
 \newcommand{\AddLogoTopRight}{
   \AddToShipoutPictureBG*{
     \ifnum\value{page}=1
       \put(\LenToUnit{0.32\paperwidth},\LenToUnit{0.75\paperheight}){%
-        \includegraphics[width=8cm]{logo.jpg}%
+        \includegraphics[width=8cm]{logo-uqac.eps}%
       }
     \fi
   }
 }
 
 \begin{document}
-\AddLogoTopRight
+%\AddLogoTopRight
 
 \begin{titlepage}
     \centering
-    \vspace*{5.5cm}
+	\includegraphics[width=8cm]{logo-uqac.eps}\\[1cm]
+    \vspace*{2cm}
     {\large\bfseries Module d'informatique et de mathématique \\
     Département d'informatique et de mathématiques \par}
     {\Huge\bfseries -------------------------- \par}
@@ -60,7 +60,6 @@
     \vfill
     {\large Date: \today \par}
     {\large 8INF950: Sujet spécial en cybersécurité - Été 2026 \par}
-    {\large XXXXXXXXXXXXXXXXXXXXXXxXXXX \par}
 \end{titlepage}
 
 \newpage
@@ -72,24 +71,78 @@
 % Auteurs : XXXXXXXXXXX
 % =============================================================================
 %
+% --- §1 LECTURE ---
 % --- PAGE DE TITRE ---
-% --- §1 INTRODUCTION ---
+% --- §2 INTRODUCTION ---
 % -> Relire / refaire toute la partie introduction
-% --- §2 MÉTHODOLOGIE ---
+% --- §3 MÉTHODOLOGIE ---
 % -> Relire / refaire toute la partie introduction
-% --- §3 SOLUTION ---
+% --- §4 SOLUTION ---
 % -> Relire la partie RAG 
-% --- §4 RÉSULTATS ---
+% --- §5 RÉSULTATS ---
 % -> à implémenter 
-% --- §5 DISCUSSION ---
+% --- §6 DISCUSSION ---
 % -> à implémenter 
-% --- §6 CONCLUSION ---
+% --- §7 CONCLUSION ---
 % -> à implémenter 
 
 % =============================================================================
 % FIN TODO RELECTURE
 % =============================================================================
 
+\section{Synthèse des lectures}
+
+\subsection{Doc 1 — 99\% de faux positifs}
+
+On distingue trois types de faux positifs (FP)~:
+\begin{itemize}
+    \item \textbf{Vraies alarmes :} ce sont les menaces réelles.
+    \item \textbf{Fausses alarmes :} le système se déclenche sans raison légitime.
+    \item \textbf{Alarmes bénignes :} alarmes techniquement correctes, mais
+          correspondant à un comportement légitime.
+\end{itemize}
+
+La validation des alarmes repose encore sur un processus humain, grâce aux
+connaissances et à l'expérience des analystes.
+
+Les auteurs proposent le modèle \textbf{REACT} : les alarmes doivent être
+\begin{itemize}
+    \item \textbf{R}eliable (fiables) ;
+    \item \textbf{E}xplained (explicables) ;
+    \item \textbf{A}nalytical (analytiques) ;
+    \item \textbf{C}ontextual (contextuelles) ;
+    \item \textbf{T}ransferable (transférables à d'autres environnements).
+\end{itemize}
+Ce modèle est pensé pour guider la conception d'outils fondés sur
+l'apprentissage automatique.
+
+\subsection{Doc 2 — UCO (Unified Cybersecurity Ontology)}
+
+UCO est une ontologie sémantique visant à unifier et intégrer les données
+hétérogènes de cybersécurité issues de multiples standards. Son but est
+d'\emph{améliorer la conscience situationnelle des analystes}.
+
+Caractéristiques principales~:
+\begin{itemize}
+    \item Extension de l'ontologie IDS développée par le même groupe.
+    \item Intégration des standards les plus utilisés en cybersécurité~:
+          STIX, CVE, CCE, CVSS, CAPEC, CybOX et la \emph{Kill Chain}.
+    \item Représentation en OWL/RDF plutôt qu'en XML, ce qui autorise le
+          raisonnement automatique.
+    \item 106 classes, 59 propriétés d'objet et 45 propriétés de données.
+    \item Expressivité logique de niveau $\mathcal{ALCROIQ}(D)$.
+\end{itemize}
+
+\paragraph{Apport.}
+Inférence logique, mappée au \emph{Linked Open Data} (DBpedia, YAGO, etc.),
+permettant le croisement des données cyber avec des connaissances générales.
+
+\paragraph{Cas d'usage.}
+Un prototype identifie les vulnérabilités liées à un type de logiciel à partir
+des données NVD. Au moyen de requêtes SPARQL, il recense les produits d'un
+éditeur et leurs vulnérabilités, afin de suggérer une alternative exempte de
+vulnérabilités ou de comparer l'impact sécuritaire d'un changement de
+fournisseur.
 
 \newpage
 %==============================================================================
