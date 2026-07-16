@@ -1,2 +1,4 @@
 \babel@toc {french}{}\relax 
 \contentsline {figure}{\numberline {1}{\ignorespaces Pipeline global du projet~: données brutes, trois solutions IA et comparaison aux experts.}}{6}{figure.caption.4}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Résultats de la variante \texttt {attack\_only} sur la version cible VERIS~1.4.1 / ATT\&CK~19.1.}}{10}{figure.caption.13}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Résultats de la variante \texttt {with\_examples} sur la version cible VERIS~1.4.1 / ATT\&CK~19.1.}}{12}{figure.caption.17}%
