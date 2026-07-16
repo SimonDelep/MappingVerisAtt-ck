@@ -2,7 +2,6 @@
 .dev.env
 .venv/
 
-*.bib
 *.aux
 *.bbl
 *.blg
