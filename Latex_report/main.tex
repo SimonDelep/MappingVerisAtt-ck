@@ -540,6 +540,36 @@ même format de sortie~; seule la nature du contexte récupéré change. C'est
 précisément cette différence qui est évaluée dans les sous-sections
 \texttt{attack\_only} et \texttt{with\_examples}.
 
+\paragraph{Backend de décision.}
+Trois backends de décision sont disponibles après l'étape de retrieval.
+Dans notre expérimentation, nous utilisons exclusivement le backend
+\texttt{retrieval}, qui n'appelle \textbf{aucun LLM}~: les techniques
+candidates sont filtrées selon leur similarité cosinus avec la capacité
+VERIS. Concrètement, une similarité supérieure ou égale à 0{,}50 est
+considérée comme \texttt{high}, une similarité supérieure ou égale à
+0{,}38 comme \texttt{medium}~; en dessous de ce seuil, le candidat est
+rejeté. Les backends \texttt{local\_llm} et \texttt{llm} (Azure)
+permettraient, eux, de confier au modèle le choix final parmi les
+candidats récupérés, mais ils n'ont pas été utilisés pour les résultats
+présentés dans ce rapport.
+
+\paragraph{Backend de décision : Calcul de la similarité cosinus.}
+Concrètement, chaque texte --- capacité VERIS ou technique ATT\&CK --- est
+d'abord transformé en vecteur numérique par le modèle d'embeddings
+\texttt{sentence-transformers} (\texttt{all-MiniLM-L6-v2} en mode local), avec
+une normalisation de norme unitaire. La proximité entre une requête VERIS
+$\mathbf{q}$ et une technique ATT\&CK $\mathbf{d}$ est alors mesurée par la
+similarité cosinus
+$\cos(\mathbf{q},\mathbf{d})=\mathbf{q}\cdot\mathbf{d}/(\|\mathbf{q}\|\,\|\mathbf{d}\|)$,
+qui se réduit au produit scalaire lorsque les vecteurs sont normalisés.
+ChromaDB stocke ces vecteurs dans un espace cosinus et renvoie une
+\emph{distance} définie par $1-\cos(\mathbf{q},\mathbf{d})$~; notre backend
+\texttt{retrieval} reconvertit ensuite cette distance en similarité
+($\mathrm{sim}=1-\mathrm{distance}$) afin d'appliquer les seuils de sélection
+(0{,}50 pour \texttt{high}, 0{,}38 pour \texttt{medium}). Ainsi, plus deux
+descriptions sont sémantiquement proches, plus leur similarité cosinus est
+élevée, et plus la technique a de chances d'être retenue dans le mapping.
+
 \subsubsection{Variante attack\_only}
 
 \paragraph{Principe et corpus.}
@@ -719,6 +749,31 @@ celui de la version \texttt{veris-1.4.1\_attack-19.1-enterprise}, afin
 d'évaluer comment le RAG se comporte sur des cas vraiment nouveaux, absents de
 sa base d'exemples. Les performances pourraient alors varier selon la
 disponibilité et la pertinence des exemples experts.
+
+\subsubsection{Variante  ???????}
+Clarifier le fonctionnement des retrieval 
+Utiliser 3 LLM différents avec les clés open api 
+Venir faire les tests sur les 3 LLM différents et voir les résultats
+
+\paragraph{Principe et corpus.}
+\paragraph{Fonctionnement.}
+\paragraph{Résultats et remarques.}
+
+
+\subsubsection{Variante  ???????}
+
+\paragraph{Principe et corpus.}
+\paragraph{Fonctionnement.}
+\paragraph{Résultats et remarques.}
+
+\subsubsection{Variante  ???????}
+
+\paragraph{Principe et corpus.}
+\paragraph{Fonctionnement.}
+\paragraph{Résultats et remarques.}
+
+
+
 
 \subsection{Solution Fine-tune}
 

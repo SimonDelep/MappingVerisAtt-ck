@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.15)  16 JUL 2026 10:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.15)  21 JUL 2026 20:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -693,7 +693,7 @@ Package epstopdf Info: Source file: <Image/logo-uqac.eps>
 (epstopdf)             Command: <miktex-epstopdf --outfile=Image/logo-uqac-eps-converted-to.pdf Image/logo-uqac.eps>
 (epstopdf)             \includegraphics on input line 51.
 Package epstopdf Info: Output file is already uptodate.
-<Image/logo-uqac-eps-converted-to.pdf, id=138, 121.45375pt x 58.2175pt>
+<Image/logo-uqac-eps-converted-to.pdf, id=150, 121.45375pt x 58.2175pt>
 File: Image/logo-uqac-eps-converted-to.pdf Graphic file (type pdf)
 <use Image/logo-uqac-eps-converted-to.pdf>
 Package pdftex.def Info: Image/logo-uqac-eps-converted-to.pdf  used on input line 51.
@@ -738,11 +738,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 3.
  (C:\Users\simon\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-))
-\tf@lof=\write6
-\openout6 = `main.lof'.
-
-
+)
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -754,8 +750,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.68 \newpage
-              [1]
+l.4 ....1 / ATT\&CK~19.1.}}{15}{figure.caption.21}
+                                                  % [1])
+\tf@lof=\write6
+\openout6 = `main.lof'.
+
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -821,7 +821,7 @@ LaTeX Warning: Citation `uco2015' on page 7 undefined on input line 301.
 
 LaTeX Warning: Citation `lewis2020rag' on page 7 undefined on input line 318.
 
-<Image/schema_du_pipeline.png, id=232, 1447.4075pt x 610.28pt>
+<Image/schema_du_pipeline.png, id=247, 1447.4075pt x 610.28pt>
 File: Image/schema_du_pipeline.png Graphic file (type png)
 <use Image/schema_du_pipeline.png>
 Package pdftex.def Info: Image/schema_du_pipeline.png  used on input line 332.
@@ -908,12 +908,19 @@ Overfull \hbox (6.45624pt too wide) in paragraph at lines 536--542
  []
 
 
-Overfull \hbox (38.84248pt too wide) in paragraph at lines 566--568
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[11]
+Overfull \hbox (38.84248pt too wide) in paragraph at lines 596--598
 []\T1/lmr/m/n/12 les \T1/lmtt/m/n/12 top-$\OML/lmm/m/it/12 k$ \T1/lmr/m/n/12 tech-niques ATT&CK les plus proches sont ré-cu-pé-rées dans \T1/lmtt/m/n/12 attack_techniques \T1/lmr/m/n/12 ; 
  []
 
 
-Overfull \hbox (155.8996pt too wide) in paragraph at lines 573--576
+Overfull \hbox (155.8996pt too wide) in paragraph at lines 603--606
 []\T1/lmr/m/n/12 le ré-sul-tat est écrit au for-mat \T1/lmtt/m/n/12 veris_to_mitre \T1/lmr/m/n/12 dans le dos-sier \T1/lmtt/m/n/12 Resultat/Resultat_RAG/..._RAG_attack_only/\T1/lmr/m/n/12 . 
  []
 
@@ -924,11 +931,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[11]
-<Image/rag_premiereversion_results.png, id=276, 540.8205pt x 272.217pt>
+[12]
+<Image/rag_premiereversion_results.png, id=299, 540.8205pt x 272.217pt>
 File: Image/rag_premiereversion_results.png Graphic file (type png)
 <use Image/rag_premiereversion_results.png>
-Package pdftex.def Info: Image/rag_premiereversion_results.png  used on input line 588.
+Package pdftex.def Info: Image/rag_premiereversion_results.png  used on input line 618.
 (pdftex.def)             Requested size: 416.72997pt x 209.75725pt.
 
 
@@ -938,13 +945,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[12 <./Image/rag_premiereversion_results.png>]
-Overfull \hbox (38.84248pt too wide) in paragraph at lines 650--652
+[13 <./Image/rag_premiereversion_results.png>]
+Overfull \hbox (38.84248pt too wide) in paragraph at lines 680--682
 []\T1/lmr/m/n/12 les \T1/lmtt/m/n/12 top-$\OML/lmm/m/it/12 k$ \T1/lmr/m/n/12 tech-niques ATT&CK les plus proches sont ré-cu-pé-rées dans \T1/lmtt/m/n/12 attack_techniques \T1/lmr/m/n/12 ; 
  []
 
 
-Overfull \hbox (39.13336pt too wide) in paragraph at lines 666--668
+Overfull \hbox (39.13336pt too wide) in paragraph at lines 696--698
 []\T1/lmr/m/n/12 écriture des sept fi-chiers JSON dans \T1/lmtt/m/n/12 Resultat/Resultat_RAG/..._RAG_with_examples/\T1/lmr/m/n/12 . 
  []
 
@@ -955,27 +962,35 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[13]
-<Image/rag_deuxieme_version_results.png, id=298, 546.24075pt x 275.8305pt>
+[14]
+<Image/rag_deuxieme_version_results.png, id=320, 546.24075pt x 275.8305pt>
 File: Image/rag_deuxieme_version_results.png Graphic file (type png)
 <use Image/rag_deuxieme_version_results.png>
-Package pdftex.def Info: Image/rag_deuxieme_version_results.png  used on input line 681.
+Package pdftex.def Info: Image/rag_deuxieme_version_results.png  used on input line 711.
 (pdftex.def)             Requested size: 416.72997pt x 210.43724pt.
 
-Overfull \hbox (5.31593pt too wide) in paragraph at lines 694--704
+Overfull \hbox (5.31593pt too wide) in paragraph at lines 724--734
 []\T1/lmr/m/n/12 Le dé-tail par ca-pa-bi-lity group confirme cet ap-port. Les scopes vo-lu-mi-neux \T1/lmtt/m/n/12 action.hacking
  []
 
 
-Overfull \hbox (50.31743pt too wide) in paragraph at lines 694--704
+Overfull \hbox (50.31743pt too wide) in paragraph at lines 724--734
 \T1/lmr/m/n/12 tats s'ob-servent sur \T1/lmtt/m/n/12 attribute.availability \T1/lmr/m/n/12 (F1 75,2 %, rap-pel 93,2 %) et \T1/lmtt/m/n/12 attribute.integrity
  []
 
 
-Overfull \hbox (76.05392pt too wide) in paragraph at lines 713--722
+Overfull \hbox (76.05392pt too wide) in paragraph at lines 743--752
 \T1/lmtt/m/n/12 veris-1.4.0_attack-16.1-enterprise \T1/lmr/m/n/12 et ce-lui de la ver-sion \T1/lmtt/m/n/12 veris-1.4.1_attack-19.1-enterprise\T1/lmr/m/n/12 ,
  []
 
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[15 <./Image/rag_deuxieme_version_results.png>]
 No file main.bbl.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -984,15 +999,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[14 <./Image/rag_deuxieme_version_results.png>]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[15] (main.aux)
+[16] (main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
@@ -1002,20 +1009,20 @@ L3 programming layer <2025-12-24>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 64DA6CF7694E44B151C0E8756940A8BA;6239.
+(rerunfilecheck)             Checksum: 8083C98C6F6DFD0C5734D51EA1631CA2;6692.
  ) 
 Here is how much of TeX's memory you used:
- 25502 strings out of 467871
- 478993 string characters out of 5418376
- 867905 words of memory out of 5000000
- 53871 multiletter control sequences out of 15000+600000
- 672438 words of font info for 69 fonts, out of 8000000 for 9000
+ 25528 strings out of 467871
+ 479332 string characters out of 5418376
+ 868905 words of memory out of 5000000
+ 53879 multiletter control sequences out of 15000+600000
+ 681266 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,12n,94p,828b,552s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,12n,94p,828b,719s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb>
-Output written on main.pdf (16 pages, 393042 bytes).
+Output written on main.pdf (17 pages, 402594 bytes).
 PDF statistics:
- 367 PDF objects out of 1000 (max. 8388607)
- 89 named destinations out of 1000 (max. 500000)
- 297 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 403 PDF objects out of 1000 (max. 8388607)
+ 104 named destinations out of 1000 (max. 500000)
+ 321 words of extra memory for PDF output out of 10000 (max. 10000000)
 

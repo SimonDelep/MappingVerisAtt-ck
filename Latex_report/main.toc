@@ -26,21 +26,35 @@
 \contentsline {paragraph}{Indexation et base vectorielle.}{10}{section*.9}%
 \contentsline {paragraph}{Flux global de traitement.}{11}{section*.10}%
 \contentsline {paragraph}{Paramètres communs.}{11}{section*.11}%
+\contentsline {paragraph}{Backend de décision.}{11}{section*.12}%
+\contentsline {paragraph}{Backend de décision : Calcul de la similarité cosinus.}{11}{section*.13}%
 \contentsline {subsubsection}{\numberline {4.1.3}Variante attack\_only}{11}{subsubsection.4.1.3}%
-\contentsline {paragraph}{Principe et corpus.}{11}{section*.12}%
-\contentsline {paragraph}{Fonctionnement.}{11}{section*.13}%
-\contentsline {paragraph}{Résultats et remarques.}{12}{section*.14}%
-\contentsline {subsubsection}{\numberline {4.1.4}Variante with\_examples}{12}{subsubsection.4.1.4}%
-\contentsline {paragraph}{Principe et corpus.}{12}{section*.16}%
-\contentsline {paragraph}{Fonctionnement.}{13}{section*.17}%
-\contentsline {paragraph}{Résultats et remarques.}{14}{section*.18}%
-\contentsline {subsection}{\numberline {4.2}Solution Fine-tune}{15}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Solution PROMPT}{15}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}Synthèse des trois solutions}{15}{subsection.4.4}%
-\contentsline {section}{\numberline {5}Résultats}{15}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Configuration expérimentale}{15}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Résultats --- Solution RAG}{15}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}Résultats --- Solution Fine-tune}{15}{subsection.5.3}%
-\contentsline {subsection}{\numberline {5.4}Résultats --- Solution PROMPT}{15}{subsection.5.4}%
-\contentsline {section}{\numberline {6}Discussion}{15}{section.6}%
-\contentsline {section}{\numberline {7}Conclusion}{15}{section.7}%
+\contentsline {paragraph}{Principe et corpus.}{11}{section*.14}%
+\contentsline {paragraph}{Fonctionnement.}{12}{section*.15}%
+\contentsline {paragraph}{Résultats et remarques.}{13}{section*.16}%
+\contentsline {subsubsection}{\numberline {4.1.4}Variante with\_examples}{13}{subsubsection.4.1.4}%
+\contentsline {paragraph}{Principe et corpus.}{13}{section*.18}%
+\contentsline {paragraph}{Fonctionnement.}{14}{section*.19}%
+\contentsline {paragraph}{Résultats et remarques.}{15}{section*.20}%
+\contentsline {subsubsection}{\numberline {4.1.5}Variante ???????}{16}{subsubsection.4.1.5}%
+\contentsline {paragraph}{Principe et corpus.}{16}{section*.22}%
+\contentsline {paragraph}{Fonctionnement.}{16}{section*.23}%
+\contentsline {paragraph}{Résultats et remarques.}{16}{section*.24}%
+\contentsline {subsubsection}{\numberline {4.1.6}Variante ???????}{16}{subsubsection.4.1.6}%
+\contentsline {paragraph}{Principe et corpus.}{16}{section*.25}%
+\contentsline {paragraph}{Fonctionnement.}{16}{section*.26}%
+\contentsline {paragraph}{Résultats et remarques.}{16}{section*.27}%
+\contentsline {subsubsection}{\numberline {4.1.7}Variante ???????}{16}{subsubsection.4.1.7}%
+\contentsline {paragraph}{Principe et corpus.}{16}{section*.28}%
+\contentsline {paragraph}{Fonctionnement.}{16}{section*.29}%
+\contentsline {paragraph}{Résultats et remarques.}{16}{section*.30}%
+\contentsline {subsection}{\numberline {4.2}Solution Fine-tune}{16}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Solution PROMPT}{16}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Synthèse des trois solutions}{16}{subsection.4.4}%
+\contentsline {section}{\numberline {5}Résultats}{16}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Configuration expérimentale}{16}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Résultats --- Solution RAG}{16}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Résultats --- Solution Fine-tune}{16}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Résultats --- Solution PROMPT}{16}{subsection.5.4}%
+\contentsline {section}{\numberline {6}Discussion}{16}{section.6}%
+\contentsline {section}{\numberline {7}Conclusion}{16}{section.7}%
