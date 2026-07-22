@@ -50,7 +50,12 @@ from compare_veris_mappings import (  # noqa: E402
     result_to_dict,
 )
 
-DEFAULT_SOLUTIONS = ["Resultat_FINE_TUNE", "Resultat_PROMPT", "Resultat_RAG"]
+DEFAULT_SOLUTIONS = [
+    "Resultat_FINE_TUNE",
+    "Resultat_PROMPT",
+    "Resultat_RAG",
+    "Resultat_RAG_Together",
+]
 EXPERTS_DIRNAME = "Mapping_des_experts"
 EXPERTS_SUFFIX = "_json.json"
 

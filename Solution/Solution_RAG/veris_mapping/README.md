@@ -5,17 +5,14 @@ automatiquement le mapping expert entre les capacités **VERIS** et les techniqu
 **MITRE ATT&CK**, puis écrit **7 fichiers JSON** (un par *capability group*) au
 format `veris_to_mitre` attendu par `Resultat/compare_veris_mappings_v2.py`.
 
-L'architecture réutilise le squelette du RAG d'exemple (`../Rag_project`), avec
-**deux fournisseurs interchangeables** :
+L'architecture s'appuie sur des **embeddings locaux** (`sentence-transformers`)
+et une base vectorielle ChromaDB. Le backend de génération est réglable via
+`RAG_GENERATOR` :
 
-| `RAG_PROVIDER` | Embeddings | Génération par défaut | Clés requises |
-|---|---|---|---|
-| `local` (**défaut**) | `sentence-transformers` | `retrieval` (similarité) | aucune |
-| `azure` | Azure OpenAI | `llm` (Azure) | `dev.env` |
-
-ChromaDB sert de base vectorielle locale dans les deux cas. Le backend de
-génération est réglable via `RAG_GENERATOR` : `retrieval` (sans LLM),
-`local_llm` (LLM local via `transformers`) ou `llm` (Azure).
+| `RAG_GENERATOR` | Décision | Clés requises |
+|---|---|---|
+| `retrieval` (**défaut**) | Seuils de similarité cosinus | aucune |
+| `local_llm` | LLM local via `transformers` | aucune (télécharge le modèle) |
 
 ---
 
@@ -71,9 +68,9 @@ côte à côte par `compare_veris_mappings_v2.py`.
 
 | Fichier | Rôle |
 |---|---|
-| `config.py` | Versions cible, chemins, Azure, ChromaDB, top_k/top_m. |
+| `config.py` | Versions cible, chemins, ChromaDB, top_k/top_m. |
 | `datasets.py` | Chargement VERIS / ATT&CK / exemples experts. |
-| `embeddings.py` | Embeddings Azure OpenAI (par lots). |
+| `embeddings.py` | Embeddings locaux (`sentence-transformers`). |
 | `vectorstore.py` | ChromaDB : 2 collections (cosine). |
 | `ingest.py` | Indexe ATT&CK + exemples experts. |
 | `retrieve.py` | Récupère candidats techniques + exemples. |
@@ -90,11 +87,8 @@ pip install -r requirements.txt
 ```
 
 **Mode local (défaut)** : aucune clé. Le modèle `sentence-transformers` se
-télécharge automatiquement au premier lancement (~80 Mo).
-
-**Mode Azure (optionnel)** : renseigner `dev.env` (voir `SIEM/dev.env.example`)
-et mettre `RAG_PROVIDER=azure`. Attention : `AZURE_OPENAI_*_MODEL` sont les noms
-de **déploiement**, pas de modèle.
+télécharge automatiquement au premier lancement (~80 Mo). Le backend
+`local_llm` télécharge également un petit modèle instruct si activé.
 
 ---
 
@@ -134,9 +128,8 @@ python ../../../Resultat/compare_veris_mappings_v2.py --solutions Resultat_RAG
 
 > Les exemples experts (autres versions) apportent un gain majeur en rappel.
 > Le backend `retrieval` privilégie le rappel au détriment de la précision ;
-> passer en `local_llm` ou `llm` (Azure) filtre mieux les candidats et
-> augmente la précision. Les seuils `RAG_RETRIEVAL_SIM_*` permettent aussi
-> d'arbitrer précision/rappel.
+> passer en `local_llm` filtre mieux les candidats et augmente la précision.
+> Les seuils `RAG_RETRIEVAL_SIM_*` permettent aussi d'arbitrer précision/rappel.
 
 ---
 

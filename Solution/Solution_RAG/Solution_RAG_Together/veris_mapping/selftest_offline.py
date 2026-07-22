@@ -1,8 +1,7 @@
-"""Smoke-test HORS-LIGNE du pipeline RAG.
+"""Smoke-test HORS-LIGNE du pipeline RAG Together (sans appeler l'API).
 
-Remplace les embeddings et le LLM par des bouchons déterministes, puis exécute
-ingestion -> retrieval -> génération -> écriture sur un petit échantillon, dans
-des dossiers temporaires. Objectif : valider le câblage sans réseau.
+Remplace embeddings et LLM par des bouchons déterministes, puis exécute
+ingestion -> retrieval -> génération -> écriture sur un petit échantillon.
 
 Usage : python selftest_offline.py
 """
@@ -43,15 +42,38 @@ def _fake_embed_query(text):
     return _fake_vector(text)
 
 
+def _fake_together_decision(group, label, description, candidates, examples):
+    del group, label, description, examples
+    mappings = []
+    for c in candidates[:2]:
+        aid = (c.get("attack_id") or "").strip().upper()
+        if aid:
+            mappings.append(
+                {
+                    "attack_id": aid,
+                    "mapping_type": "related_to",
+                    "confidence": "medium",
+                    "justification": "bouchon selftest",
+                }
+            )
+    return {
+        "no_mapping_found": not mappings,
+        "ambiguous": False,
+        "notes": "",
+        "mappings": mappings,
+    }
+
+
 def main() -> int:
-    tmp = Path(tempfile.mkdtemp(prefix="rag_selftest_"))
+    tmp = Path(tempfile.mkdtemp(prefix="rag_together_selftest_"))
     config.CHROMA_PATH = str(tmp / "chroma")
     config.RESULTAT_RAG_DIR = tmp / "out"
-    config.GENERATOR = "retrieval"  # backend sans LLM, testable hors-ligne
+    config.GENERATOR = "together"
+    config.TOGETHER_API_KEY = "selftest-fake-key"
     print(f"Dossier temporaire : {tmp}")
 
-    # Patch des embeddings (évite tout téléchargement/appel réseau).
     import embeddings
+    import generator
     import ingest
     import retrieve
     import generate_mapping  # noqa: F401
@@ -60,6 +82,7 @@ def main() -> int:
     embeddings.embed_query = _fake_embed_query
     ingest.embed_texts = _fake_embed_texts
     retrieve.embed_query = _fake_embed_query
+    generator._together_decision = _fake_together_decision
 
     print("\n--- Ingestion (bouchon) ---")
     ingest.ingest_attack()

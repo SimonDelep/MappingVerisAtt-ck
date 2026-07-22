@@ -466,8 +466,8 @@ sémantique, récupère les éléments les plus pertinents dans une base vectori
 puis produit une proposition de mapping au format \texttt{veris\_to\_mitre}. Dans
 notre expérimentation principale, le backend utilisé est \texttt{retrieval}~: la
 décision repose sur la similarité cosinus, sans appel à un LLM. Les backends
-\texttt{local\_llm} et \texttt{llm} (Azure) restent néanmoins disponibles pour
-filtrer ou raffiner les candidats récupérés.
+\texttt{local\_llm} reste néanmoins disponible pour filtrer ou raffiner les
+candidats récupérés.
 
 À partir de cette architecture commune, deux variantes sont ensuite étudiées~:
 \texttt{attack\_only} et \texttt{with\_examples}. Elles partagent le même pipeline
@@ -494,7 +494,7 @@ Tableau~\ref{tab:rag-modules}.
     \midrule
     \texttt{config.py}            & Versions cible, chemins et hyperparamètres \\
     \texttt{datasets.py}          & Chargement VERIS, ATT\&CK et exemples experts \\
-    \texttt{embeddings.py}        & Calcul des embeddings (local ou Azure) \\
+    \texttt{embeddings.py}        & Calcul des embeddings (sentence-transformers) \\
     \texttt{vectorstore.py}       & Gestion des collections ChromaDB \\
     \texttt{ingest.py}            & Indexation des connaissances \\
     \texttt{retrieve.py}          & Récupération des candidats pertinents \\
@@ -523,7 +523,7 @@ Le traitement d'une capacité VERIS suit toujours la même chaîne~:
     \item récupération des \texttt{top-$k$} techniques ATT\&CK les plus
           similaires dans \texttt{attack\_techniques} ;
     \item sélection ou génération des mappings, selon le backend configuré
-          (\texttt{retrieval}, \texttt{local\_llm} ou \texttt{llm}) ;
+          (\texttt{retrieval} ou \texttt{local\_llm}) ;
     \item validation anti-hallucination~: rejet des identifiants ATT\&CK absents
           du catalogue local ;
     \item enrichissement des noms, sous-techniques et tactiques à partir du
@@ -541,17 +541,16 @@ précisément cette différence qui est évaluée dans les sous-sections
 \texttt{attack\_only} et \texttt{with\_examples}.
 
 \paragraph{Backend de décision.}
-Trois backends de décision sont disponibles après l'étape de retrieval.
+Deux backends de décision sont disponibles après l'étape de retrieval.
 Dans notre expérimentation, nous utilisons exclusivement le backend
 \texttt{retrieval}, qui n'appelle \textbf{aucun LLM}~: les techniques
 candidates sont filtrées selon leur similarité cosinus avec la capacité
 VERIS. Concrètement, une similarité supérieure ou égale à 0{,}50 est
 considérée comme \texttt{high}, une similarité supérieure ou égale à
 0{,}38 comme \texttt{medium}~; en dessous de ce seuil, le candidat est
-rejeté. Les backends \texttt{local\_llm} et \texttt{llm} (Azure)
-permettraient, eux, de confier au modèle le choix final parmi les
-candidats récupérés, mais ils n'ont pas été utilisés pour les résultats
-présentés dans ce rapport.
+rejeté. Le backend \texttt{local\_llm} permettrait de confier au modèle
+local le choix final parmi les candidats récupérés, mais il n'a pas été
+utilisé pour les résultats présentés dans ce rapport.
 
 \paragraph{Backend de décision : Calcul de la similarité cosinus.}
 Concrètement, chaque texte --- capacité VERIS ou technique ATT\&CK --- est

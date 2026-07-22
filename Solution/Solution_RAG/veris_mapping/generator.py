@@ -1,6 +1,6 @@
 """Étape de décision : choisir les techniques ATT&CK pour une capacité VERIS.
 
-Trois backends (config.GENERATOR) renvoyant TOUS le même format :
+Deux backends (config.GENERATOR) renvoyant TOUS le même format :
 
     {
       "no_mapping_found": bool,
@@ -12,9 +12,8 @@ Trois backends (config.GENERATOR) renvoyant TOUS le même format :
       ]
     }
 
-  - "retrieval" : sélection par similarité sémantique (aucun LLM) — défaut local.
+  - "retrieval" : sélection par similarité sémantique (aucun LLM) — défaut.
   - "local_llm" : LLM local via transformers.
-  - "llm"       : LLM Azure OpenAI.
 """
 
 from __future__ import annotations
@@ -117,24 +116,6 @@ def _parse_json(content: str) -> dict:
         raise
 
 
-# ==================== Backend "llm" (Azure OpenAI) ====================
-def _azure_llm_decision(group, label, description, candidates, examples) -> dict:
-    from embeddings import get_azure_client
-
-    user_prompt = build_user_prompt(group, label, description, candidates, examples)
-    client = get_azure_client()
-    response = client.chat.completions.create(
-        model=config.OPENAI_CHAT_MODEL,
-        messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": user_prompt},
-        ],
-        temperature=config.GENERATION_TEMPERATURE,
-        response_format={"type": "json_object"},
-    )
-    return _parse_json(response.choices[0].message.content)
-
-
 # ==================== Backend "local_llm" (transformers) ====================
 _local_pipe = None
 
@@ -181,8 +162,9 @@ def generate_decision(
     backend = config.GENERATOR
     if backend == "retrieval":
         return _retrieval_decision(candidates, examples, attack_index, use_examples)
-    if backend == "llm":
-        return _azure_llm_decision(group, label, description, candidates, examples)
     if backend == "local_llm":
         return _local_llm_decision(group, label, description, candidates, examples)
-    raise ValueError(f"Backend de génération inconnu : {backend}")
+    raise ValueError(
+        f"Backend de génération inconnu : {backend}. "
+        "Utilisez RAG_GENERATOR=retrieval ou local_llm."
+    )
