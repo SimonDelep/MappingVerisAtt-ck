@@ -1,0 +1,1600 @@
+{
+  "metadata": {
+    "veris_version": "1.4.1",
+    "mitre_attack_version": "19.1",
+    "scope": "value_chain.development",
+    "method": "FINE_TUNE",
+    "model": "TF-IDF + OneVsRest LogisticRegression"
+  },
+  "veris_to_mitre": [
+    {
+      "veris_id": "value_chain.development.variety.Bot",
+      "veris_category": "value_chain.development",
+      "veris_label": "Bot",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1587",
+          "technique_name": "Develop Capabilities",
+          "sub_technique_id": "T1587.001",
+          "sub_technique_name": "Malware",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.1583,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1588",
+          "technique_name": "Obtain Capabilities",
+          "sub_technique_id": "T1588.001",
+          "sub_technique_name": "Malware",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.1447,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0541,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1133",
+          "technique_name": "External Remote Services",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0528,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1583",
+          "technique_name": "Acquire Infrastructure",
+          "sub_technique_id": "T1583.005",
+          "sub_technique_name": "Botnet",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0501,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    },
+    {
+      "veris_id": "value_chain.development.variety.Email",
+      "veris_category": "value_chain.development",
+      "veris_label": "Email",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1587",
+          "technique_name": "Develop Capabilities",
+          "sub_technique_id": "T1587.001",
+          "sub_technique_name": "Malware",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0915,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1588",
+          "technique_name": "Obtain Capabilities",
+          "sub_technique_id": "T1588.001",
+          "sub_technique_name": "Malware",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0837,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.002",
+          "sub_technique_name": "Spearphishing Link",
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0785,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.001",
+          "sub_technique_name": "Spearphishing Attachment",
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0732,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1559",
+          "technique_name": "Inter-Process Communication",
+          "sub_technique_id": "T1559.002",
+          "sub_technique_name": "Dynamic Data Exchange",
+          "tactic(s)": [
+            "execution"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0695,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1001",
+          "technique_name": "Data Obfuscation",
+          "sub_technique_id": "T1001.002",
+          "sub_technique_name": "Steganography",
+          "tactic(s)": [
+            "command-and-control"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0686,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1027",
+          "technique_name": "Obfuscated Files or Information",
+          "sub_technique_id": "T1027.005",
+          "sub_technique_name": "Indicator Removal from Tools",
+          "tactic(s)": [
+            "stealth"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0557,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0512,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1203",
+          "technique_name": "Exploitation for Client Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "execution"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.051,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    },
+    {
+      "veris_id": "value_chain.development.variety.Exploit",
+      "veris_category": "value_chain.development",
+      "veris_label": "Exploit",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1587",
+          "technique_name": "Develop Capabilities",
+          "sub_technique_id": "T1587.001",
+          "sub_technique_name": "Malware",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0815,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1587",
+          "technique_name": "Develop Capabilities",
+          "sub_technique_id": "T1587.004",
+          "sub_technique_name": "Exploits",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0788,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1588",
+          "technique_name": "Obtain Capabilities",
+          "sub_technique_id": "T1588.005",
+          "sub_technique_name": "Exploits",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0788,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1588",
+          "technique_name": "Obtain Capabilities",
+          "sub_technique_id": "T1588.001",
+          "sub_technique_name": "Malware",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0744,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1068",
+          "technique_name": "Exploitation for Privilege Escalation",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0629,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1212",
+          "technique_name": "Exploitation for Credential Access",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "credential-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0531,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1133",
+          "technique_name": "External Remote Services",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0504,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    },
+    {
+      "veris_id": "value_chain.development.variety.Exploit Kits",
+      "veris_category": "value_chain.development",
+      "veris_label": "Exploit Kits",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1587",
+          "technique_name": "Develop Capabilities",
+          "sub_technique_id": "T1587.004",
+          "sub_technique_name": "Exploits",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0814,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1588",
+          "technique_name": "Obtain Capabilities",
+          "sub_technique_id": "T1588.005",
+          "sub_technique_name": "Exploits",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0814,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1587",
+          "technique_name": "Develop Capabilities",
+          "sub_technique_id": "T1587.001",
+          "sub_technique_name": "Malware",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0719,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1588",
+          "technique_name": "Obtain Capabilities",
+          "sub_technique_id": "T1588.001",
+          "sub_technique_name": "Malware",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.065,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1068",
+          "technique_name": "Exploitation for Privilege Escalation",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0551,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0525,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1133",
+          "technique_name": "External Remote Services",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0513,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    },
+    {
+      "veris_id": "value_chain.development.variety.NA",
+      "veris_category": "value_chain.development",
+      "veris_label": "NA",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1587",
+          "technique_name": "Develop Capabilities",
+          "sub_technique_id": "T1587.001",
+          "sub_technique_name": "Malware",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.1212,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1588",
+          "technique_name": "Obtain Capabilities",
+          "sub_technique_id": "T1588.001",
+          "sub_technique_name": "Malware",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.1118,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.051,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    },
+    {
+      "veris_id": "value_chain.development.variety.Other",
+      "veris_category": "value_chain.development",
+      "veris_label": "Other",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1587",
+          "technique_name": "Develop Capabilities",
+          "sub_technique_id": "T1587.001",
+          "sub_technique_name": "Malware",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0937,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1588",
+          "technique_name": "Obtain Capabilities",
+          "sub_technique_id": "T1588.001",
+          "sub_technique_name": "Malware",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0722,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0522,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1133",
+          "technique_name": "External Remote Services",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0509,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    },
+    {
+      "veris_id": "value_chain.development.variety.Payload",
+      "veris_category": "value_chain.development",
+      "veris_label": "Payload",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1587",
+          "technique_name": "Develop Capabilities",
+          "sub_technique_id": "T1587.001",
+          "sub_technique_name": "Malware",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.1624,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1588",
+          "technique_name": "Obtain Capabilities",
+          "sub_technique_id": "T1588.001",
+          "sub_technique_name": "Malware",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.1489,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0534,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1133",
+          "technique_name": "External Remote Services",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0519,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    },
+    {
+      "veris_id": "value_chain.development.variety.Persona",
+      "veris_category": "value_chain.development",
+      "veris_label": "Persona",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1587",
+          "technique_name": "Develop Capabilities",
+          "sub_technique_id": "T1587.001",
+          "sub_technique_name": "Malware",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0744,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1588",
+          "technique_name": "Obtain Capabilities",
+          "sub_technique_id": "T1588.001",
+          "sub_technique_name": "Malware",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0673,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0519,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1585",
+          "technique_name": "Establish Accounts",
+          "sub_technique_id": "T1585.001",
+          "sub_technique_name": "Social Media Accounts",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0514,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1133",
+          "technique_name": "External Remote Services",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0503,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    },
+    {
+      "veris_id": "value_chain.development.variety.Physical",
+      "veris_category": "value_chain.development",
+      "veris_label": "Physical",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1587",
+          "technique_name": "Develop Capabilities",
+          "sub_technique_id": "T1587.001",
+          "sub_technique_name": "Malware",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0962,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1588",
+          "technique_name": "Obtain Capabilities",
+          "sub_technique_id": "T1588.001",
+          "sub_technique_name": "Malware",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0875,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0522,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1133",
+          "technique_name": "External Remote Services",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0505,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    },
+    {
+      "veris_id": "value_chain.development.variety.Ransomware",
+      "veris_category": "value_chain.development",
+      "veris_label": "Ransomware",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1587",
+          "technique_name": "Develop Capabilities",
+          "sub_technique_id": "T1587.001",
+          "sub_technique_name": "Malware",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.1415,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1588",
+          "technique_name": "Obtain Capabilities",
+          "sub_technique_id": "T1588.001",
+          "sub_technique_name": "Malware",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.1307,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0503,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    },
+    {
+      "veris_id": "value_chain.development.variety.Trojan",
+      "veris_category": "value_chain.development",
+      "veris_label": "Trojan",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1587",
+          "technique_name": "Develop Capabilities",
+          "sub_technique_id": "T1587.001",
+          "sub_technique_name": "Malware",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.151,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1588",
+          "technique_name": "Obtain Capabilities",
+          "sub_technique_id": "T1588.001",
+          "sub_technique_name": "Malware",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.1381,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.053,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1133",
+          "technique_name": "External Remote Services",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0514,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    },
+    {
+      "veris_id": "value_chain.development.variety.Unknown",
+      "veris_category": "value_chain.development",
+      "veris_label": "Unknown",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1587",
+          "technique_name": "Develop Capabilities",
+          "sub_technique_id": "T1587.001",
+          "sub_technique_name": "Malware",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.1067,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1588",
+          "technique_name": "Obtain Capabilities",
+          "sub_technique_id": "T1588.001",
+          "sub_technique_name": "Malware",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.093,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1587",
+          "technique_name": "Develop Capabilities",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0902,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0546,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1133",
+          "technique_name": "External Remote Services",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0511,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1587",
+          "technique_name": "Develop Capabilities",
+          "sub_technique_id": "T1587.004",
+          "sub_technique_name": "Exploits",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0507,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1588",
+          "technique_name": "Obtain Capabilities",
+          "sub_technique_id": "T1588.005",
+          "sub_technique_name": "Exploits",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0507,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    },
+    {
+      "veris_id": "value_chain.development.variety.Website",
+      "veris_category": "value_chain.development",
+      "veris_label": "Website",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1587",
+          "technique_name": "Develop Capabilities",
+          "sub_technique_id": "T1587.001",
+          "sub_technique_name": "Malware",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0807,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1583",
+          "technique_name": "Acquire Infrastructure",
+          "sub_technique_id": "T1583.006",
+          "sub_technique_name": "Web Services",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0752,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1588",
+          "technique_name": "Obtain Capabilities",
+          "sub_technique_id": "T1588.001",
+          "sub_technique_name": "Malware",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0733,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1133",
+          "technique_name": "External Remote Services",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.053,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0529,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    }
+  ],
+  "mitre_to_veris": [
+    {
+      "attack_id": "T1001.002",
+      "technique_id": "T1001",
+      "technique_name": "Data Obfuscation",
+      "sub_technique_id": "T1001.002",
+      "sub_technique_name": "Steganography",
+      "veris_mappings": [
+        {
+          "veris_id": "value_chain.development.variety.Email",
+          "veris_label": "Email",
+          "confidence_score": 0.0686,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1027.005",
+      "technique_id": "T1027",
+      "technique_name": "Obfuscated Files or Information",
+      "sub_technique_id": "T1027.005",
+      "sub_technique_name": "Indicator Removal from Tools",
+      "veris_mappings": [
+        {
+          "veris_id": "value_chain.development.variety.Email",
+          "veris_label": "Email",
+          "confidence_score": 0.0557,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1068",
+      "technique_id": "T1068",
+      "technique_name": "Exploitation for Privilege Escalation",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "value_chain.development.variety.Exploit",
+          "veris_label": "Exploit",
+          "confidence_score": 0.0629,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Exploit Kits",
+          "veris_label": "Exploit Kits",
+          "confidence_score": 0.0551,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1133",
+      "technique_id": "T1133",
+      "technique_name": "External Remote Services",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "value_chain.development.variety.Bot",
+          "veris_label": "Bot",
+          "confidence_score": 0.0528,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Exploit",
+          "veris_label": "Exploit",
+          "confidence_score": 0.0504,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Exploit Kits",
+          "veris_label": "Exploit Kits",
+          "confidence_score": 0.0513,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Other",
+          "veris_label": "Other",
+          "confidence_score": 0.0509,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Payload",
+          "veris_label": "Payload",
+          "confidence_score": 0.0519,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Persona",
+          "veris_label": "Persona",
+          "confidence_score": 0.0503,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Physical",
+          "veris_label": "Physical",
+          "confidence_score": 0.0505,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Trojan",
+          "veris_label": "Trojan",
+          "confidence_score": 0.0514,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.0511,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Website",
+          "veris_label": "Website",
+          "confidence_score": 0.053,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1203",
+      "technique_id": "T1203",
+      "technique_name": "Exploitation for Client Execution",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "value_chain.development.variety.Email",
+          "veris_label": "Email",
+          "confidence_score": 0.051,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1212",
+      "technique_id": "T1212",
+      "technique_name": "Exploitation for Credential Access",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "value_chain.development.variety.Exploit",
+          "veris_label": "Exploit",
+          "confidence_score": 0.0531,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1547",
+      "technique_id": "T1547",
+      "technique_name": "Boot or Logon Autostart Execution",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "value_chain.development.variety.Bot",
+          "veris_label": "Bot",
+          "confidence_score": 0.0541,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Email",
+          "veris_label": "Email",
+          "confidence_score": 0.0512,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Exploit Kits",
+          "veris_label": "Exploit Kits",
+          "confidence_score": 0.0525,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.NA",
+          "veris_label": "NA",
+          "confidence_score": 0.051,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Other",
+          "veris_label": "Other",
+          "confidence_score": 0.0522,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Payload",
+          "veris_label": "Payload",
+          "confidence_score": 0.0534,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Persona",
+          "veris_label": "Persona",
+          "confidence_score": 0.0519,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Physical",
+          "veris_label": "Physical",
+          "confidence_score": 0.0522,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Ransomware",
+          "veris_label": "Ransomware",
+          "confidence_score": 0.0503,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Trojan",
+          "veris_label": "Trojan",
+          "confidence_score": 0.053,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.0546,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Website",
+          "veris_label": "Website",
+          "confidence_score": 0.0529,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1559.002",
+      "technique_id": "T1559",
+      "technique_name": "Inter-Process Communication",
+      "sub_technique_id": "T1559.002",
+      "sub_technique_name": "Dynamic Data Exchange",
+      "veris_mappings": [
+        {
+          "veris_id": "value_chain.development.variety.Email",
+          "veris_label": "Email",
+          "confidence_score": 0.0695,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1566.001",
+      "technique_id": "T1566",
+      "technique_name": "Phishing",
+      "sub_technique_id": "T1566.001",
+      "sub_technique_name": "Spearphishing Attachment",
+      "veris_mappings": [
+        {
+          "veris_id": "value_chain.development.variety.Email",
+          "veris_label": "Email",
+          "confidence_score": 0.0732,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1566.002",
+      "technique_id": "T1566",
+      "technique_name": "Phishing",
+      "sub_technique_id": "T1566.002",
+      "sub_technique_name": "Spearphishing Link",
+      "veris_mappings": [
+        {
+          "veris_id": "value_chain.development.variety.Email",
+          "veris_label": "Email",
+          "confidence_score": 0.0785,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1583.005",
+      "technique_id": "T1583",
+      "technique_name": "Acquire Infrastructure",
+      "sub_technique_id": "T1583.005",
+      "sub_technique_name": "Botnet",
+      "veris_mappings": [
+        {
+          "veris_id": "value_chain.development.variety.Bot",
+          "veris_label": "Bot",
+          "confidence_score": 0.0501,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1583.006",
+      "technique_id": "T1583",
+      "technique_name": "Acquire Infrastructure",
+      "sub_technique_id": "T1583.006",
+      "sub_technique_name": "Web Services",
+      "veris_mappings": [
+        {
+          "veris_id": "value_chain.development.variety.Website",
+          "veris_label": "Website",
+          "confidence_score": 0.0752,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1585.001",
+      "technique_id": "T1585",
+      "technique_name": "Establish Accounts",
+      "sub_technique_id": "T1585.001",
+      "sub_technique_name": "Social Media Accounts",
+      "veris_mappings": [
+        {
+          "veris_id": "value_chain.development.variety.Persona",
+          "veris_label": "Persona",
+          "confidence_score": 0.0514,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1587",
+      "technique_id": "T1587",
+      "technique_name": "Develop Capabilities",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "value_chain.development.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.0902,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1587.001",
+      "technique_id": "T1587",
+      "technique_name": "Develop Capabilities",
+      "sub_technique_id": "T1587.001",
+      "sub_technique_name": "Malware",
+      "veris_mappings": [
+        {
+          "veris_id": "value_chain.development.variety.Bot",
+          "veris_label": "Bot",
+          "confidence_score": 0.1583,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Email",
+          "veris_label": "Email",
+          "confidence_score": 0.0915,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Exploit",
+          "veris_label": "Exploit",
+          "confidence_score": 0.0815,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Exploit Kits",
+          "veris_label": "Exploit Kits",
+          "confidence_score": 0.0719,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.NA",
+          "veris_label": "NA",
+          "confidence_score": 0.1212,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Other",
+          "veris_label": "Other",
+          "confidence_score": 0.0937,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Payload",
+          "veris_label": "Payload",
+          "confidence_score": 0.1624,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Persona",
+          "veris_label": "Persona",
+          "confidence_score": 0.0744,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Physical",
+          "veris_label": "Physical",
+          "confidence_score": 0.0962,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Ransomware",
+          "veris_label": "Ransomware",
+          "confidence_score": 0.1415,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Trojan",
+          "veris_label": "Trojan",
+          "confidence_score": 0.151,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.1067,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Website",
+          "veris_label": "Website",
+          "confidence_score": 0.0807,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1587.004",
+      "technique_id": "T1587",
+      "technique_name": "Develop Capabilities",
+      "sub_technique_id": "T1587.004",
+      "sub_technique_name": "Exploits",
+      "veris_mappings": [
+        {
+          "veris_id": "value_chain.development.variety.Exploit",
+          "veris_label": "Exploit",
+          "confidence_score": 0.0788,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Exploit Kits",
+          "veris_label": "Exploit Kits",
+          "confidence_score": 0.0814,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.0507,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1588.001",
+      "technique_id": "T1588",
+      "technique_name": "Obtain Capabilities",
+      "sub_technique_id": "T1588.001",
+      "sub_technique_name": "Malware",
+      "veris_mappings": [
+        {
+          "veris_id": "value_chain.development.variety.Bot",
+          "veris_label": "Bot",
+          "confidence_score": 0.1447,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Email",
+          "veris_label": "Email",
+          "confidence_score": 0.0837,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Exploit",
+          "veris_label": "Exploit",
+          "confidence_score": 0.0744,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Exploit Kits",
+          "veris_label": "Exploit Kits",
+          "confidence_score": 0.065,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.NA",
+          "veris_label": "NA",
+          "confidence_score": 0.1118,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Other",
+          "veris_label": "Other",
+          "confidence_score": 0.0722,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Payload",
+          "veris_label": "Payload",
+          "confidence_score": 0.1489,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Persona",
+          "veris_label": "Persona",
+          "confidence_score": 0.0673,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Physical",
+          "veris_label": "Physical",
+          "confidence_score": 0.0875,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Ransomware",
+          "veris_label": "Ransomware",
+          "confidence_score": 0.1307,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Trojan",
+          "veris_label": "Trojan",
+          "confidence_score": 0.1381,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.093,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Website",
+          "veris_label": "Website",
+          "confidence_score": 0.0733,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1588.005",
+      "technique_id": "T1588",
+      "technique_name": "Obtain Capabilities",
+      "sub_technique_id": "T1588.005",
+      "sub_technique_name": "Exploits",
+      "veris_mappings": [
+        {
+          "veris_id": "value_chain.development.variety.Exploit",
+          "veris_label": "Exploit",
+          "confidence_score": 0.0788,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Exploit Kits",
+          "veris_label": "Exploit Kits",
+          "confidence_score": 0.0814,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "value_chain.development.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.0507,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    }
+  ]
+}

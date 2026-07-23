@@ -1,0 +1,31 @@
+{
+  "metadata": {
+    "veris_version": "1.4.1",
+    "mitre_attack_version": "19.1",
+    "scope": "attribute.confidentiality",
+    "method": "FINE_TUNED_LLM",
+    "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo"
+  },
+  "veris_to_mitre": [
+    {
+      "veris_id": "attribute.confidentiality.data_disclosure",
+      "veris_category": "attribute.confidentiality",
+      "veris_label": "data_disclosure",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1600",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    }
+  ]
+}
