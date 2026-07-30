@@ -1,12 +1,10 @@
-"""Configuration centralisée du RAG de mapping VERIS -> MITRE ATT&CK.
+"""Configuration du RAG VERIS -> ATT&CK avec génération via Together.ai.
 
-Toutes les clés/secrets restent dans `dev.env` (racine du dépôt SIEM) ou un
-`.env` local ; rien n'est écrit en dur dans le code.
+Même pipeline que Solution_RAG (embeddings locaux + ChromaDB), mais la
+décision de mapping est déléguée à un LLM cloud (API compatible OpenAI).
 
-Le pipeline confronte deux référentiels bruts :
-  - VERIS   : les capacités à mapper (les "questions")
-  - ATT&CK  : les techniques candidates (les "candidats")
-et, en option, les mappings experts des *anciennes* versions comme exemples.
+Clés / secrets : `dev.env` à la racine du dépôt SIEM, ou `dev.env` / `.env`
+dans ce dossier. Rien n'est écrit en dur dans le code.
 """
 
 from __future__ import annotations
@@ -16,22 +14,34 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-# Solution/Solution_RAG/veris_mapping/config.py -> racine = SIEM
-REPO_ROOT = Path(__file__).resolve().parents[3]
 SOLUTION_DIR = Path(__file__).resolve().parent
+# Solution_RAG_Together/ (peut être déplacé dans l'arborescence)
+TOGETHER_ROOT = SOLUTION_DIR.parent
+
+
+def _find_repo_root() -> Path:
+    """Remonte jusqu'à la racine SIEM (data_for_work + Resultat)."""
+    for candidate in [SOLUTION_DIR, *SOLUTION_DIR.parents]:
+        if (candidate / "data_for_work").is_dir() and (candidate / "Resultat").is_dir():
+            return candidate
+    raise FileNotFoundError(
+        "Racine du dépôt SIEM introuvable (dossiers data_for_work et Resultat)."
+    )
+
+
+REPO_ROOT = _find_repo_root()
 
 load_dotenv(REPO_ROOT / "dev.env")
+load_dotenv(TOGETHER_ROOT / "dev.env")
 load_dotenv(SOLUTION_DIR / "dev.env")
 load_dotenv(SOLUTION_DIR / ".env")
 load_dotenv(".env")
 
 
 # ==================== VERSIONS ====================
-# Version cible à mapper (= la version évaluée contre les experts).
 VERIS_VERSION = os.getenv("RAG_VERIS_VERSION", "1.4.1")
 ATTACK_VERSION = os.getenv("RAG_ATTACK_VERSION", "19.1")
 
-# Référence "veris-x_attack-y-enterprise" attendue par compare_veris_mappings_v2.
 TARGET_REF = f"veris-{VERIS_VERSION}_attack-{ATTACK_VERSION}-enterprise"
 WORK_SUBDIR = f"attack-{ATTACK_VERSION}_veris-{VERIS_VERSION}"
 
@@ -39,7 +49,8 @@ WORK_SUBDIR = f"attack-{ATTACK_VERSION}_veris-{VERIS_VERSION}"
 # ==================== CHEMINS ====================
 DATA_FOR_WORK = REPO_ROOT / "data_for_work"
 RESULTAT_DIR = REPO_ROOT / "Resultat"
-RESULTAT_RAG_DIR = RESULTAT_DIR / "Resultat_RAG"
+# Dossier de sortie dédié (ne mélange pas avec le RAG retrieval local).
+RESULTAT_RAG_DIR = RESULTAT_DIR / "Resultat_RAG_Together"
 
 WORK_DIR = DATA_FOR_WORK / WORK_SUBDIR
 VERIS_FILE = WORK_DIR / f"veris_{VERIS_VERSION}.json"
@@ -47,26 +58,25 @@ ATTACK_FILE = WORK_DIR / f"attack_{ATTACK_VERSION}.json"
 
 
 # ==================== GÉNÉRATION ====================
-# Backend de génération :
-#   - "retrieval" : sélection par similarité sémantique (aucun LLM) — défaut.
-#   - "local_llm" : LLM local via transformers.
-GENERATOR = os.getenv("RAG_GENERATOR", "retrieval").lower()
+# Backend unique de cette solution : LLM Together.ai.
+GENERATOR = os.getenv("RAG_GENERATOR", "together").lower()
+
+
+# ==================== TOGETHER.AI ====================
+TOGETHER_API_KEY = os.getenv("TOGETHER_API_KEY", "").strip()
+TOGETHER_BASE_URL = os.getenv(
+    "TOGETHER_BASE_URL", "https://api.together.ai/v1"
+).strip()
+TOGETHER_CHAT_MODEL = os.getenv(
+    "TOGETHER_CHAT_MODEL", "meta-llama/Llama-3.3-70B-Instruct-Turbo"
+).strip()
 
 
 # ==================== EMBEDDINGS LOCAUX ====================
+# Le retrieval reste local (sentence-transformers) ; seul le LLM est cloud.
 LOCAL_EMBEDDING_MODEL = os.getenv(
     "RAG_LOCAL_EMBEDDING_MODEL", "sentence-transformers/all-MiniLM-L6-v2"
 )
-# Modèle LLM local (backend "local_llm").
-LOCAL_LLM_MODEL = os.getenv("RAG_LOCAL_LLM_MODEL", "Qwen/Qwen2.5-1.5B-Instruct")
-
-
-# ==================== SEUILS GÉNÉRATION "retrieval" ====================
-# Similarité cosinus (= 1 - distance) au-dessus de laquelle un candidat est retenu.
-RETRIEVAL_SIM_HIGH = float(os.getenv("RAG_RETRIEVAL_SIM_HIGH", "0.50"))
-RETRIEVAL_SIM_MED = float(os.getenv("RAG_RETRIEVAL_SIM_MED", "0.38"))
-# Nb max d'ajouts "exemple seul" (techniques suggérées par l'exemple le plus proche).
-RETRIEVAL_MAX_EXAMPLE_ONLY = int(os.getenv("RAG_RETRIEVAL_MAX_EXAMPLE_ONLY", "12"))
 
 
 # ==================== CHROMADB ====================
@@ -78,18 +88,15 @@ EXAMPLES_COLLECTION = os.getenv("RAG_EXAMPLES_COLLECTION", "expert_examples")
 
 
 # ==================== RETRIEVAL / GÉNÉRATION ====================
-# Nombre de techniques ATT&CK candidates récupérées par capacité VERIS.
 TOP_K_TECHNIQUES = int(os.getenv("RAG_TOP_K_TECHNIQUES", "20"))
-# Nombre d'exemples de mappings experts (anciennes versions) récupérés.
 TOP_M_EXAMPLES = int(os.getenv("RAG_TOP_M_EXAMPLES", "5"))
-# Taille des lots d'embeddings.
 EMBEDDING_BATCH_SIZE = int(os.getenv("RAG_EMBEDDING_BATCH_SIZE", "64"))
-# Température de génération (faible = déterministe) — utilisée par local_llm.
 GENERATION_TEMPERATURE = float(os.getenv("RAG_GENERATION_TEMPERATURE", "0.1"))
+# Tokens max pour la réponse JSON du LLM.
+GENERATION_MAX_TOKENS = int(os.getenv("RAG_GENERATION_MAX_TOKENS", "800"))
 
 
 # ==================== GROUPES VERIS ====================
-# Les 7 capability_groups officiels mappés vers ATT&CK.
 CAPABILITY_GROUPS = [
     "action.hacking",
     "action.malware",
@@ -118,10 +125,16 @@ def list_example_work_dirs() -> list[Path]:
 
 def validate_config() -> None:
     """Valide la présence des variables/fichiers essentiels."""
-    if GENERATOR not in {"retrieval", "local_llm"}:
+    if GENERATOR != "together":
         raise ValueError(
             f"Backend de génération inconnu : {GENERATOR}. "
-            "Utilisez RAG_GENERATOR=retrieval ou local_llm."
+            "Cette solution n'accepte que RAG_GENERATOR=together."
+        )
+    if not TOGETHER_API_KEY:
+        raise ValueError(
+            "TOGETHER_API_KEY manquante. "
+            "Ajoutez-la dans Solution_RAG_Together/dev.env "
+            "(ou veris_mapping/dev.env / racine SIEM)."
         )
     if not VERIS_FILE.is_file():
         raise FileNotFoundError(f"Fichier VERIS introuvable : {VERIS_FILE}")
@@ -132,11 +145,15 @@ def validate_config() -> None:
 
 if __name__ == "__main__":
     print("Generator      :", GENERATOR)
+    print("Together model :", TOGETHER_CHAT_MODEL)
+    print("Together URL   :", TOGETHER_BASE_URL)
+    print("API key set    :", bool(TOGETHER_API_KEY))
     print("Embeddings     :", LOCAL_EMBEDDING_MODEL)
     print("Racine dépôt   :", REPO_ROOT)
     print("Version cible  :", TARGET_REF)
     print("VERIS file     :", VERIS_FILE)
     print("ATT&CK file    :", ATTACK_FILE)
     print("Chroma path    :", CHROMA_PATH)
+    print("Sortie         :", RESULTAT_RAG_DIR)
     print("Exemples dirs  :", [p.name for p in list_example_work_dirs()])
     validate_config()

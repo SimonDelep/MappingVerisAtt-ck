@@ -1,0 +1,10 @@
+# Coeur du RAG
+chromadb>=1.0
+python-dotenv>=1.0
+
+# Embeddings locaux (retrieval)
+sentence-transformers>=2.2
+torch>=2.0
+
+# LLM cloud Together.ai (API compatible OpenAI)
+openai>=1.40

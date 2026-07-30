@@ -1,12 +1,14 @@
-"""Pipeline RAG complet : capacités VERIS -> mapping ATT&CK -> 7 fichiers JSON.
+"""Pipeline RAG + Together.ai : capacités VERIS -> mapping ATT&CK -> 7 JSON.
+
+Même retrieval local (ChromaDB + embeddings) que Solution_RAG, mais la
+décision est prise par un LLM Together.ai.
 
 Deux variantes (paramètre --mode) :
   - attack_only    : récupération sur le seul catalogue ATT&CK.
-  - with_examples  : récupération ATT&CK + exemples de mappings experts (autres
-                     versions) injectés dans le prompt.
+  - with_examples  : récupération ATT&CK + exemples experts (autres versions)
+                     injectés dans le prompt.
 
-Chaque variante écrit dans un sous-dossier distinct de Resultat/Resultat_RAG,
-nommé pour être reconnu par compare_veris_mappings_v2.py.
+Sorties dans Resultat/Resultat_RAG_Together/, distinctes du RAG retrieval.
 """
 
 from __future__ import annotations
@@ -28,8 +30,8 @@ sys.path.insert(0, str(config.RESULTAT_DIR))
 from compare_veris_mappings import normalize_veris_id  # noqa: E402
 
 MODES = {
-    "attack_only": f"{config.TARGET_REF}_RAG_attack_only",
-    "with_examples": f"{config.TARGET_REF}_RAG_with_examples",
+    "attack_only": f"{config.TARGET_REF}_RAG_Together_attack_only",
+    "with_examples": f"{config.TARGET_REF}_RAG_Together_with_examples",
 }
 
 
@@ -149,9 +151,10 @@ def run_mode(mode: str, limit: int | None) -> None:
     out_dir = config.RESULTAT_RAG_DIR / MODES[mode]
 
     print("=" * 72)
-    print(f"GÉNÉRATION RAG — mode '{mode}'")
+    print(f"GÉNÉRATION RAG Together.ai — mode '{mode}'")
     print(f"Generator : {config.GENERATOR}")
-    print(f"Sortie : {out_dir}")
+    print(f"Modèle    : {config.TOGETHER_CHAT_MODEL}")
+    print(f"Sortie    : {out_dir}")
     print("=" * 72)
 
     capabilities = datasets.load_veris_capabilities()

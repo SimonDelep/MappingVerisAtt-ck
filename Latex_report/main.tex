@@ -31,25 +31,25 @@
 \fancyhf{}
 \fancyhead[L]{8INF950: Mapping base de données d'incidents}
 \fancyhead[R]{\today}
-\fancyfoot[L]{\footnotesize XXXXXXXXXXXXXXXXXXXXXXxXXXX}
 \fancyfoot[R]{\thepage}
 
 \newcommand{\AddLogoTopRight}{
   \AddToShipoutPictureBG*{
     \ifnum\value{page}=1
       \put(\LenToUnit{0.32\paperwidth},\LenToUnit{0.75\paperheight}){%
-        \includegraphics[width=8cm]{logo.jpg}%
+        \includegraphics[width=8cm]{logo-uqac.eps}%
       }
     \fi
   }
 }
 
 \begin{document}
-\AddLogoTopRight
+%\AddLogoTopRight
 
 \begin{titlepage}
     \centering
-    \vspace*{5.5cm}
+	\includegraphics[width=8cm]{logo-uqac.eps}\\[1cm]
+    \vspace*{2cm}
     {\large\bfseries Module d'informatique et de mathématique \\
     Département d'informatique et de mathématiques \par}
     {\Huge\bfseries -------------------------- \par}
@@ -60,7 +60,6 @@
     \vfill
     {\large Date: \today \par}
     {\large 8INF950: Sujet spécial en cybersécurité - Été 2026 \par}
-    {\large XXXXXXXXXXXXXXXXXXXXXXxXXXX \par}
 \end{titlepage}
 
 \newpage
@@ -72,24 +71,78 @@
 % Auteurs : XXXXXXXXXXX
 % =============================================================================
 %
+% --- §1 LECTURE ---
 % --- PAGE DE TITRE ---
-% --- §1 INTRODUCTION ---
+% --- §2 INTRODUCTION ---
 % -> Relire / refaire toute la partie introduction
-% --- §2 MÉTHODOLOGIE ---
+% --- §3 MÉTHODOLOGIE ---
 % -> Relire / refaire toute la partie introduction
-% --- §3 SOLUTION ---
+% --- §4 SOLUTION ---
 % -> Relire la partie RAG 
-% --- §4 RÉSULTATS ---
+% --- §5 RÉSULTATS ---
 % -> à implémenter 
-% --- §5 DISCUSSION ---
+% --- §6 DISCUSSION ---
 % -> à implémenter 
-% --- §6 CONCLUSION ---
+% --- §7 CONCLUSION ---
 % -> à implémenter 
 
 % =============================================================================
 % FIN TODO RELECTURE
 % =============================================================================
 
+\section{Synthèse des lectures}
+
+\subsection{Doc 1 — 99\% de faux positifs}
+
+On distingue trois types de faux positifs (FP)~:
+\begin{itemize}
+    \item \textbf{Vraies alarmes :} ce sont les menaces réelles.
+    \item \textbf{Fausses alarmes :} le système se déclenche sans raison légitime.
+    \item \textbf{Alarmes bénignes :} alarmes techniquement correctes, mais
+          correspondant à un comportement légitime.
+\end{itemize}
+
+La validation des alarmes repose encore sur un processus humain, grâce aux
+connaissances et à l'expérience des analystes.
+
+Les auteurs proposent le modèle \textbf{REACT} : les alarmes doivent être
+\begin{itemize}
+    \item \textbf{R}eliable (fiables) ;
+    \item \textbf{E}xplained (explicables) ;
+    \item \textbf{A}nalytical (analytiques) ;
+    \item \textbf{C}ontextual (contextuelles) ;
+    \item \textbf{T}ransferable (transférables à d'autres environnements).
+\end{itemize}
+Ce modèle est pensé pour guider la conception d'outils fondés sur
+l'apprentissage automatique.
+
+\subsection{Doc 2 — UCO (Unified Cybersecurity Ontology)}
+
+UCO est une ontologie sémantique visant à unifier et intégrer les données
+hétérogènes de cybersécurité issues de multiples standards. Son but est
+d'\emph{améliorer la conscience situationnelle des analystes}.
+
+Caractéristiques principales~:
+\begin{itemize}
+    \item Extension de l'ontologie IDS développée par le même groupe.
+    \item Intégration des standards les plus utilisés en cybersécurité~:
+          STIX, CVE, CCE, CVSS, CAPEC, CybOX et la \emph{Kill Chain}.
+    \item Représentation en OWL/RDF plutôt qu'en XML, ce qui autorise le
+          raisonnement automatique.
+    \item 106 classes, 59 propriétés d'objet et 45 propriétés de données.
+    \item Expressivité logique de niveau $\mathcal{ALCROIQ}(D)$.
+\end{itemize}
+
+\paragraph{Apport.}
+Inférence logique, mappée au \emph{Linked Open Data} (DBpedia, YAGO, etc.),
+permettant le croisement des données cyber avec des connaissances générales.
+
+\paragraph{Cas d'usage.}
+Un prototype identifie les vulnérabilités liées à un type de logiciel à partir
+des données NVD. Au moyen de requêtes SPARQL, il recense les produits d'un
+éditeur et leurs vulnérabilités, afin de suggérer une alternative exempte de
+vulnérabilités ou de comparer l'impact sécuritaire d'un changement de
+fournisseur.
 
 \newpage
 %==============================================================================
@@ -391,78 +444,335 @@ Les trois solutions partagent les mêmes entrées (\texttt{veris\_<v>.json},
 
 \subsection{Solution RAG}
 
-\subsubsection{Principe}
+\subsubsection{Principe et objectif}
 
-La solution \textbf{RAG} ancre chaque décision dans du contexte récupéré via deux
-corpus vectoriels ChromaDB~:
-\begin{enumerate}
-    \item \texttt{attack\_techniques} --- catalogue ATT\&CK cible (les candidats) ;
-    \item \texttt{expert\_examples} --- mappings experts des versions antérieures
-          (exemples analogiques).
-\end{enumerate}
-Pour chaque capacité VERIS, le système récupère les techniques les plus similaires
-(top-$k$) et, le cas échéant, des exemples de mappings experts (top-$m$), puis
-produit une décision structurée en JSON.
+La solution \textbf{RAG} (\emph{Retrieval-Augmented Generation})~\cite{lewis2020rag}
+vise à reproduire automatiquement le mapping expert entre les capacités VERIS et
+les techniques MITRE ATT\&CK. Contrairement à une approche purement basée sur un
+prompt ou sur un modèle fine-tuné, le RAG \textbf{ancre chaque décision dans un
+contexte récupéré} à partir de connaissances indexées localement.
 
-\subsubsection{Flux par capacité VERIS}
+L'objectif est double~:
+\begin{itemize}
+    \item \textbf{réduire le risque d'hallucination}, en forçant la solution à
+          s'appuyer sur des techniques ATT\&CK réellement présentes dans le catalogue
+          cible, plutôt que sur des identifiants inventés ;
+    \item \textbf{exploiter une similarité sémantique} entre la description d'une
+          capacité VERIS et les descriptions des techniques adverses.
+\end{itemize}
 
-Le traitement suit la chaîne suivante~: (1)~récupération des candidats ATT\&CK~;
-(2)~récupération des exemples experts (variante \texttt{with\_examples})~;
-(3)~décision via le backend configuré (\texttt{retrieval}, \texttt{local\_llm} ou
-\texttt{llm} Azure)~; (4)~validation anti-hallucination (rejet des identifiants hors
-catalogue)~; (5)~enrichissement des libellés et tactiques depuis le catalogue local~;
-(6)~agrégation en entrées \texttt{veris\_to\_mitre} regroupées par capability group.
+Concrètement, pour chaque capacité VERIS, la solution construit une requête
+sémantique, récupère les éléments les plus pertinents dans une base vectorielle,
+puis produit une proposition de mapping au format \texttt{veris\_to\_mitre}. Dans
+notre expérimentation principale, le backend utilisé est \texttt{retrieval}~: la
+décision repose sur la similarité cosinus, sans appel à un LLM. Les backends
+\texttt{local\_llm} reste néanmoins disponible pour filtrer ou raffiner les
+candidats récupérés.
 
-\subsubsection{Deux variantes expérimentées}
+À partir de cette architecture commune, deux variantes sont ensuite étudiées~:
+\texttt{attack\_only} et \texttt{with\_examples}. Elles partagent le même pipeline
+global et ne diffèrent que par le contexte injecté au moment du retrieval.
 
-\begin{table}[H]
-  \centering
-  \begin{tabular}{l l l}
-    \toprule
-    \textbf{Mode} & \textbf{Corpus de récupération} & \textbf{Dossier de sortie} \\
-    \midrule
-    \texttt{attack\_only}   & ATT\&CK seul               & \texttt{...\_RAG\_attack\_only/} \\
-    \texttt{with\_examples} & ATT\&CK + exemples experts & \texttt{...\_RAG\_with\_examples/} \\
-    \bottomrule
-  \end{tabular}
-  \caption{Variantes expérimentées de la solution RAG.}
-  \label{tab:rag-variantes}
-\end{table}
+\subsubsection{Architecture et fonctionnement}
 
-\subsubsection{Modules logiciels}
+Cette sous-section décrit la \textbf{solution RAG globale}, c'est-à-dire le
+pipeline commun à toute les variantes. Les améliorations propres à chaque variante
+sont détaillées ensuite.
+
+\paragraph{Composants communs.}
+La solution repose sur une architecture modulaire~: chargement des données VERIS
+et ATT\&CK, calcul d'embeddings, stockage vectoriel dans ChromaDB, récupération
+des candidats, décision de mapping, puis validation et écriture des résultats.
+Les principaux modules logiciels sont présentés dans le
+Tableau~\ref{tab:rag-modules}.
 
 \begin{table}[H]
   \centering
   \begin{tabular}{l l}
     \toprule
-    \textbf{Fichier} & \textbf{Rôle} \\
+    \textbf{Module} & \textbf{Rôle} \\
     \midrule
-    \texttt{config.py}           & Versions, chemins, hyperparamètres \\
-    \texttt{ingest.py}           & Indexation ChromaDB \\
-    \texttt{retrieve.py}         & Récupération top-$k$ / top-$m$ \\
-    \texttt{prompt.py}           & Prompts et schéma JSON \\
-    \texttt{generator.py}        & Backends de génération \\
-    \texttt{generate\_mapping.py} & Pipeline complet $\rightarrow$ 7 fichiers \\
+    \texttt{config.py}            & Versions cible, chemins et hyperparamètres \\
+    \texttt{datasets.py}          & Chargement VERIS, ATT\&CK et exemples experts \\
+    \texttt{embeddings.py}        & Calcul des embeddings (sentence-transformers) \\
+    \texttt{vectorstore.py}       & Gestion des collections ChromaDB \\
+    \texttt{ingest.py}            & Indexation des connaissances \\
+    \texttt{retrieve.py}          & Récupération des candidats pertinents \\
+    \texttt{prompt.py}            & Construction des prompts et du schéma JSON \\
+    \texttt{generator.py}         & Backends de sélection / génération \\
+    \texttt{generate\_mapping.py} & Orchestration du pipeline complet \\
     \bottomrule
   \end{tabular}
-  \caption{Modules principaux de la solution RAG (\texttt{veris\_mapping/}).}
+  \caption{Modules principaux de la solution RAG.}
   \label{tab:rag-modules}
 \end{table}
 
-\subsubsection{Technologies et configuration}
+\paragraph{Indexation et base vectorielle.}
+Dans tous les cas, le catalogue ATT\&CK cible est indexé dans la collection
+\texttt{attack\_techniques}. Chaque technique est représentée par un embedding
+construit à partir de son identifiant, de son nom et de sa description. La
+similarité utilisée est la similarité cosinus. Selon la variante, une seconde
+collection peut également être exploitée pour enrichir le contexte~; ce point
+est présenté dans les sous-sections suivantes.
 
-En mode local (défaut), les embeddings sont produits par \texttt{sentence-transformers}
-et la génération peut s'appuyer sur la seule similarité cosinus (\texttt{retrieval}),
-sans LLM. En mode Azure (optionnel), les embeddings et la génération passent par
-Azure OpenAI. Les paramètres clés sont \texttt{RAG\_TOP\_K\_TECHNIQUES} (20 par défaut)
-et \texttt{RAG\_TOP\_M\_EXAMPLES} (5 par défaut).
+\paragraph{Flux global de traitement.}
+Le traitement d'une capacité VERIS suit toujours la même chaîne~:
+\begin{enumerate}
+    \item construction d'une requête sémantique à partir du capability group,
+          du libellé et de la description ;
+    \item récupération des \texttt{top-$k$} techniques ATT\&CK les plus
+          similaires dans \texttt{attack\_techniques} ;
+    \item sélection ou génération des mappings, selon le backend configuré
+          (\texttt{retrieval} ou \texttt{local\_llm}) ;
+    \item validation anti-hallucination~: rejet des identifiants ATT\&CK absents
+          du catalogue local ;
+    \item enrichissement des noms, sous-techniques et tactiques à partir du
+          catalogue ATT\&CK ;
+    \item agrégation des entrées au format \texttt{veris\_to\_mitre}, regroupées
+          en sept fichiers JSON, un par capability group.
+\end{enumerate}
 
-\subsubsection{Format de sortie}
+\paragraph{Paramètres communs.}
+Le paramètre principal du retrieval est \texttt{RAG\_TOP\_K\_TECHNIQUES}
+(nombre de techniques candidates récupérées, 20 par défaut). Les deux variantes
+expérimentées partagent donc la même base technique, la même validation et le
+même format de sortie~; seule la nature du contexte récupéré change. C'est
+précisément cette différence qui est évaluée dans les sous-sections
+\texttt{attack\_only} et \texttt{with\_examples}.
 
-Chaque fichier de résultat contient une liste \texttt{veris\_to\_mitre} avec, pour
-chaque capacité, les techniques proposées, un score de confiance et une justification.
-Les identifiants ATT\&CK invalides sont rejetés~; noms et tactiques proviennent du
-catalogue local.
+\paragraph{Backend de décision.}
+Deux backends de décision sont disponibles après l'étape de retrieval.
+Dans notre expérimentation, nous utilisons exclusivement le backend
+\texttt{retrieval}, qui n'appelle \textbf{aucun LLM}~: les techniques
+candidates sont filtrées selon leur similarité cosinus avec la capacité
+VERIS. Concrètement, une similarité supérieure ou égale à 0{,}50 est
+considérée comme \texttt{high}, une similarité supérieure ou égale à
+0{,}38 comme \texttt{medium}~; en dessous de ce seuil, le candidat est
+rejeté. Le backend \texttt{local\_llm} permettrait de confier au modèle
+local le choix final parmi les candidats récupérés, mais il n'a pas été
+utilisé pour les résultats présentés dans ce rapport.
+
+\paragraph{Backend de décision : Calcul de la similarité cosinus.}
+Concrètement, chaque texte --- capacité VERIS ou technique ATT\&CK --- est
+d'abord transformé en vecteur numérique par le modèle d'embeddings
+\texttt{sentence-transformers} (\texttt{all-MiniLM-L6-v2} en mode local), avec
+une normalisation de norme unitaire. La proximité entre une requête VERIS
+$\mathbf{q}$ et une technique ATT\&CK $\mathbf{d}$ est alors mesurée par la
+similarité cosinus
+$\cos(\mathbf{q},\mathbf{d})=\mathbf{q}\cdot\mathbf{d}/(\|\mathbf{q}\|\,\|\mathbf{d}\|)$,
+qui se réduit au produit scalaire lorsque les vecteurs sont normalisés.
+ChromaDB stocke ces vecteurs dans un espace cosinus et renvoie une
+\emph{distance} définie par $1-\cos(\mathbf{q},\mathbf{d})$~; notre backend
+\texttt{retrieval} reconvertit ensuite cette distance en similarité
+($\mathrm{sim}=1-\mathrm{distance}$) afin d'appliquer les seuils de sélection
+(0{,}50 pour \texttt{high}, 0{,}38 pour \texttt{medium}). Ainsi, plus deux
+descriptions sont sémantiquement proches, plus leur similarité cosinus est
+élevée, et plus la technique a de chances d'être retenue dans le mapping.
+
+\subsubsection{Variante attack\_only}
+
+\paragraph{Principe et corpus.}
+La variante \texttt{attack\_only} constitue la configuration de base du RAG.
+Son principe est simple~: pour chaque capacité VERIS, le système ne s'appuie
+que sur le catalogue ATT\&CK cible afin de proposer des techniques
+correspondantes. Aucun mapping expert issu de versions antérieures n'est
+injecté dans le contexte.
+
+Le corpus utilisé se limite donc à la collection vectorielle
+\texttt{attack\_techniques}, qui contient les techniques et sous-techniques
+ATT\&CK de la version évaluée (19.1). Chaque document indexé regroupe
+typiquement l'identifiant, le nom et la description de la technique. L'idée
+est de mesurer la qualité d'un mapping fondé uniquement sur la similarité
+sémantique entre le vocabulaire d'incident VERIS et le référentiel adversaire
+ATT\&CK.
+
+\paragraph{Fonctionnement.}
+Le fonctionnement reprend le pipeline global décrit précédemment, avec une
+restriction sur l'étape de retrieval~:
+\begin{enumerate}
+    \item la capacité VERIS est transformée en requête sémantique
+          (capability group, libellé, description) ;
+    \item les \texttt{top-$k$} techniques ATT\&CK les plus proches sont
+          récupérées dans \texttt{attack\_techniques} ;
+    \item le backend de décision retient les mappings proposés~: en mode
+          \texttt{retrieval}, aucun LLM n'est appelé~; les candidats sont filtrés
+          uniquement selon des seuils de similarité sémantique ;
+    \item les identifiants hors catalogue sont rejetés, puis les libellés et
+          tactiques sont enrichis depuis le catalogue local ;
+    \item le résultat est écrit au format \texttt{veris\_to\_mitre} dans le
+          dossier
+          \texttt{Resultat/Resultat\_RAG/...\_RAG\_attack\_only/}.
+\end{enumerate}
+
+Cette variante sert de \textbf{baseline}~: elle permet d'évaluer ce que le RAG
+peut obtenir sans aide supplémentaire, avant de mesurer l'apport des exemples
+experts dans la variante suivante.
+
+\newpage %todo
+\paragraph{Résultats et remarques.}
+Voici les résultats obtenus par la variante \texttt{attack\_only} sur la version cible en sorti de notre pipeline expérimental.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.92\linewidth]{rag_premiereversion_results.png}
+  \caption{Résultats de la variante \texttt{attack\_only} sur la version cible VERIS~1.4.1 / ATT\&CK~19.1.}
+  \label{fig:rag-attack-only}
+\end{figure}
+
+La Figure~\ref{fig:rag-attack-only} présente la sortie de
+\texttt{compare\_veris\_mappings\_v2.py} pour la variante
+\texttt{attack\_only}. Au niveau global, sur les 1\,250 paires expertes de
+référence, la solution en propose 2\,679, dont seulement 193 sont correctes.
+Cela se traduit par une précision de 7,2~\%, un rappel de 15,4~\% et un F1 de
+\textbf{9,8~\%} (Jaccard 5,2~\%). Autrement dit, le système sur-génère
+largement des mappings~: il produit plus du double de paires par rapport aux
+experts, mais n'en retrouve qu'une faible partie.
+
+Le détail par capability group confirme cette tendance. Les deux scopes les
+plus volumineux, \texttt{action.hacking} et \texttt{action.malware}, restent
+proches de la moyenne globale (F1 de 9,0~\% et 8,4~\%), avec là aussi
+beaucoup plus de propositions que de paires expertes. Les meilleurs F1
+s'observent sur \texttt{action.social} (16,8~\%) et
+\texttt{value\_chain.development} (16,9~\%), ce dernier bénéficiant d'un
+rappel élevé (60~\%) au prix d'une précision toujours faible. À l'inverse,
+\texttt{attribute.confidentiality} est le cas le plus critique~: une seule
+paire correcte sur 73 attendues (rappel 1,4~\%), malgré une précision
+apparente un peu meilleure (25~\%) liée au très petit nombre de propositions.
+
+Ces résultats montrent que la seule similarité sémantique VERIS
+$\leftrightarrow$ ATT\&CK ne suffit pas à reproduire le jugement expert. Le
+faible rappel indique que beaucoup de techniques pertinentes n'apparaissent
+pas dans le \texttt{top-$k$}, tandis que la faible précision révèle de
+nombreux faux positifs parmi les candidats proches sémantiquement. Cette
+baseline motive donc l'introduction d'un contexte complémentaire, via la
+variante \texttt{with\_examples}.
+
+\subsubsection{Variante with\_examples}
+
+\paragraph{Principe et corpus.}
+La variante \texttt{with\_examples} reprend l'architecture RAG globale, mais
+l'enrichit d'un second corpus de contexte~: des mappings experts issus de
+versions antérieures de VERIS / ATT\&CK. L'idée est de profiter d'un
+\textbf{transfert analogique}~: si une capacité VERIS proche a déjà été mappée
+par des experts dans le passé, les techniques associées peuvent guider le
+mapping de la version cible.
+
+Le corpus de retrieval combine donc deux collections ChromaDB~:
+\begin{itemize}
+    \item \texttt{attack\_techniques}~: le catalogue ATT\&CK cible (19.1),
+          comme dans la variante \texttt{attack\_only} ;
+    \item \texttt{expert\_examples}~: les mappings experts des versions
+          antérieures (ATT\&CK~9.0, 12.1 et 16.1), agrégés par capacité VERIS.
+\end{itemize}
+
+\noindent
+Le mapping expert de la version cible (VERIS~1.4.1 / ATT\&CK~19.1) n'est
+\textbf{jamais} indexé, afin de respecter le principe anti-fuite~: les exemples
+servent uniquement d'analogies, jamais de fuite directe de la référence
+d'évaluation.
+
+\paragraph{Fonctionnement.}
+Le pipeline reste identique à celui de \texttt{attack\_only}, avec une étape
+supplémentaire de retrieval~:
+\begin{enumerate}
+    \item la capacité VERIS est transformée en requête sémantique ;
+    \item les \texttt{top-$k$} techniques ATT\&CK les plus proches sont
+          récupérées dans \texttt{attack\_techniques} ;
+    \item les \texttt{top-$m$} exemples experts les plus proches sont
+          récupérés dans \texttt{expert\_examples} (paramètre
+          \texttt{RAG\_TOP\_M\_EXAMPLES}, 5 par défaut) ;
+    \item le backend \texttt{retrieval} sélectionne les mappings \textbf{sans LLM},
+          en combinant~:
+          \begin{itemize}
+              \item les candidats ATT\&CK dont la similarité dépasse les seuils
+                    prédéfinis ;
+              \item les techniques soutenues par un exemple expert proche ;
+              \item éventuellement quelques techniques suggérées uniquement par
+                    l'exemple le plus proche.
+          \end{itemize}
+    \item validation anti-hallucination et enrichissement depuis le catalogue
+          local ;
+    \item écriture des sept fichiers JSON dans
+          \texttt{Resultat/Resultat\_RAG/...\_RAG\_with\_examples/}.
+\end{enumerate}
+
+Cette variante permet donc de mesurer l'apport concret des exemples experts
+par rapport à la baseline \texttt{attack\_only}, à architecture et backend
+identiques.
+
+\newpage %todo
+\paragraph{Résultats et remarques.}
+Voici les résultats obtenus par la variante \texttt{with\_examples} sur la
+version cible en sortie de notre pipeline expérimental.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.92\linewidth]{rag_deuxieme_version_results.png}
+  \caption{Résultats de la variante \texttt{with\_examples} sur la version cible VERIS~1.4.1 / ATT\&CK~19.1.}
+  \label{fig:rag-with-examples}
+\end{figure}
+
+La Figure~\ref{fig:rag-with-examples} montre un gain marqué par rapport à
+\texttt{attack\_only}. Au niveau global, sur les mêmes 1\,250 paires expertes,
+la solution propose 3\,288 mappings, dont 621 sont corrects. La précision
+passe à 18,9~\%, le rappel à 49,7~\% et le F1 à \textbf{27,4~\%} (Jaccard
+15,9~\%). Autrement dit, l'injection d'exemples experts \textbf{plus que
+double le F1}, principalement grâce à une nette amélioration du rappel~: près
+d'une paire experte sur deux est désormais retrouvée.
+
+Le détail par capability group confirme cet apport. Les scopes volumineux
+\texttt{action.hacking} et \texttt{action.malware} montent respectivement à
+24,9~\% et 24,0~\% de F1. Les meilleurs résultats s'observent sur
+\texttt{attribute.availability} (F1 75,2~\%, rappel 93,2~\%) et
+\texttt{attribute.integrity} (F1 40,8~\%).
+\texttt{attribute.confidentiality} devient beaucoup plus précis (85,7~\%),
+même si son rappel reste modéré (24,7~\%). À l'inverse,
+\texttt{value\_chain.development} atteint un rappel très élevé (96~\%) mais
+conserve une précision faible (14,6~\%), signe d'une sur-génération encore
+importante.
+
+Ces résultats montrent que les exemples experts des versions antérieures
+apportent un contexte utile au mapping, surtout pour retrouver des paires
+manquées par la seule similarité ATT\&CK. Le backend \texttt{retrieval}
+reste toutefois orienté rappel~: la précision globale (18,9~\%) demeure
+limitée, car de nombreuses propositions restent incorrectes. Un filtrage plus
+sélectif, par exemple via un backend LLM, constituerait une piste naturelle
+d'amélioration.
+
+Et il reste à nuancer que ces résultats sont obtenus sur la version cible
+VERIS~1.4.1 / ATT\&CK~19.1, et que l'on a injecté énormément d'exemples experts
+issus des versions antérieures~: pour une grande partie des capacités, le RAG
+dispose donc déjà d'analogies proches. Il faudrait également tester l'écart
+entre le mapping de la version \texttt{veris-1.4.0\_attack-16.1-enterprise} et
+celui de la version \texttt{veris-1.4.1\_attack-19.1-enterprise}, afin
+d'évaluer comment le RAG se comporte sur des cas vraiment nouveaux, absents de
+sa base d'exemples. Les performances pourraient alors varier selon la
+disponibilité et la pertinence des exemples experts.
+
+\subsubsection{Variante  ???????}
+Clarifier le fonctionnement des retrieval 
+Utiliser 3 LLM différents avec les clés open api 
+Venir faire les tests sur les 3 LLM différents et voir les résultats
+
+\paragraph{Principe et corpus.}
+\paragraph{Fonctionnement.}
+\paragraph{Résultats et remarques.}
+
+
+\subsubsection{Variante  ???????}
+
+\paragraph{Principe et corpus.}
+\paragraph{Fonctionnement.}
+\paragraph{Résultats et remarques.}
+
+\subsubsection{Variante  ???????}
+
+\paragraph{Principe et corpus.}
+\paragraph{Fonctionnement.}
+\paragraph{Résultats et remarques.}
+
+
+
 
 \subsection{Solution Fine-tune}
 
@@ -479,31 +789,7 @@ catalogue local.
 
 \subsection{Résultats --- Solution RAG}
 
-Le Tableau~\ref{tab:rag-resultats} résume les performances globales des deux variantes
-RAG. L'injection d'exemples experts des versions antérieures \textbf{double le F1}
-(27,4~\% contre 9,8~\%), principalement grâce à un gain de rappel.
-
-\begin{table}[H]
-  \centering
-  \begin{tabular}{l r r r}
-    \toprule
-    \textbf{Variante} & \textbf{Précision} & \textbf{Rappel} & \textbf{F1} \\
-    \midrule
-    \texttt{RAG\_with\_examples} & 18,9~\% & 49,7~\% & \textbf{27,4~\%} \\
-    \texttt{RAG\_attack\_only}     &  7,2~\% & 15,4~\% &  9,8~\% \\
-    \bottomrule
-  \end{tabular}
-  \caption{Résultats globaux RAG vs mapping expert (mode \texttt{retrieval} local).}
-  \label{tab:rag-resultats}
-\end{table}
-
-Le mode \texttt{retrieval} privilégie le rappel au détriment de la précision~: de
-nombreuses paires expertes sont retrouvées, mais beaucoup de propositions sont
-incorrectes. Certaines familles de sous-techniques (par exemple \texttt{T1546.*})
-restent partiellement couvertes lorsque le top-$k$ est insuffisant.
-
 \subsection{Résultats --- Solution Fine-tune}
-
 
 \subsection{Résultats --- Solution PROMPT}
 
