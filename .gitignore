@@ -1,6 +1,15 @@
 .env
 .dev.env
+dev.env
 .venv/
+
+Resultat/__pycache__/
+Resultat/debug_prompt_errors/
+Resultat_HORS_COMPARAISON/
+Solution/Solution_FINE_TUNE/model/
+
+__pycache__/
+*.pyc
 
 *.out
 *.aux
@@ -10,5 +19,3 @@
 *.log
 *.synctex.gz
 *.toc
-
-__pycache__/

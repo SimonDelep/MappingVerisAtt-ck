@@ -1,0 +1,1683 @@
+{
+  "metadata": {
+    "veris_version": "1.4.1",
+    "mitre_attack_version": "19.1",
+    "scope": "attribute.integrity",
+    "method": "FINE_TUNE",
+    "model": "TF-IDF + OneVsRest LogisticRegression"
+  },
+  "veris_to_mitre": [
+    {
+      "veris_id": "attribute.integrity.variety.Alter behavior",
+      "veris_category": "attribute.integrity",
+      "veris_label": "Alter behavior",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1546",
+          "technique_name": "Event Triggered Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "privilege-escalation",
+            "persistence"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0859,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0631,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.002",
+          "sub_technique_name": "Spearphishing Link",
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0554,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1133",
+          "technique_name": "External Remote Services",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0516,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1546",
+          "technique_name": "Event Triggered Execution",
+          "sub_technique_id": "T1546.013",
+          "sub_technique_name": "PowerShell Profile",
+          "tactic(s)": [
+            "privilege-escalation",
+            "persistence"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0513,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Created account",
+      "veris_category": "attribute.integrity",
+      "veris_label": "Created account",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0621,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.002",
+          "sub_technique_name": "Spearphishing Link",
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0551,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1133",
+          "technique_name": "External Remote Services",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0509,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Defacement",
+      "veris_category": "attribute.integrity",
+      "veris_label": "Defacement",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0652,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.002",
+          "sub_technique_name": "Spearphishing Link",
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0606,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Fraudulent transaction",
+      "veris_category": "attribute.integrity",
+      "veris_label": "Fraudulent transaction",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0682,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.002",
+          "sub_technique_name": "Spearphishing Link",
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0638,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1133",
+          "technique_name": "External Remote Services",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0506,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Hardware tampering",
+      "veris_category": "attribute.integrity",
+      "veris_label": "Hardware tampering",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0651,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.002",
+          "sub_technique_name": "Spearphishing Link",
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0582,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1133",
+          "technique_name": "External Remote Services",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0513,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Log tampering",
+      "veris_category": "attribute.integrity",
+      "veris_label": "Log tampering",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0627,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.002",
+          "sub_technique_name": "Spearphishing Link",
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.055,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1133",
+          "technique_name": "External Remote Services",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0516,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Misrepresentation",
+      "veris_category": "attribute.integrity",
+      "veris_label": "Misrepresentation",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0617,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.002",
+          "sub_technique_name": "Spearphishing Link",
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0567,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1133",
+          "technique_name": "External Remote Services",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0509,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Modify authentication",
+      "veris_category": "attribute.integrity",
+      "veris_label": "Modify authentication",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.002",
+          "sub_technique_name": "Spearphishing Link",
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0768,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0731,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1133",
+          "technique_name": "External Remote Services",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0518,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1556",
+          "technique_name": "Modify Authentication Process",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "defense-impairment",
+            "persistence",
+            "credential-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0508,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Modify configuration",
+      "veris_category": "attribute.integrity",
+      "veris_label": "Modify configuration",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.002",
+          "sub_technique_name": "Spearphishing Link",
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.1267,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.124,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1556",
+          "technique_name": "Modify Authentication Process",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "defense-impairment",
+            "persistence",
+            "credential-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0835,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1037",
+          "technique_name": "Boot or Logon Initialization Scripts",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0611,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": "T1547.004",
+          "sub_technique_name": "Winlogon Helper DLL",
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.051,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Modify data",
+      "veris_category": "attribute.integrity",
+      "veris_label": "Modify data",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.002",
+          "sub_technique_name": "Spearphishing Link",
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0865,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0698,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1565",
+          "technique_name": "Data Manipulation",
+          "sub_technique_id": "T1565.001",
+          "sub_technique_name": "Stored Data Manipulation",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.061,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1565",
+          "technique_name": "Data Manipulation",
+          "sub_technique_id": "T1565.002",
+          "sub_technique_name": "Transmitted Data Manipulation",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0586,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Modify privileges",
+      "veris_category": "attribute.integrity",
+      "veris_label": "Modify privileges",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.002",
+          "sub_technique_name": "Spearphishing Link",
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.1259,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1556",
+          "technique_name": "Modify Authentication Process",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "defense-impairment",
+            "persistence",
+            "credential-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0832,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1098",
+          "technique_name": "Account Manipulation",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0718,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0713,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Other",
+      "veris_category": "attribute.integrity",
+      "veris_label": "Other",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0631,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1587",
+          "technique_name": "Develop Capabilities",
+          "sub_technique_id": "T1587.001",
+          "sub_technique_name": "Malware",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.062,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.002",
+          "sub_technique_name": "Spearphishing Link",
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0619,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1001",
+          "technique_name": "Data Obfuscation",
+          "sub_technique_id": "T1001.002",
+          "sub_technique_name": "Steganography",
+          "tactic(s)": [
+            "command-and-control"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0602,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1204",
+          "technique_name": "User Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "execution"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0524,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Register MFA device",
+      "veris_category": "attribute.integrity",
+      "veris_label": "Register MFA device",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0604,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.002",
+          "sub_technique_name": "Spearphishing Link",
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0532,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1133",
+          "technique_name": "External Remote Services",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0517,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Repurpose",
+      "veris_category": "attribute.integrity",
+      "veris_label": "Repurpose",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0674,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.002",
+          "sub_technique_name": "Spearphishing Link",
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0582,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1133",
+          "technique_name": "External Remote Services",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0521,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Software installation",
+      "veris_category": "attribute.integrity",
+      "veris_label": "Software installation",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1543",
+          "technique_name": "Create or Modify System Process",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0965,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1072",
+          "technique_name": "Software Deployment Tools",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "execution",
+            "lateral-movement"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0883,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0607,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.002",
+          "sub_technique_name": "Spearphishing Link",
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0531,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1133",
+          "technique_name": "External Remote Services",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.053,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1543",
+          "technique_name": "Create or Modify System Process",
+          "sub_technique_id": "T1543.003",
+          "sub_technique_name": "Windows Service",
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0506,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Unknown",
+      "veris_category": "attribute.integrity",
+      "veris_label": "Unknown",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1587",
+          "technique_name": "Develop Capabilities",
+          "sub_technique_id": "T1587.001",
+          "sub_technique_name": "Malware",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.1102,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1588",
+          "technique_name": "Obtain Capabilities",
+          "sub_technique_id": "T1588.001",
+          "sub_technique_name": "Malware",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.1006,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1587",
+          "technique_name": "Develop Capabilities",
+          "sub_technique_id": "T1587.004",
+          "sub_technique_name": "Exploits",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0745,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1588",
+          "technique_name": "Obtain Capabilities",
+          "sub_technique_id": "T1588.005",
+          "sub_technique_name": "Exploits",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0745,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1587",
+          "technique_name": "Develop Capabilities",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0691,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0634,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1531",
+          "technique_name": "Account Access Removal",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0612,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.002",
+          "sub_technique_name": "Spearphishing Link",
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0609,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1525",
+          "technique_name": "Implant Internal Image",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0556,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1583",
+          "technique_name": "Acquire Infrastructure",
+          "sub_technique_id": "T1583.006",
+          "sub_technique_name": "Web Services",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.052,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    }
+  ],
+  "mitre_to_veris": [
+    {
+      "attack_id": "T1001.002",
+      "technique_id": "T1001",
+      "technique_name": "Data Obfuscation",
+      "sub_technique_id": "T1001.002",
+      "sub_technique_name": "Steganography",
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Other",
+          "veris_label": "Other",
+          "confidence_score": 0.0602,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1037",
+      "technique_id": "T1037",
+      "technique_name": "Boot or Logon Initialization Scripts",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify configuration",
+          "veris_label": "Modify configuration",
+          "confidence_score": 0.0611,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1072",
+      "technique_id": "T1072",
+      "technique_name": "Software Deployment Tools",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Software installation",
+          "veris_label": "Software installation",
+          "confidence_score": 0.0883,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1098",
+      "technique_id": "T1098",
+      "technique_name": "Account Manipulation",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify privileges",
+          "veris_label": "Modify privileges",
+          "confidence_score": 0.0718,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1133",
+      "technique_id": "T1133",
+      "technique_name": "External Remote Services",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Alter behavior",
+          "veris_label": "Alter behavior",
+          "confidence_score": 0.0516,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Created account",
+          "veris_label": "Created account",
+          "confidence_score": 0.0509,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Fraudulent transaction",
+          "veris_label": "Fraudulent transaction",
+          "confidence_score": 0.0506,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Hardware tampering",
+          "veris_label": "Hardware tampering",
+          "confidence_score": 0.0513,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Log tampering",
+          "veris_label": "Log tampering",
+          "confidence_score": 0.0516,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Misrepresentation",
+          "veris_label": "Misrepresentation",
+          "confidence_score": 0.0509,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Modify authentication",
+          "veris_label": "Modify authentication",
+          "confidence_score": 0.0518,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Register MFA device",
+          "veris_label": "Register MFA device",
+          "confidence_score": 0.0517,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Repurpose",
+          "veris_label": "Repurpose",
+          "confidence_score": 0.0521,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Software installation",
+          "veris_label": "Software installation",
+          "confidence_score": 0.053,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1204",
+      "technique_id": "T1204",
+      "technique_name": "User Execution",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Other",
+          "veris_label": "Other",
+          "confidence_score": 0.0524,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1525",
+      "technique_id": "T1525",
+      "technique_name": "Implant Internal Image",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.0556,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1531",
+      "technique_id": "T1531",
+      "technique_name": "Account Access Removal",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.0612,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1543",
+      "technique_id": "T1543",
+      "technique_name": "Create or Modify System Process",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Software installation",
+          "veris_label": "Software installation",
+          "confidence_score": 0.0965,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1543.003",
+      "technique_id": "T1543",
+      "technique_name": "Create or Modify System Process",
+      "sub_technique_id": "T1543.003",
+      "sub_technique_name": "Windows Service",
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Software installation",
+          "veris_label": "Software installation",
+          "confidence_score": 0.0506,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1546",
+      "technique_id": "T1546",
+      "technique_name": "Event Triggered Execution",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Alter behavior",
+          "veris_label": "Alter behavior",
+          "confidence_score": 0.0859,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1546.013",
+      "technique_id": "T1546",
+      "technique_name": "Event Triggered Execution",
+      "sub_technique_id": "T1546.013",
+      "sub_technique_name": "PowerShell Profile",
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Alter behavior",
+          "veris_label": "Alter behavior",
+          "confidence_score": 0.0513,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1547",
+      "technique_id": "T1547",
+      "technique_name": "Boot or Logon Autostart Execution",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Alter behavior",
+          "veris_label": "Alter behavior",
+          "confidence_score": 0.0631,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Created account",
+          "veris_label": "Created account",
+          "confidence_score": 0.0621,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Defacement",
+          "veris_label": "Defacement",
+          "confidence_score": 0.0652,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Fraudulent transaction",
+          "veris_label": "Fraudulent transaction",
+          "confidence_score": 0.0682,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Hardware tampering",
+          "veris_label": "Hardware tampering",
+          "confidence_score": 0.0651,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Log tampering",
+          "veris_label": "Log tampering",
+          "confidence_score": 0.0627,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Misrepresentation",
+          "veris_label": "Misrepresentation",
+          "confidence_score": 0.0617,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Modify authentication",
+          "veris_label": "Modify authentication",
+          "confidence_score": 0.0731,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Modify configuration",
+          "veris_label": "Modify configuration",
+          "confidence_score": 0.124,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Modify data",
+          "veris_label": "Modify data",
+          "confidence_score": 0.0698,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Modify privileges",
+          "veris_label": "Modify privileges",
+          "confidence_score": 0.0713,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Other",
+          "veris_label": "Other",
+          "confidence_score": 0.0631,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Register MFA device",
+          "veris_label": "Register MFA device",
+          "confidence_score": 0.0604,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Repurpose",
+          "veris_label": "Repurpose",
+          "confidence_score": 0.0674,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Software installation",
+          "veris_label": "Software installation",
+          "confidence_score": 0.0607,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.0634,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1547.004",
+      "technique_id": "T1547",
+      "technique_name": "Boot or Logon Autostart Execution",
+      "sub_technique_id": "T1547.004",
+      "sub_technique_name": "Winlogon Helper DLL",
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify configuration",
+          "veris_label": "Modify configuration",
+          "confidence_score": 0.051,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1556",
+      "technique_id": "T1556",
+      "technique_name": "Modify Authentication Process",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify authentication",
+          "veris_label": "Modify authentication",
+          "confidence_score": 0.0508,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Modify configuration",
+          "veris_label": "Modify configuration",
+          "confidence_score": 0.0835,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Modify privileges",
+          "veris_label": "Modify privileges",
+          "confidence_score": 0.0832,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1565.001",
+      "technique_id": "T1565",
+      "technique_name": "Data Manipulation",
+      "sub_technique_id": "T1565.001",
+      "sub_technique_name": "Stored Data Manipulation",
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify data",
+          "veris_label": "Modify data",
+          "confidence_score": 0.061,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1565.002",
+      "technique_id": "T1565",
+      "technique_name": "Data Manipulation",
+      "sub_technique_id": "T1565.002",
+      "sub_technique_name": "Transmitted Data Manipulation",
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify data",
+          "veris_label": "Modify data",
+          "confidence_score": 0.0586,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1566.002",
+      "technique_id": "T1566",
+      "technique_name": "Phishing",
+      "sub_technique_id": "T1566.002",
+      "sub_technique_name": "Spearphishing Link",
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Alter behavior",
+          "veris_label": "Alter behavior",
+          "confidence_score": 0.0554,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Created account",
+          "veris_label": "Created account",
+          "confidence_score": 0.0551,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Defacement",
+          "veris_label": "Defacement",
+          "confidence_score": 0.0606,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Fraudulent transaction",
+          "veris_label": "Fraudulent transaction",
+          "confidence_score": 0.0638,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Hardware tampering",
+          "veris_label": "Hardware tampering",
+          "confidence_score": 0.0582,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Log tampering",
+          "veris_label": "Log tampering",
+          "confidence_score": 0.055,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Misrepresentation",
+          "veris_label": "Misrepresentation",
+          "confidence_score": 0.0567,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Modify authentication",
+          "veris_label": "Modify authentication",
+          "confidence_score": 0.0768,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Modify configuration",
+          "veris_label": "Modify configuration",
+          "confidence_score": 0.1267,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Modify data",
+          "veris_label": "Modify data",
+          "confidence_score": 0.0865,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Modify privileges",
+          "veris_label": "Modify privileges",
+          "confidence_score": 0.1259,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Other",
+          "veris_label": "Other",
+          "confidence_score": 0.0619,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Register MFA device",
+          "veris_label": "Register MFA device",
+          "confidence_score": 0.0532,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Repurpose",
+          "veris_label": "Repurpose",
+          "confidence_score": 0.0582,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Software installation",
+          "veris_label": "Software installation",
+          "confidence_score": 0.0531,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.0609,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1583.006",
+      "technique_id": "T1583",
+      "technique_name": "Acquire Infrastructure",
+      "sub_technique_id": "T1583.006",
+      "sub_technique_name": "Web Services",
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.052,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1587",
+      "technique_id": "T1587",
+      "technique_name": "Develop Capabilities",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.0691,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1587.001",
+      "technique_id": "T1587",
+      "technique_name": "Develop Capabilities",
+      "sub_technique_id": "T1587.001",
+      "sub_technique_name": "Malware",
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Other",
+          "veris_label": "Other",
+          "confidence_score": 0.062,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.1102,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1587.004",
+      "technique_id": "T1587",
+      "technique_name": "Develop Capabilities",
+      "sub_technique_id": "T1587.004",
+      "sub_technique_name": "Exploits",
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.0745,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1588.001",
+      "technique_id": "T1588",
+      "technique_name": "Obtain Capabilities",
+      "sub_technique_id": "T1588.001",
+      "sub_technique_name": "Malware",
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.1006,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1588.005",
+      "technique_id": "T1588",
+      "technique_name": "Obtain Capabilities",
+      "sub_technique_id": "T1588.005",
+      "sub_technique_name": "Exploits",
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.0745,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    }
+  ]
+}
