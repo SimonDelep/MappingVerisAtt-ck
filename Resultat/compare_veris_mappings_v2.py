@@ -55,6 +55,7 @@ DEFAULT_SOLUTIONS = [
     "Resultat_PROMPT",
     "Resultat_RAG",
     "Resultat_RAG_Together",
+    "Resultat_RAG_MultiLLM",
 ]
 EXPERTS_DIRNAME = "Mapping_des_experts"
 EXPERTS_SUFFIX = "_json.json"

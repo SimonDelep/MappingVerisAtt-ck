@@ -82,12 +82,12 @@ Traite tous les éléments fournis dans les deux sens, sans en omettre aucun, m�
 # -------------------- DB DATA
 def get_data(data_path:str) -> tuple[str, str]:
     try:
-        with open(data_path, "r") as file:
+        with open(data_path, "r", encoding="utf-8") as file:
             data = json.load(file)
         version = data["version"]
         return data, version
     except FileNotFoundError:
-        print("error:"+data_path.split("/")[-1]+"file was not found")
+        print(f"error: {Path(data_path).name} file was not found")
         raise SystemExit(1)
 
 # -------------------- LLM
@@ -145,13 +145,13 @@ def main() -> None:
     if path_attack is None and path_veris is None and path_data_work is None:
         parser.error("At least -dw or -m AND -v is needed")
 
-    if (path_data_work != None) and (path_attack == None) and (path_veris == None):
-        data_work_fn = str(path_data_work).split("/")[-1]
-        attack_fn = data_work_fn.split("_")[0]
-        veris_fn = data_work_fn.split("_")[1]
-
-        path_veris = str(path_data_work) + "/" + veris_fn.replace("-", "_") + ".json"
-        path_attack = str(path_data_work) + "/" + attack_fn.replace("-", "_") + ".json"
+    if (path_data_work is not None) and (path_attack is None) and (path_veris is None):
+        # Sur Windows, Path.name est fiable (split("/") casse avec les \).
+        path_data_work = Path(path_data_work)
+        data_work_fn = path_data_work.name  # ex: attack-19.1_veris-1.4.1
+        attack_fn, veris_fn = data_work_fn.split("_", 1)
+        path_veris = path_data_work / f"{veris_fn.replace('-', '_')}.json"
+        path_attack = path_data_work / f"{attack_fn.replace('-', '_')}.json"
     
     # get data from json file (mitre & veris)
     veris_data, veris_version = get_data(path_veris)

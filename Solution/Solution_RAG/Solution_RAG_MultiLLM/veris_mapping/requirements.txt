@@ -1,0 +1,8 @@
+# RAG MultiLLM — retrieval local + décision multi-LLM (Together / OpenAI-compatible)
+
+chromadb>=1.0
+python-dotenv>=1.0
+sentence-transformers>=2.2
+torch>=2.0
+openai>=1.40
+httpx>=0.27
