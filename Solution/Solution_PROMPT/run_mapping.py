@@ -1,4 +1,4 @@
-from together import AsyncTogether, RateLimitError
+from together import AsyncTogether, RateLimitError, APITimeoutError
 import asyncio
 import sys
 import os
@@ -8,6 +8,11 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 CAPABILITY=["action.hacking", "action.malware", "attribute.integrity", "attribute.confidentiality", "attribute.availability", "action.social", "value_chain.development"]
+
+# Gros prompts + modeles lents: timeout client par defaut (~60s) est trop court.
+REQUEST_TIMEOUT_S = 900.0
+MAX_PARALLEL_REQUESTS = 1
+RETRY_SLEEP_S = [5, 15, 30]
 
 # -------------------- ROOT PWD
 DEFAULT_DB_MAPPING = Path(__file__).resolve().parents[2] / "data_for_work" / "attack-19.1_veris-1.4.1"
@@ -91,36 +96,62 @@ def get_data(data_path:str) -> tuple[str, str]:
         raise SystemExit(1)
 
 # -------------------- LLM
-async def run_llm_parallel(async_client, user_prompt:str, model:str, system_prompt:str=None):
+async def run_llm_parallel(async_client, user_prompt: str, model: str, system_prompt: str = None, sem: asyncio.Semaphore | None = None, capability: str = ""):
     response = None
-    for sleep_time in [1,2,4]:
+    last_error = None
+    messages = []
+    if system_prompt:
+        messages.append({"role": "system", "content": system_prompt})
+    messages.append({"role": "user", "content": user_prompt})
+
+    async def _once():
+        return await async_client.chat.completions.create(
+            model=model,
+            messages=messages,
+        )
+
+    for attempt, sleep_time in enumerate(RETRY_SLEEP_S, start=1):
         try:
-            messages=[]
-            if system_prompt:
-                messages.append({"role":"system", "content":system_prompt})
-            messages.append({"role":"user", "content":user_prompt})
-            
-            response= await async_client.chat.completions.create(
-                    model=model,
-                    messages=messages
-            )
+            print(f"[{capability}] request attempt {attempt}/{len(RETRY_SLEEP_S)}...", flush=True)
+
+            if sem is None:
+                response = await _once()
+            else:
+                async with sem:
+                    response = await _once()
             break
-        except RateLimitError as e:
-            print(e)
-            await asyncio.sleep(sleep_time)
-    if (response==None):
-        raise RuntimeError("Failed after retry, rate limit !!")
+        except (RateLimitError, APITimeoutError) as e:
+            last_error = e
+            print(f"[{capability}] {type(e).__name__}: {e}", flush=True)
+            if attempt < len(RETRY_SLEEP_S):
+                print(f"[{capability}] retry in {sleep_time}s...", flush=True)
+                await asyncio.sleep(sleep_time)
+    if response is None:
+        raise RuntimeError(
+            f"Failed after retries for {capability or 'capability'}: {last_error!r}"
+        )
+    print(f"[{capability}] done.", flush=True)
     return response.choices[0].message.content
 
 # --------------- Run Parallel Request Per Capabilities
-async def map_per_capability(async_client, mapping_prompt_capability: dict, system_prompt: str, model: str) -> dict:
+async def map_per_capability(async_client, mapping_prompt_capability: dict, system_prompt: str, model: str, output_dir: Path) -> dict:
     capabilities = list(mapping_prompt_capability.keys())
-    tasks = [
-            run_llm_parallel(async_client, mapping_prompt_capability[c], model, system_prompt)
-            for c in capabilities
-            ]
-    results = await asyncio.gather(*tasks)
-    return dict(zip(capabilities, results))
+    results = {}
+    output_dir.mkdir(parents=True, exist_ok=True)
+    for c in capabilities:
+        print(f"\n=== Starting {c} ===", flush=True)
+        try:
+            content = await run_llm_parallel(
+                async_client, mapping_prompt_capability[c], model, system_prompt,
+                sem=None, capability=c,
+            )
+            results[c] = content
+            (output_dir / f"{c}.json").write_text(content, encoding="utf-8")
+            print(f"[{c}] written -> {output_dir / f'{c}.json'}", flush=True)
+        except Exception as e:
+            print(f"[{c}] FAILED: {e}", flush=True)
+            continue
+    return results
 
 def write_mapping_per_capability(full_path:str, capabilities:list, dict_res:dict):
     for c in capabilities:
@@ -161,7 +192,8 @@ def main() -> None:
     # init together connexion
     load_dotenv(Path(__file__).resolve().parents[2] / ".dev.env")
     async_client = AsyncTogether(
-        api_key=os.environ.get("TOGETHER_API_KEY")
+        api_key=os.environ.get("TOGETHER_API_KEY"),
+        timeout=REQUEST_TIMEOUT_S,
     )
     
     user_prompts = []
@@ -170,24 +202,23 @@ def main() -> None:
     mapping_prompt_capability = dict(zip(CAPABILITY, user_prompts))
     system_prompt = (Path(__file__).parent / "system-prompt.md").read_text(encoding="utf-8")
    
-    model_code = input("Choose a model between: \n(1) - Qwen3-235B-A22B-Intruct-2507-tput \n(2) - DeepSeek-R1-0528\n")
+    model_code = input("Choose a model between: \n(1) - Kimi-K3 \n(2) - DeepSeek-V4-Pro\n")
     model = (
-        "Qwen/Qwen3-235B-A22B-Instruct-2507-tput" if model_code == "1"
-        else "deepseek-ai/DeepSeek-R1-0528" if model_code == "2"
+        "moonshotai/Kimi-K3" if model_code == "1"
+        else "deepseek-ai/DeepSeek-V4-Pro" if model_code == "2"
         else None
     )
     if model == None:
         print("error: value out or range\n abort !")
         return
-    print(f"Chosen model is {model}. \nGeneration of mapping...\n")
+    print(f"Chosen model is {model}. \nGeneration of mapping...\n", flush=True)
 
-    llm_response = asyncio.run(
-        map_per_capability(async_client, mapping_prompt_capability, system_prompt, model)
-    )
+   
 
     # create output folder w attack & veris version
     dir_name = f"veris-{veris_version}_attack-{attack_version}-enterprise_PROMPT"
     full_path = OUTPUT_RESULT / dir_name 
+    
     try:
         os.mkdir(full_path)
     except FileExistsError:
@@ -197,9 +228,17 @@ def main() -> None:
     except Exception as e:
         print(f"An error occurred: {e}")
 
-    # write json generated by llm
-    write_mapping_per_capability(full_path, CAPABILITY, llm_response)
+    llm_response = asyncio.run(
+        map_per_capability(async_client, mapping_prompt_capability, system_prompt, model, full_path)
+    )
 
+    ok = [c for c in CAPABILITY if c in llm_response]
+    ko = [c for c in CAPABILITY if c not in llm_response]
+    print(f"\nDone. OK={ok}", flush=True)
+    if ko:
+        print(f"FAILED (à relancer): {ko}", flush=True)
+
+    
 if __name__ == "__main__":
     main()
 
