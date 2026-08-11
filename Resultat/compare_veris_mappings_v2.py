@@ -38,6 +38,12 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
+# error method overwrite to print help message
+class Parser(argparse.ArgumentParser):
+    def error(self,message):
+        self.print_help()
+        sys.exit(2)
+
 # Permet d'importer le module v1 quel que soit le repertoire courant.
 SCRIPT_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(SCRIPT_DIR))
@@ -339,12 +345,14 @@ def report_to_dict(report: SolutionReport) -> dict[str, Any]:
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(
+    parser = Parser(
         description=(
             "Compare en lot les mappings des solutions IA (FINE_TUNE, PROMPT, RAG) "
             "avec les mappings experts."
         )
     )
+
+    parser.add_argument('foo', nargs='+')
     parser.add_argument(
         "--base",
         type=Path,
