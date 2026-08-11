@@ -95,11 +95,23 @@ def match_expert_ref(version_dir_name: str, expert_refs: list[str]) -> str | Non
     return max(candidates, key=len)
 
 
+def _json_load_error(path: Path, error: Exception) -> str:
+    """Message lisible pour un JSON vide / tronqué / mal formé."""
+    size = path.stat().st_size if path.is_file() else 0
+    return (
+        f"JSON invalide (vide, tronqué ou mal formé) : {path}\n"
+        f"  taille={size} o  détail : {error}"
+    )
+
+
 # Fusionne les entrees veris_to_mitre de plusieurs fichiers en un seul mapping.
 def merge_scope_files(scope_files: dict[str, Path]) -> dict[str, Any]:
     merged: list[dict[str, Any]] = []
     for path in scope_files.values():
-        data = load_json(path)
+        try:
+            data = load_json(path)
+        except json.JSONDecodeError as error:
+            raise ValueError(_json_load_error(path, error)) from error
         merged.extend(data.get("veris_to_mitre", []))
     return {"veris_to_mitre": merged}
 
@@ -139,10 +151,19 @@ def evaluate_version_dir(
         report.error = "Aucun fichier de scope attendu trouve."
         return report
 
-    expert_data = expert_cache.setdefault(ref, load_json(expert_index[ref]))
+    try:
+        expert_data = expert_cache.setdefault(ref, load_json(expert_index[ref]))
+    except json.JSONDecodeError as error:
+        report.error = _json_load_error(expert_index[ref], error)
+        return report
 
     # Comparaison globale : tous les scopes agreges vs mapping expert complet.
-    combined = merge_scope_files(present_files)
+    try:
+        combined = merge_scope_files(present_files)
+    except ValueError as error:
+        report.error = str(error)
+        return report
+
     report.global_result = compare_mappings(
         expert_data,
         combined,
@@ -153,9 +174,14 @@ def evaluate_version_dir(
 
     # Comparaison detaillee par capability_group.
     for scope, path in present_files.items():
+        try:
+            solution_data = load_json(path)
+        except json.JSONDecodeError as error:
+            report.error = _json_load_error(path, error)
+            return report
         report.per_scope[scope] = compare_mappings(
             expert_data,
-            load_json(path),
+            solution_data,
             label_a=report.expert_file,
             label_b=path.name,
             scope=scope,

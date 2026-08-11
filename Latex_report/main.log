@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.15)  21 JUL 2026 22:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.15)  11 AUG 2026 14:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -991,6 +991,91 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [15 <./Image/rag_deuxieme_version_results.png>]
+Overfull \hbox (35.96173pt too wide) in paragraph at lines 766--772
+ []\T1/lmr/bx/n/12 Principe et cor-pus.[] \T1/lmr/m/n/12 Cette va-riante uti-lise le mo-dèle \T1/lmtt/m/n/12 deepseek-ai/DeepSeek-V4-Flash-0731
+ []
+
+
+Overfull \hbox (126.52441pt too wide) in paragraph at lines 779--783
+\T1/lmr/m/n/12 dé-po-sées dans le dos-sier \T1/lmtt/m/n/12 Resultat_RAG_MultiLLM\T1/lmr/m/n/12 , sous le pré-fixe \T1/lmtt/m/n/12 ..._deepseek-v4-flash-0731_with_examples\T1/lmr/m/n/12 . 
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[16]
+<Image/resultats_deepseek.png, id=340, 698.61pt x 269.20575pt>
+File: Image/resultats_deepseek.png Graphic file (type png)
+<use Image/resultats_deepseek.png>
+Package pdftex.def Info: Image/resultats_deepseek.png  used on input line 808.
+(pdftex.def)             Requested size: 416.72997pt x 160.58401pt.
+
+
+LaTeX Warning: Reference `fig:rag-deepseek' on page 17 undefined on input line 814.
+
+
+Overfull \hbox (66.83675pt too wide) in paragraph at lines 840--846
+ []\T1/lmr/bx/n/12 Principe et cor-pus.[] \T1/lmr/m/n/12 Cette va-riante uti-lise le mo-dèle \T1/lmtt/m/n/12 meta-llama/Llama-3.3-70B-Instruct-Turbo
+ []
+
+
+Overfull \hbox (27.5436pt too wide) in paragraph at lines 847--852
+\T1/lmr/m/n/12 + \T1/lmtt/m/n/12 expert_examples\T1/lmr/m/n/12 , hors ver-sion cible). Les sor-ties sont écrites dans \T1/lmtt/m/n/12 Resultat_RAG_MultiLLM\T1/lmr/m/n/12 ,
+ []
+
+
+Overfull \hbox (8.4514pt too wide) in paragraph at lines 854--861
+ []\T1/lmr/bx/n/12 Fonctionnement.[] \T1/lmr/m/n/12 Le pi-pe-line est le même que pour Deep-Seek : re-trie-val \T1/lmtt/m/n/12 with_examples\T1/lmr/m/n/12 ,
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[17 <./Image/resultats_deepseek.png>]
+<Image/resultats_ollama.png, id=350, 754.017pt x 275.8305pt>
+File: Image/resultats_ollama.png Graphic file (type png)
+<use Image/resultats_ollama.png>
+Package pdftex.def Info: Image/resultats_ollama.png  used on input line 869.
+(pdftex.def)             Requested size: 416.72997pt x 152.44798pt.
+
+
+LaTeX Warning: Reference `fig:rag-llama' on page 18 undefined on input line 875.
+
+
+Overfull \hbox (11.26172pt too wide) in paragraph at lines 903--909
+ []\T1/lmr/bx/n/12 Principe et cor-pus.[] \T1/lmr/m/n/12 Cette va-riante uti-lise le mo-dèle \T1/lmtt/m/n/12 Qwen/Qwen2.5-7B-Instruct-Turbo
+ []
+
+
+Overfull \hbox (155.88538pt too wide) in paragraph at lines 910--914
+\T1/lmr/m/n/12 sor-ties sont dé-po-sées dans \T1/lmtt/m/n/12 Resultat_RAG_MultiLLM\T1/lmr/m/n/12 , sous le pré-fixe \T1/lmtt/m/n/12 ..._qwen2-5-7b-instruct-turbo_with_examples\T1/lmr/m/n/12 . 
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[18 <./Image/resultats_ollama.png>]
+<Image/resultats_qwen.png, id=361, 721.4955pt x 287.27325pt>
+File: Image/resultats_qwen.png Graphic file (type png)
+<use Image/resultats_qwen.png>
+Package pdftex.def Info: Image/resultats_qwen.png  used on input line 930.
+(pdftex.def)             Requested size: 416.72997pt x 165.9304pt.
+
+
+LaTeX Warning: Reference `fig:rag-qwen' on page 19 undefined on input line 936.
+
 No file main.bbl.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -999,7 +1084,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[16] (main.aux)
+[19 <./Image/resultats_qwen.png>]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[20] (main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
@@ -1008,21 +1101,30 @@ L3 programming layer <2025-12-24>
 
 LaTeX Warning: There were undefined references.
 
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 8083C98C6F6DFD0C5734D51EA1631CA2;6692.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main.out':
+(rerunfilecheck)             Before: 8083C98C6F6DFD0C5734D51EA1631CA2;6692
+(rerunfilecheck)             After:  8F61B59FC85E84030C0BDCA0A2A4F4C1;6962.
  ) 
 Here is how much of TeX's memory you used:
- 25528 strings out of 467871
- 479332 string characters out of 5418376
+ 25571 strings out of 467871
+ 480346 string characters out of 5418376
  868905 words of memory out of 5000000
- 53879 multiletter control sequences out of 15000+600000
+ 53909 multiletter control sequences out of 15000+600000
  681266 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,12n,94p,828b,719s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb>
-Output written on main.pdf (17 pages, 402537 bytes).
+Output written on main.pdf (21 pages, 524979 bytes).
 PDF statistics:
- 403 PDF objects out of 1000 (max. 8388607)
- 104 named destinations out of 1000 (max. 500000)
- 321 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 438 PDF objects out of 1000 (max. 8388607)
+ 117 named destinations out of 1000 (max. 500000)
+ 336 words of extra memory for PDF output out of 10000 (max. 10000000)
 

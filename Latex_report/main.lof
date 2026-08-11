@@ -2,3 +2,6 @@
 \contentsline {figure}{\numberline {1}{\ignorespaces Pipeline global du projet~: données brutes, trois solutions IA et comparaison aux experts.}}{8}{figure.caption.6}%
 \contentsline {figure}{\numberline {2}{\ignorespaces Résultats de la variante \texttt {attack\_only} sur la version cible VERIS~1.4.1 / ATT\&CK~19.1.}}{13}{figure.caption.17}%
 \contentsline {figure}{\numberline {3}{\ignorespaces Résultats de la variante \texttt {with\_examples} sur la version cible VERIS~1.4.1 / ATT\&CK~19.1.}}{15}{figure.caption.21}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Résultats de la variante DeepSeek-V4-Flash-0731 (\texttt {with\_examples}) sur VERIS~1.4.1 / ATT\&CK~19.1.}}{17}{figure.caption.25}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Résultats de la variante Llama-3.3-70B-Instruct-Turbo (\texttt {with\_examples}) sur VERIS~1.4.1 / ATT\&CK~19.1.}}{18}{figure.caption.29}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Résultats de la variante Qwen2.5-7B-Instruct-Turbo (\texttt {with\_examples}) sur VERIS~1.4.1 / ATT\&CK~19.1.}}{19}{figure.caption.33}%
