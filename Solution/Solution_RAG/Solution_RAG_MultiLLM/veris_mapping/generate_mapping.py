@@ -166,7 +166,7 @@ def run_mode(mode: str, model_id: str, limit: int | None) -> Path:
 
     entries_by_group: dict[str, list[dict]] = defaultdict(list)
     for i, cap in enumerate(capabilities, start=1):
-        print(f"[{i:3}/{len(capabilities)}] {cap.capability_id}")
+        print(f"[{i:3}/{len(capabilities)}] {cap.capability_id}", flush=True)
         entry = map_capability(cap, attack_index, use_examples, model_id)
         entries_by_group[cap.capability_group].append(entry)
 

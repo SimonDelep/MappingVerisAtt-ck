@@ -75,7 +75,7 @@ TOGETHER_BASE_URL = (
 _DEFAULT_MODELS = (
     "meta-llama/Llama-3.3-70B-Instruct-Turbo,"
     "Qwen/Qwen2.5-7B-Instruct-Turbo,"
-    "deepseek-ai/DeepSeek-V4-Flash-0731"
+    "moonshotai/Kimi-K3"
 )
 
 

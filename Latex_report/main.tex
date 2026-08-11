@@ -749,27 +749,213 @@ d'évaluer comment le RAG se comporte sur des cas vraiment nouveaux, absents de
 sa base d'exemples. Les performances pourraient alors varier selon la
 disponibilité et la pertinence des exemples experts.
 
-\subsubsection{Variante  ???????}
-Clarifier le fonctionnement des retrieval 
-Utiliser 3 LLM différents avec les clés open api 
-Venir faire les tests sur les 3 LLM différents et voir les résultats
+\subsubsection{Variante DeepSeek-V4-Flash-0731}
+
+Les variantes LLM qui suivent reprennent le pipeline
+\texttt{with\_examples}, mais remplacent le backend
+\texttt{retrieval} (seuils de similarité) par un \textbf{LLM de
+sélection} interrogé via l'API Together.ai. Le retrieval reste
+inchangé~: pour chaque capacité VERIS, le système fournit au modèle
+les \texttt{top-$k$} techniques ATT\&CK et les \texttt{top-$m$}
+exemples experts, puis le LLM choisit parmi ces candidats uniquement
+(garde-fou anti-hallucination). Les trois modèles sont évalués dans
+les mêmes conditions (version cible VERIS~1.4.1 / ATT\&CK~19.1, mode
+\texttt{with\_examples}), afin d'isoler l'effet du choix de LLM.
 
 \paragraph{Principe et corpus.}
+Cette variante utilise le modèle
+\texttt{deepseek-ai/DeepSeek-V4-Flash-0731} comme backend de
+décision. Le principe est d'exploiter un LLM relativement rapide
+(«~Flash~») pour filtrer et sélectionner les mappings à partir du
+contexte récupéré, plutôt que d'appliquer uniquement des seuils de
+similarité cosinus.
+
+Le corpus reste celui de \texttt{with\_examples}~:
+\begin{itemize}
+    \item \texttt{attack\_techniques}~: catalogue ATT\&CK cible (19.1)~;
+    \item \texttt{expert\_examples}~: mappings experts des versions
+          antérieures (9.0, 12.1, 16.1), hors version cible.
+\end{itemize}
+Le mapping expert de la version évaluée n'est jamais indexé
+(anti-fuite). Les sorties sont déposées dans le dossier
+\texttt{Resultat\_RAG\_MultiLLM}, sous le préfixe
+\texttt{...\_deepseek-v4-flash-0731\_with\_examples}.
+
 \paragraph{Fonctionnement.}
+Pour chaque capacité VERIS~:
+\begin{enumerate}
+    \item construction de la requête sémantique (group, label,
+          description)~;
+    \item retrieval des \texttt{top-$k$} techniques ATT\&CK et des
+          \texttt{top-$m$} exemples experts~;
+    \item appel à DeepSeek-V4-Flash via Together.ai (prompt système +
+          prompt utilisateur contenant candidats et exemples)~;
+    \item parsing JSON de la réponse, avec extraction de secours si le
+          modèle place le JSON dans un bloc de raisonnement~;
+    \item filtrage strict~: seuls les \texttt{attack\_id} présents
+          dans les candidats de retrieval sont conservés~;
+    \item enrichissement des libellés/tactiques depuis le catalogue
+          local et écriture au format \texttt{veris\_to\_mitre}.
+\end{enumerate}
+
+\newpage
 \paragraph{Résultats et remarques.}
+Voici les résultats obtenus par la variante DeepSeek-V4-Flash-0731 en
+sortie du script d'évaluation.
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.92\linewidth]{resultats_deepseek.png}
+  \caption{Résultats de la variante DeepSeek-V4-Flash-0731
+  (\texttt{with\_examples}) sur VERIS~1.4.1 / ATT\&CK~19.1.}
+  \label{fig:rag-deepseek}
+\end{figure}
 
-\subsubsection{Variante  ???????}
+La Figure~\ref{fig:rag-deepseek} présente la sortie de
+\texttt{compare\_veris\_mappings\_v2.py}. Au niveau global, sur les
+1\,250 paires expertes, la solution en propose 378, dont 161 sont
+correctes. Cela se traduit par une précision de 42,6~\%, un rappel de
+12,9~\% et un F1 de \textbf{19,8~\%} (Jaccard 11,0~\%).
+
+Par rapport à \texttt{with\_examples} en mode \texttt{retrieval}
+(F1~27,4~\%, précision 18,9~\%), DeepSeek \textbf{augmente nettement
+la précision} (42,6~\% contre 18,9~\%) mais \textbf{réduit le rappel}
+(12,9~\% contre 49,7~\%). Le LLM agit donc comme un filtre
+sélectif~: il émet bien moins de propositions (378 contre 3\,288) et
+se trompe moins souvent, au détriment de la couverture.
+
+Le détail par capability group montre une forte hétérogénéité.
+\texttt{value\_chain.development} atteint un F1 de 77,3~\% (précision
+89,5~\%, rappel 68,0~\%), et \texttt{attribute.availability} un F1 de
+49,2~\%. À l'inverse, \texttt{attribute.confidentiality} reste à
+0~\% (aucune paire émise), et les scopes volumineux
+\texttt{action.hacking} et \texttt{action.malware} restent modestes
+(F1 de 13,5~\% et 17,6~\%). Globalement, DeepSeek illustre bien le
+compromis précision / rappel lorsque le backend de décision est un
+LLM plutôt qu'un seuil de similarité.
+
+\subsubsection{Variante Llama-3.3-70B-Instruct-Turbo}
 
 \paragraph{Principe et corpus.}
-\paragraph{Fonctionnement.}
-\paragraph{Résultats et remarques.}
+Cette variante utilise le modèle
+\texttt{meta-llama/Llama-3.3-70B-Instruct-Turbo} comme backend de
+décision. Il s'agit du plus grand des trois modèles retenus
+(70~milliards de paramètres, variante Turbo serverless sur
+Together.ai), censé offrir le meilleur suivi d'instructions pour le
+filtrage des candidats ATT\&CK.
 
-\subsubsection{Variante  ???????}
+Le corpus de retrieval est identique aux autres variantes multi-LLM
+(\texttt{attack\_techniques} + \texttt{expert\_examples}, hors
+version cible). Les sorties sont écrites dans
+\texttt{Resultat\_RAG\_MultiLLM}, sous le préfixe
+\texttt{...\_llama-3-3-70b-instruct-turbo\_with\_examples}.
+
+\paragraph{Fonctionnement.}
+Le pipeline est le même que pour DeepSeek~: retrieval
+\texttt{with\_examples}, puis appel chat au modèle Llama via l'API
+Together, parsing JSON, filtre strict sur les
+\texttt{attack\_id} candidats, et écriture des sept fichiers de
+scope. Seul change l'identifiant du modèle passé à l'API~; prompts,
+\textbf{$k$}, \textbf{$m$} et post-traitement restent figés pour
+permettre une comparaison équitable.
+
+\newpage
+\paragraph{Résultats et remarques.}
+Voici les résultats obtenus par la variante
+Llama-3.3-70B-Instruct-Turbo en sortie du script d'évaluation.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.92\linewidth]{resultats_ollama.png}
+  \caption{Résultats de la variante Llama-3.3-70B-Instruct-Turbo
+  (\texttt{with\_examples}) sur VERIS~1.4.1 / ATT\&CK~19.1.}
+  \label{fig:rag-llama}
+\end{figure}
+
+La Figure~\ref{fig:rag-llama} montre les meilleurs scores parmi
+les trois backends LLM. Globalement, la solution propose 404 paires
+contre 1\,250 expertes, dont 192 correctes~: précision 47,5~\%,
+rappel 15,4~\%, F1 de \textbf{23,2~\%} (Jaccard 13,1~\%).
+
+Llama combine donc une précision encore un peu supérieure à
+DeepSeek (47,5~\% contre 42,6~\%) et un rappel légèrement meilleur
+(15,4~\% contre 12,9~\%). Le F1 global (23,2~\%) dépasse DeepSeek
+(19,8~\%) et Qwen (14,5~\%), tout en restant sous le F1 du backend
+\texttt{retrieval} \texttt{with\_examples} (27,4~\%), dominé par un
+rappel bien plus élevé.
+
+Par capability group, les points forts sont
+\texttt{value\_chain.development} (F1 72,7~\%, rappel 80~\%) et
+\texttt{attribute.availability} (F1 50,0~\%, précision 93,8~\%).
+Contrairement à DeepSeek, Llama produit au moins quelques paires
+correctes sur \texttt{attribute.confidentiality} (4/4 propositions
+justes, mais rappel seulement 5,5~\%). Les scopes
+\texttt{action.hacking} et \texttt{action.malware} restent limités
+en rappel (11,6~\% et 12,1~\%), ce qui tire le score global vers le
+bas malgré une précision autour de 35--50~\%. Llama apparaît donc
+comme le meilleur filtre LLM de notre panel, sans pour autant
+retrouver le volume de paires correctes de la baseline retrieval
+orientée rappel.
+
+\subsubsection{Variante Qwen2.5-7B-Instruct-Turbo}
 
 \paragraph{Principe et corpus.}
+Cette variante utilise le modèle
+\texttt{Qwen/Qwen2.5-7B-Instruct-Turbo} comme backend de décision.
+Il s'agit d'un modèle nettement plus petit (7~milliards de
+paramètres) que Llama-70B, retenu pour comparer une famille
+distincte (Alibaba Qwen) en accès serverless, avec un coût et une
+latence plus bas.
+
+Le corpus reste celui de \texttt{with\_examples}
+(\texttt{attack\_techniques} + \texttt{expert\_examples}). Les
+sorties sont déposées dans \texttt{Resultat\_RAG\_MultiLLM}, sous
+le préfixe \texttt{...\_qwen2-5-7b-instruct-turbo\_with\_examples}.
+
 \paragraph{Fonctionnement.}
+Le fonctionnement est strictement parallèle aux deux variantes
+précédentes~: même retrieval, mêmes prompts, même garde-fou sur les
+identifiants candidats. Seul le modèle
+\texttt{Qwen/Qwen2.5-7B-Instruct-Turbo} change, ce qui permet
+d'isoler l'impact de la taille et de la famille de modèle sur la
+qualité du mapping.
+
+\newpage
 \paragraph{Résultats et remarques.}
+Voici les résultats obtenus par la variante
+Qwen2.5-7B-Instruct-Turbo en sortie du script d'évaluation.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.92\linewidth]{resultats_qwen.png}
+  \caption{Résultats de la variante Qwen2.5-7B-Instruct-Turbo
+  (\texttt{with\_examples}) sur VERIS~1.4.1 / ATT\&CK~19.1.}
+  \label{fig:rag-qwen}
+\end{figure}
+
+La Figure~\ref{fig:rag-qwen} montre le profil le plus
+\textit{conservateur} des trois LLM. Sur les 1\,250 paires expertes,
+la solution n'en propose que 203, dont 105 correctes~: précision
+\textbf{51,7~\%} (la meilleure des trois LLM), rappel 8,4~\% et F1
+de \textbf{14,5~\%} (Jaccard 7,8~\%).
+
+Qwen maximise donc la confiance des paires émises, au prix d'un
+rappel très bas~: moins d'une paire experte sur douze est retrouvée.
+Côté scopes, \texttt{value\_chain.development} reste le meilleur
+cas (F1 63,4~\%), et \texttt{attribute.confidentiality} affiche
+encore 100~\% de précision mais sur seulement 2 propositions
+(rappel 2,7~\%). Les scopes \texttt{action.hacking} et
+\texttt{action.malware} chutent à 12,5~\% et 11,4~\% de F1, avec un
+rappel autour de 7~\%.
+
+En synthèse des trois backends LLM~: Llama-3.3-70B obtient le
+meilleur F1 (23,2~\%), DeepSeek-V4-Flash un profil intermédiaire
+(19,8~\%), et Qwen2.5-7B la meilleure précision (51,7~\%) mais le
+F1 le plus bas (14,5~\%). Tous trois privilégient la précision par
+rapport au backend \texttt{retrieval} de \texttt{with\_examples},
+qui reste supérieur en F1 grâce à son fort rappel. Le choix du LLM
+apparaît donc comme un régulateur du compromis précision/rappel
+plutôt que comme un simple gain uniforme.
 
 
 

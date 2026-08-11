@@ -1,1 +1,1 @@
-{"metadata":{"veris_version":"1.4.1","mitre_attack_version":"19.1","scope":"attribute.confidentiality"},"veris_to_mitre":[]}
+{"metadata":{"veris_version":"1.4.1","mitre_attack_version":"19.1","scope":"attribute.confidentiality"},"veris_to_mitre":[{"veris_id":"confidentiality.data_disclosure","veris_category":"Confidentiality","veris_label":"data_disclosure","no_mapping_found":true,"mitre_mappings":[],"ambiguous":false,"notes":"Erreur: Expecting value: line 1 column 1 (char 0)"}]}

@@ -21,7 +21,7 @@ Voir [MODELS.md](MODELS.md). Défaut :
 ```
 meta-llama/Llama-3.3-70B-Instruct-Turbo
 Qwen/Qwen2.5-7B-Instruct-Turbo
-deepseek-ai/DeepSeek-V4-Flash-0731
+moonshotai/Kimi-K3
 ```
 
 Override dans `.dev.env` : `RAG_MULTI_LLM_MODELS=id1,id2,id3`.

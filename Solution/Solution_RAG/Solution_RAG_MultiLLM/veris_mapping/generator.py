@@ -34,10 +34,12 @@ def _get_client():
 
         if not config.TOGETHER_API_KEY:
             raise ValueError("TOGETHER_API_KEY (ou OPENAI_API_KEY) manquante.")
-        print(f"  [llm] base_url={config.TOGETHER_BASE_URL}")
+        print(f"  [llm] base_url={config.TOGETHER_BASE_URL}", flush=True)
         _client = OpenAI(
             api_key=config.TOGETHER_API_KEY,
             base_url=config.TOGETHER_BASE_URL,
+            timeout=180.0,
+            max_retries=2,
         )
     return _client
 
@@ -144,7 +146,10 @@ def _llm_decision(
 
     # Les modèles reasoning consomment des tokens avant le JSON final.
     max_tokens = max(config.GENERATION_MAX_TOKENS, 2048)
-    if "deepseek" in model.lower() or "reason" in model.lower():
+    if any(
+        tok in model.lower()
+        for tok in ("deepseek", "reason", "kimi", "thinking")
+    ):
         max_tokens = max(max_tokens, 4096)
 
     last_error: Exception | None = None
