@@ -1,1 +1,2656 @@
-{"metadata":{"veris_version":"1.4.1","mitre_attack_version":"19.1","scope":"attribute.availability"},"veris_to_mitre":[{"veris_id":"availability.variety.acceleration","veris_category":"Availability","veris_label":"Acceleration","no_mapping_found":false,"mitre_mappings":[{"technique_id":"T1498","technique_name":"Network Denial of Service","sub_technique_id":null,"sub_technique_name":null,"tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Acceleration et Network Denial of Service."},{"technique_id":"T1499","technique_name":"Endpoint Denial of Service","sub_technique_id":null,"sub_technique_name":null,"tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Acceleration et Endpoint Denial of Service."}],"ambiguous":false,"notes":""},{"veris_id":"availability.variety.degradation","veris_category":"Availability","veris_label":"Degradation","no_mapping_found":false,"mitre_mappings":[{"technique_id":"T1496","technique_name":"Resource Hijacking","sub_technique_id":null,"sub_technique_name":null,"tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Degradation et Resource Hijacking."},{"technique_id":"T1498","technique_name":"Network Denial of Service","sub_technique_id":null,"sub_technique_name":null,"tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Degradation et Network Denial of Service."},{"technique_id":"T1498","technique_name":"Network Denial of Service","sub_technique_id":"T1498.001","sub_technique_name":"Direct Network Flood","tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Degradation et Direct Network Flood."},{"technique_id":"T1498","technique_name":"Network Denial of Service","sub_technique_id":"T1498.002","sub_technique_name":"Reflection Amplification","tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Degradation et Reflection Amplification."},{"technique_id":"T1499","technique_name":"Endpoint Denial of Service","sub_technique_id":null,"sub_technique_name":null,"tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Degradation et Endpoint Denial of Service."},{"technique_id":"T1499","technique_name":"Endpoint Denial of Service","sub_technique_id":"T1499.001","sub_technique_name":"OS Exhaustion Flood","tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Degradation et OS Exhaustion Flood."},{"technique_id":"T1499","technique_name":"Endpoint Denial of Service","sub_technique_id":"T1499.002","sub_technique_name":"Service Exhaustion Flood","tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Degradation et Service Exhaustion Flood."},{"technique_id":"T1499","technique_name":"Endpoint Denial of Service","sub_technique_id":"T1499.003","sub_technique_name":"Application Exhaustion Flood","tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Degradation et Application Exhaustion Flood."},{"technique_id":"T1499","technique_name":"Endpoint Denial of Service","sub_technique_id":"T1499.004","sub_technique_name":"Application or System Exploitation","tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Degradation et Application or System Exploitation."}],"ambiguous":false,"notes":""},{"veris_id":"availability.variety.destruction","veris_category":"Availability","veris_label":"Destruction","no_mapping_found":false,"mitre_mappings":[{"technique_id":"T1485","technique_name":"Data Destruction","sub_technique_id":null,"sub_technique_name":null,"tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Destruction et Data Destruction."},{"technique_id":"T1485","technique_name":"Data Destruction","sub_technique_id":"T1485.001","sub_technique_name":"Lifecycle-Triggered Deletion","tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Destruction et Lifecycle-Triggered Deletion."},{"technique_id":"T1495","technique_name":"Firmware Corruption","sub_technique_id":null,"sub_technique_name":null,"tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Destruction et Firmware Corruption."},{"technique_id":"T1531","technique_name":"Account Access Removal","sub_technique_id":null,"sub_technique_name":null,"tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Destruction et Account Access Removal."},{"technique_id":"T1561","technique_name":"Disk Wipe","sub_technique_id":null,"sub_technique_name":null,"tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Destruction et Disk Wipe."},{"technique_id":"T1561","technique_name":"Disk Wipe","sub_technique_id":"T1561.001","sub_technique_name":"Disk Content Wipe","tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Destruction et Disk Content Wipe."},{"technique_id":"T1561","technique_name":"Disk Wipe","sub_technique_id":"T1561.002","sub_technique_name":"Disk Structure Wipe","tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Destruction et Disk Structure Wipe."}],"ambiguous":false,"notes":""},{"veris_id":"availability.variety.interruption","veris_category":"Availability","veris_label":"Interruption","no_mapping_found":false,"mitre_mappings":[{"technique_id":"T1485","technique_name":"Data Destruction","sub_technique_id":null,"sub_technique_name":null,"tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Interruption et Data Destruction."},{"technique_id":"T1485","technique_name":"Data Destruction","sub_technique_id":"T1485.001","sub_technique_name":"Lifecycle-Triggered Deletion","tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Interruption et Lifecycle-Triggered Deletion."},{"technique_id":"T1486","technique_name":"Data Encrypted for Impact","sub_technique_id":null,"sub_technique_name":null,"tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Interruption et Data Encrypted for Impact."},{"technique_id":"T1489","technique_name":"Service Stop","sub_technique_id":null,"sub_technique_name":null,"tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Interruption et Service Stop."},{"technique_id":"T1495","technique_name":"Firmware Corruption","sub_technique_id":null,"sub_technique_name":null,"tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Interruption et Firmware Corruption."},{"technique_id":"T1529","technique_name":"System Shutdown/Reboot","sub_technique_id":null,"sub_technique_name":null,"tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Interruption et System Shutdown/Reboot."},{"technique_id":"T1531","technique_name":"Account Access Removal","sub_technique_id":null,"sub_technique_name":null,"tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Interruption et Account Access Removal."},{"technique_id":"T1561","technique_name":"Disk Wipe","sub_technique_id":null,"sub_technique_name":null,"tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Interruption et Disk Wipe."},{"technique_id":"T1561","technique_name":"Disk Wipe","sub_technique_id":"T1561.002","sub_technique_name":"Disk Structure Wipe","tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Interruption et Disk Structure Wipe."}],"ambiguous":false,"notes":""},{"veris_id":"availability.variety.loss","veris_category":"Availability","veris_label":"Loss","no_mapping_found":false,"mitre_mappings":[{"technique_id":"T1490","technique_name":"Inhibit System Recovery","sub_technique_id":null,"sub_technique_name":null,"tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Loss et Inhibit System Recovery."},{"technique_id":"T1495","technique_name":"Firmware Corruption","sub_technique_id":null,"sub_technique_name":null,"tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Loss et Firmware Corruption."},{"technique_id":"T1498","technique_name":"Network Denial of Service","sub_technique_id":null,"sub_technique_name":null,"tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Loss et Network Denial of Service."},{"technique_id":"T1498","technique_name":"Network Denial of Service","sub_technique_id":"T1498.001","sub_technique_name":"Direct Network Flood","tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Loss et Direct Network Flood."},{"technique_id":"T1498","technique_name":"Network Denial of Service","sub_technique_id":"T1498.002","sub_technique_name":"Reflection Amplification","tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Loss et Reflection Amplification."},{"technique_id":"T1499","technique_name":"Endpoint Denial of Service","sub_technique_id":null,"sub_technique_name":null,"tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Loss et Endpoint Denial of Service."},{"technique_id":"T1499","technique_name":"Endpoint Denial of Service","sub_technique_id":"T1499.001","sub_technique_name":"OS Exhaustion Flood","tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Loss et OS Exhaustion Flood."},{"technique_id":"T1499","technique_name":"Endpoint Denial of Service","sub_technique_id":"T1499.002","sub_technique_name":"Service Exhaustion Flood","tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Loss et Service Exhaustion Flood."},{"technique_id":"T1499","technique_name":"Endpoint Denial of Service","sub_technique_id":"T1499.003","sub_technique_name":"Application Exhaustion Flood","tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Loss et Application Exhaustion Flood."},{"technique_id":"T1499","technique_name":"Endpoint Denial of Service","sub_technique_id":"T1499.004","sub_technique_name":"Application or System Exploitation","tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Loss et Application or System Exploitation."},{"technique_id":"T1561","technique_name":"Disk Wipe","sub_technique_id":null,"sub_technique_name":null,"tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Loss et Disk Wipe."},{"technique_id":"T1561","technique_name":"Disk Wipe","sub_technique_id":"T1561.001","sub_technique_name":"Disk Content Wipe","tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Loss et Disk Content Wipe."},{"technique_id":"T1561","technique_name":"Disk Wipe","sub_technique_id":"T1561.002","sub_technique_name":"Disk Structure Wipe","tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Loss et Disk Structure Wipe."}],"ambiguous":false,"notes":""},{"veris_id":"availability.variety.obscuration","veris_category":"Availability","veris_label":"Obscuration","no_mapping_found":false,"mitre_mappings":[{"technique_id":"T1486","technique_name":"Data Encrypted for Impact","sub_technique_id":null,"sub_technique_name":null,"tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Obscuration et Data Encrypted for Impact."},{"technique_id":"T1491","technique_name":"Defacement","sub_technique_id":null,"sub_technique_name":null,"tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Obscuration et Defacement."},{"technique_id":"T1491","technique_name":"Defacement","sub_technique_id":"T1491.001","sub_technique_name":"Internal Defacement","tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Obscuration et Internal Defacement."},{"technique_id":"T1491","technique_name":"Defacement","sub_technique_id":"T1491.002","sub_technique_name":"External Defacement","tactic(s)":["impact"],"mapping_type":"related_to","confidence":"high","confidence_score":1.0,"justification":"Correspondance des experts entre Obscuration et External Defacement."}],"ambiguous":false,"notes":""},{"veris_id":"availability.variety.other","veris_category":"Availability","veris_label":"Other","no_mapping_found":true,"mitre_mappings":[],"ambiguous":false,"notes":"Aucune correspondance trouv\u00e9e."},{"veris_id":"availability.variety.unknown","veris_category":"Availability","veris_label":"Unknown","no_mapping_found":true,"mitre_mappings":[],"ambiguous":false,"notes":"Aucune correspondance trouv\u00e9e."}]}
+{
+  "metadata": {
+    "veris_version": "1.4.1",
+    "mitre_attack_version": "19.1",
+    "scope": "attribute.availability",
+    "method": "FINE_TUNE",
+    "model": "TF-IDF + OneVsRest LogisticRegression"
+  },
+  "veris_to_mitre": [
+    {
+      "veris_id": "attribute.availability.variety.Acceleration",
+      "veris_category": "attribute.availability",
+      "veris_label": "Acceleration",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1561",
+          "technique_name": "Disk Wipe",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.1321,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1495",
+          "technique_name": "Firmware Corruption",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.114,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1561",
+          "technique_name": "Disk Wipe",
+          "sub_technique_id": "T1561.002",
+          "sub_technique_name": "Disk Structure Wipe",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.114,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.1069,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": "T1499.003",
+          "sub_technique_name": "Application Exhaustion Flood",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0942,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": "T1499.002",
+          "sub_technique_name": "Service Exhaustion Flood",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0929,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1531",
+          "technique_name": "Account Access Removal",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0847,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1485",
+          "technique_name": "Data Destruction",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0714,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1498",
+          "technique_name": "Network Denial of Service",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0699,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1498",
+          "technique_name": "Network Denial of Service",
+          "sub_technique_id": "T1498.001",
+          "sub_technique_name": "Direct Network Flood",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0699,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1498",
+          "technique_name": "Network Denial of Service",
+          "sub_technique_id": "T1498.002",
+          "sub_technique_name": "Reflection Amplification",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0699,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": "T1499.001",
+          "sub_technique_name": "OS Exhaustion Flood",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0699,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": "T1499.004",
+          "sub_technique_name": "Application or System Exploitation",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0699,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0595,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1561",
+          "technique_name": "Disk Wipe",
+          "sub_technique_id": "T1561.001",
+          "sub_technique_name": "Disk Content Wipe",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0573,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1485",
+          "technique_name": "Data Destruction",
+          "sub_technique_id": "T1485.001",
+          "sub_technique_name": "Lifecycle-Triggered Deletion",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0573,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1486",
+          "technique_name": "Data Encrypted for Impact",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0537,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.availability.variety.Degradation",
+      "veris_category": "attribute.availability",
+      "veris_label": "Degradation",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.1307,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": "T1499.003",
+          "sub_technique_name": "Application Exhaustion Flood",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.1152,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": "T1499.002",
+          "sub_technique_name": "Service Exhaustion Flood",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.1134,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1498",
+          "technique_name": "Network Denial of Service",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0848,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1498",
+          "technique_name": "Network Denial of Service",
+          "sub_technique_id": "T1498.001",
+          "sub_technique_name": "Direct Network Flood",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0848,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1498",
+          "technique_name": "Network Denial of Service",
+          "sub_technique_id": "T1498.002",
+          "sub_technique_name": "Reflection Amplification",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0848,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": "T1499.001",
+          "sub_technique_name": "OS Exhaustion Flood",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0848,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": "T1499.004",
+          "sub_technique_name": "Application or System Exploitation",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0848,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1496",
+          "technique_name": "Resource Hijacking",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0758,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1561",
+          "technique_name": "Disk Wipe",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0724,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1495",
+          "technique_name": "Firmware Corruption",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0611,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1561",
+          "technique_name": "Disk Wipe",
+          "sub_technique_id": "T1561.002",
+          "sub_technique_name": "Disk Structure Wipe",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0611,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0583,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1531",
+          "technique_name": "Account Access Removal",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0561,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1133",
+          "technique_name": "External Remote Services",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0517,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.availability.variety.Destruction",
+      "veris_category": "attribute.availability",
+      "veris_label": "Destruction",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1561",
+          "technique_name": "Disk Wipe",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.1302,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1495",
+          "technique_name": "Firmware Corruption",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.1116,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1561",
+          "technique_name": "Disk Wipe",
+          "sub_technique_id": "T1561.002",
+          "sub_technique_name": "Disk Structure Wipe",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.1116,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1531",
+          "technique_name": "Account Access Removal",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.1017,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1485",
+          "technique_name": "Data Destruction",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0857,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0753,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1561",
+          "technique_name": "Disk Wipe",
+          "sub_technique_id": "T1561.001",
+          "sub_technique_name": "Disk Content Wipe",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0685,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1485",
+          "technique_name": "Data Destruction",
+          "sub_technique_id": "T1485.001",
+          "sub_technique_name": "Lifecycle-Triggered Deletion",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0685,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": "T1499.003",
+          "sub_technique_name": "Application Exhaustion Flood",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0656,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": "T1499.002",
+          "sub_technique_name": "Service Exhaustion Flood",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0647,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0584,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1133",
+          "technique_name": "External Remote Services",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0514,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.availability.variety.Interruption",
+      "veris_category": "attribute.availability",
+      "veris_label": "Interruption",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1561",
+          "technique_name": "Disk Wipe",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.1302,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1495",
+          "technique_name": "Firmware Corruption",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.1116,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1561",
+          "technique_name": "Disk Wipe",
+          "sub_technique_id": "T1561.002",
+          "sub_technique_name": "Disk Structure Wipe",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.1116,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1531",
+          "technique_name": "Account Access Removal",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.1017,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1485",
+          "technique_name": "Data Destruction",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0857,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0753,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1485",
+          "technique_name": "Data Destruction",
+          "sub_technique_id": "T1485.001",
+          "sub_technique_name": "Lifecycle-Triggered Deletion",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0685,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1486",
+          "technique_name": "Data Encrypted for Impact",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0658,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": "T1499.003",
+          "sub_technique_name": "Application Exhaustion Flood",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0656,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": "T1499.002",
+          "sub_technique_name": "Service Exhaustion Flood",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0647,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0584,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1133",
+          "technique_name": "External Remote Services",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0514,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1489",
+          "technique_name": "Service Stop",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0508,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.availability.variety.Loss",
+      "veris_category": "attribute.availability",
+      "veris_label": "Loss",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.1302,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1561",
+          "technique_name": "Disk Wipe",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.1302,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": "T1499.003",
+          "sub_technique_name": "Application Exhaustion Flood",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.1148,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": "T1499.002",
+          "sub_technique_name": "Service Exhaustion Flood",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.113,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1495",
+          "technique_name": "Firmware Corruption",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.1116,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1561",
+          "technique_name": "Disk Wipe",
+          "sub_technique_id": "T1561.002",
+          "sub_technique_name": "Disk Structure Wipe",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.1116,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1498",
+          "technique_name": "Network Denial of Service",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0846,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1498",
+          "technique_name": "Network Denial of Service",
+          "sub_technique_id": "T1498.001",
+          "sub_technique_name": "Direct Network Flood",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0846,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1498",
+          "technique_name": "Network Denial of Service",
+          "sub_technique_id": "T1498.002",
+          "sub_technique_name": "Reflection Amplification",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0846,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": "T1499.001",
+          "sub_technique_name": "OS Exhaustion Flood",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0846,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": "T1499.004",
+          "sub_technique_name": "Application or System Exploitation",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0846,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1561",
+          "technique_name": "Disk Wipe",
+          "sub_technique_id": "T1561.001",
+          "sub_technique_name": "Disk Content Wipe",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0685,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0584,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1531",
+          "technique_name": "Account Access Removal",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0575,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1133",
+          "technique_name": "External Remote Services",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0514,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1490",
+          "technique_name": "Inhibit System Recovery",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0504,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.availability.variety.Obscuration",
+      "veris_category": "attribute.availability",
+      "veris_label": "Obscuration",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1486",
+          "technique_name": "Data Encrypted for Impact",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.072,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0706,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1561",
+          "technique_name": "Disk Wipe",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0688,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": "T1499.003",
+          "sub_technique_name": "Application Exhaustion Flood",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0616,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": "T1499.002",
+          "sub_technique_name": "Service Exhaustion Flood",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.061,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0581,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1495",
+          "technique_name": "Firmware Corruption",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0579,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1561",
+          "technique_name": "Disk Wipe",
+          "sub_technique_id": "T1561.002",
+          "sub_technique_name": "Disk Structure Wipe",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0579,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1531",
+          "technique_name": "Account Access Removal",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0539,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1133",
+          "technique_name": "External Remote Services",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0511,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.availability.variety.Other",
+      "veris_category": "attribute.availability",
+      "veris_label": "Other",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1561",
+          "technique_name": "Disk Wipe",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.09,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0817,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1495",
+          "technique_name": "Firmware Corruption",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0771,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1561",
+          "technique_name": "Disk Wipe",
+          "sub_technique_id": "T1561.002",
+          "sub_technique_name": "Disk Structure Wipe",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0771,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": "T1499.003",
+          "sub_technique_name": "Application Exhaustion Flood",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0719,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": "T1499.002",
+          "sub_technique_name": "Service Exhaustion Flood",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.071,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1531",
+          "technique_name": "Account Access Removal",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0641,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1587",
+          "technique_name": "Develop Capabilities",
+          "sub_technique_id": "T1587.001",
+          "sub_technique_name": "Malware",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.062,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1001",
+          "technique_name": "Data Obfuscation",
+          "sub_technique_id": "T1001.002",
+          "sub_technique_name": "Steganography",
+          "tactic(s)": [
+            "command-and-control"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0596,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0549,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1485",
+          "technique_name": "Data Destruction",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0538,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1498",
+          "technique_name": "Network Denial of Service",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0529,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1498",
+          "technique_name": "Network Denial of Service",
+          "sub_technique_id": "T1498.001",
+          "sub_technique_name": "Direct Network Flood",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0529,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1498",
+          "technique_name": "Network Denial of Service",
+          "sub_technique_id": "T1498.002",
+          "sub_technique_name": "Reflection Amplification",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0529,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": "T1499.001",
+          "sub_technique_name": "OS Exhaustion Flood",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0529,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": "T1499.004",
+          "sub_technique_name": "Application or System Exploitation",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0529,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1204",
+          "technique_name": "User Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "execution"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0516,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.availability.variety.Unknown",
+      "veris_category": "attribute.availability",
+      "veris_label": "Unknown",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1587",
+          "technique_name": "Develop Capabilities",
+          "sub_technique_id": "T1587.001",
+          "sub_technique_name": "Malware",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.1065,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1531",
+          "technique_name": "Account Access Removal",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.1036,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1588",
+          "technique_name": "Obtain Capabilities",
+          "sub_technique_id": "T1588.001",
+          "sub_technique_name": "Malware",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0969,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1561",
+          "technique_name": "Disk Wipe",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0853,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0796,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1495",
+          "technique_name": "Firmware Corruption",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0727,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1561",
+          "technique_name": "Disk Wipe",
+          "sub_technique_id": "T1561.002",
+          "sub_technique_name": "Disk Structure Wipe",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0727,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1587",
+          "technique_name": "Develop Capabilities",
+          "sub_technique_id": "T1587.004",
+          "sub_technique_name": "Exploits",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.071,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1588",
+          "technique_name": "Obtain Capabilities",
+          "sub_technique_id": "T1588.005",
+          "sub_technique_name": "Exploits",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.071,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": "T1499.003",
+          "sub_technique_name": "Application Exhaustion Flood",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0699,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": "T1499.002",
+          "sub_technique_name": "Service Exhaustion Flood",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0689,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1587",
+          "technique_name": "Develop Capabilities",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0675,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0557,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1525",
+          "technique_name": "Implant Internal Image",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0551,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1485",
+          "technique_name": "Data Destruction",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0519,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1583",
+          "technique_name": "Acquire Infrastructure",
+          "sub_technique_id": "T1583.006",
+          "sub_technique_name": "Web Services",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0514,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1498",
+          "technique_name": "Network Denial of Service",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.051,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1498",
+          "technique_name": "Network Denial of Service",
+          "sub_technique_id": "T1498.001",
+          "sub_technique_name": "Direct Network Flood",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.051,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1498",
+          "technique_name": "Network Denial of Service",
+          "sub_technique_id": "T1498.002",
+          "sub_technique_name": "Reflection Amplification",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.051,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": "T1499.001",
+          "sub_technique_name": "OS Exhaustion Flood",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.051,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    }
+  ],
+  "mitre_to_veris": [
+    {
+      "attack_id": "T1001.002",
+      "technique_id": "T1001",
+      "technique_name": "Data Obfuscation",
+      "sub_technique_id": "T1001.002",
+      "sub_technique_name": "Steganography",
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.availability.variety.Other",
+          "veris_label": "Other",
+          "confidence_score": 0.0596,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1133",
+      "technique_id": "T1133",
+      "technique_name": "External Remote Services",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.availability.variety.Degradation",
+          "veris_label": "Degradation",
+          "confidence_score": 0.0517,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Destruction",
+          "veris_label": "Destruction",
+          "confidence_score": 0.0514,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Interruption",
+          "veris_label": "Interruption",
+          "confidence_score": 0.0514,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Loss",
+          "veris_label": "Loss",
+          "confidence_score": 0.0514,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Obscuration",
+          "veris_label": "Obscuration",
+          "confidence_score": 0.0511,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1204",
+      "technique_id": "T1204",
+      "technique_name": "User Execution",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.availability.variety.Other",
+          "veris_label": "Other",
+          "confidence_score": 0.0516,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1485",
+      "technique_id": "T1485",
+      "technique_name": "Data Destruction",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.availability.variety.Acceleration",
+          "veris_label": "Acceleration",
+          "confidence_score": 0.0714,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Destruction",
+          "veris_label": "Destruction",
+          "confidence_score": 0.0857,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Interruption",
+          "veris_label": "Interruption",
+          "confidence_score": 0.0857,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Other",
+          "veris_label": "Other",
+          "confidence_score": 0.0538,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.0519,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1485.001",
+      "technique_id": "T1485",
+      "technique_name": "Data Destruction",
+      "sub_technique_id": "T1485.001",
+      "sub_technique_name": "Lifecycle-Triggered Deletion",
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.availability.variety.Acceleration",
+          "veris_label": "Acceleration",
+          "confidence_score": 0.0573,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Destruction",
+          "veris_label": "Destruction",
+          "confidence_score": 0.0685,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Interruption",
+          "veris_label": "Interruption",
+          "confidence_score": 0.0685,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1486",
+      "technique_id": "T1486",
+      "technique_name": "Data Encrypted for Impact",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.availability.variety.Acceleration",
+          "veris_label": "Acceleration",
+          "confidence_score": 0.0537,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Interruption",
+          "veris_label": "Interruption",
+          "confidence_score": 0.0658,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Obscuration",
+          "veris_label": "Obscuration",
+          "confidence_score": 0.072,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1489",
+      "technique_id": "T1489",
+      "technique_name": "Service Stop",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.availability.variety.Interruption",
+          "veris_label": "Interruption",
+          "confidence_score": 0.0508,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1490",
+      "technique_id": "T1490",
+      "technique_name": "Inhibit System Recovery",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.availability.variety.Loss",
+          "veris_label": "Loss",
+          "confidence_score": 0.0504,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1495",
+      "technique_id": "T1495",
+      "technique_name": "Firmware Corruption",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.availability.variety.Acceleration",
+          "veris_label": "Acceleration",
+          "confidence_score": 0.114,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Degradation",
+          "veris_label": "Degradation",
+          "confidence_score": 0.0611,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Destruction",
+          "veris_label": "Destruction",
+          "confidence_score": 0.1116,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Interruption",
+          "veris_label": "Interruption",
+          "confidence_score": 0.1116,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Loss",
+          "veris_label": "Loss",
+          "confidence_score": 0.1116,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Obscuration",
+          "veris_label": "Obscuration",
+          "confidence_score": 0.0579,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Other",
+          "veris_label": "Other",
+          "confidence_score": 0.0771,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.0727,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1496",
+      "technique_id": "T1496",
+      "technique_name": "Resource Hijacking",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.availability.variety.Degradation",
+          "veris_label": "Degradation",
+          "confidence_score": 0.0758,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1498",
+      "technique_id": "T1498",
+      "technique_name": "Network Denial of Service",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.availability.variety.Acceleration",
+          "veris_label": "Acceleration",
+          "confidence_score": 0.0699,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Degradation",
+          "veris_label": "Degradation",
+          "confidence_score": 0.0848,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Loss",
+          "veris_label": "Loss",
+          "confidence_score": 0.0846,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Other",
+          "veris_label": "Other",
+          "confidence_score": 0.0529,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.051,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1498.001",
+      "technique_id": "T1498",
+      "technique_name": "Network Denial of Service",
+      "sub_technique_id": "T1498.001",
+      "sub_technique_name": "Direct Network Flood",
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.availability.variety.Acceleration",
+          "veris_label": "Acceleration",
+          "confidence_score": 0.0699,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Degradation",
+          "veris_label": "Degradation",
+          "confidence_score": 0.0848,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Loss",
+          "veris_label": "Loss",
+          "confidence_score": 0.0846,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Other",
+          "veris_label": "Other",
+          "confidence_score": 0.0529,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.051,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1498.002",
+      "technique_id": "T1498",
+      "technique_name": "Network Denial of Service",
+      "sub_technique_id": "T1498.002",
+      "sub_technique_name": "Reflection Amplification",
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.availability.variety.Acceleration",
+          "veris_label": "Acceleration",
+          "confidence_score": 0.0699,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Degradation",
+          "veris_label": "Degradation",
+          "confidence_score": 0.0848,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Loss",
+          "veris_label": "Loss",
+          "confidence_score": 0.0846,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Other",
+          "veris_label": "Other",
+          "confidence_score": 0.0529,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.051,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1499",
+      "technique_id": "T1499",
+      "technique_name": "Endpoint Denial of Service",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.availability.variety.Acceleration",
+          "veris_label": "Acceleration",
+          "confidence_score": 0.1069,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Degradation",
+          "veris_label": "Degradation",
+          "confidence_score": 0.1307,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Destruction",
+          "veris_label": "Destruction",
+          "confidence_score": 0.0753,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Interruption",
+          "veris_label": "Interruption",
+          "confidence_score": 0.0753,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Loss",
+          "veris_label": "Loss",
+          "confidence_score": 0.1302,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Obscuration",
+          "veris_label": "Obscuration",
+          "confidence_score": 0.0706,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Other",
+          "veris_label": "Other",
+          "confidence_score": 0.0817,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.0796,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1499.001",
+      "technique_id": "T1499",
+      "technique_name": "Endpoint Denial of Service",
+      "sub_technique_id": "T1499.001",
+      "sub_technique_name": "OS Exhaustion Flood",
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.availability.variety.Acceleration",
+          "veris_label": "Acceleration",
+          "confidence_score": 0.0699,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Degradation",
+          "veris_label": "Degradation",
+          "confidence_score": 0.0848,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Loss",
+          "veris_label": "Loss",
+          "confidence_score": 0.0846,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Other",
+          "veris_label": "Other",
+          "confidence_score": 0.0529,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.051,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1499.002",
+      "technique_id": "T1499",
+      "technique_name": "Endpoint Denial of Service",
+      "sub_technique_id": "T1499.002",
+      "sub_technique_name": "Service Exhaustion Flood",
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.availability.variety.Acceleration",
+          "veris_label": "Acceleration",
+          "confidence_score": 0.0929,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Degradation",
+          "veris_label": "Degradation",
+          "confidence_score": 0.1134,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Destruction",
+          "veris_label": "Destruction",
+          "confidence_score": 0.0647,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Interruption",
+          "veris_label": "Interruption",
+          "confidence_score": 0.0647,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Loss",
+          "veris_label": "Loss",
+          "confidence_score": 0.113,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Obscuration",
+          "veris_label": "Obscuration",
+          "confidence_score": 0.061,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Other",
+          "veris_label": "Other",
+          "confidence_score": 0.071,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.0689,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1499.003",
+      "technique_id": "T1499",
+      "technique_name": "Endpoint Denial of Service",
+      "sub_technique_id": "T1499.003",
+      "sub_technique_name": "Application Exhaustion Flood",
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.availability.variety.Acceleration",
+          "veris_label": "Acceleration",
+          "confidence_score": 0.0942,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Degradation",
+          "veris_label": "Degradation",
+          "confidence_score": 0.1152,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Destruction",
+          "veris_label": "Destruction",
+          "confidence_score": 0.0656,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Interruption",
+          "veris_label": "Interruption",
+          "confidence_score": 0.0656,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Loss",
+          "veris_label": "Loss",
+          "confidence_score": 0.1148,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Obscuration",
+          "veris_label": "Obscuration",
+          "confidence_score": 0.0616,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Other",
+          "veris_label": "Other",
+          "confidence_score": 0.0719,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.0699,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1499.004",
+      "technique_id": "T1499",
+      "technique_name": "Endpoint Denial of Service",
+      "sub_technique_id": "T1499.004",
+      "sub_technique_name": "Application or System Exploitation",
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.availability.variety.Acceleration",
+          "veris_label": "Acceleration",
+          "confidence_score": 0.0699,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Degradation",
+          "veris_label": "Degradation",
+          "confidence_score": 0.0848,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Loss",
+          "veris_label": "Loss",
+          "confidence_score": 0.0846,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Other",
+          "veris_label": "Other",
+          "confidence_score": 0.0529,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1525",
+      "technique_id": "T1525",
+      "technique_name": "Implant Internal Image",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.availability.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.0551,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1531",
+      "technique_id": "T1531",
+      "technique_name": "Account Access Removal",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.availability.variety.Acceleration",
+          "veris_label": "Acceleration",
+          "confidence_score": 0.0847,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Degradation",
+          "veris_label": "Degradation",
+          "confidence_score": 0.0561,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Destruction",
+          "veris_label": "Destruction",
+          "confidence_score": 0.1017,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Interruption",
+          "veris_label": "Interruption",
+          "confidence_score": 0.1017,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Loss",
+          "veris_label": "Loss",
+          "confidence_score": 0.0575,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Obscuration",
+          "veris_label": "Obscuration",
+          "confidence_score": 0.0539,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Other",
+          "veris_label": "Other",
+          "confidence_score": 0.0641,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.1036,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1547",
+      "technique_id": "T1547",
+      "technique_name": "Boot or Logon Autostart Execution",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.availability.variety.Acceleration",
+          "veris_label": "Acceleration",
+          "confidence_score": 0.0595,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Degradation",
+          "veris_label": "Degradation",
+          "confidence_score": 0.0583,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Destruction",
+          "veris_label": "Destruction",
+          "confidence_score": 0.0584,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Interruption",
+          "veris_label": "Interruption",
+          "confidence_score": 0.0584,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Loss",
+          "veris_label": "Loss",
+          "confidence_score": 0.0584,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Obscuration",
+          "veris_label": "Obscuration",
+          "confidence_score": 0.0581,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Other",
+          "veris_label": "Other",
+          "confidence_score": 0.0549,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.0557,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1561",
+      "technique_id": "T1561",
+      "technique_name": "Disk Wipe",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.availability.variety.Acceleration",
+          "veris_label": "Acceleration",
+          "confidence_score": 0.1321,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Degradation",
+          "veris_label": "Degradation",
+          "confidence_score": 0.0724,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Destruction",
+          "veris_label": "Destruction",
+          "confidence_score": 0.1302,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Interruption",
+          "veris_label": "Interruption",
+          "confidence_score": 0.1302,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Loss",
+          "veris_label": "Loss",
+          "confidence_score": 0.1302,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Obscuration",
+          "veris_label": "Obscuration",
+          "confidence_score": 0.0688,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Other",
+          "veris_label": "Other",
+          "confidence_score": 0.09,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.0853,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1561.001",
+      "technique_id": "T1561",
+      "technique_name": "Disk Wipe",
+      "sub_technique_id": "T1561.001",
+      "sub_technique_name": "Disk Content Wipe",
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.availability.variety.Acceleration",
+          "veris_label": "Acceleration",
+          "confidence_score": 0.0573,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Destruction",
+          "veris_label": "Destruction",
+          "confidence_score": 0.0685,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Loss",
+          "veris_label": "Loss",
+          "confidence_score": 0.0685,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1561.002",
+      "technique_id": "T1561",
+      "technique_name": "Disk Wipe",
+      "sub_technique_id": "T1561.002",
+      "sub_technique_name": "Disk Structure Wipe",
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.availability.variety.Acceleration",
+          "veris_label": "Acceleration",
+          "confidence_score": 0.114,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Degradation",
+          "veris_label": "Degradation",
+          "confidence_score": 0.0611,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Destruction",
+          "veris_label": "Destruction",
+          "confidence_score": 0.1116,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Interruption",
+          "veris_label": "Interruption",
+          "confidence_score": 0.1116,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Loss",
+          "veris_label": "Loss",
+          "confidence_score": 0.1116,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Obscuration",
+          "veris_label": "Obscuration",
+          "confidence_score": 0.0579,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Other",
+          "veris_label": "Other",
+          "confidence_score": 0.0771,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.0727,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1583.006",
+      "technique_id": "T1583",
+      "technique_name": "Acquire Infrastructure",
+      "sub_technique_id": "T1583.006",
+      "sub_technique_name": "Web Services",
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.availability.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.0514,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1587",
+      "technique_id": "T1587",
+      "technique_name": "Develop Capabilities",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.availability.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.0675,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1587.001",
+      "technique_id": "T1587",
+      "technique_name": "Develop Capabilities",
+      "sub_technique_id": "T1587.001",
+      "sub_technique_name": "Malware",
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.availability.variety.Other",
+          "veris_label": "Other",
+          "confidence_score": 0.062,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "veris_id": "attribute.availability.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.1065,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1587.004",
+      "technique_id": "T1587",
+      "technique_name": "Develop Capabilities",
+      "sub_technique_id": "T1587.004",
+      "sub_technique_name": "Exploits",
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.availability.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.071,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1588.001",
+      "technique_id": "T1588",
+      "technique_name": "Obtain Capabilities",
+      "sub_technique_id": "T1588.001",
+      "sub_technique_name": "Malware",
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.availability.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.0969,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1588.005",
+      "technique_id": "T1588",
+      "technique_name": "Obtain Capabilities",
+      "sub_technique_id": "T1588.005",
+      "sub_technique_name": "Exploits",
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.availability.variety.Unknown",
+          "veris_label": "Unknown",
+          "confidence_score": 0.071,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    }
+  ]
+}
