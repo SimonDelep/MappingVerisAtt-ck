@@ -24,15 +24,18 @@ import config
 import datasets
 import generator
 from prompt import CONFIDENCE_SCORES
-from retrieve import retrieve_examples, retrieve_techniques
+from retrieve import merge_candidates_with_examples, retrieve_examples, retrieve_techniques
 
 sys.path.insert(0, str(config.RESULTAT_DIR))
 from compare_veris_mappings import normalize_veris_id  # noqa: E402
 
 
-def mode_dirname(mode: str, model_id: str) -> str:
+def mode_dirname(mode: str, model_id: str, tag: str | None = None) -> str:
     slug = config.model_slug(model_id)
-    return f"{config.TARGET_REF}_RAG_MultiLLM_{slug}_{mode}"
+    base = f"{config.TARGET_REF}_RAG_MultiLLM_{slug}_{mode}"
+    if tag:
+        return f"{base}_{tag}"
+    return base
 
 
 def enrich_mapping(
@@ -83,6 +86,10 @@ def map_capability(
 ) -> dict:
     candidates = retrieve_techniques(cap.query_text())
     examples = retrieve_examples(cap.query_text()) if use_examples else []
+    if use_examples and examples:
+        candidates = merge_candidates_with_examples(
+            candidates, examples, attack_index
+        )
 
     try:
         result = generator.generate_decision(
@@ -148,14 +155,23 @@ def write_results(entries_by_group: dict[str, list[dict]], out_dir: Path) -> Non
         print(f"  {group:28} -> {len(entries):3} capacités ({mapped} mappées)")
 
 
-def run_mode(mode: str, model_id: str, limit: int | None) -> Path:
+def run_mode(
+    mode: str,
+    model_id: str,
+    limit: int | None,
+    tag: str | None = None,
+) -> Path:
     use_examples = mode == "with_examples"
-    out_dir = config.RESULTAT_RAG_DIR / mode_dirname(mode, model_id)
+    out_dir = config.RESULTAT_RAG_DIR / mode_dirname(mode, model_id, tag=tag)
 
     print("=" * 72)
     print(f"GÉNÉRATION RAG MultiLLM — mode '{mode}'")
     print(f"Modèle    : {model_id}")
     print(f"top_k     : {config.TOP_K_TECHNIQUES}")
+    print(f"top_m     : {config.TOP_M_EXAMPLES}")
+    print(f"max_cand  : {config.MAX_PROMPT_CANDIDATES}")
+    if tag:
+        print(f"tag       : {tag}")
     print(f"Sortie    : {out_dir}")
     print("=" * 72)
 
@@ -196,6 +212,11 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help="Limite le nombre de capacités (test rapide).",
     )
+    parser.add_argument(
+        "--tag",
+        default=None,
+        help="Suffixe de dossier de sortie (ex: v2) pour ne pas écraser une run précédente.",
+    )
     return parser.parse_args()
 
 
@@ -209,7 +230,7 @@ def main() -> int:
 
     modes = ["attack_only", "with_examples"] if args.mode == "both" else [args.mode]
     for mode in modes:
-        run_mode(mode, model_id, args.limit)
+        run_mode(mode, model_id, args.limit, tag=args.tag)
     return 0
 
 

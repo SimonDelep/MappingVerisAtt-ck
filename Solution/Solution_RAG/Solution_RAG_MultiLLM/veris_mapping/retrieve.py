@@ -2,6 +2,7 @@
 
 - `retrieve_techniques` : top-k techniques ATT&CK candidates (collection ATT&CK).
 - `retrieve_examples`   : top-m mappings experts similaires (anciennes versions).
+- `merge_candidates_with_examples` : union retrieval ∪ IDs issus des exemples.
 
 `retrieve_examples` n'est appelé que par la variante de RAG "avec exemples".
 """
@@ -64,6 +65,69 @@ def retrieve_examples(query_text: str, top_m: int | None = None) -> list[dict]:
             }
         )
     return examples
+
+
+def merge_candidates_with_examples(
+    candidates: list[dict],
+    examples: list[dict],
+    attack_index: dict,
+    max_candidates: int | None = None,
+) -> list[dict]:
+    """Union retrieval ∪ techniques des exemples experts (dédupliquée).
+
+    Les IDs issus des exemples absents du top-k sont ajoutés en fin de liste,
+    enrichis depuis le catalogue ATT&CK local. Plafond : MAX_PROMPT_CANDIDATES.
+    """
+    max_candidates = max_candidates or config.MAX_PROMPT_CANDIDATES
+    merged: list[dict] = []
+    seen: set[str] = set()
+
+    for cand in candidates:
+        aid = (cand.get("attack_id") or "").strip().upper()
+        if not aid or aid in seen:
+            continue
+        entry = dict(cand)
+        entry["attack_id"] = aid
+        # Complète la description depuis le catalogue si absente.
+        if not (entry.get("document") or entry.get("description")) and aid in attack_index:
+            tech = attack_index[aid]
+            entry["document"] = tech.document_text()
+            entry["description"] = tech.description
+            if not entry.get("name"):
+                entry["name"] = tech.name
+            if not entry.get("tactics"):
+                entry["tactics"] = list(tech.tactics)
+        merged.append(entry)
+        seen.add(aid)
+        if len(merged) >= max_candidates:
+            return merged
+
+    for example in examples:
+        for mapped in example.get("mapped") or []:
+            aid = (mapped.get("attack_id") or "").strip().upper()
+            if not aid or aid in seen:
+                continue
+            if aid not in attack_index:
+                continue
+            tech = attack_index[aid]
+            merged.append(
+                {
+                    "attack_id": aid,
+                    "name": tech.name or mapped.get("attack_name", ""),
+                    "tactics": list(tech.tactics),
+                    "is_subtechnique": tech.is_subtechnique,
+                    "parent_id": tech.parent_id,
+                    "distance": None,
+                    "document": tech.document_text(),
+                    "description": tech.description,
+                    "from_example": True,
+                }
+            )
+            seen.add(aid)
+            if len(merged) >= max_candidates:
+                return merged
+
+    return merged
 
 
 if __name__ == "__main__":

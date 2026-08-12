@@ -121,9 +121,11 @@ EXAMPLES_COLLECTION = os.getenv("RAG_EXAMPLES_COLLECTION", "expert_examples")
 
 
 # ==================== RETRIEVAL / GÉNÉRATION ====================
-# top_k relevé : le LLM filtre (précision) ; plus de candidats à examiner.
-TOP_K_TECHNIQUES = int(os.getenv("RAG_TOP_K_TECHNIQUES", "40"))
-TOP_M_EXAMPLES = int(os.getenv("RAG_TOP_M_EXAMPLES", "5"))
+# v2 Llama : plus de candidats / exemples pour remonter le rappel et le volume.
+TOP_K_TECHNIQUES = int(os.getenv("RAG_TOP_K_TECHNIQUES", "60"))
+TOP_M_EXAMPLES = int(os.getenv("RAG_TOP_M_EXAMPLES", "8"))
+# Plafond d'IDs injectés dans le prompt après union retrieval ∪ exemples.
+MAX_PROMPT_CANDIDATES = int(os.getenv("RAG_MAX_PROMPT_CANDIDATES", "60"))
 EMBEDDING_BATCH_SIZE = int(os.getenv("RAG_EMBEDDING_BATCH_SIZE", "64"))
 GENERATION_TEMPERATURE = float(os.getenv("RAG_GENERATION_TEMPERATURE", "0.1"))
 GENERATION_MAX_TOKENS = int(os.getenv("RAG_GENERATION_MAX_TOKENS", "1200"))
@@ -184,6 +186,7 @@ if __name__ == "__main__":
     print("API key set    :", bool(TOGETHER_API_KEY))
     print("Embeddings     :", LOCAL_EMBEDDING_MODEL)
     print("top_k / top_m  :", TOP_K_TECHNIQUES, TOP_M_EXAMPLES)
+    print("max_prompt_cand:", MAX_PROMPT_CANDIDATES)
     print("Racine dépôt   :", REPO_ROOT)
     print("Version cible  :", TARGET_REF)
     print("VERIS file     :", VERIS_FILE)

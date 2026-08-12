@@ -759,8 +759,7 @@ inchangé~: pour chaque capacité VERIS, le système fournit au modèle
 les \texttt{top-$k$} techniques ATT\&CK et les \texttt{top-$m$}
 exemples experts, puis le LLM choisit parmi ces candidats uniquement
 (garde-fou anti-hallucination). Les trois modèles sont évalués dans
-les mêmes conditions (version cible VERIS~1.4.1 / ATT\&CK~19.1, mode
-\texttt{with\_examples}), afin d'isoler l'effet du choix de LLM.
+les mêmes conditions que précédemment.
 
 \paragraph{Principe et corpus.}
 Cette variante utilise le modèle
@@ -777,9 +776,7 @@ Le corpus reste celui de \texttt{with\_examples}~:
           antérieures (9.0, 12.1, 16.1), hors version cible.
 \end{itemize}
 Le mapping expert de la version évaluée n'est jamais indexé
-(anti-fuite). Les sorties sont déposées dans le dossier
-\texttt{Resultat\_RAG\_MultiLLM}, sous le préfixe
-\texttt{...\_deepseek-v4-flash-0731\_with\_examples}.
+(anti-fuite). 
 
 \paragraph{Fonctionnement.}
 Pour chaque capacité VERIS~:
@@ -811,9 +808,8 @@ sortie du script d'évaluation.
   \label{fig:rag-deepseek}
 \end{figure}
 
-La Figure~\ref{fig:rag-deepseek} présente la sortie de
-\texttt{compare\_veris\_mappings\_v2.py}. Au niveau global, sur les
-1\,250 paires expertes, la solution en propose 378, dont 161 sont
+La Figure~\ref{fig:rag-deepseek} présente les résultats obtenus par notre modèle. 
+Au niveau global, sur les 1\,250 paires expertes, la solution en propose 378, dont 161 sont
 correctes. Cela se traduit par une précision de 42,6~\%, un rappel de
 12,9~\% et un F1 de \textbf{19,8~\%} (Jaccard 11,0~\%).
 
@@ -844,11 +840,7 @@ décision. Il s'agit du plus grand des trois modèles retenus
 Together.ai), censé offrir le meilleur suivi d'instructions pour le
 filtrage des candidats ATT\&CK.
 
-Le corpus de retrieval est identique aux autres variantes multi-LLM
-(\texttt{attack\_techniques} + \texttt{expert\_examples}, hors
-version cible). Les sorties sont écrites dans
-\texttt{Resultat\_RAG\_MultiLLM}, sous le préfixe
-\texttt{...\_llama-3-3-70b-instruct-turbo\_with\_examples}.
+Le corpus de retrieval est identique aux autres variantes multi-LLM.
 
 \paragraph{Fonctionnement.}
 Le pipeline est le même que pour DeepSeek~: retrieval
@@ -907,11 +899,10 @@ paramètres) que Llama-70B, retenu pour comparer une famille
 distincte (Alibaba Qwen) en accès serverless, avec un coût et une
 latence plus bas.
 
-Le corpus reste celui de \texttt{with\_examples}
-(\texttt{attack\_techniques} + \texttt{expert\_examples}). Les
+Le corpus reste celui de \texttt{with\_examples}. Les
 sorties sont déposées dans \texttt{Resultat\_RAG\_MultiLLM}, sous
 le préfixe \texttt{...\_qwen2-5-7b-instruct-turbo\_with\_examples}.
-
+      
 \paragraph{Fonctionnement.}
 Le fonctionnement est strictement parallèle aux deux variantes
 précédentes~: même retrieval, mêmes prompts, même garde-fou sur les
