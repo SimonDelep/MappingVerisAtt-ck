@@ -92,6 +92,12 @@ If there is no database selected, last version of database is selected by defaul
             action="store_true",
             help="Mode test sans appel API",
             )
+    parser.add_argument(
+            "--max-mappings-per-veris",
+            type=int,
+            default=None,
+            help="Nombre maximum de mappings MITRE conservés par élément VERIS",
+            )
     return parser
 
 
@@ -740,6 +746,56 @@ def merge_batch_results(results, veris_version, mitre_version, scope, model):
         "veris_to_mitre": all_entries,
     }
 
+def limit_mappings_per_veris(payload, max_mappings_per_veris):
+    if max_mappings_per_veris is None:
+        return payload
+
+    if not isinstance(payload, dict):
+        return payload
+
+    entries = payload.get("veris_to_mitre", [])
+
+    if not isinstance(entries, list):
+        return payload
+
+    for entry in entries:
+        if not isinstance(entry, dict):
+            continue
+
+        mappings = entry.get("mitre_mappings", [])
+
+        if not isinstance(mappings, list):
+            entry["mitre_mappings"] = []
+            entry["no_mapping_found"] = True
+            entry["ambiguous"] = False
+            continue
+
+        cleaned = []
+        seen = set()
+
+        for mapping in mappings:
+            if not isinstance(mapping, dict):
+                continue
+
+            attack_id = mapping.get("sub_technique_id") or mapping.get("technique_id")
+
+            if not attack_id:
+                continue
+
+            if attack_id in seen:
+                continue
+
+            seen.add(attack_id)
+            cleaned.append(mapping)
+
+        cleaned = cleaned[:max_mappings_per_veris]
+
+        entry["mitre_mappings"] = cleaned
+        entry["no_mapping_found"] = len(cleaned) == 0
+        entry["ambiguous"] = len(cleaned) > 1
+
+    return payload
+
 # -------------- Main
 def main() -> None:
     load_dotenv("dev.env")
@@ -859,6 +915,10 @@ def main() -> None:
                 mitre_version=mitre_version,
                 scope=scope,
                 model=args.model,
+            )
+            result_json = limit_mappings_per_veris(
+                payload=result_json,
+                max_mappings_per_veris=args.max_mappings_per_veris,
             )
 
             batch_results.append(result_json)
