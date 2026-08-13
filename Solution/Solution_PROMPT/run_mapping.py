@@ -13,6 +13,8 @@ CAPABILITY=["action.hacking", "action.malware", "attribute.integrity", "attribut
 REQUEST_TIMEOUT_S = 900.0
 MAX_PARALLEL_REQUESTS = 1
 RETRY_SLEEP_S = [5, 15, 30]
+MAX_TOKENS = 32768
+ATTACK_DESC_MAX = 400
 
 # -------------------- ROOT PWD
 DEFAULT_DB_MAPPING = Path(__file__).resolve().parents[2] / "data_for_work" / "attack-19.1_veris-1.4.1"
@@ -78,8 +80,10 @@ Je veux que tu me traite toutes les données en rapport de la capability group {
 {data_attack}
 
 ## Instruction finale
-Produis le mapping bidirectionnel complet (VERIS → MITRE puis MITRE → VERIS) entre tous les éléments listés ci-dessus, en respectant strictement le format JSON et les règles définies dans le system prompt.
-Traite tous les éléments fournis dans les deux sens, sans en omettre aucun, même pour indiquer "no_mapping_found": true.\
+Produis le mapping en respectant le format JSON du system prompt.
+- veris_to_mitre: une entrée pour CHAQUE capacité VERIS fournie (no_mapping_found autorisé).
+- mitre_to_veris: UNIQUEMENT les techniques ATT&CK qui ont au moins une correspondance avec ce capability group (ne pas dumper tout le catalogue).
+Réponds uniquement avec un JSON valide et complet, sans markdown.\
          """.format(veris_version=veris_version ,attack_version=attack_version , attack_domain=attack_domain , data_veris=data_veris , data_attack=data_attack , capability=capability )
     return user_prompt
 
@@ -95,6 +99,37 @@ def get_data(data_path:str) -> tuple[str, str]:
         print("error:"+data_path.split("/")[-1]+"file was not found")
         raise SystemExit(1)
 
+def filter_veris_for_capability(veris_data: dict, capability: str) -> dict:
+    caps = [c for c in veris_data["capabilities"] if c.get("capability_group") == capability]
+    return {
+        "framework": veris_data.get("framework", "veris"),
+        "version": veris_data["version"],
+        "capability_group": capability,
+        "capability_count": len(caps),
+        "capabilities": caps,
+    }
+
+def compact_attack(attack_data: dict, max_desc: int = ATTACK_DESC_MAX) -> dict:
+    techs = []
+    for t in attack_data["techniques"]:
+        desc = t.get("description") or ""
+        if len(desc) > max_desc:
+            desc = desc[:max_desc].rsplit(" ", 1)[0] + "..."
+        techs.append({
+            "attack_id": t["attack_id"],
+            "name": t["name"],
+            "tactics": t.get("tactics", []),
+            "is_subtechnique": t.get("is_subtechnique"),
+            "parent_id": t.get("parent_id"),
+            "description": desc,
+        })
+    return {
+        "framework": attack_data.get("framework", "mitre_attack"),
+        "version": attack_data["version"],
+        "technique_count": len(techs),
+        "techniques": techs,
+    }
+
 # -------------------- LLM
 async def run_llm_parallel(async_client, user_prompt: str, model: str, system_prompt: str = None, sem: asyncio.Semaphore | None = None, capability: str = ""):
     response = None
@@ -108,6 +143,8 @@ async def run_llm_parallel(async_client, user_prompt: str, model: str, system_pr
         return await async_client.chat.completions.create(
             model=model,
             messages=messages,
+            max_tokens=MAX_TOKENS,
+            temperature=0,
         )
 
     for attempt, sleep_time in enumerate(RETRY_SLEEP_S, start=1):
@@ -130,8 +167,15 @@ async def run_llm_parallel(async_client, user_prompt: str, model: str, system_pr
         raise RuntimeError(
             f"Failed after retries for {capability or 'capability'}: {last_error!r}"
         )
-    print(f"[{capability}] done.", flush=True)
-    return response.choices[0].message.content
+    msg = response.choices[0].message
+    content = (msg.content or getattr(msg, "reasoning_content", None) or "").strip()
+    finish = getattr(response.choices[0], "finish_reason", None)
+    print(f"[{capability}] done. finish_reason={finish} chars={len(content)}", flush=True)
+    if not content:
+        raise RuntimeError(f"Empty content for {capability} (finish_reason={finish})")
+    if finish == "length":
+        raise RuntimeError(f"Truncated output for {capability} (finish_reason=length)")
+    return content
 
 # --------------- Run Parallel Request Per Capabilities
 async def map_per_capability(async_client, mapping_prompt_capability: dict, system_prompt: str, model: str, output_dir: Path) -> dict:
@@ -139,15 +183,31 @@ async def map_per_capability(async_client, mapping_prompt_capability: dict, syst
     results = {}
     output_dir.mkdir(parents=True, exist_ok=True)
     for c in capabilities:
+        out_file = output_dir / f"{c}.json"
+        if out_file.exists() and out_file.stat().st_size > 0:
+            try:
+                existing = out_file.read_text(encoding="utf-8")
+                json.loads(existing)
+                print(f"[{c}] skip, already valid -> {out_file}", flush=True)
+                results[c] = existing
+                continue
+            except json.JSONDecodeError:
+                print(f"[{c}] existing file invalid, regenerating...", flush=True)
+
         print(f"\n=== Starting {c} ===", flush=True)
         try:
             content = await run_llm_parallel(
                 async_client, mapping_prompt_capability[c], model, system_prompt,
                 sem=None, capability=c,
             )
+            if content.startswith("```"):
+                content = content.strip("`")
+                if content.startswith("json"):
+                    content = content[4:].strip()
+            json.loads(content)
+            out_file.write_text(content, encoding="utf-8")
             results[c] = content
-            (output_dir / f"{c}.json").write_text(content, encoding="utf-8")
-            print(f"[{c}] written -> {output_dir / f'{c}.json'}", flush=True)
+            print(f"[{c}] written -> {out_file}", flush=True)
         except Exception as e:
             print(f"[{c}] FAILED: {e}", flush=True)
             continue
@@ -196,9 +256,19 @@ def main() -> None:
         timeout=REQUEST_TIMEOUT_S,
     )
     
+    attack_compact = compact_attack(attack_data)
     user_prompts = []
     for c in CAPABILITY:
-        user_prompts.append(create_user_prompt(veris_version, attack_version, veris_data, attack_data, c))
+        veris_c = filter_veris_for_capability(veris_data, c)
+        user_prompts.append(
+            create_user_prompt(
+                veris_version,
+                attack_version,
+                json.dumps(veris_c, ensure_ascii=False),
+                json.dumps(attack_compact, ensure_ascii=False),
+                c,
+            )
+        )
     mapping_prompt_capability = dict(zip(CAPABILITY, user_prompts))
     system_prompt = (Path(__file__).parent / "system-prompt.md").read_text(encoding="utf-8")
    
@@ -213,20 +283,10 @@ def main() -> None:
         return
     print(f"Chosen model is {model}. \nGeneration of mapping...\n", flush=True)
 
-   
-
-    # create output folder w attack & veris version
-    dir_name = f"veris-{veris_version}_attack-{attack_version}-enterprise_PROMPT"
-    full_path = OUTPUT_RESULT / dir_name 
-    
-    try:
-        os.mkdir(full_path)
-    except FileExistsError:
-        print(f"Directory '{full_path}' already exists")
-    except PermissionError:
-        print(f"Permission denied: Unable to create '{full_path}'")
-    except Exception as e:
-        print(f"An error occurred: {e}")
+    model_tag = "Kimi-K3" if model_code == "1" else "DeepSeek-V4-Pro"
+    dir_name = f"veris-{veris_version}_attack-{attack_version}-enterprise_PROMPT_{model_tag}"
+    full_path = OUTPUT_RESULT / dir_name
+    full_path.mkdir(parents=True, exist_ok=True)
 
     llm_response = asyncio.run(
         map_per_capability(async_client, mapping_prompt_capability, system_prompt, model, full_path)
