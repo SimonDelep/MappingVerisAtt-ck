@@ -953,6 +953,245 @@ plutôt que comme un simple gain uniforme.
 
 \subsection{Solution Fine-tune}
 
+\subsection{Solution Fine-tune}
+
+\subsubsection{Principe général}
+
+La solution \textbf{Fine-tune} vise à générer automatiquement des mappings entre les capacités VERIS et les techniques MITRE ATT\&CK à partir des mappings experts disponibles. Contrairement à une approche fondée uniquement sur un prompt, cette solution exploite les associations déjà établies par les experts afin d'apprendre une relation entre la description textuelle d'une capacité VERIS et les techniques ATT\&CK correspondantes.
+
+Dans le cadre de ce projet, le terme \emph{fine-tune} désigne une approche supervisée locale légère. Il ne s'agit pas d'un réentraînement complet d'un grand modèle de langage de type Llama, Mistral ou Gemma avec LoRA ou QLoRA. Le choix retenu repose plutôt sur une chaîne classique de traitement automatique du langage combinant une vectorisation TF-IDF, une classification multi-label et une régression logistique.
+
+Ce choix présente plusieurs avantages dans le contexte du projet. D'une part, le volume de données annotées est limité, ce qui rend difficile l'entraînement efficace d'un grand modèle de langage. D'autre part, une approche locale est plus simple à reproduire, moins coûteuse et indépendante d'une API externe. Elle permet également de produire directement des fichiers JSON structurés, compatibles avec le comparateur du projet.
+
+Cette solution sert donc de compromis entre une approche purement statistique et une approche LLM plus coûteuse. Elle cherche à exploiter au mieux les mappings experts déjà disponibles, tout en conservant une exécution locale et reproductible.
+
+\subsubsection{Données utilisées}
+
+La solution utilise les fichiers préparés dans le dossier :
+
+\begin{verbatim}
+data_for_work/attack-19.1_veris-1.4.1/
+\end{verbatim}
+
+Trois fichiers sont nécessaires au fonctionnement du pipeline :
+
+\begin{itemize}
+    \item \texttt{veris\_1.4.1.json} : capacités VERIS à mapper ;
+    \item \texttt{attack\_19.1.json} : techniques et sous-techniques MITRE ATT\&CK candidates ;
+    \item \texttt{mapping\_des\_experts.json} : mappings experts utilisés comme référence supervisée.
+\end{itemize}
+
+Le fichier \texttt{mapping\_des\_experts.json} permet de construire les exemples d'entraînement. Chaque capacité VERIS est associée à une ou plusieurs techniques ATT\&CK. La tâche est donc formulée comme un problème de classification multi-label : une même entrée VERIS peut correspondre à plusieurs sorties MITRE.
+
+Les sept capability groups traités sont ceux attendus par le projet :
+
+\begin{verbatim}
+action.hacking
+action.malware
+action.social
+attribute.availability
+attribute.confidentiality
+attribute.integrity
+value_chain.development
+\end{verbatim}
+
+Chaque groupe donne lieu à un fichier JSON séparé au format \texttt{veris\_to\_mitre}.
+
+\subsubsection{Pipeline supervisé local}
+
+Le fichier principal de cette solution est :
+
+\begin{verbatim}
+Solution/Solution_FINE_TUNE/run_mapping.py
+\end{verbatim}
+
+Le pipeline suit plusieurs étapes. Les données VERIS, ATT\&CK et les mappings experts sont d'abord chargés depuis le dossier de travail. Les capacités VERIS sont ensuite transformées en représentations textuelles à partir de leur identifiant, de leur capability group, de leur label et de leur description. Cette représentation permet de fournir au modèle un contexte textuel suffisant pour apprendre des rapprochements sémantiques.
+
+Les mappings experts sont ensuite convertis en un jeu d'entraînement. La partie textuelle des capacités VERIS constitue l'entrée du modèle, tandis que les identifiants MITRE associés constituent les labels à prédire. Comme une capacité VERIS peut correspondre à plusieurs techniques MITRE, les labels sont encodés avec un \texttt{MultiLabelBinarizer}.
+
+Le modèle repose sur la chaîne suivante :
+
+\begin{itemize}
+    \item vectorisation TF-IDF des textes VERIS ;
+    \item classification multi-label avec une stratégie One-vs-Rest ;
+    \item régression logistique pour prédire les techniques ATT\&CK ;
+    \item filtrage des prédictions selon un seuil de confiance ;
+    \item limitation du nombre de techniques conservées avec un paramètre \texttt{top-k}.
+\end{itemize}
+
+La sortie générée respecte le format commun du projet. Pour chaque capability group, un fichier JSON est produit :
+
+\begin{verbatim}
+action.hacking.json
+action.malware.json
+action.social.json
+attribute.availability.json
+attribute.confidentiality.json
+attribute.integrity.json
+value_chain.development.json
+\end{verbatim}
+
+\paragraph{Découpage par capability group.}
+
+Le traitement est réalisé séparément pour chaque capability group VERIS. Ce choix répond d'abord à une contrainte de format imposée par le projet : chaque solution doit produire sept fichiers JSON distincts, un pour chaque groupe de capacités VERIS. Cette organisation permet ensuite au comparateur d'évaluer les résultats de manière structurée et homogène.
+
+Le découpage par capability group présente également un intérêt méthodologique. Les capacités VERIS ne décrivent pas toutes le même type de comportement ou d'impact. Par exemple, \texttt{action.hacking} regroupe des actions liées aux techniques de compromission, \texttt{action.malware} concerne les comportements liés aux logiciels malveillants, tandis que \texttt{attribute.availability} décrit des impacts sur la disponibilité. Traiter ces groupes séparément permet donc de conserver cette organisation sémantique dans les fichiers générés.
+
+Dans le cas du modèle local supervisé, ce découpage permet de générer des résultats plus lisibles et plus faciles à analyser. Chaque fichier de sortie contient uniquement les mappings associés à un groupe donné, ce qui facilite l'identification des catégories où le modèle fonctionne correctement et de celles où les erreurs sont plus fréquentes.
+
+Dans le cas de la variante LLM zero-shot, ce découpage est encore plus important. Envoyer l'ensemble des capacités VERIS dans un seul prompt produirait un contexte trop long et augmenterait le risque de réponses mal structurées. Le traitement par capability group limite donc la taille des entrées envoyées au modèle et améliore la stabilité du format JSON généré.
+
+Ce découpage permet enfin de comparer plus facilement les approches entre elles. Les solutions \texttt{RAG}, \texttt{PROMPT} et \texttt{FINE\_TUNE} produisent toutes les mêmes sept fichiers de sortie, ce qui garantit une évaluation équitable avec le script de comparaison.
+
+Les fichiers sont écrits dans :
+
+\begin{verbatim}
+Resultat/Resultat_FINE_TUNE/
+\end{verbatim}
+
+\subsubsection{Paramètres de décision}
+
+Deux paramètres influencent directement le comportement du modèle local :
+
+\begin{itemize}
+    \item \texttt{threshold} : seuil minimal de confiance pour conserver une prédiction ;
+    \item \texttt{top-k} : nombre maximal de techniques ATT\&CK conservées par capacité VERIS.
+\end{itemize}
+
+Un seuil élevé rend le modèle plus strict. Il génère moins de mappings, ce qui peut augmenter la précision, mais réduit généralement le rappel. À l'inverse, un seuil plus faible rend le modèle plus permissif : il retrouve davantage de correspondances expertes, mais peut aussi générer davantage de faux positifs.
+
+Le paramètre \texttt{top-k} agit comme une limite sur le nombre de prédictions conservées. Il permet d'éviter que le modèle associe trop de techniques ATT\&CK à une même capacité VERIS, tout en laissant suffisamment de possibilités pour retrouver les paires expertes.
+
+La configuration retenue pour le meilleur résultat local est :
+
+\begin{verbatim}
+python Solution/Solution_FINE_TUNE/run_mapping.py --threshold 0.05 --top-k 20 --output-name FINE_TUNE_T005_K20
+\end{verbatim}
+
+\subsubsection{Variante LLM zero-shot}
+
+En complément du modèle supervisé local, une variante basée sur un LLM déjà entraîné a été expérimentée. Cette variante est implémentée dans :
+
+\begin{verbatim}
+Solution/Solution_FINE_TUNE/run_mapping_llm.py
+\end{verbatim}
+
+Elle utilise un modèle LLM via l'API Together AI. Le modèle principalement retenu est :
+
+\begin{verbatim}
+meta-llama/Llama-3.3-70B-Instruct-Turbo
+\end{verbatim}
+
+Ce modèle n'est pas réentraîné dans le cadre du projet. Il est utilisé en \emph{zero-shot}, c'est-à-dire uniquement à partir d'un prompt décrivant la tâche à effectuer. L'objectif est de comparer une approche supervisée locale avec une approche LLM généraliste déjà instruction-tuned.
+
+Le script LLM reprend la même logique de sortie que le modèle local : sept fichiers JSON sont générés, un par capability group VERIS. Pour limiter la taille des prompts, les capacités VERIS sont traitées par batchs. Le script permet également de choisir le modèle, de limiter le nombre d'éléments traités et de contrôler le nombre de candidats ATT\&CK fournis au modèle.
+
+Les principaux paramètres sont :
+
+\begin{itemize}
+    \item \texttt{--model} : choix du modèle LLM ;
+    \item \texttt{--batch-size} : nombre de capacités VERIS envoyées dans un même appel ;
+    \item \texttt{--top-k-attack} : nombre de techniques ATT\&CK candidates fournies au modèle ;
+    \item \texttt{--limit-per-scope} : limite optionnelle du nombre d'éléments traités par scope ;
+    \item \texttt{--output-name} : nom du dossier de sortie.
+\end{itemize}
+
+La meilleure configuration Llama validée est :
+
+\begin{verbatim}
+python Solution/Solution_FINE_TUNE/run_mapping_llm.py --model meta-llama/Llama-3.3-70B-Instruct-Turbo --batch-size 2 --top-k-attack 30 --output-name FINE_TUNED_LLM_LLAMA_B2_K30
+\end{verbatim}
+
+\subsubsection{Paramétrage expérimental}
+
+Le script LLM a été conçu pour faciliter la comparaison de plusieurs configurations expérimentales sans modifier directement le code source. Les principaux paramètres du pipeline peuvent être définis depuis la ligne de commande, ce qui permet de reproduire plus facilement les essais et de comparer différents modèles ou réglages.
+
+Les paramètres les plus importants sont :
+
+\begin{itemize}
+    \item \texttt{--model} : modèle LLM utilisé pour la génération ;
+    \item \texttt{--batch-size} : nombre de capacités VERIS traitées dans un même appel au modèle ;
+    \item \texttt{--top-k-attack} : nombre de techniques MITRE ATT\&CK candidates fournies au modèle ;
+    \item \texttt{--limit-per-scope} : nombre maximal de capacités VERIS traitées par capability group, principalement utilisé pour les tests rapides ;
+    \item \texttt{--output-name} : nom du dossier de sortie généré dans les résultats.
+\end{itemize}
+
+Ce paramétrage permet d'éviter de figer les choix expérimentaux dans le script. Il devient ainsi possible de lancer plusieurs configurations successives en modifiant uniquement les arguments de la commande.
+
+Par exemple, la meilleure configuration Llama validée a été lancée avec la commande suivante :
+
+\begin{verbatim}
+python Solution/Solution_FINE_TUNE/run_mapping_llm.py --model meta-llama/Llama-3.3-70B-Instruct-Turbo --batch-size 2 --top-k-attack 30 --output-name FINE_TUNED_LLM_LLAMA_B2_K30
+\end{verbatim}
+
+Dans cette configuration, le modèle Llama 3.3 70B Instruct Turbo est utilisé avec des batchs de deux capacités VERIS et trente techniques MITRE ATT\&CK candidates par appel. Ce réglage vise à limiter la taille du prompt tout en laissant suffisamment de choix au modèle pour retrouver des correspondances pertinentes.
+
+Le paramètre \texttt{--batch-size} agit principalement sur la stabilité des réponses. Un batch trop grand augmente la taille du prompt et peut provoquer des réponses JSON moins fiables. À l'inverse, un batch plus petit améliore la lisibilité du prompt, mais augmente le nombre d'appels API nécessaires.
+
+Le paramètre \texttt{--top-k-attack} influence le nombre de techniques candidates proposées au modèle. Une valeur trop faible risque d'exclure la bonne technique MITRE avant même la génération. Une valeur trop élevée augmente la taille du prompt et peut rendre la décision du modèle moins précise. Le choix de ce paramètre correspond donc à un compromis entre couverture, coût d'appel et qualité de la réponse.
+
+Enfin, le paramètre \texttt{--output-name} permet de conserver plusieurs expériences dans des dossiers séparés. Cela évite d'écraser les anciens résultats et facilite ensuite la comparaison automatique des configurations avec le script d'évaluation.
+
+\subsubsection{Robustesse du format de sortie}
+
+Une difficulté importante des approches fondées sur les LLM concerne la stabilité du format de sortie. Même lorsque le prompt impose une réponse au format JSON strict, le modèle peut produire une réponse partiellement invalide. Il peut par exemple ajouter du texte explicatif avant ou après le JSON, modifier le nom des clés attendues, oublier certains champs, ou retourner une chaîne de caractères à la place d'un objet structuré.
+
+Dans ce projet, cette contrainte est particulièrement importante, car l'évaluation des résultats est entièrement automatisée. Le comparateur ne vérifie pas seulement la pertinence sémantique des mappings générés : il attend également une structure précise au format \texttt{veris\_to\_mitre}. Une réponse compréhensible par un humain peut donc être inutilisable par le pipeline si elle ne respecte pas strictement le schéma attendu.
+
+Par exemple, certaines réponses LLM peuvent retourner une valeur isolée comme :
+
+\begin{verbatim}
+"action.malware.vector.Remote injection"
+\end{verbatim}
+
+alors que le format attendu doit contenir une entrée complète avec les informations VERIS, la liste des mappings MITRE associés et un indicateur précisant si aucun mapping n'a été trouvé.
+
+Pour limiter ce problème, des scripts de correction et de normalisation ont été utilisés :
+
+\begin{verbatim}
+normalize_llm_outputs.py
+fix_bad_llm_entries.py
+fix_bad_llama_entries.py
+\end{verbatim}
+
+Ces scripts ont pour objectif de rendre les fichiers générés compatibles avec le comparateur. Ils peuvent notamment corriger certaines structures invalides, harmoniser les noms de champs, extraire les identifiants MITRE lorsqu'ils sont présents dans une réponse mal structurée, et convertir les sorties vers le format attendu.
+
+Cette étape ne consiste pas à inventer de nouveaux mappings. Elle vise uniquement à rendre exploitables les réponses déjà produites par le modèle. Les corrections portent donc sur la forme des fichiers JSON, et non sur le contenu sémantique des associations VERIS--MITRE.
+
+La robustesse du format de sortie constitue ainsi une étape indispensable du pipeline LLM. Sans cette normalisation, une partie des résultats générés ne pourrait pas être évaluée automatiquement, même lorsque les réponses contiennent des informations potentiellement pertinentes.
+
+\subsubsection{Contraintes liées à l'utilisation d'une API externe}
+
+L'expérimentation avec un LLM zero-shot repose sur l'utilisation de l'API Together AI. Contrairement au modèle local supervisé, cette approche dépend donc d'un service externe pour générer les mappings. Cette dépendance introduit plusieurs contraintes pratiques : disponibilité de l'API, temps de réponse, coût des appels, quotas de crédits et stabilité des réponses retournées par le modèle.
+
+La clé API est chargée depuis un fichier local, par exemple :
+
+\begin{verbatim}
+dev.env
+\end{verbatim}
+
+Ce fichier n'est pas destiné à être ajouté au dépôt GitHub, car il contient des informations sensibles. Les fichiers de configuration locale comme \texttt{dev.env}, \texttt{.env} ou \texttt{.dev.env} doivent donc rester exclus du suivi Git.
+
+L'utilisation d'une API externe a également un impact sur la reproductibilité des expériences. Une même commande peut être relancée localement, mais elle nécessite toujours que la clé API soit valide et que le compte dispose de crédits suffisants. Cela distingue cette approche du modèle supervisé local, qui peut être exécuté sans appel réseau une fois les données et les dépendances installées.
+
+Cette contrainte est apparue lors de la tentative d'amélioration de la configuration Llama. Une expérience supplémentaire avait été préparée avec la configuration suivante :
+
+\begin{verbatim}
+FINE_TUNED_LLM_LLAMA_B2_K40_MAX2
+\end{verbatim}
+
+L'objectif était d'augmenter le nombre de candidats MITRE ATT\&CK fournis au modèle avec \texttt{--top-k-attack 40}, tout en limitant le nombre de mappings conservés par capacité VERIS avec \texttt{--max-mappings-per-veris 2}. Cette stratégie devait permettre de réduire le nombre total de solutions générées tout en essayant d'augmenter les paires communes avec les mappings experts.
+
+Cependant, cette expérience n'a pas pu être évaluée correctement, car l'API Together a renvoyé l'erreur suivante :
+
+\begin{verbatim}
+402 Credit limit exceeded
+\end{verbatim}
+
+Les fichiers générés à la suite de cette erreur ne contenaient pas de véritables réponses du modèle, mais des sorties vides ou de repli. Ils n'ont donc pas été retenus dans les résultats finaux.
+
+Cette limite montre que les approches LLM externalisées ne doivent pas être évaluées uniquement selon leurs performances théoriques. Leur coût, leur dépendance à un fournisseur externe, les quotas disponibles et la stabilité des réponses doivent également être pris en compte. Dans ce contexte, le modèle local supervisé présente un avantage important : il reste entièrement reproductible localement et ne dépend pas d'un service tiers au moment de l'exécution.
+
 \subsection{Solution PROMPT}
 
 \subsection{Synthèse des trois solutions}
@@ -967,6 +1206,115 @@ plutôt que comme un simple gain uniforme.
 \subsection{Résultats --- Solution RAG}
 
 \subsection{Résultats --- Solution Fine-tune}
+
+\subsection{Résultats --- Solution Fine-tune}
+
+\subsubsection{Résultats du modèle supervisé local}
+
+Plusieurs configurations ont été évaluées afin d'observer l'effet du seuil de confiance et du nombre maximal de techniques conservées par capacité VERIS. Le Tableau~\ref{tab:fine-tune-resultats} présente les principales configurations testées.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+\textbf{Configuration} & \textbf{Seuil} & \textbf{Top-k} & \textbf{Précision} & \textbf{Rappel} & \textbf{F1} \\
+\midrule
+\texttt{FINE\_TUNE} & 0.20 & 5 & 58.9\% & 9.8\% & 16.9\% \\
+\texttt{FINE\_TUNE\_T010\_K10} & 0.10 & 10 & 68.0\% & 18.7\% & 29.4\% \\
+\texttt{FINE\_TUNE\_T005\_K10} & 0.05 & 10 & 35.4\% & 37.2\% & 36.3\% \\
+\texttt{FINE\_TUNE\_T005\_K15} & 0.05 & 15 & 36.7\% & 43.1\% & 39.7\% \\
+\texttt{FINE\_TUNE\_T005\_K20} & 0.05 & 20 & 37.4\% & 46.1\% & \textbf{41.3\%} \\
+\bottomrule
+\end{tabular}
+\caption{Résultats du modèle supervisé local selon les hyperparamètres.}
+\label{tab:fine-tune-resultats}
+\end{table}
+
+La configuration \texttt{FINE\_TUNE} initiale produit une précision correcte, mais un rappel très faible. Le modèle est alors trop strict : il propose peu de mappings et ne retrouve qu'une faible partie des paires expertes.
+
+La configuration \texttt{FINE\_TUNE\_T010\_K10} augmente fortement la précision, mais le rappel reste limité. Cette configuration génère donc des prédictions plus fiables, mais elle ne couvre pas suffisamment le mapping expert.
+
+Les configurations avec un seuil de \texttt{0.05} améliorent nettement le rappel. L'augmentation progressive du \texttt{top-k} permet de retrouver davantage de paires expertes sans dégrader excessivement la précision. La meilleure configuration obtenue est donc :
+
+\begin{verbatim}
+FINE_TUNE_T005_K20
+\end{verbatim}
+
+Elle atteint un F1 de \textbf{41.3~\%}, ce qui en fait le meilleur résultat global obtenu pour cette solution.
+
+\subsubsection{Résultats de la variante LLM zero-shot}
+
+La variante LLM zero-shot a été évaluée avec plusieurs configurations autour du modèle Llama 3.3 70B Instruct Turbo. L'objectif était d'observer l'effet de la taille des batchs et du nombre de candidats ATT\&CK fournis au modèle.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+\textbf{Configuration} & \textbf{Batch} & \textbf{Top-k ATT\&CK} & \textbf{Précision} & \textbf{Rappel} & \textbf{F1} \\
+\midrule
+\texttt{FINE\_TUNED\_LLM\_BATCH5} & 5 & 15 & 13.6\% & 3.1\% & 5.1\% \\
+\texttt{LLAMA\_B3\_K25} & 3 & 25 & 15.4\% & 6.2\% & 8.9\% \\
+\texttt{LLAMA\_B2\_K30} & 2 & 30 & 17.0\% & 6.4\% & \textbf{9.3\%} \\
+\bottomrule
+\end{tabular}
+\caption{Résultats du LLM Llama utilisé en zero-shot.}
+\label{tab:llama-resultats}
+\end{table}
+
+La réduction de la taille des batchs améliore la qualité des réponses. Avec un batch plus petit, le modèle traite moins de capacités VERIS à la fois, ce qui rend le prompt plus lisible. L'augmentation du nombre de candidats ATT\&CK permet également de donner au modèle davantage de possibilités pour retrouver les correspondances expertes.
+
+La meilleure configuration Llama validée est :
+
+\begin{verbatim}
+FINE_TUNED_LLM_LLAMA_B2_K30
+\end{verbatim}
+
+Elle obtient un F1 de \textbf{9.3~\%}. Ce score reste nettement inférieur à celui du modèle supervisé local. Ce résultat montre que le LLM zero-shot est capable de produire des mappings exploitables, mais qu'il ne parvient pas à reproduire efficacement le mapping expert sans entraînement spécifique.
+
+\subsubsection{Tentative d'amélioration supplémentaire}
+
+Une configuration plus stricte a été préparée afin de répondre à l'objectif d'augmenter le nombre de paires communes avec les experts tout en réduisant le nombre de solutions générées. Cette configuration reposait sur deux modifications :
+
+\begin{itemize}
+    \item augmenter le nombre de candidats ATT\&CK avec \texttt{--top-k-attack 40} ;
+    \item limiter le nombre de mappings conservés par capacité VERIS avec \texttt{--max-mappings-per-veris 2}.
+\end{itemize}
+
+La configuration prévue était :
+
+\begin{verbatim}
+FINE_TUNED_LLM_LLAMA_B2_K40_MAX2
+\end{verbatim}
+
+Cependant, ce test n'a pas pu être évalué correctement, car l'API Together a renvoyé une erreur \texttt{402 Credit limit exceeded}. Les fichiers générés à la suite de cette erreur ne contenaient pas de véritables réponses LLM, mais des fallbacks vides. Cette configuration n'a donc pas été retenue dans les résultats finaux.
+
+\subsubsection{Comparaison avec les autres approches}
+
+Le Tableau~\ref{tab:comparaison-approches} compare le meilleur résultat de la solution Fine-tune avec les autres approches évaluées dans le projet.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{Méthode} & \textbf{Précision} & \textbf{Rappel} & \textbf{F1} & \textbf{Jaccard} \\
+\midrule
+Modèle supervisé local \texttt{FINE\_TUNE\_T005\_K20} & 37.4\% & 46.1\% & \textbf{41.3\%} & 26.0\% \\
+RAG avec exemples & 18.9\% & 49.7\% & 27.4\% & 15.9\% \\
+RAG attack-only & 7.2\% & 15.4\% & 9.8\% & 5.2\% \\
+LLM Llama zero-shot \texttt{B2\_K30} & 17.0\% & 6.4\% & 9.3\% & 4.9\% \\
+Qwen / DeepSeek & 0.0\% & 0.0\% & 0.0\% & 0.0\% \\
+\bottomrule
+\end{tabular}
+\caption{Comparaison des meilleures configurations évaluées.}
+\label{tab:comparaison-approches}
+\end{table}
+
+Le modèle supervisé local obtient le meilleur F1 global. Le RAG avec exemples obtient un rappel légèrement supérieur, mais au prix d'une précision plus faible. Le LLM Llama zero-shot reste exploitable, mais son rappel est trop limité pour rivaliser avec les approches exploitant directement les mappings experts.
+
+Ces résultats indiquent qu'une approche locale simple, entraînée sur les mappings experts, peut être plus efficace qu'un LLM généraliste utilisé sans adaptation au domaine. Le principal facteur de performance n'est donc pas seulement la taille du modèle, mais aussi la proximité entre les données d'entraînement et la tâche évaluée.
 
 \subsection{Résultats --- Solution PROMPT}
 
