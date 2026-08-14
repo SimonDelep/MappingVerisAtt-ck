@@ -1,0 +1,183 @@
+{
+  "metadata": {
+    "veris_version": "1.4.1",
+    "mitre_attack_version": "19.1",
+    "scope": "Périmètre limité au capability group VERIS action.hacking (56 varieties + 14 vectors, domaine Enterprise). Côté MITRE ATT&CK : techniques/sub-techniques du catalogue fourni en rapport sémantique avec action.hacking (union des techniques référencées dans le mapping VERIS→MITRE, plus T1040 Network Sniffing et T1087 Account Discovery, fortement apparentées) ; les autres techniques du catalogue fourni sont hors périmètre pour cette réponse."
+  },
+  "veris_to_mitre": [
+    {
+      "veris_id": "action.hacking.variety.Abuse of functionality",
+      "veris_category": "Hacking",
+      "veris_label": "Abuse of functionality",
+      "no_mapping_found": true,
+      "mitre_mappings": [],
+      "ambiguous": false,
+      "notes": "Concept VERIS générique d'abus de fonctionnalités légitimes d'une application (distinct de 'Exploit vuln' et 'Exploit misconfig'). Aucune technique fournie ne couvre l'abus de fonctionnalité en tant que tel ; T1059 ou T1219 décrivent des abus d'outils spécifiques sans équivalent générique."
+    },
+    {
+      "veris_id": "action.hacking.variety.AitM",
+      "veris_category": "Hacking",
+      "veris_label": "AitM",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1557",
+          "technique_name": "Adversary-in-the-Middle",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["credential-access", "collection"],
+          "mapping_type": "direct",
+          "confidence": "high",
+          "confidence_score": 0.95,
+          "justification": "T1557 décrit explicitement une 'adversary-in-the-middle (AiTM) technique' pour s'interposer entre des systèmes en réseau, ce qui correspond exactement à la définition VERIS."
+        },
+        {
+          "technique_id": "T1557",
+          "technique_name": "Adversary-in-the-Middle",
+          "sub_technique_id": "T1557.001",
+          "sub_technique_name": "Name Resolution Poisoning and SMB Relay",
+          "tactic(s)": ["credential-access", "collection"],
+          "mapping_type": "direct",
+          "confidence": "high",
+          "confidence_score": 0.9,
+          "justification": "L'empoisonnement de la résolution de noms (LLMNR/NBT-NS/mDNS) pour forcer la communication via un système contrôlé est une mise en œuvre concrète d'AiTM."
+        },
+        {
+          "technique_id": "T1557",
+          "technique_name": "Adversary-in-the-Middle",
+          "sub_technique_id": "T1557.002",
+          "sub_technique_name": "ARP Cache Poisoning",
+          "tactic(s)": ["credential-access", "collection"],
+          "mapping_type": "direct",
+          "confidence": "high",
+          "confidence_score": 0.9,
+          "justification": "L'empoisonnement de cache ARP positionne l'adversaire entre deux équipements, forme canonique d'AiTM."
+        },
+        {
+          "technique_id": "T1557",
+          "technique_name": "Adversary-in-the-Middle",
+          "sub_technique_id": "T1557.003",
+          "sub_technique_name": "DHCP Spoofing",
+          "tactic(s)": ["credential-access", "collection"],
+          "mapping_type": "direct",
+          "confidence": "high",
+          "confidence_score": 0.85,
+          "justification": "Le spoofing DHCP redirige le trafic vers des systèmes contrôlés par l'adversaire pour atteindre une position AiTM."
+        },
+        {
+          "technique_id": "T1557",
+          "technique_name": "Adversary-in-the-Middle",
+          "sub_technique_id": "T1557.004",
+          "sub_technique_name": "Evil Twin",
+          "tactic(s)": ["credential-access", "collection"],
+          "mapping_type": "direct",
+          "confidence": "medium",
+          "confidence_score": 0.7,
+          "justification": "Un point d'accès Wi-Fi malveillant (Evil Twin) est une forme d'AiTM lorsque l'attaque passe par un faux AP sans fil."
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "action.hacking.variety.Backdoor",
+      "veris_category": "Hacking",
+      "veris_label": "Backdoor",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1505",
+          "technique_name": "Server Software Component",
+          "sub_technique_id": "T1505.003",
+          "sub_technique_name": "Web Shell",
+          "tactic(s)": ["persistence"],
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": "T1505.003 décrit des backdoors (web shells) placées sur des serveurs web ('backdoor web servers with web shells'), forme concrète de backdoor créée par une action de hacking."
+        },
+        {
+          "technique_id": "T1136",
+          "technique_name": "Create Account",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["persistence"],
+          "mapping_type": "contextuel",
+          "confidence": "low",
+          "confidence_score": 0.35,
+          "justification": "La création d'un compte peut servir de backdoor ('establish secondary credentialed access'), mais ne couvre qu'une forme possible de backdoor."
+        }
+      ],
+      "ambiguous": true,
+      "notes": "VERIS ne précise pas la forme de la backdoor ; d'autres mécanismes de persistance du catalogue pourraient également s'appliquer selon le contexte."
+    },
+    {
+      "veris_id": "action.hacking.variety.Brute force",
+      "veris_category": "Hacking",
+      "veris_label": "Brute force",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1110",
+          "technique_name": "Brute Force",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["credential-access"],
+          "mapping_type": "direct",
+          "confidence": "high",
+          "confidence_score": 0.95,
+          "justification": "T1110 décrit le 'brute force' et la devinette systématique de mots de passe via un mécanisme répétitif, identique à 'Brute force or password guessing attacks'."
+        },
+        {
+          "technique_id": "T1110",
+          "technique_name": "Brute Force",
+          "sub_technique_id": "T1110.001",
+          "sub_technique_name": "Password Guessing",
+          "tactic(s)": ["credential-access"],
+          "mapping_type": "direct",
+          "confidence": "high",
+          "confidence_score": 0.9,
+          "justification": "Password Guessing correspond directement au volet 'password guessing attacks' de la définition VERIS."
+        },
+        {
+          "technique_id": "T1110",
+          "technique_name": "Brute Force",
+          "sub_technique_id": "T1110.003",
+          "sub_technique_name": "Password Spraying",
+          "tactic(s)": ["credential-access"],
+          "mapping_type": "direct",
+          "confidence": "high",
+          "confidence_score": 0.85,
+          "justification": "Le password spraying est une variante de brute force (un mot de passe commun testé contre de nombreux comptes)."
+        },
+        {
+          "technique_id": "T1110",
+          "technique_name": "Brute Force",
+          "sub_technique_id": "T1110.004",
+          "sub_technique_name": "Credential Stuffing",
+          "tactic(s)": ["credential-access"],
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": "Le credential stuffing est une attaque itérative par credentials ; VERIS le classe explicitement sous 'Use of stolen creds', d'où un mapping partiel ici."
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "action.hacking.variety.Buffer overflow",
+      "veris_category": "Hacking",
+      "veris_label": "Buffer overflow",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1190",
+          "technique_name": "Exploit Public-Facing Application",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["initial-access"],
+          "mapping_type": "contextuel",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": "Le buffer overflow est une classe de vulnérabilité ('software bug') ; T1190 couvre l'exploitation de bugs dans des applications exposées sans modéliser les

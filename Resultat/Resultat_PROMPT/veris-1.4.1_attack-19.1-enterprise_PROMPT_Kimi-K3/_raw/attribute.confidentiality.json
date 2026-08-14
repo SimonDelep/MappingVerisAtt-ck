@@ -1,0 +1,35 @@
+{
+  "metadata": {
+    "veris_version": "1.4.1",
+    "mitre_attack_version": "19.1",
+    "capability_group": "attribute.confidentiality"
+  },
+  "veris_to_mitre": [
+    {
+      "veris_id": "attribute.confidentiality.data_disclosure",
+      "no_mapping_found": false,
+      "attack_ids": [
+        "T1011",
+        "T1011.001",
+        "T1020",
+        "T1020.001",
+        "T1029",
+        "T1030",
+        "T1041",
+        "T1048",
+        "T1048.001",
+        "T1048.002",
+        "T1048.003",
+        "T1052",
+        "T1052.001",
+        "T1537",
+        "T1567",
+        "T1567.001",
+        "T1567.002",
+        "T1567.003",
+        "T1567.004"
+      ]
+    }
+  ],
+  "mitre_to_veris": []
+}

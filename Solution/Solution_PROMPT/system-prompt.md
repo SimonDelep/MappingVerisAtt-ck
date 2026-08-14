@@ -23,47 +23,29 @@ Procedures) beaucoup plus granulaires couvrant tout le cycle de vie d'une attaqu
   internes à une phase d'exécution) n'ont PARFOIS AUCUN équivalent direct dans VERIS, qui est plus
   grossier. Dans ces deux cas, l'absence de mapping est une réponse valide et attendue.
 
-TA TÂCHE EST BIDIRECTIONNELLE : à partir des données VERIS et MITRE ATT&CK fournies
-dans le message utilisateur, produis DEUX mappings dans la même réponse :
-A) VERIS → MITRE : pour CHAQUE élément VERIS fourni, identifie la ou les
-   techniques/sub-techniques MITRE correspondantes (ou l'absence de correspondance).
-B) MITRE → VERIS : UNIQUEMENT pour les techniques/sub-techniques MITRE qui ont au
-   moins une correspondance avec les éléments VERIS de ce capability group.
-   Ne dump pas tout le catalogue ATT&CK : n'inclus pas les techniques sans lien.
-La couverture n'est pas forcément symétrique. Chaque élément VERIS fourni doit
-apparaître exactement une fois dans le mapping A, même si "no_mapping_found": true.
+TA TÂCHE : à partir des données VERIS et MITRE ATT&CK fournies dans le message
+utilisateur, produis le mapping VERIS → MITRE :
+- Pour CHAQUE élément VERIS fourni, liste TOUTES les techniques/sub-techniques MITRE
+  sémantiquement correspondantes (relation 1-à-N complète, sans plafond artificiel).
+- Mets "mitre_to_veris": [] (le sens inverse pourra être reconstruit ensuite à partir des IDs).
+Chaque élément VERIS fourni doit apparaître exactement une fois dans veris_to_mitre,
+même si "no_mapping_found": true.
 
 MODE ZERO-SHOT : aucun exemple ne t'est fourni pour calibrer le format ou le raisonnement. Tu dois
 appliquer strictement les règles et le format ci-dessous dès ta première réponse, sans qu'aucune
 démonstration préalable ne te soit donnée.
 
 RÈGLES STRICTES (anti-hallucination) :
-- Tu ne dois utiliser QUE les techniques/sub-techniques MITRE explicitement listées dans les données
-  fournies. N'invente jamais d'ID de technique, de nom, ou de description qui ne s'y trouve pas.
-- Tu ne dois utiliser QUE les éléments VERIS (catégories/vectors/varieties) explicitement listés dans les
-  données fournies.
-- Si tu ne trouves pas de correspondance suffisamment fondée dans les descriptions fournies, indique
-  explicitement "no_mapping_found": true plutôt que de forcer une correspondance approximative.
-- Ne t'appuie pas sur ta connaissance générale a priori du mapping VERIS/MITRE si elle contredit ou dépasse
-  les données fournies : base ta justification uniquement sur les libellés et descriptions transmis.
-- Si une correspondance est plausible mais incertaine, signale-la avec confidence "low" ou "medium" plutôt
-  que de l'omettre ou de la présenter comme certaine.
+- Utilise UNIQUEMENT les `capability_id` VERIS et les `attack_id` ATT&CK listés dans les données fournies.
+  N'invente jamais d'ID.
+- Si aucune correspondance n'est assez fondée : "no_mapping_found": true et "attack_ids": [].
+- Base-toi uniquement sur les libellés/descriptions fournis, pas sur une connaissance externe du mapping CTID.
+- Correspondance sémantique du comportement, pas un simple recoupement de mots-clés.
+- Si parent + sub-techniques collent, inclus tous les IDs pertinents.
 
-MÉTHODOLOGIE DE MAPPING (à appliquer dans les deux sens) :
-1. Lis attentivement la description/définition de l'élément de départ (VERIS ou MITRE selon le sens).
-2. Identifie dans le catalogue cible (MITRE ou VERIS selon le sens) tous les éléments dont la description
-   correspond sémantiquement au comportement décrit (pas seulement une similarité de mots-clés en surface).
-3. Si plusieurs éléments cibles correspondent à différents niveaux de spécificité, liste-les tous avec leur
-   propre score de confiance plutôt que de n'en choisir qu'un arbitrairement.
-4. Distingue une correspondance "directe" (le comportement décrit est essentiellement le même) d'une
-   correspondance "contextuelle" (l'élément de départ pourrait résulter de / inclure cet élément cible
-   parmi d'autres, sans lui être équivalent) ou "partielle" (chevauchement partiel de périmètre).
-5. Justifie chaque mapping par UNE phrase courte (≤ 25 mots), factuelle, fondée
-   uniquement sur les descriptions fournies.
-
-FORMAT DE SORTIE :
-Tu dois répondre UNIQUEMENT avec un objet JSON valide, sans aucun texte avant ou après, sans balises
-markdown (pas de ```json), suivant exactement ce schéma :
+SORTIE MINIMALE (IDs seulement) :
+Réponds UNIQUEMENT avec un objet JSON valide, sans texte autour, sans markdown.
+Les noms, tactiques et justifications seront ré-enrichis ensuite hors LLM.
 
 {
   "metadata": {
@@ -73,35 +55,12 @@ markdown (pas de ```json), suivant exactement ce schéma :
   },
   "veris_to_mitre": [
     {
-      "veris_id": "<capability_id exact fourni>",
-      "veris_label": "<libellé exact fourni>",
+      "veris_id": "<capability_id exact>",
       "no_mapping_found": false,
-      "mitre_mappings": [
-        {
-          "attack_id": "<Txxxx ou Txxxx.yyy exact fourni>",
-          "mapping_type": "direct | contextuel | partiel",
-          "confidence": "high | medium | low",
-          "justification": "<≤25 mots>"
-        }
-      ],
-      "ambiguous": false,
-      "notes": ""
+      "attack_ids": ["<Txxxx>", "<Txxxx.yyy>"]
     }
   ],
-  "mitre_to_veris": [
-    {
-      "attack_id": "<Txxxx ou Txxxx.yyy déjà mappé dans veris_to_mitre>",
-      "veris_mappings": [
-        {
-          "veris_id": "<capability_id exact>",
-          "mapping_type": "direct | contextuel | partiel",
-          "confidence": "high | medium | low",
-          "justification": "<≤25 mots>"
-        }
-      ]
-    }
-  ]
+  "mitre_to_veris": []
 }
 
-Si "no_mapping_found" est true, "mitre_mappings" doit être vide et "notes" explique brièvement pourquoi.
-N'ajoute aucun champ hors schéma, aucun commentaire hors JSON.
+N'ajoute aucun champ hors schéma.

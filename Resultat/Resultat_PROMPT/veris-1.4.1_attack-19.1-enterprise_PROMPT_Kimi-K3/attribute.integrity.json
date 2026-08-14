@@ -1,0 +1,3552 @@
+{
+  "metadata": {
+    "veris_version": "1.4.1",
+    "mitre_attack_version": "19.1",
+    "scope": "attribute.integrity",
+    "capability_group": "attribute.integrity",
+    "enriched_from": "local_catalogs"
+  },
+  "veris_to_mitre": [
+    {
+      "veris_id": "attribute.integrity.variety.Alter behavior",
+      "veris_category": "Integrity",
+      "veris_label": "Alter behavior",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1204",
+          "technique_name": "User Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "execution"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1684",
+          "technique_name": "Social Engineering",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "stealth"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1684",
+          "technique_name": "Social Engineering",
+          "sub_technique_id": "T1684.001",
+          "sub_technique_name": "Impersonation",
+          "tactic(s)": [
+            "stealth"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Created account",
+      "veris_category": "Integrity",
+      "veris_label": "Created account",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1136",
+          "technique_name": "Create Account",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1136",
+          "technique_name": "Create Account",
+          "sub_technique_id": "T1136.001",
+          "sub_technique_name": "Local Account",
+          "tactic(s)": [
+            "persistence"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1136",
+          "technique_name": "Create Account",
+          "sub_technique_id": "T1136.002",
+          "sub_technique_name": "Domain Account",
+          "tactic(s)": [
+            "persistence"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1136",
+          "technique_name": "Create Account",
+          "sub_technique_id": "T1136.003",
+          "sub_technique_name": "Cloud Account",
+          "tactic(s)": [
+            "persistence"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Defacement",
+      "veris_category": "Integrity",
+      "veris_label": "Defacement",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1491",
+          "technique_name": "Defacement",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1491",
+          "technique_name": "Defacement",
+          "sub_technique_id": "T1491.001",
+          "sub_technique_name": "Internal Defacement",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1491",
+          "technique_name": "Defacement",
+          "sub_technique_id": "T1491.002",
+          "sub_technique_name": "External Defacement",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Fraudulent transaction",
+      "veris_category": "Integrity",
+      "veris_label": "Fraudulent transaction",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1657",
+          "technique_name": "Financial Theft",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Hardware tampering",
+      "veris_category": "Integrity",
+      "veris_label": "Hardware tampering",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1195",
+          "technique_name": "Supply Chain Compromise",
+          "sub_technique_id": "T1195.003",
+          "sub_technique_name": "Compromise Hardware Supply Chain",
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1200",
+          "technique_name": "Hardware Additions",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1542",
+          "technique_name": "Pre-OS Boot",
+          "sub_technique_id": "T1542.001",
+          "sub_technique_name": "System Firmware",
+          "tactic(s)": [
+            "stealth",
+            "persistence"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1542",
+          "technique_name": "Pre-OS Boot",
+          "sub_technique_id": "T1542.002",
+          "sub_technique_name": "Component Firmware",
+          "tactic(s)": [
+            "stealth",
+            "persistence"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Log tampering",
+      "veris_category": "Integrity",
+      "veris_label": "Log tampering",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1070",
+          "technique_name": "Indicator Removal",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "stealth"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1070",
+          "technique_name": "Indicator Removal",
+          "sub_technique_id": "T1070.003",
+          "sub_technique_name": "Clear Command History",
+          "tactic(s)": [
+            "stealth"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1685",
+          "technique_name": "Disable or Modify Tools",
+          "sub_technique_id": "T1685.001",
+          "sub_technique_name": "Disable or Modify Windows Event Log",
+          "tactic(s)": [
+            "defense-impairment"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1685",
+          "technique_name": "Disable or Modify Tools",
+          "sub_technique_id": "T1685.002",
+          "sub_technique_name": "Disable or Modify Cloud Log",
+          "tactic(s)": [
+            "defense-impairment"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1685",
+          "technique_name": "Disable or Modify Tools",
+          "sub_technique_id": "T1685.004",
+          "sub_technique_name": "Disable or Modify Linux Audit System Log",
+          "tactic(s)": [
+            "defense-impairment"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1685",
+          "technique_name": "Disable or Modify Tools",
+          "sub_technique_id": "T1685.005",
+          "sub_technique_name": "Clear Windows Event Logs",
+          "tactic(s)": [
+            "defense-impairment"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1685",
+          "technique_name": "Disable or Modify Tools",
+          "sub_technique_id": "T1685.006",
+          "sub_technique_name": "Clear Linux or Mac System Logs",
+          "tactic(s)": [
+            "defense-impairment"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1690",
+          "technique_name": "Prevent Command History Logging",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "defense-impairment"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Misrepresentation",
+      "veris_category": "Integrity",
+      "veris_label": "Misrepresentation",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1036",
+          "technique_name": "Masquerading",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "stealth"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1036",
+          "technique_name": "Masquerading",
+          "sub_technique_id": "T1036.010",
+          "sub_technique_name": "Masquerade Account Name",
+          "tactic(s)": [
+            "stealth"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1078",
+          "technique_name": "Valid Accounts",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "stealth",
+            "persistence",
+            "privilege-escalation",
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1134",
+          "technique_name": "Access Token Manipulation",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "stealth",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1550",
+          "technique_name": "Use Alternate Authentication Material",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "lateral-movement"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1684",
+          "technique_name": "Social Engineering",
+          "sub_technique_id": "T1684.001",
+          "sub_technique_name": "Impersonation",
+          "tactic(s)": [
+            "stealth"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Modify authentication",
+      "veris_category": "Integrity",
+      "veris_label": "Modify authentication",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1098",
+          "technique_name": "Account Manipulation",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1098",
+          "technique_name": "Account Manipulation",
+          "sub_technique_id": "T1098.001",
+          "sub_technique_name": "Additional Cloud Credentials",
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1098",
+          "technique_name": "Account Manipulation",
+          "sub_technique_id": "T1098.004",
+          "sub_technique_name": "SSH Authorized Keys",
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1556",
+          "technique_name": "Modify Authentication Process",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "defense-impairment",
+            "persistence",
+            "credential-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1556",
+          "technique_name": "Modify Authentication Process",
+          "sub_technique_id": "T1556.005",
+          "sub_technique_name": "Reversible Encryption",
+          "tactic(s)": [
+            "defense-impairment",
+            "persistence",
+            "credential-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1556",
+          "technique_name": "Modify Authentication Process",
+          "sub_technique_id": "T1556.006",
+          "sub_technique_name": "Multi-Factor Authentication",
+          "tactic(s)": [
+            "defense-impairment",
+            "persistence",
+            "credential-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1556",
+          "technique_name": "Modify Authentication Process",
+          "sub_technique_id": "T1556.009",
+          "sub_technique_name": "Conditional Access Policies",
+          "tactic(s)": [
+            "defense-impairment",
+            "persistence",
+            "credential-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Modify configuration",
+      "veris_category": "Integrity",
+      "veris_label": "Modify configuration",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1112",
+          "technique_name": "Modify Registry",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "defense-impairment",
+            "persistence"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1484",
+          "technique_name": "Domain or Tenant Policy Modification",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "defense-impairment",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1484",
+          "technique_name": "Domain or Tenant Policy Modification",
+          "sub_technique_id": "T1484.001",
+          "sub_technique_name": "Group Policy Modification",
+          "tactic(s)": [
+            "defense-impairment",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1484",
+          "technique_name": "Domain or Tenant Policy Modification",
+          "sub_technique_id": "T1484.002",
+          "sub_technique_name": "Trust Modification",
+          "tactic(s)": [
+            "defense-impairment",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1543",
+          "technique_name": "Create or Modify System Process",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1543",
+          "technique_name": "Create or Modify System Process",
+          "sub_technique_id": "T1543.001",
+          "sub_technique_name": "Launch Agent",
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1543",
+          "technique_name": "Create or Modify System Process",
+          "sub_technique_id": "T1543.002",
+          "sub_technique_name": "Systemd Service",
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1543",
+          "technique_name": "Create or Modify System Process",
+          "sub_technique_id": "T1543.003",
+          "sub_technique_name": "Windows Service",
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1543",
+          "technique_name": "Create or Modify System Process",
+          "sub_technique_id": "T1543.004",
+          "sub_technique_name": "Launch Daemon",
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1543",
+          "technique_name": "Create or Modify System Process",
+          "sub_technique_id": "T1543.005",
+          "sub_technique_name": "Container Service",
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1578",
+          "technique_name": "Modify Cloud Compute Infrastructure",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "defense-impairment"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1578",
+          "technique_name": "Modify Cloud Compute Infrastructure",
+          "sub_technique_id": "T1578.005",
+          "sub_technique_name": "Modify Cloud Compute Configurations",
+          "tactic(s)": [
+            "defense-impairment"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1599",
+          "technique_name": "Network Boundary Bridging",
+          "sub_technique_id": "T1599.001",
+          "sub_technique_name": "Network Address Translation Traversal",
+          "tactic(s)": [
+            "defense-impairment"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1601",
+          "technique_name": "Modify System Image",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "defense-impairment"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1601",
+          "technique_name": "Modify System Image",
+          "sub_technique_id": "T1601.001",
+          "sub_technique_name": "Patch System Image",
+          "tactic(s)": [
+            "defense-impairment"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1601",
+          "technique_name": "Modify System Image",
+          "sub_technique_id": "T1601.002",
+          "sub_technique_name": "Downgrade System Image",
+          "tactic(s)": [
+            "defense-impairment"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1647",
+          "technique_name": "Plist File Modification",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "defense-impairment"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1666",
+          "technique_name": "Modify Cloud Resource Hierarchy",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "defense-impairment"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1686",
+          "technique_name": "Disable or Modify System Firewall",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "defense-impairment"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1686",
+          "technique_name": "Disable or Modify System Firewall",
+          "sub_technique_id": "T1686.001",
+          "sub_technique_name": "Cloud Firewall",
+          "tactic(s)": [
+            "defense-impairment"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1686",
+          "technique_name": "Disable or Modify System Firewall",
+          "sub_technique_id": "T1686.002",
+          "sub_technique_name": "Network Device Firewall",
+          "tactic(s)": [
+            "defense-impairment"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1686",
+          "technique_name": "Disable or Modify System Firewall",
+          "sub_technique_id": "T1686.003",
+          "sub_technique_name": "Windows Host Firewall",
+          "tactic(s)": [
+            "defense-impairment"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Modify data",
+      "veris_category": "Integrity",
+      "veris_label": "Modify data",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1565",
+          "technique_name": "Data Manipulation",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1565",
+          "technique_name": "Data Manipulation",
+          "sub_technique_id": "T1565.001",
+          "sub_technique_name": "Stored Data Manipulation",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Modify privileges",
+      "veris_category": "Integrity",
+      "veris_label": "Modify privileges",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1098",
+          "technique_name": "Account Manipulation",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1098",
+          "technique_name": "Account Manipulation",
+          "sub_technique_id": "T1098.002",
+          "sub_technique_name": "Additional Email Delegate Permissions",
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1098",
+          "technique_name": "Account Manipulation",
+          "sub_technique_id": "T1098.003",
+          "sub_technique_name": "Additional Cloud Roles",
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1098",
+          "technique_name": "Account Manipulation",
+          "sub_technique_id": "T1098.006",
+          "sub_technique_name": "Additional Container Cluster Roles",
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1098",
+          "technique_name": "Account Manipulation",
+          "sub_technique_id": "T1098.007",
+          "sub_technique_name": "Additional Local or Domain Groups",
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1134",
+          "technique_name": "Access Token Manipulation",
+          "sub_technique_id": "T1134.005",
+          "sub_technique_name": "SID-History Injection",
+          "tactic(s)": [
+            "stealth",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1222",
+          "technique_name": "File and Directory Permissions Modification",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "defense-impairment"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1222",
+          "technique_name": "File and Directory Permissions Modification",
+          "sub_technique_id": "T1222.001",
+          "sub_technique_name": "Windows Permissions",
+          "tactic(s)": [
+            "defense-impairment"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1222",
+          "technique_name": "File and Directory Permissions Modification",
+          "sub_technique_id": "T1222.002",
+          "sub_technique_name": "Linux and Mac Permissions",
+          "tactic(s)": [
+            "defense-impairment"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1484",
+          "technique_name": "Domain or Tenant Policy Modification",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "defense-impairment",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1484",
+          "technique_name": "Domain or Tenant Policy Modification",
+          "sub_technique_id": "T1484.001",
+          "sub_technique_name": "Group Policy Modification",
+          "tactic(s)": [
+            "defense-impairment",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1484",
+          "technique_name": "Domain or Tenant Policy Modification",
+          "sub_technique_id": "T1484.002",
+          "sub_technique_name": "Trust Modification",
+          "tactic(s)": [
+            "defense-impairment",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1548",
+          "technique_name": "Abuse Elevation Control Mechanism",
+          "sub_technique_id": "T1548.006",
+          "sub_technique_name": "TCC Manipulation",
+          "tactic(s)": [
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Other",
+      "veris_category": "Integrity",
+      "veris_label": "Other",
+      "no_mapping_found": true,
+      "mitre_mappings": [],
+      "ambiguous": false,
+      "notes": "Aucune correspondance trouvée."
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Register MFA device",
+      "veris_category": "Integrity",
+      "veris_label": "Register MFA device",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1098",
+          "technique_name": "Account Manipulation",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1098",
+          "technique_name": "Account Manipulation",
+          "sub_technique_id": "T1098.005",
+          "sub_technique_name": "Device Registration",
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1556",
+          "technique_name": "Modify Authentication Process",
+          "sub_technique_id": "T1556.006",
+          "sub_technique_name": "Multi-Factor Authentication",
+          "tactic(s)": [
+            "defense-impairment",
+            "persistence",
+            "credential-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Repurpose",
+      "veris_category": "Integrity",
+      "veris_label": "Repurpose",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1496",
+          "technique_name": "Resource Hijacking",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1496",
+          "technique_name": "Resource Hijacking",
+          "sub_technique_id": "T1496.001",
+          "sub_technique_name": "Compute Hijacking",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1496",
+          "technique_name": "Resource Hijacking",
+          "sub_technique_id": "T1496.002",
+          "sub_technique_name": "Bandwidth Hijacking",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1496",
+          "technique_name": "Resource Hijacking",
+          "sub_technique_id": "T1496.003",
+          "sub_technique_name": "SMS Pumping",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1496",
+          "technique_name": "Resource Hijacking",
+          "sub_technique_id": "T1496.004",
+          "sub_technique_name": "Cloud Service Hijacking",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Software installation",
+      "veris_category": "Integrity",
+      "veris_label": "Software installation",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1105",
+          "technique_name": "Ingress Tool Transfer",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "command-and-control"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1176",
+          "technique_name": "Software Extensions",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1176",
+          "technique_name": "Software Extensions",
+          "sub_technique_id": "T1176.001",
+          "sub_technique_name": "Browser Extensions",
+          "tactic(s)": [
+            "persistence"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1176",
+          "technique_name": "Software Extensions",
+          "sub_technique_id": "T1176.002",
+          "sub_technique_name": "IDE Extensions",
+          "tactic(s)": [
+            "persistence"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1505",
+          "technique_name": "Server Software Component",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1505",
+          "technique_name": "Server Software Component",
+          "sub_technique_id": "T1505.001",
+          "sub_technique_name": "SQL Stored Procedures",
+          "tactic(s)": [
+            "persistence"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1505",
+          "technique_name": "Server Software Component",
+          "sub_technique_id": "T1505.002",
+          "sub_technique_name": "Transport Agent",
+          "tactic(s)": [
+            "persistence"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1505",
+          "technique_name": "Server Software Component",
+          "sub_technique_id": "T1505.003",
+          "sub_technique_name": "Web Shell",
+          "tactic(s)": [
+            "persistence"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1505",
+          "technique_name": "Server Software Component",
+          "sub_technique_id": "T1505.004",
+          "sub_technique_name": "IIS Components",
+          "tactic(s)": [
+            "persistence"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1505",
+          "technique_name": "Server Software Component",
+          "sub_technique_id": "T1505.005",
+          "sub_technique_name": "Terminal Services DLL",
+          "tactic(s)": [
+            "persistence"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1505",
+          "technique_name": "Server Software Component",
+          "sub_technique_id": "T1505.006",
+          "sub_technique_name": "vSphere Installation Bundles",
+          "tactic(s)": [
+            "persistence"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1525",
+          "technique_name": "Implant Internal Image",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1554",
+          "technique_name": "Compromise Host Software Binary",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1601",
+          "technique_name": "Modify System Image",
+          "sub_technique_id": "T1601.001",
+          "sub_technique_name": "Patch System Image",
+          "tactic(s)": [
+            "defense-impairment"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Unknown",
+      "veris_category": "Integrity",
+      "veris_label": "Unknown",
+      "no_mapping_found": true,
+      "mitre_mappings": [],
+      "ambiguous": false,
+      "notes": "Aucune correspondance trouvée."
+    }
+  ],
+  "mitre_to_veris": [
+    {
+      "technique_id": "T1036",
+      "technique_name": "Masquerading",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "stealth"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Misrepresentation",
+          "veris_category": "Integrity",
+          "veris_label": "Misrepresentation",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1036",
+      "technique_name": "Masquerading",
+      "sub_technique_id": "T1036.010",
+      "sub_technique_name": "Masquerade Account Name",
+      "tactic(s)": [
+        "stealth"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Misrepresentation",
+          "veris_category": "Integrity",
+          "veris_label": "Misrepresentation",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1070",
+      "technique_name": "Indicator Removal",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "stealth"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Log tampering",
+          "veris_category": "Integrity",
+          "veris_label": "Log tampering",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1070",
+      "technique_name": "Indicator Removal",
+      "sub_technique_id": "T1070.003",
+      "sub_technique_name": "Clear Command History",
+      "tactic(s)": [
+        "stealth"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Log tampering",
+          "veris_category": "Integrity",
+          "veris_label": "Log tampering",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1078",
+      "technique_name": "Valid Accounts",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "stealth",
+        "persistence",
+        "privilege-escalation",
+        "initial-access"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Misrepresentation",
+          "veris_category": "Integrity",
+          "veris_label": "Misrepresentation",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1098",
+      "technique_name": "Account Manipulation",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "persistence",
+        "privilege-escalation"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify authentication",
+          "veris_category": "Integrity",
+          "veris_label": "Modify authentication",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Modify privileges",
+          "veris_category": "Integrity",
+          "veris_label": "Modify privileges",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Register MFA device",
+          "veris_category": "Integrity",
+          "veris_label": "Register MFA device",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1098",
+      "technique_name": "Account Manipulation",
+      "sub_technique_id": "T1098.001",
+      "sub_technique_name": "Additional Cloud Credentials",
+      "tactic(s)": [
+        "persistence",
+        "privilege-escalation"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify authentication",
+          "veris_category": "Integrity",
+          "veris_label": "Modify authentication",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1098",
+      "technique_name": "Account Manipulation",
+      "sub_technique_id": "T1098.002",
+      "sub_technique_name": "Additional Email Delegate Permissions",
+      "tactic(s)": [
+        "persistence",
+        "privilege-escalation"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify privileges",
+          "veris_category": "Integrity",
+          "veris_label": "Modify privileges",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1098",
+      "technique_name": "Account Manipulation",
+      "sub_technique_id": "T1098.003",
+      "sub_technique_name": "Additional Cloud Roles",
+      "tactic(s)": [
+        "persistence",
+        "privilege-escalation"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify privileges",
+          "veris_category": "Integrity",
+          "veris_label": "Modify privileges",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1098",
+      "technique_name": "Account Manipulation",
+      "sub_technique_id": "T1098.004",
+      "sub_technique_name": "SSH Authorized Keys",
+      "tactic(s)": [
+        "persistence",
+        "privilege-escalation"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify authentication",
+          "veris_category": "Integrity",
+          "veris_label": "Modify authentication",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1098",
+      "technique_name": "Account Manipulation",
+      "sub_technique_id": "T1098.005",
+      "sub_technique_name": "Device Registration",
+      "tactic(s)": [
+        "persistence",
+        "privilege-escalation"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Register MFA device",
+          "veris_category": "Integrity",
+          "veris_label": "Register MFA device",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1098",
+      "technique_name": "Account Manipulation",
+      "sub_technique_id": "T1098.006",
+      "sub_technique_name": "Additional Container Cluster Roles",
+      "tactic(s)": [
+        "persistence",
+        "privilege-escalation"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify privileges",
+          "veris_category": "Integrity",
+          "veris_label": "Modify privileges",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1098",
+      "technique_name": "Account Manipulation",
+      "sub_technique_id": "T1098.007",
+      "sub_technique_name": "Additional Local or Domain Groups",
+      "tactic(s)": [
+        "persistence",
+        "privilege-escalation"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify privileges",
+          "veris_category": "Integrity",
+          "veris_label": "Modify privileges",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1105",
+      "technique_name": "Ingress Tool Transfer",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "command-and-control"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Software installation",
+          "veris_category": "Integrity",
+          "veris_label": "Software installation",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1112",
+      "technique_name": "Modify Registry",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "defense-impairment",
+        "persistence"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify configuration",
+          "veris_category": "Integrity",
+          "veris_label": "Modify configuration",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1134",
+      "technique_name": "Access Token Manipulation",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "stealth",
+        "privilege-escalation"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Misrepresentation",
+          "veris_category": "Integrity",
+          "veris_label": "Misrepresentation",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1134",
+      "technique_name": "Access Token Manipulation",
+      "sub_technique_id": "T1134.005",
+      "sub_technique_name": "SID-History Injection",
+      "tactic(s)": [
+        "stealth",
+        "privilege-escalation"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify privileges",
+          "veris_category": "Integrity",
+          "veris_label": "Modify privileges",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1136",
+      "technique_name": "Create Account",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "persistence"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Created account",
+          "veris_category": "Integrity",
+          "veris_label": "Created account",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1136",
+      "technique_name": "Create Account",
+      "sub_technique_id": "T1136.001",
+      "sub_technique_name": "Local Account",
+      "tactic(s)": [
+        "persistence"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Created account",
+          "veris_category": "Integrity",
+          "veris_label": "Created account",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1136",
+      "technique_name": "Create Account",
+      "sub_technique_id": "T1136.002",
+      "sub_technique_name": "Domain Account",
+      "tactic(s)": [
+        "persistence"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Created account",
+          "veris_category": "Integrity",
+          "veris_label": "Created account",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1136",
+      "technique_name": "Create Account",
+      "sub_technique_id": "T1136.003",
+      "sub_technique_name": "Cloud Account",
+      "tactic(s)": [
+        "persistence"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Created account",
+          "veris_category": "Integrity",
+          "veris_label": "Created account",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1176",
+      "technique_name": "Software Extensions",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "persistence"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Software installation",
+          "veris_category": "Integrity",
+          "veris_label": "Software installation",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1176",
+      "technique_name": "Software Extensions",
+      "sub_technique_id": "T1176.001",
+      "sub_technique_name": "Browser Extensions",
+      "tactic(s)": [
+        "persistence"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Software installation",
+          "veris_category": "Integrity",
+          "veris_label": "Software installation",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1176",
+      "technique_name": "Software Extensions",
+      "sub_technique_id": "T1176.002",
+      "sub_technique_name": "IDE Extensions",
+      "tactic(s)": [
+        "persistence"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Software installation",
+          "veris_category": "Integrity",
+          "veris_label": "Software installation",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1195",
+      "technique_name": "Supply Chain Compromise",
+      "sub_technique_id": "T1195.003",
+      "sub_technique_name": "Compromise Hardware Supply Chain",
+      "tactic(s)": [
+        "initial-access"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Hardware tampering",
+          "veris_category": "Integrity",
+          "veris_label": "Hardware tampering",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1200",
+      "technique_name": "Hardware Additions",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "initial-access"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Hardware tampering",
+          "veris_category": "Integrity",
+          "veris_label": "Hardware tampering",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1204",
+      "technique_name": "User Execution",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "execution"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Alter behavior",
+          "veris_category": "Integrity",
+          "veris_label": "Alter behavior",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1222",
+      "technique_name": "File and Directory Permissions Modification",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "defense-impairment"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify privileges",
+          "veris_category": "Integrity",
+          "veris_label": "Modify privileges",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1222",
+      "technique_name": "File and Directory Permissions Modification",
+      "sub_technique_id": "T1222.001",
+      "sub_technique_name": "Windows Permissions",
+      "tactic(s)": [
+        "defense-impairment"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify privileges",
+          "veris_category": "Integrity",
+          "veris_label": "Modify privileges",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1222",
+      "technique_name": "File and Directory Permissions Modification",
+      "sub_technique_id": "T1222.002",
+      "sub_technique_name": "Linux and Mac Permissions",
+      "tactic(s)": [
+        "defense-impairment"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify privileges",
+          "veris_category": "Integrity",
+          "veris_label": "Modify privileges",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1484",
+      "technique_name": "Domain or Tenant Policy Modification",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "defense-impairment",
+        "privilege-escalation"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify configuration",
+          "veris_category": "Integrity",
+          "veris_label": "Modify configuration",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Modify privileges",
+          "veris_category": "Integrity",
+          "veris_label": "Modify privileges",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1484",
+      "technique_name": "Domain or Tenant Policy Modification",
+      "sub_technique_id": "T1484.001",
+      "sub_technique_name": "Group Policy Modification",
+      "tactic(s)": [
+        "defense-impairment",
+        "privilege-escalation"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify configuration",
+          "veris_category": "Integrity",
+          "veris_label": "Modify configuration",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Modify privileges",
+          "veris_category": "Integrity",
+          "veris_label": "Modify privileges",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1484",
+      "technique_name": "Domain or Tenant Policy Modification",
+      "sub_technique_id": "T1484.002",
+      "sub_technique_name": "Trust Modification",
+      "tactic(s)": [
+        "defense-impairment",
+        "privilege-escalation"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify configuration",
+          "veris_category": "Integrity",
+          "veris_label": "Modify configuration",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Modify privileges",
+          "veris_category": "Integrity",
+          "veris_label": "Modify privileges",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1491",
+      "technique_name": "Defacement",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "impact"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Defacement",
+          "veris_category": "Integrity",
+          "veris_label": "Defacement",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1491",
+      "technique_name": "Defacement",
+      "sub_technique_id": "T1491.001",
+      "sub_technique_name": "Internal Defacement",
+      "tactic(s)": [
+        "impact"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Defacement",
+          "veris_category": "Integrity",
+          "veris_label": "Defacement",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1491",
+      "technique_name": "Defacement",
+      "sub_technique_id": "T1491.002",
+      "sub_technique_name": "External Defacement",
+      "tactic(s)": [
+        "impact"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Defacement",
+          "veris_category": "Integrity",
+          "veris_label": "Defacement",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1496",
+      "technique_name": "Resource Hijacking",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "impact"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Repurpose",
+          "veris_category": "Integrity",
+          "veris_label": "Repurpose",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1496",
+      "technique_name": "Resource Hijacking",
+      "sub_technique_id": "T1496.001",
+      "sub_technique_name": "Compute Hijacking",
+      "tactic(s)": [
+        "impact"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Repurpose",
+          "veris_category": "Integrity",
+          "veris_label": "Repurpose",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1496",
+      "technique_name": "Resource Hijacking",
+      "sub_technique_id": "T1496.002",
+      "sub_technique_name": "Bandwidth Hijacking",
+      "tactic(s)": [
+        "impact"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Repurpose",
+          "veris_category": "Integrity",
+          "veris_label": "Repurpose",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1496",
+      "technique_name": "Resource Hijacking",
+      "sub_technique_id": "T1496.003",
+      "sub_technique_name": "SMS Pumping",
+      "tactic(s)": [
+        "impact"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Repurpose",
+          "veris_category": "Integrity",
+          "veris_label": "Repurpose",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1496",
+      "technique_name": "Resource Hijacking",
+      "sub_technique_id": "T1496.004",
+      "sub_technique_name": "Cloud Service Hijacking",
+      "tactic(s)": [
+        "impact"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Repurpose",
+          "veris_category": "Integrity",
+          "veris_label": "Repurpose",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1505",
+      "technique_name": "Server Software Component",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "persistence"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Software installation",
+          "veris_category": "Integrity",
+          "veris_label": "Software installation",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1505",
+      "technique_name": "Server Software Component",
+      "sub_technique_id": "T1505.001",
+      "sub_technique_name": "SQL Stored Procedures",
+      "tactic(s)": [
+        "persistence"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Software installation",
+          "veris_category": "Integrity",
+          "veris_label": "Software installation",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1505",
+      "technique_name": "Server Software Component",
+      "sub_technique_id": "T1505.002",
+      "sub_technique_name": "Transport Agent",
+      "tactic(s)": [
+        "persistence"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Software installation",
+          "veris_category": "Integrity",
+          "veris_label": "Software installation",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1505",
+      "technique_name": "Server Software Component",
+      "sub_technique_id": "T1505.003",
+      "sub_technique_name": "Web Shell",
+      "tactic(s)": [
+        "persistence"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Software installation",
+          "veris_category": "Integrity",
+          "veris_label": "Software installation",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1505",
+      "technique_name": "Server Software Component",
+      "sub_technique_id": "T1505.004",
+      "sub_technique_name": "IIS Components",
+      "tactic(s)": [
+        "persistence"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Software installation",
+          "veris_category": "Integrity",
+          "veris_label": "Software installation",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1505",
+      "technique_name": "Server Software Component",
+      "sub_technique_id": "T1505.005",
+      "sub_technique_name": "Terminal Services DLL",
+      "tactic(s)": [
+        "persistence"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Software installation",
+          "veris_category": "Integrity",
+          "veris_label": "Software installation",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1505",
+      "technique_name": "Server Software Component",
+      "sub_technique_id": "T1505.006",
+      "sub_technique_name": "vSphere Installation Bundles",
+      "tactic(s)": [
+        "persistence"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Software installation",
+          "veris_category": "Integrity",
+          "veris_label": "Software installation",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1525",
+      "technique_name": "Implant Internal Image",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "persistence"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Software installation",
+          "veris_category": "Integrity",
+          "veris_label": "Software installation",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1542",
+      "technique_name": "Pre-OS Boot",
+      "sub_technique_id": "T1542.001",
+      "sub_technique_name": "System Firmware",
+      "tactic(s)": [
+        "stealth",
+        "persistence"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Hardware tampering",
+          "veris_category": "Integrity",
+          "veris_label": "Hardware tampering",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1542",
+      "technique_name": "Pre-OS Boot",
+      "sub_technique_id": "T1542.002",
+      "sub_technique_name": "Component Firmware",
+      "tactic(s)": [
+        "stealth",
+        "persistence"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Hardware tampering",
+          "veris_category": "Integrity",
+          "veris_label": "Hardware tampering",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1543",
+      "technique_name": "Create or Modify System Process",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "persistence",
+        "privilege-escalation"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify configuration",
+          "veris_category": "Integrity",
+          "veris_label": "Modify configuration",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1543",
+      "technique_name": "Create or Modify System Process",
+      "sub_technique_id": "T1543.001",
+      "sub_technique_name": "Launch Agent",
+      "tactic(s)": [
+        "persistence",
+        "privilege-escalation"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify configuration",
+          "veris_category": "Integrity",
+          "veris_label": "Modify configuration",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1543",
+      "technique_name": "Create or Modify System Process",
+      "sub_technique_id": "T1543.002",
+      "sub_technique_name": "Systemd Service",
+      "tactic(s)": [
+        "persistence",
+        "privilege-escalation"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify configuration",
+          "veris_category": "Integrity",
+          "veris_label": "Modify configuration",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1543",
+      "technique_name": "Create or Modify System Process",
+      "sub_technique_id": "T1543.003",
+      "sub_technique_name": "Windows Service",
+      "tactic(s)": [
+        "persistence",
+        "privilege-escalation"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify configuration",
+          "veris_category": "Integrity",
+          "veris_label": "Modify configuration",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1543",
+      "technique_name": "Create or Modify System Process",
+      "sub_technique_id": "T1543.004",
+      "sub_technique_name": "Launch Daemon",
+      "tactic(s)": [
+        "persistence",
+        "privilege-escalation"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify configuration",
+          "veris_category": "Integrity",
+          "veris_label": "Modify configuration",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1543",
+      "technique_name": "Create or Modify System Process",
+      "sub_technique_id": "T1543.005",
+      "sub_technique_name": "Container Service",
+      "tactic(s)": [
+        "persistence",
+        "privilege-escalation"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify configuration",
+          "veris_category": "Integrity",
+          "veris_label": "Modify configuration",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1548",
+      "technique_name": "Abuse Elevation Control Mechanism",
+      "sub_technique_id": "T1548.006",
+      "sub_technique_name": "TCC Manipulation",
+      "tactic(s)": [
+        "privilege-escalation"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify privileges",
+          "veris_category": "Integrity",
+          "veris_label": "Modify privileges",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1550",
+      "technique_name": "Use Alternate Authentication Material",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "lateral-movement"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Misrepresentation",
+          "veris_category": "Integrity",
+          "veris_label": "Misrepresentation",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1554",
+      "technique_name": "Compromise Host Software Binary",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "persistence"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Software installation",
+          "veris_category": "Integrity",
+          "veris_label": "Software installation",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1556",
+      "technique_name": "Modify Authentication Process",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "defense-impairment",
+        "persistence",
+        "credential-access"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify authentication",
+          "veris_category": "Integrity",
+          "veris_label": "Modify authentication",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1556",
+      "technique_name": "Modify Authentication Process",
+      "sub_technique_id": "T1556.005",
+      "sub_technique_name": "Reversible Encryption",
+      "tactic(s)": [
+        "defense-impairment",
+        "persistence",
+        "credential-access"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify authentication",
+          "veris_category": "Integrity",
+          "veris_label": "Modify authentication",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1556",
+      "technique_name": "Modify Authentication Process",
+      "sub_technique_id": "T1556.006",
+      "sub_technique_name": "Multi-Factor Authentication",
+      "tactic(s)": [
+        "defense-impairment",
+        "persistence",
+        "credential-access"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify authentication",
+          "veris_category": "Integrity",
+          "veris_label": "Modify authentication",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Register MFA device",
+          "veris_category": "Integrity",
+          "veris_label": "Register MFA device",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1556",
+      "technique_name": "Modify Authentication Process",
+      "sub_technique_id": "T1556.009",
+      "sub_technique_name": "Conditional Access Policies",
+      "tactic(s)": [
+        "defense-impairment",
+        "persistence",
+        "credential-access"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify authentication",
+          "veris_category": "Integrity",
+          "veris_label": "Modify authentication",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1565",
+      "technique_name": "Data Manipulation",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "impact"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify data",
+          "veris_category": "Integrity",
+          "veris_label": "Modify data",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1565",
+      "technique_name": "Data Manipulation",
+      "sub_technique_id": "T1565.001",
+      "sub_technique_name": "Stored Data Manipulation",
+      "tactic(s)": [
+        "impact"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify data",
+          "veris_category": "Integrity",
+          "veris_label": "Modify data",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1578",
+      "technique_name": "Modify Cloud Compute Infrastructure",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "defense-impairment"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify configuration",
+          "veris_category": "Integrity",
+          "veris_label": "Modify configuration",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1578",
+      "technique_name": "Modify Cloud Compute Infrastructure",
+      "sub_technique_id": "T1578.005",
+      "sub_technique_name": "Modify Cloud Compute Configurations",
+      "tactic(s)": [
+        "defense-impairment"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify configuration",
+          "veris_category": "Integrity",
+          "veris_label": "Modify configuration",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1599",
+      "technique_name": "Network Boundary Bridging",
+      "sub_technique_id": "T1599.001",
+      "sub_technique_name": "Network Address Translation Traversal",
+      "tactic(s)": [
+        "defense-impairment"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify configuration",
+          "veris_category": "Integrity",
+          "veris_label": "Modify configuration",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1601",
+      "technique_name": "Modify System Image",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "defense-impairment"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify configuration",
+          "veris_category": "Integrity",
+          "veris_label": "Modify configuration",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1601",
+      "technique_name": "Modify System Image",
+      "sub_technique_id": "T1601.001",
+      "sub_technique_name": "Patch System Image",
+      "tactic(s)": [
+        "defense-impairment"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify configuration",
+          "veris_category": "Integrity",
+          "veris_label": "Modify configuration",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Software installation",
+          "veris_category": "Integrity",
+          "veris_label": "Software installation",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1601",
+      "technique_name": "Modify System Image",
+      "sub_technique_id": "T1601.002",
+      "sub_technique_name": "Downgrade System Image",
+      "tactic(s)": [
+        "defense-impairment"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify configuration",
+          "veris_category": "Integrity",
+          "veris_label": "Modify configuration",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1647",
+      "technique_name": "Plist File Modification",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "defense-impairment"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify configuration",
+          "veris_category": "Integrity",
+          "veris_label": "Modify configuration",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1657",
+      "technique_name": "Financial Theft",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "impact"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Fraudulent transaction",
+          "veris_category": "Integrity",
+          "veris_label": "Fraudulent transaction",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1666",
+      "technique_name": "Modify Cloud Resource Hierarchy",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "defense-impairment"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify configuration",
+          "veris_category": "Integrity",
+          "veris_label": "Modify configuration",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1684",
+      "technique_name": "Social Engineering",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "stealth"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Alter behavior",
+          "veris_category": "Integrity",
+          "veris_label": "Alter behavior",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1684",
+      "technique_name": "Social Engineering",
+      "sub_technique_id": "T1684.001",
+      "sub_technique_name": "Impersonation",
+      "tactic(s)": [
+        "stealth"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Alter behavior",
+          "veris_category": "Integrity",
+          "veris_label": "Alter behavior",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "attribute.integrity.variety.Misrepresentation",
+          "veris_category": "Integrity",
+          "veris_label": "Misrepresentation",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1685",
+      "technique_name": "Disable or Modify Tools",
+      "sub_technique_id": "T1685.001",
+      "sub_technique_name": "Disable or Modify Windows Event Log",
+      "tactic(s)": [
+        "defense-impairment"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Log tampering",
+          "veris_category": "Integrity",
+          "veris_label": "Log tampering",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1685",
+      "technique_name": "Disable or Modify Tools",
+      "sub_technique_id": "T1685.002",
+      "sub_technique_name": "Disable or Modify Cloud Log",
+      "tactic(s)": [
+        "defense-impairment"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Log tampering",
+          "veris_category": "Integrity",
+          "veris_label": "Log tampering",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1685",
+      "technique_name": "Disable or Modify Tools",
+      "sub_technique_id": "T1685.004",
+      "sub_technique_name": "Disable or Modify Linux Audit System Log",
+      "tactic(s)": [
+        "defense-impairment"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Log tampering",
+          "veris_category": "Integrity",
+          "veris_label": "Log tampering",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1685",
+      "technique_name": "Disable or Modify Tools",
+      "sub_technique_id": "T1685.005",
+      "sub_technique_name": "Clear Windows Event Logs",
+      "tactic(s)": [
+        "defense-impairment"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Log tampering",
+          "veris_category": "Integrity",
+          "veris_label": "Log tampering",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1685",
+      "technique_name": "Disable or Modify Tools",
+      "sub_technique_id": "T1685.006",
+      "sub_technique_name": "Clear Linux or Mac System Logs",
+      "tactic(s)": [
+        "defense-impairment"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Log tampering",
+          "veris_category": "Integrity",
+          "veris_label": "Log tampering",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1686",
+      "technique_name": "Disable or Modify System Firewall",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "defense-impairment"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify configuration",
+          "veris_category": "Integrity",
+          "veris_label": "Modify configuration",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1686",
+      "technique_name": "Disable or Modify System Firewall",
+      "sub_technique_id": "T1686.001",
+      "sub_technique_name": "Cloud Firewall",
+      "tactic(s)": [
+        "defense-impairment"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify configuration",
+          "veris_category": "Integrity",
+          "veris_label": "Modify configuration",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1686",
+      "technique_name": "Disable or Modify System Firewall",
+      "sub_technique_id": "T1686.002",
+      "sub_technique_name": "Network Device Firewall",
+      "tactic(s)": [
+        "defense-impairment"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify configuration",
+          "veris_category": "Integrity",
+          "veris_label": "Modify configuration",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1686",
+      "technique_name": "Disable or Modify System Firewall",
+      "sub_technique_id": "T1686.003",
+      "sub_technique_name": "Windows Host Firewall",
+      "tactic(s)": [
+        "defense-impairment"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Modify configuration",
+          "veris_category": "Integrity",
+          "veris_label": "Modify configuration",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1690",
+      "technique_name": "Prevent Command History Logging",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "defense-impairment"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.integrity.variety.Log tampering",
+          "veris_category": "Integrity",
+          "veris_label": "Log tampering",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    }
+  ]
+}

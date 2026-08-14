@@ -1,0 +1,110 @@
+{
+  "metadata": {
+    "veris_version": "1.4.1",
+    "mitre_attack_version": "19.1",
+    "capability_group": "attribute.availability"
+  },
+  "veris_to_mitre": [
+    {
+      "veris_id": "attribute.availability.variety.Acceleration",
+      "no_mapping_found": true,
+      "attack_ids": []
+    },
+    {
+      "veris_id": "attribute.availability.variety.Degradation",
+      "no_mapping_found": false,
+      "attack_ids": [
+        "T1489",
+        "T1496",
+        "T1496.001",
+        "T1496.002",
+        "T1496.003",
+        "T1496.004",
+        "T1498",
+        "T1498.001",
+        "T1498.002",
+        "T1499",
+        "T1499.001",
+        "T1499.002",
+        "T1499.003",
+        "T1499.004"
+      ]
+    },
+    {
+      "veris_id": "attribute.availability.variety.Destruction",
+      "no_mapping_found": false,
+      "attack_ids": [
+        "T1485",
+        "T1485.001",
+        "T1490",
+        "T1495",
+        "T1561",
+        "T1561.001",
+        "T1561.002"
+      ]
+    },
+    {
+      "veris_id": "attribute.availability.variety.Interruption",
+      "no_mapping_found": false,
+      "attack_ids": [
+        "T1485",
+        "T1485.001",
+        "T1486",
+        "T1489",
+        "T1490",
+        "T1495",
+        "T1496",
+        "T1496.001",
+        "T1496.002",
+        "T1496.003",
+        "T1496.004",
+        "T1498",
+        "T1498.001",
+        "T1498.002",
+        "T1499",
+        "T1499.001",
+        "T1499.002",
+        "T1499.003",
+        "T1499.004",
+        "T1529",
+        "T1531",
+        "T1561",
+        "T1561.001",
+        "T1561.002",
+        "T1667"
+      ]
+    },
+    {
+      "veris_id": "attribute.availability.variety.Loss",
+      "no_mapping_found": false,
+      "attack_ids": [
+        "T1485",
+        "T1485.001",
+        "T1486",
+        "T1490",
+        "T1531",
+        "T1561",
+        "T1561.001",
+        "T1561.002"
+      ]
+    },
+    {
+      "veris_id": "attribute.availability.variety.Obscuration",
+      "no_mapping_found": false,
+      "attack_ids": [
+        "T1486"
+      ]
+    },
+    {
+      "veris_id": "attribute.availability.variety.Other",
+      "no_mapping_found": true,
+      "attack_ids": []
+    },
+    {
+      "veris_id": "attribute.availability.variety.Unknown",
+      "no_mapping_found": true,
+      "attack_ids": []
+    }
+  ],
+  "mitre_to_veris": []
+}

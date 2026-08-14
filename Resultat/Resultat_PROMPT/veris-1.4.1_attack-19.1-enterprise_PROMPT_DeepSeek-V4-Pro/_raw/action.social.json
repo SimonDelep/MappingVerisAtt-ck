@@ -1,0 +1,155 @@
+{
+  "metadata": {
+    "veris_version": "1.4.1",
+    "mitre_attack_version": "19.1",
+    "capability_group": "action.social"
+  },
+  "veris_to_mitre": [
+    {
+      "veris_id": "action.social.variety.Baiting",
+      "no_mapping_found": false,
+      "attack_ids": ["T1091", "T1189", "T1200", "T1608.004", "T1608.006", "T1684"]
+    },
+    {
+      "veris_id": "action.social.variety.Bribery",
+      "no_mapping_found": false,
+      "attack_ids": ["T1684"]
+    },
+    {
+      "veris_id": "action.social.variety.Elicitation",
+      "no_mapping_found": false,
+      "attack_ids": ["T1589", "T1684"]
+    },
+    {
+      "veris_id": "action.social.variety.Evade Defenses",
+      "no_mapping_found": true,
+      "attack_ids": []
+    },
+    {
+      "veris_id": "action.social.variety.Extortion",
+      "no_mapping_found": false,
+      "attack_ids": ["T1657", "T1684"]
+    },
+    {
+      "veris_id": "action.social.variety.Forgery",
+      "no_mapping_found": false,
+      "attack_ids": ["T1606", "T1606.001", "T1606.002", "T1683.001", "T1683.002", "T1684"]
+    },
+    {
+      "veris_id": "action.social.variety.Influence",
+      "no_mapping_found": false,
+      "attack_ids": ["T1684", "T1684.001"]
+    },
+    {
+      "veris_id": "action.social.variety.Other",
+      "no_mapping_found": true,
+      "attack_ids": []
+    },
+    {
+      "veris_id": "action.social.variety.Phishing",
+      "no_mapping_found": false,
+      "attack_ids": ["T1566", "T1566.001", "T1566.002", "T1566.003", "T1566.004", "T1598", "T1598.001", "T1598.002", "T1598.003", "T1598.004", "T1684"]
+    },
+    {
+      "veris_id": "action.social.variety.Pretexting",
+      "no_mapping_found": false,
+      "attack_ids": ["T1684", "T1684.001"]
+    },
+    {
+      "veris_id": "action.social.variety.Prompt bombing",
+      "no_mapping_found": false,
+      "attack_ids": ["T1621", "T1684"]
+    },
+    {
+      "veris_id": "action.social.variety.Propaganda",
+      "no_mapping_found": false,
+      "attack_ids": ["T1683", "T1683.001", "T1683.002", "T1684"]
+    },
+    {
+      "veris_id": "action.social.variety.Scam",
+      "no_mapping_found": false,
+      "attack_ids": ["T1657", "T1684"]
+    },
+    {
+      "veris_id": "action.social.variety.Spam",
+      "no_mapping_found": true,
+      "attack_ids": []
+    },
+    {
+      "veris_id": "action.social.variety.Unknown",
+      "no_mapping_found": true,
+      "attack_ids": []
+    },
+    {
+      "veris_id": "action.social.vector.Documents",
+      "no_mapping_found": false,
+      "attack_ids": ["T1566.001", "T1598.002", "T1204.002"]
+    },
+    {
+      "veris_id": "action.social.vector.Email",
+      "no_mapping_found": false,
+      "attack_ids": ["T1566", "T1566.001", "T1566.002", "T1598", "T1598.002", "T1598.003", "T1684.002"]
+    },
+    {
+      "veris_id": "action.social.vector.IM",
+      "no_mapping_found": false,
+      "attack_ids": ["T1566.003", "T1598.001", "T1684"]
+    },
+    {
+      "veris_id": "action.social.vector.In-person",
+      "no_mapping_found": false,
+      "attack_ids": ["T1684"]
+    },
+    {
+      "veris_id": "action.social.vector.Other",
+      "no_mapping_found": true,
+      "attack_ids": []
+    },
+    {
+      "veris_id": "action.social.vector.Partner",
+      "no_mapping_found": false,
+      "attack_ids": ["T1195", "T1195.001", "T1195.002", "T1195.003", "T1199"]
+    },
+    {
+      "veris_id": "action.social.vector.Phone",
+      "no_mapping_found": false,
+      "attack_ids": ["T1566.004", "T1598.004", "T1684"]
+    },
+    {
+      "veris_id": "action.social.vector.Removable media",
+      "no_mapping_found": false,
+      "attack_ids": ["T1091", "T1200"]
+    },
+    {
+      "veris_id": "action.social.vector.SMS",
+      "no_mapping_found": false,
+      "attack_ids": ["T1566", "T1566.003", "T1598", "T1598.001", "T1684"]
+    },
+    {
+      "veris_id": "action.social.vector.Social media",
+      "no_mapping_found": false,
+      "attack_ids": ["T1566.003", "T1598.001", "T1684"]
+    },
+    {
+      "veris_id": "action.social.vector.Software",
+      "no_mapping_found": false,
+      "attack_ids": ["T1204.002", "T1204.005", "T1195"]
+    },
+    {
+      "veris_id": "action.social.vector.Unknown",
+      "no_mapping_found": true,
+      "attack_ids": []
+    },
+    {
+      "veris_id": "action.social.vector.Virtual meeting",
+      "no_mapping_found": false,
+      "attack_ids": ["T1684"]
+    },
+    {
+      "veris_id": "action.social.vector.Web application",
+      "no_mapping_found": false,
+      "attack_ids": ["T1566", "T1566.002", "T1189", "T1684"]
+    }
+  ],
+  "mitre_to_veris": []
+}
