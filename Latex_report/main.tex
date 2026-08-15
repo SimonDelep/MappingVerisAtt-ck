@@ -684,21 +684,21 @@ Le tableau \ref{tab:prompt-run2} compare les performances globales agrégées au
 \begin{table}[H]
   \centering
   \small
-  \begin{tabular}{l r r r r r r}
+  \begin{tabular}{l r r r r r r r}
     \toprule
     \textbf{Capability} & \textbf{Exp.} &
     \multicolumn{3}{c}{\textbf{Kimi-K3}} &
-    \multicolumn{2}{c}{\textbf{DeepSeek F1}} \\
-    \cmidrule(lr){3-5} \cmidrule(lr){6-7}
-     &  & Prec. & Rapp. & F1 & Prec. & F1 \\
+    \multicolumn{3}{c}{\textbf{DeepSeek F1}} \\
+    \cmidrule(lr){3-5} \cmidrule(lr){6-8}
+	&  & Prec. & Rapp. & F1 & Prec. & Rapp. & F1 \\
     \midrule
-    \texttt{action.hacking}            & 534 & 37,3 & 25,1 & 30,0 & 21,3 & 25,1 \\
-    \texttt{action.malware}            & 405 & 40,0 & 17,3 & 24,1 & 21,1 & 28,6 \\
-    \texttt{action.social}             &  79 & 31,7 & 25,3 & 28,2 & 31,2 & 31,4 \\
-    \texttt{attribute.integrity}       &  91 & 25,3 & 26,4 & 25,8 & 13,4 & 21,3 \\
-    \texttt{attribute.confidentiality} &  73 &100,0 & 26,0 & 41,3 & 59,0 & \textbf{72,6} \\
-    \texttt{attribute.availability}    &  44 & 58,8 & 45,5 & 51,3 & 52,7 & 58,6 \\
-    \texttt{value\_chain.development}  &  25 & 44,0 & 44,0 & 44,0 & 88,9 & 47,1 \\
+    \texttt{action.hacking}            & 534 & 37,3 & 25,1 & 30,0 & 21,3 & 30,5 & 25,1 \\
+    \texttt{action.malware}            & 405 & 40,0 & 17,3 & 24,1 & 21,1 & 44,4 & 28,6 \\
+    \texttt{action.social}             &  79 & 31,7 & 25,3 & 28,2 & 31,2 & 31,6 & 31,4 \\
+    \texttt{attribute.integrity}       &  91 & 25,3 & 26,4 & 25,8 & 13,4 & 51,6 & 21,3 \\
+    \texttt{attribute.confidentiality} &  73 &100,0 & 26,0 & 41,3 & 59,0 & 94,5 & \textbf{72,6} \\
+    \texttt{attribute.availability}    &  44 & 58,8 & 45,5 & 51,3 & 52,7 & 65,9 & 58,6 \\
+    \texttt{value\_chain.development}  &  25 & 44,0 & 44,0 & 44,0 & 88,9 & 32,0 & 47,1 \\
     \bottomrule
   \end{tabular}
   \caption{Second run PROMPT~: détail par capability group (\%).}
