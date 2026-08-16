@@ -1,0 +1,1403 @@
+{
+  "metadata": {
+    "veris_version": "1.4.1",
+    "mitre_attack_version": "19.1",
+    "scope": "Mapping bidirectionnel limité au capability group VERIS action.social (15 varieties + 14 vectors) et, dans le sens MITRE → VERIS, aux techniques/sous-techniques du catalogue MITRE ATT&CK Enterprise v19.1 fourni qui sont sémantiquement liées à l'ingénierie sociale (phishing, pretexting, MFA fatigue, fraude financière, canaux de livraison sociaux, contenus et personas supportant les actions sociales)."
+  },
+  "veris_to_mitre": [
+    {
+      "veris_id": "action.social.variety.Baiting",
+      "veris_category": "Social",
+      "veris_label": "Baiting",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1189",
+          "technique_name": "Drive-by Compromise",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["initial-access"],
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": "La définition VERIS ('Prepare malicious content in a location where a victim is likely to interact with it', exemple 'websites') recoupe T1189 ('gain access to a system through a user visiting a website over the normal course of browsing'). Le baiting couvre toutefois d'autres emplacements que le web."
+        },
+        {
+          "technique_id": "T1091",
+          "technique_name": "Replication Through Removable Media",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["lateral-movement", "initial-access"],
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.55,
+          "justification": "L'exemple VERIS 'left usbs - vect: removable media' correspond au cas Initial Access de T1091 ('manual manipulation of the media' pour qu'un utilisateur l'insère et exécute le contenu)."
+        },
+        {
+          "technique_id": "T1608",
+          "technique_name": "Stage Capabilities",
+          "sub_technique_id": "T1608.006",
+          "sub_technique_name": "SEO Poisoning",
+          "tactic(s)": ["resource-development"],
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.55,
+          "justification": "L'exemple 'SEO' cité dans la définition VERIS correspond directement à T1608.006, qui manipule les classements de moteurs de recherche pour attirer les victimes vers du contenu malveillant."
+        },
+        {
+          "technique_id": "T1583",
+          "technique_name": "Acquire Infrastructure",
+          "sub_technique_id": "T1583.008",
+          "sub_technique_name": "Malvertising",
+          "tactic(s)": ["resource-development"],
+          "mapping_type": "partiel",
+          "confidence": "low",
+          "confidence_score": 0.35,
+          "justification": "Les publicités malveillantes sont un contenu placé dans un emplacement où la victime est susceptible d'interagir avec lui, ce qui rejoint la définition du baiting, mais ne couvre qu'un sous-ensemble des cas."
+        },
+        {
+          "technique_id": "T1204",
+          "technique_name": "User Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["execution"],
+          "mapping_type": "contextuel",
+          "confidence": "low",
+          "confidence_score": 0.3,
+          "justification": "Le baiting aboutit typiquement à une action de l'utilisateur ; T1204 décrit la reliance sur des actions utilisateur pour obtenir l'exécution, sans être équivalent au placement du leurre."
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Variety multi-canaux (web, SEO, médias amovibles) : plusieurs techniques MITRE couvrent chacune un sous-ensemble du périmètre."
+    },
+    {
+      "veris_id": "action.social.variety.Bribery",
+      "veris_category": "Social",
+      "veris_label": "Bribery",
+      "no_mapping_found": true,
+      "mitre_mappings": [],
+      "ambiguous": false,
+      "notes": "Aucune technique du catalogue MITRE fourni ne modélise la corruption ou la sollicitation d'un initié ; ATT&CK est centré sur les comportements techniques de l'adversaire et ne couvre pas le recrutement d'insiders par paiement."
+    },
+    {
+      "veris_id": "action.social.variety.Elicitation",
+      "veris_category": "Social",
+      "veris_label": "Elicitation",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1598",
+          "technique_name": "Phishing for Information",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["reconnaissance"],
+          "mapping_type": "direct",
+          "confidence": "high",
+          "confidence_score": 0.85,
+          "justification": "T1598 décrit 'an attempt to trick targets into divulging information... through the exchange of emails, instant messages, or other electronic conversation means', ce qui correspond à l'extraction subtile d'informations par la conversation de la définition VERIS."
+        },
+        {
+          "technique_id": "T1598",
+          "technique_name": "Phishing for Information",
+          "sub_technique_id": "T1598.001",
+          "sub_technique_name": "Spearphishing Service",
+          "tactic(s)": ["reconnaissance"],
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.55,
+          "justification": "T1598.001 couvre l'élicitation d'informations via des services tiers (réseaux sociaux, webmail), un sous-ensemble des canaux conversationnels de l'elicitation VERIS."
+        },
+        {
+          "technique_id": "T1598",
+          "technique_name": "Phishing for Information",
+          "sub_technique_id": "T1598.004",
+          "sub_technique_name": "Spearphishing Voice",
+          "tactic(s)": ["reconnaissance"],
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.55,
+          "justification": "T1598.004 couvre l'élicitation d'informations par appel vocal, correspondant au cas conversationnel téléphonique de l'elicitation."
+        },
+        {
+          "technique_id": "T1684",
+          "technique_name": "Social Engineering",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["stealth"],
+          "mapping_type": "contextuel",
+          "confidence": "medium",
+          "confidence_score": 0.45,
+          "justification": "T1684 englobe les techniques d'influence conduisant à la divulgation d'informations sensibles, cadre général dans lequel s'inscrit l'elicitation."
+        }
+      ],
+      "ambiguous": false,
+      "notes": "T1598 est la correspondance principale ; les sous-techniques précisent les canaux."
+    },
+    {
+      "veris_id": "action.social.variety.Evade Defenses",
+      "veris_category": "Social",
+      "veris_label": "Evade Defenses",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1684",
+          "technique_name": "Social Engineering",
+          "sub_technique_id": "T1684.002",
+          "sub_technique_name": "Email Spoofing",
+          "tactic(s)": ["stealth"],
+          "mapping_type": "partiel",
+          "confidence": "low",
+          "confidence_score": 0.35,
+          "justification": "Modifier l'identité d'expéditeur d'une action sociale (email) pour contourner les contrôles d'authentification (SPF/DKIM/DMARC) et tromper les outils de sécurité constitue une 'modification of the action... to avoid detection' au sens VERIS."
+        },
+        {
+          "technique_id": "T1665",
+          "technique_name": "Hide Infrastructure",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["command-and-control"],
+          "mapping_type": "contextuel",
+          "confidence": "low",
+          "confidence_score": 0.25,
+          "justification": "T1665 masque les domaines et l'infrastructure servant les actions sociales (liens de phishing) pour retarder leur découverte, ce qui peut supporter l'évitement de détection d'une action sociale sans lui être équivalent."
+        }
+      ],
+      "ambiguous": false,
+      "notes": "La définition VERIS est générique ; le catalogue fourni ne contient pas de technique d'évasion spécifique aux actions sociales, d'où des confiances faibles."
+    },
+    {
+      "veris_id": "action.social.variety.Extortion",
+      "veris_category": "Social",
+      "veris_label": "Extortion",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1657",
+          "technique_name": "Financial Theft",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["impact"],
+          "mapping_type": "direct",
+          "confidence": "high",
+          "confidence_score": 0.85,
+          "justification": "T1657 couvre explicitement le vol de ressources monétaires 'through extortion' et cite 'extortion by ransomware' parmi ses campagnes types, ce qui correspond à 'Extortion or blackmail'."
+        },
+        {
+          "technique_id": "T1486",
+          "technique_name": "Data Encrypted for Impact",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["impact"],
+          "mapping_type": "contextuel",
+          "confidence": "low",
+          "confidence_score": 0.3,
+          "justification": "Le chiffrement de données (ransomware) est le levier technique fréquent d'une demande d'extorsion, mais T1486 décrit l'action technique, pas la demande d'extorsion elle-même."
+        }
+      ],
+      "ambiguous": false,
+      "notes": null
+    },
+    {
+      "veris_id": "action.social.variety.Forgery",
+      "veris_category": "Social",
+      "veris_label": "Forgery",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1683",
+          "technique_name": "Generate Content",
+          "sub_technique_id": "T1683.001",
+          "sub_technique_name": "Written Content",
+          "tactic(s)": ["resource-development"],
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.5,
+          "justification": "T1683.001 couvre la création de 'fabricated employment credentials and documentation, decoy documents', correspondant au volet 'fake... documents' de la contrefaçon VERIS."
+        },
+        {
+          "technique_id": "T1683",
+          "technique_name": "Generate Content",
+          "sub_technique_id": "T1683.002",
+          "sub_technique_name": "Audio-Visual Content",
+          "tactic(s)": ["resource-development"],
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.45,
+          "justification": "T1683.002 couvre les 'fabricated profile photos and identity documents' et médias synthétiques, proches de la contrefaçon de documents et d'artefacts d'identité."
+        },
+        {
+          "technique_id": "T1683",
+          "technique_name": "Generate Content",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["resource-development"],
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.45,
+          "justification": "La technique parente couvre la génération de contenus supportant l'imposture, périmètre plus large que la contrefaçon VERIS."
+        },
+        {
+          "technique_id": "T1036",
+          "technique_name": "Masquerading",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["stealth"],
+          "mapping_type": "partiel",
+          "confidence": "low",
+          "confidence_score": 0.3,
+          "justification": "T1036 manipule les caractéristiques d'artefacts pour les faire paraître légitimes, ce qui chevauche la contrefaçon de logiciels/documents, mais vise l'évasion plutôt que la tromperie interpersonnelle."
+        },
+        {
+          "technique_id": "T1684",
+          "technique_name": "Social Engineering",
+          "sub_technique_id": "T1684.002",
+          "sub_technique_name": "Email Spoofing",
+          "tactic(s)": ["stealth"],
+          "mapping_type": "partiel",
+          "confidence": "low",
+          "confidence_score": 0.3,
+          "justification": "Le spoofing d'expéditeur est une forme de falsification d'identité dans un canal social, sous-ensemble de la contrefaçon VERIS."
+        }
+      ],
+      "ambiguous": true,
+      "notes": "La contrefaçon de matériel (fake hardware) n'a pas d'équivalent dans le catalogue fourni ; les mappings couvrent surtout documents et identités falsifiés."
+    },
+    {
+      "veris_id": "action.social.variety.Influence",
+      "veris_category": "Social",
+      "veris_label": "Influence",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1684",
+          "technique_name": "Social Engineering",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["stealth"],
+          "mapping_type": "direct",
+          "confidence": "high",
+          "confidence_score": 0.85,
+          "justification": "T1684 décrit l'usage de techniques d'influence pour amener les utilisateurs à agir (trust-building, scare tactics, sentiment d'urgence), ce qui correspond aux 'Influence tactics (Leveraging authority or obligation, framing, etc)' de VERIS."
+        },
+        {
+          "technique_id": "T1684",
+          "technique_name": "Social Engineering",
+          "sub_technique_id": "T1684.001",
+          "sub_technique_name": "Impersonation",
+          "tactic(s)": ["stealth"],
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.55,
+          "justification": "L'impersonation d'une personne de confiance est un vecteur privilégié pour 'leveraging authority', l'un des ressorts de l'influence VERIS."
+        }
+      ],
+      "ambiguous": false,
+      "notes": null
+    },
+    {
+      "veris_id": "action.social.variety.Other",
+      "veris_category": "Social",
+      "veris_label": "Other",
+      "no_mapping_found": true,
+      "mitre_mappings": [],
+      "ambiguous": false,
+      "notes": "Valeur fourre-tout sans définition comportementale ; aucune correspondance fondée possible."
+    },
+    {
+      "veris_id": "action.social.variety.Phishing",
+      "veris_category": "Social",
+      "veris_label": "Phishing",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["initial-access"],
+          "mapping_type": "direct",
+          "confidence": "high",
+          "confidence_score": 0.9,
+          "justification": "Correspondance canonique : T1566 couvre 'all forms of phishing... electronically delivered social engineering', y compris le spearphishing ciblé et le phishing de masse."
+        },
+        {
+          "technique_id": "T1598",
+          "technique_name": "Phishing for Information",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["reconnaissance"],
+          "mapping_type": "direct",
+          "confidence": "high",
+          "confidence_score": 0.85,
+          "justification": "La note VERIS 'Phishing always involves getting data from the victim' correspond précisément à l'objectif de T1598 : tromper la cible pour qu'elle divulgue des informations (identifiants, données actionnables)."
+        },
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.001",
+          "sub_technique_name": "Spearphishing Attachment",
+          "tactic(s)": ["initial-access"],
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": "Variante par pièce jointe du phishing, sous-ensemble du '*ishing' VERIS."
+        },
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.002",
+          "sub_technique_name": "Spearphishing Link",
+          "tactic(s)": ["initial-access"],
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": "Variante par lien malveillant du phishing, sous-ensemble du '*ishing' VERIS."
+        },
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.003",
+          "sub_technique_name": "Spearphishing via Service",
+          "tactic(s)": ["initial-access"],
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.55,
+          "justification": "Variante par services tiers (réseaux sociaux, webmail) du phishing."
+        },
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.004",
+          "sub_technique_name": "Spearphishing Voice",
+          "tactic(s)": ["initial-access"],
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.55,
+          "justification": "Le vishing (phishing vocal) est explicitement couvert par le 'Any type of *ishing' de VERIS."
+        },
+        {
+          "technique_id": "T1534",
+          "technique_name": "Internal Spearphishing",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["lateral-movement"],
+          "mapping_type": "contextuel",
+          "confidence": "low",
+          "confidence_score": 0.35,
+          "justification": "Le spearphishing interne depuis un compte compromis est une forme de phishing, mais il intervient post-compromission dans un objectif de mouvement latéral."
+        }
+      ],
+      "ambiguous": true,
+      "notes": "VERIS Phishing couvre à la fois le phishing d'accès initial (T1566) et le phishing de collecte d'informations (T1598) ; la distinction VERIS Phishing/Pretexting (transfert de données ou non) n'existe pas dans ATT&CK."
+    },
+    {
+      "veris_id": "action.social.variety.Pretexting",
+      "veris_category": "Social",
+      "veris_label": "Pretexting",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1684",
+          "technique_name": "Social Engineering",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["stealth"],
+          "mapping_type": "direct",
+          "confidence": "high",
+          "confidence_score": 0.8,
+          "justification": "T1684 couvre les narratifs ciblés et convaincants ('convincing and targeted narratives', scénarios help desk, vendor, executive) visant à faire agir la victime, ce qui correspond au 'dialogue leveraging invented scenario' de VERIS."
+        },
+        {
+          "technique_id": "T1684",
+          "technique_name": "Social Engineering",
+          "sub_technique_id": "T1684.001",
+          "sub_technique_name": "Impersonation",
+          "tactic(s)": ["stealth"],
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": "Le pretexting s'appuie fréquemment sur l'impersonation d'une entité de confiance pour crédibiliser le scénario inventé."
+        },
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.004",
+          "sub_technique_name": "Spearphishing Voice",
+          "tactic(s)": ["initial-access"],
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.5,
+          "justification": "Le vishing repose sur des prétextes ('posing as a trusted source', 'creating a sense of urgency') ; il recoupe le pretexting lorsque le canal est téléphonique."
+        },
+        {
+          "technique_id": "T1598",
+          "technique_name": "Phishing for Information",
+          "sub_technique_id": "T1598.004",
+          "sub_technique_name": "Spearphishing Voice",
+          "tactic(s)": ["reconnaissance"],
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.45,
+          "justification": "Variante vocale de l'élicitation d'informations s'appuyant sur des prétextes."
+        },
+        {
+          "technique_id": "T1657",
+          "technique_name": "Financial Theft",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["impact"],
+          "mapping_type": "contextuel",
+          "confidence": "medium",
+          "confidence_score": 0.45,
+          "justification": "L'exemple VERIS ('A fraudulent transfer or changing a bank account on a business account') correspond aux fraudes type BEC couvertes par T1657 via l'imposture d'une entité de confiance."
+        }
+      ],
+      "ambiguous": true,
+      "notes": "ATT&CK ne distingue pas le pretexting du phishing comme VERIS ; T1684 est le point d'ancrage le plus fidèle."
+    },
+    {
+      "veris_id": "action.social.variety.Prompt bombing",
+      "veris_category": "Social",
+      "veris_label": "Prompt bombing",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1621",
+          "technique_name": "Multi-Factor Authentication Request Generation",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["credential-access"],
+          "mapping_type": "direct",
+          "confidence": "high",
+          "confidence_score": 0.95,
+          "justification": "T1621 décrit exactement le bombardement de notifications MFA ('continuously repeat login attempts in order to bombard users with MFA push notifications... MFA fatigue') pour faire accepter la connexion à l'utilisateur."
+        }
+      ],
+      "ambiguous": false,
+      "notes": null
+    },
+    {
+      "veris_id": "action.social.variety.Propaganda",
+      "veris_category": "Social",
+      "veris_label": "Propaganda",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1683",
+          "technique_name": "Generate Content",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["resource-development"],
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.45,
+          "justification": "T1683 couvre la création de contenus (texte, audio, vidéo) pour des 'influence activities', seul point d'ancrage du catalogue pour la propagande/désinformation."
+        },
+        {
+          "technique_id": "T1683",
+          "technique_name": "Generate Content",
+          "sub_technique_id": "T1683.001",
+          "sub_technique_name": "Written Content",
+          "tactic(s)": ["resource-development"],
+          "mapping_type": "partiel",
+          "confidence": "low",
+          "confidence_score": 0.35,
+          "justification": "Les contenus écrits générés (y compris via IA) peuvent servir des campagnes de désinformation, sans que T1683.001 ne modélise la diffusion de propagande elle-même."
+        },
+        {
+          "technique_id": "T1683",
+          "technique_name": "Generate Content",
+          "sub_technique_id": "T1683.002",
+          "sub_technique_name": "Audio-Visual Content",
+          "tactic(s)": ["resource-development"],
+          "mapping_type": "partiel",
+          "confidence": "low",
+          "confidence_score": 0.35,
+          "justification": "Les médias synthétiques (audio/vidéo) peuvent supporter des campagnes de propagande, couverture partielle du concept VERIS."
+        }
+      ],
+      "ambiguous": false,
+      "notes": "ATT&CK Enterprise ne modélise pas les campagnes de désinformation ; le mapping est partiel et limité à la production de contenu d'influence."
+    },
+    {
+      "veris_id": "action.social.variety.Scam",
+      "veris_category": "Social",
+      "veris_label": "Scam",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1657",
+          "technique_name": "Financial Theft",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["impact"],
+          "mapping_type": "direct",
+          "confidence": "high",
+          "confidence_score": 0.75,
+          "justification": "T1657 couvre la fraude par ingénierie sociale ('business email compromise (BEC) and fraud', 'pig butchering') visant le gain financier, ce qui correspond aux arnaques en ligne (419, auction fraud) de VERIS."
+        },
+        {
+          "technique_id": "T1684",
+          "technique_name": "Social Engineering",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["stealth"],
+          "mapping_type": "contextuel",
+          "confidence": "medium",
+          "confidence_score": 0.5,
+          "justification": "Les arnaques en ligne reposent sur des techniques d'influence et de manipulation couvertes par T1684."
+        },
+        {
+          "technique_id": "T1204",
+          "technique_name": "User Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["execution"],
+          "mapping_type": "contextuel",
+          "confidence": "low",
+          "confidence_score": 0.35,
+          "justification": "T1204 cite explicitement les 'tech support scams' (scareware) amenant l'utilisateur à exécuter des outils d'accès distant, correspondant au volet scareware de la définition VERIS."
+        }
+      ],
+      "ambiguous": false,
+      "notes": null
+    },
+    {
+      "veris_id": "action.social.variety.Spam",
+      "veris_category": "Social",
+      "veris_label": "Spam",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1667",
+          "technique_name": "Email Bombing",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["impact"],
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.55,
+          "justification": "T1667 inonde une adresse cible d'un volume massif de messages non sollicités, forme de spam ciblé ; le spam VERIS est toutefois plus large (emails et publicités non désirés en général)."
+        },
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["initial-access"],
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.5,
+          "justification": "T1566 inclut explicitement le phishing non ciblé 'such as in mass malware spam campaigns', recouvrant le spam à visée malveillante."
+        },
+        {
+          "technique_id": "T1496",
+          "technique_name": "Resource Hijacking",
+          "sub_technique_id": "T1496.004",
+          "sub_technique_name": "Cloud Service Hijacking",
+          "tactic(s)": ["impact"],
+          "mapping_type": "partiel",
+          "confidence": "low",
+          "confidence_score": 0.35,
+          "justification": "T1496.004 couvre l'abus de services email/messaging compromis pour envoyer de grandes quantités de spam, un mécanisme de production de spam."
+        },
+        {
+          "technique_id": "T1583",
+          "technique_name": "Acquire Infrastructure",
+          "sub_technique_id": "T1583.008",
+          "sub_technique_name": "Malvertising",
+          "tactic(s)": ["resource-development"],
+          "mapping_type": "partiel",
+          "confidence": "low",
+          "confidence_score": 0.3,
+          "justification": "Le volet 'undesired... advertisements' de la définition VERIS rejoint les publicités malveillantes non sollicitées."
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Aucune technique MITRE ne modélise le spam comme fin en soi ; les mappings couvrent ses usages (déluge, vecteur de phishing, publicités)."
+    },
+    {
+      "veris_id": "action.social.variety.Unknown",
+      "veris_category": "Social",
+      "veris_label": "Unknown",
+      "no_mapping_found": true,
+      "mitre_mappings": [],
+      "ambiguous": false,
+      "notes": "Valeur 'Unknown' sans définition comportementale ; aucune correspondance possible."
+    },
+    {
+      "veris_id": "action.social.vector.Documents",
+      "veris_category": "Social",
+      "veris_label": "Documents",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.001",
+          "sub_technique_name": "Spearphishing Attachment",
+          "tactic(s)": ["initial-access"],
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.55,
+          "justification": "T1566.001 utilise des documents (Microsoft Office, PDF, archives) comme pièces jointes leurre, correspondant au canal 'Documents' d'une action sociale."
+        },
+        {
+          "technique_id": "T1204",
+          "technique_name": "User Execution",
+          "sub_technique_id": "T1204.002",
+          "sub_technique_name": "Malicious File",
+          "tactic(s)": ["execution"],
+          "mapping_type": "contextuel",
+          "confidence": "low",
+          "confidence_score": 0.35,
+          "justification": "T1204.002 couvre l'ouverture par l'utilisateur de fichiers documents malveillants (.doc, .pdf, .xls) après ingénierie sociale, phase d'exécution suivant la livraison par documents."
+        }
+      ],
+      "ambiguous": false,
+      "notes": null
+    },
+    {
+      "veris_id": "action.social.vector.Email",
+      "veris_category": "Social",
+      "veris_label": "Email",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["initial-access"],
+          "mapping_type": "direct",
+          "confidence": "high",
+          "confidence_score": 0.8,
+          "justification": "L'email est le canal de livraison canonique de T1566 ('Adversaries may send victims emails containing malicious attachments or links')."
+        },
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.001",
+          "sub_technique_name": "Spearphishing Attachment",
+          "tactic(s)": ["initial-access"],
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": "Sous-technique de phishing par email avec pièce jointe."
+        },
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.002",
+          "sub_technique_name": "Spearphishing Link",
+          "tactic(s)": ["initial-access"],
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": "Sous-technique de phishing par email avec lien malveillant."
+        },
+        {
+          "technique_id": "T1598",
+          "technique_name": "Phishing for Information",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["reconnaissance"],
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.55,
+          "justification": "T1598 utilise l'échange d'emails pour éliciter des informations, canal email de l'action sociale."
+        },
+        {
+          "technique_id": "T1667",
+          "technique_name": "Email Bombing",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["impact"],
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.45,
+          "justification": "L'email bombing est une action sociale/abusive délivrée exclusivement par le canal email."
+        },
+        {
+          "technique_id": "T1684",
+          "technique_name": "Social Engineering",
+          "sub_technique_id": "T1684.002",
+          "sub_technique_name": "Email Spoofing",
+          "tactic(s)": ["stealth"],
+          "mapping_type": "contextuel",
+          "confidence": "low",
+          "confidence_score": 0.35,
+          "justification": "Le spoofing d'expéditeur est une technique de renforcement de crédibilité des actions sociales menées par email."
+        }
+      ],
+      "ambiguous": false,
+      "notes": null
+    },
+    {
+      "veris_id": "action.social.vector.IM",
+      "veris_category": "Social",
+      "veris_label": "IM",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.003",
+          "sub_technique_name": "Spearphishing via Service",
+          "tactic(s)": ["initial-access"],
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": "T1566.003 couvre l'envoi de messages de spearphishing via des services tiers, incluant les messageries instantanées."
+        },
+        {
+          "technique_id": "T1598",
+          "technique_name": "Phishing for Information",
+          "sub_technique_id": "T1598.001",
+          "sub_technique_name": "Spearphishing Service",
+          "tactic(s)": ["reconnaissance"],
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.55,
+          "justification": "T1598.001 couvre l'élicitation d'informations via des services de messagerie non contrôlés par l'entreprise."
+        },
+        {
+          "technique_id": "T1534",
+          "technique_name": "Internal Spearphishing",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["lateral-movement"],
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.5,
+          "justification": "T1534 mentionne explicitement l'usage d'applications de chat internes ('such as Microsoft Teams') pour diffuser du contenu malveillant ou éliciter des informations."
+        }
+      ],
+      "ambiguous": false,
+      "notes": null
+    },
+    {
+      "veris_id": "action.social.vector.In-person",
+      "veris_category": "Social",
+      "veris_label": "In-person",
+      "no_mapping_found": true,
+      "mitre_mappings": [],
+      "ambiguous": false,
+      "notes": "Le catalogue ATT&CK Enterprise fourni ne contient aucune technique modélisant l'ingénierie sociale en face-à-face ; la technique physique la plus proche (T1200 Hardware Additions) concerne l'introduction de matériel, pas l'interaction interpersonnelle."
+    },
+    {
+      "veris_id": "action.social.vector.Other",
+      "veris_category": "Social",
+      "veris_label": "Other",
+      "no_mapping_found": true,
+      "mitre_mappings": [],
+      "ambiguous": false,
+      "notes": "Valeur fourre-tout sans définition ; aucune correspondance fondée possible."
+    },
+    {
+      "veris_id": "action.social.vector.Partner",
+      "veris_category": "Social",
+      "veris_label": "Partner",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1199",
+          "technique_name": "Trusted Relationship",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["initial-access"],
+          "mapping_type": "direct",
+          "confidence": "high",
+          "confidence_score": 0.85,
+          "justification": "T1199 couvre l'abus d'organisations tierces ayant accès aux victimes ('Access through trusted third party relationship abuses an existing connection'), ce qui correspond à 'Partner connection or credential' et à l'indication de compromission de la chaîne d'approvisionnement de VERIS."
+        }
+      ],
+      "ambiguous": false,
+      "notes": null
+    },
+    {
+      "veris_id": "action.social.vector.Phone",
+      "veris_category": "Social",
+      "veris_label": "Phone",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.004",
+          "sub_technique_name": "Spearphishing Voice",
+          "tactic(s)": ["initial-access"],
+          "mapping_type": "direct",
+          "confidence": "high",
+          "confidence_score": 0.85,
+          "justification": "T1566.004 emploie 'a phone call or other forms of voice communications' pour manipuler l'utilisateur, correspondant exactement au canal téléphonique."
+        },
+        {
+          "technique_id": "T1598",
+          "technique_name": "Phishing for Information",
+          "sub_technique_id": "T1598.004",
+          "sub_technique_name": "Spearphishing Voice",
+          "tactic(s)": ["reconnaissance"],
+          "mapping_type": "direct",
+          "confidence": "high",
+          "confidence_score": 0.8,
+          "justification": "T1598.004 couvre le vishing pour éliciter des informations sensibles par téléphone."
+        },
+        {
+          "technique_id": "T1621",
+          "technique_name": "Multi-Factor Authentication Request Generation",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["credential-access"],
+          "mapping_type": "partiel",
+          "confidence": "low",
+          "confidence_score": 0.35,
+          "justification": "T1621 inclut les appels téléphoniques parmi les canaux de bombardement MFA, usage téléphonique spécifique d'une action sociale."
+        }
+      ],
+      "ambiguous": false,
+      "notes": null
+    },
+    {
+      "veris_id": "action.social.vector.Removable media",
+      "veris_category": "Social",
+      "veris_label": "Removable media",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1091",
+          "technique_name": "Replication Through Removable Media",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["lateral-movement", "initial-access"],
+          "mapping_type": "direct",
+          "confidence": "high",
+          "confidence_score": 0.75,
+          "justification": "T1091 couvre l'accès initial via des médias amovibles manipulés pour tromper les utilisateurs ('renaming it to look like a legitimate file to trick users into executing it'), correspondant au canal 'Removable storage media' (ex. USB abandonnés du baiting)."
+        }
+      ],
+      "ambiguous": false,
+      "notes": null
+    },
+    {
+      "veris_id": "action.social.vector.SMS",
+      "veris_category": "Social",
+      "veris_label": "SMS",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["initial-access"],
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.5,
+          "justification": "Le smishing relève des 'forms of phishing... electronically delivered social engineering' de T1566, bien que la description fournie détaille surtout l'email et les services tiers."
+        },
+        {
+          "technique_id": "T1621",
+          "technique_name": "Multi-Factor Authentication Request Generation",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["credential-access"],
+          "mapping_type": "partiel",
+          "confidence": "low",
+          "confidence_score": 0.4,
+          "justification": "T1621 cite les 'SMS messages' parmi les canaux du bombardement MFA (MFA fatigue)."
+        },
+        {
+          "technique_id": "T1598",
+          "technique_name": "Phishing for Information",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["reconnaissance"],
+          "mapping_type": "partiel",
+          "confidence": "low",
+          "confidence_score": 0.35,
+          "justification": "T1598 couvre l'élicitation d'informations via 'instant messages, or other electronic conversation means', ce qui peut inclure le SMS."
+        }
+      ],
+      "ambiguous": false,
+      "notes": "Le catalogue fourni ne contient pas de sous-technique dédiée au smishing ; le rattachement se fait au niveau des techniques parentes."
+    },
+    {
+      "veris_id": "action.social.vector.Social media",
+      "veris_category": "Social",
+      "veris_label": "Social media",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.003",
+          "sub_technique_name": "Spearphishing via Service",
+          "tactic(s)": ["initial-access"],
+          "mapping_type": "direct",
+          "confidence": "high",
+          "confidence_score": 0.8,
+          "justification": "T1566.003 couvre explicitement les 'social media services' comme canal de spearphishing, correspondant au vecteur 'Social media or networking'."
+        },
+        {
+          "technique_id": "T1598",
+          "technique_name": "Phishing for Information",
+          "sub_technique_id": "T1598.001",
+          "sub_technique_name": "Spearphishing Service",
+          "tactic(s)": ["reconnaissance"],
+          "mapping_type": "direct",
+          "confidence": "high",
+          "confidence_score": 0.75,
+          "justification": "T1598.001 utilise les réseaux sociaux pour créer un rapport et éliciter des informations ('create fake social media accounts and message employees')."
+        },
+        {
+          "technique_id": "T1585",
+          "technique_name": "Establish Accounts",
+          "sub_technique_id": "T1585.001",
+          "sub_technique_name": "Social Media Accounts",
+          "tactic(s)": ["resource-development"],
+          "mapping_type": "contextuel",
+          "confidence": "medium",
+          "confidence_score": 0.5,
+          "justification": "La création de personas sur les réseaux sociaux est une étape préparatoire aux actions sociales menées via ce vecteur."
+        },
+        {
+          "technique_id": "T1586",
+          "technique_name": "Compromise Accounts",
+          "sub_technique_id": "T1586.001",
+          "sub_technique_name": "Social Media Accounts",
+          "tactic(s)": ["resource-development"],
+          "mapping_type": "contextuel",
+          "confidence": "medium",
+          "confidence_score": 0.45,
+          "justification": "La compromission de comptes de réseaux sociaux fournit des personas légitimes pour des actions sociales ultérieures via ce vecteur."
+        }
+      ],
+      "ambiguous": false,
+      "notes": null
+    },
+    {
+      "veris_id": "action.social.vector.Software",
+      "veris_category": "Social",
+      "veris_label": "Software",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1204",
+          "technique_name": "User Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["execution"],
+          "mapping_type": "contextuel",
+          "confidence": "low",
+          "confidence_score": 0.4,
+          "justification": "Une action sociale délivrée via un logiciel (ex. scareware, faux utilitaires) aboutit à une exécution par l'utilisateur, couverte par T1204."
+        },
+        {
+          "technique_id": "T1204",
+          "technique_name": "User Execution",
+          "sub_technique_id": "T1204.005",
+          "sub_technique_name": "Malicious Library",
+          "tactic(s)": ["execution"],
+          "mapping_type": "partiel",
+          "confidence": "low",
+          "confidence_score": 0.3,
+          "justification": "T1204.005 repose sur l'installation par l'utilisateur d'une bibliothèque logicielle malveillante (typosquatting), forme de leurre logiciel."
+        },
+        {
+          "technique_id": "T1204",
+          "technique_name": "User Execution",
+          "sub_technique_id": "T1204.003",
+          "sub_technique_name": "Malicious Image",
+          "tactic(s)": ["execution"],
+          "mapping_type": "partiel",
+          "confidence": "low",
+          "confidence_score": 0.25,
+          "justification": "T1204.003 repose sur le déploiement par l'utilisateur d'une image (VM/conteneur) malveillante, forme de leurre logiciel."
+        }
+      ],
+      "ambiguous": false,
+      "notes": "La définition VERIS du vecteur est limitée à 'Software' ; l'interprétation retenue est celle de leurres logiciels, d'où des confiances faibles."
+    },
+    {
+      "veris_id": "action.social.vector.Unknown",
+      "veris_category": "Social",
+      "veris_label": "Unknown",
+      "no_mapping_found": true,
+      "mitre_mappings": [],
+      "ambiguous": false,
+      "notes": "Valeur 'Unknown' sans définition ; aucune correspondance possible."
+    },
+    {
+      "veris_id": "action.social.vector.Virtual meeting",
+      "veris_category": "Social",
+      "veris_label": "Virtual meeting",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1684",
+          "technique_name": "Social Engineering",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["stealth"],
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.5,
+          "justification": "T1684 couvre l'usage de 'collaboration platforms' et d'interactions vocales augmentées par IA pour tromper les victimes, ce qui inclut les réunions virtuelles."
+        },
+        {
+          "technique_id": "T1683",
+          "technique_name": "Generate Content",
+          "sub_technique_id": "T1683.002",
+          "sub_technique_name": "Audio-Visual Content",
+          "tactic(s)": ["resource-development"],
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.45,
+          "justification": "T1683.002 couvre 'real-time altered audio or video during live interactions', technique employée lors de réunions virtuelles frauduleuses (deepfake)."
+        },
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.003",
+          "sub_technique_name": "Spearphishing via Service",
+          "tactic(s)": ["initial-access"],
+          "mapping_type": "partiel",
+          "confidence": "low",
+          "confidence_score": 0.3,
+          "justification": "Les plateformes de réunion virtuelle sont des services tiers pouvant servir de canal de spearphishing."
+        }
+      ],
+      "ambiguous": false,
+      "notes": null
+    },
+    {
+      "veris_id": "action.social.vector.Web application",
+      "veris_category": "Social",
+      "veris_label": "Web application",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1189",
+          "technique_name": "Drive-by Compromise",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": ["initial-access"],
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.55,
+          "justification": "T1189 exploite la visite d'un site web par l'utilisateur, correspondant à une action sociale délivrée via une application web (ex. watering hole)."
+        },
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.002",
+          "sub_technique_name": "Spearphishing Link",
+          "tactic(s)": ["initial-access"],
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.5,
+          "justification": "Les liens de spearphishing renvoient la victime vers des applications/sites web malveillants."
+        },
+        {
+          "technique_id": "T1598",
+          "technique_name": "Phishing for Information",
+          "sub_technique_id": "T1598.003",
+          "sub_technique_name": "Spearphishing Link",
+          "tactic(s)": ["reconnaissance"],
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.5,
+          "justification": "T1598.003 utilise des sites web clones (portails de connexion) pour récolter des identifiants, action sociale s'exerçant via une application web."
+        },
+        {
+          "technique_id": "T1608",
+          "technique_name": "Stage Capabilities",
+          "sub_technique_id": "T1608.006",
+          "sub_technique_name": "SEO Poisoning",
+          "tactic(s)": ["resource-development"],
+          "mapping_type": "contextuel",
+          "confidence": "low",
+          "confidence_score": 0.3,
+          "justification": "Le SEO poisoning prépare des sites web comme leurres, en amont de l'action sociale délivrée via le web."
+        }
+      ],
+      "ambiguous": false,
+      "notes": null
+    }
+  ],
+  "mitre_to_veris": [
+    {
+      "technique_id": "T1566",
+      "technique_name": "Phishing",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": ["initial-access"],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.variety.Phishing",
+          "veris_category": "Social",
+          "veris_label": "Phishing",
+          "mapping_type": "direct",
+          "confidence": "high",
+          "confidence_score": 0.9,
+          "justification": "Correspondance canonique : T1566 couvre toutes les formes de phishing ('All forms of phishing are electronically delivered social engineering'), ce que VERIS exprime par 'Any type of *ishing'."
+        },
+        {
+          "veris_id": "action.social.vector.Email",
+          "veris_category": "Social",
+          "veris_label": "Email",
+          "mapping_type": "contextuel",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": "L'email est le canal de livraison principal décrit par T1566 ('send victims emails containing malicious attachments or links')."
+        },
+        {
+          "veris_id": "action.social.vector.Social media",
+          "veris_category": "Social",
+          "veris_label": "Social media",
+          "mapping_type": "contextuel",
+          "confidence": "medium",
+          "confidence_score": 0.5,
+          "justification": "T1566 mentionne la conduite du phishing 'via third-party services, like social media platforms'."
+        },
+        {
+          "veris_id": "action.social.vector.SMS",
+          "veris_category": "Social",
+          "veris_label": "SMS",
+          "mapping_type": "contextuel",
+          "confidence": "low",
+          "confidence_score": 0.4,
+          "justification": "Le smishing relève des formes de phishing couvertes par T1566, bien que non détaillé dans la description fournie."
+        },
+        {
+          "veris_id": "action.social.vector.Phone",
+          "veris_category": "Social",
+          "veris_label": "Phone",
+          "mapping_type": "contextuel",
+          "confidence": "low",
+          "confidence_score": 0.4,
+          "justification": "T1566 mentionne des messages de phishing invitant à appeler un numéro de téléphone (callback), impliquant le canal téléphonique."
+        },
+        {
+          "veris_id": "action.social.variety.Spam",
+          "veris_category": "Social",
+          "veris_label": "Spam",
+          "mapping_type": "partiel",
+          "confidence": "low",
+          "confidence_score": 0.35,
+          "justification": "T1566 inclut le phishing non ciblé 'such as in mass malware spam campaigns', chevauchant la notion VERIS de spam."
+        }
+      ],
+      "ambiguous": true,
+      "notes": "T1566 couvre des variétés (Phishing) et des vecteurs (Email, Social media, SMS, Phone) distincts dans VERIS."
+    },
+    {
+      "technique_id": "T1566",
+      "technique_name": "Phishing",
+      "sub_technique_id": "T1566.001",
+      "sub_technique_name": "Spearphishing Attachment",
+      "tactic(s)": ["initial-access"],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.variety.Phishing",
+          "veris_category": "Social",
+          "veris_label": "Phishing",
+          "mapping_type": "direct",
+          "confidence": "high",
+          "confidence_score": 0.85,
+          "justification": "Le spearphishing par pièce jointe est une forme de '*ishing' au sens VERIS."
+        },
+        {
+          "veris_id": "action.social.vector.Email",
+          "veris_category": "Social",
+          "veris_label": "Email",
+          "mapping_type": "direct",
+          "confidence": "high",
+          "confidence_score": 0.75,
+          "justification": "La pièce jointe est livrée par email ('attach a file to the spearphishing email')."
+        },
+        {
+          "veris_id": "action.social.vector.Documents",
+          "veris_category": "Social",
+          "veris_label": "Documents",
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.5,
+          "justification": "Les pièces jointes typiques sont des documents ('Microsoft Office documents, executables, PDFs, or archived files')."
+        }
+      ],
+      "ambiguous": false,
+      "notes": null
+    },
+    {
+      "technique_id": "T1566",
+      "technique_name": "Phishing",
+      "sub_technique_id": "T1566.002",
+      "sub_technique_name": "Spearphishing Link",
+      "tactic(s)": ["initial-access"],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.variety.Phishing",
+          "veris_category": "Social",
+          "veris_label": "Phishing",
+          "mapping_type": "direct",
+          "confidence": "high",
+          "confidence_score": 0.85,
+          "justification": "Le spearphishing par lien est une forme de '*ishing' au sens VERIS."
+        },
+        {
+          "veris_id": "action.social.vector.Email",
+          "veris_category": "Social",
+          "veris_label": "Email",
+          "mapping_type": "direct",
+          "confidence": "medium",
+          "confidence_score": 0.7,
+          "justification": "Les liens malveillants sont 'contained in email' selon la description fournie."
+        },
+        {
+          "veris_id": "action.social.vector.Web application",
+          "veris_category": "Social",
+          "veris_label": "Web application",
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.5,
+          "justification": "Le lien conduit la victime vers un site web malveillant ('The visited website may compromise the web browser... or the user will be prompted to download applications')."
+        }
+      ],
+      "ambiguous": false,
+      "notes": null
+    },
+    {
+      "technique_id": "T1566",
+      "technique_name": "Phishing",
+      "sub_technique_id": "T1566.003",
+      "sub_technique_name": "Spearphishing via Service",
+      "tactic(s)": ["initial-access"],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.variety.Phishing",
+          "veris_category": "Social",
+          "veris_label": "Phishing",
+          "mapping_type": "direct",
+          "confidence": "high",
+          "confidence_score": 0.85,
+          "justification": "Le spearphishing via services tiers est une forme de '*ishing' au sens VERIS."
+        },
+        {
+          "veris_id": "action.social.vector.Social media",
+          "veris_category": "Social",
+          "veris_label": "Social media",
+          "mapping_type": "direct",
+          "confidence": "high",
+          "confidence_score": 0.75,
+          "justification": "T1566.003 cite explicitement les 'social media services' comme canal."
+        },
+        {
+          "veris_id": "action.social.vector.IM",
+          "veris_category": "Social",
+          "veris_label": "IM",
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.55,
+          "justification": "Les services tiers de messagerie ('personal webmail, and other non-enterprise controlled services') incluent la messagerie instantanée."
+        }
+      ],
+      "ambiguous": false,
+      "notes": null
+    },
+    {
+      "technique_id": "T1566",
+      "technique_name": "Phishing",
+      "sub_technique_id": "T1566.004",
+      "sub_technique_name": "Spearphishing Voice",
+      "tactic(s)": ["initial-access"],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.vector.Phone",
+          "veris_category": "Social",
+          "veris_label": "Phone",
+          "mapping_type": "direct",
+          "confidence": "high",
+          "confidence_score": 0.85,
+          "justification": "T1566.004 emploie 'a phone call or other forms of voice communications', correspondant exactement au vecteur Phone."
+        },
+        {
+          "veris_id": "action.social.variety.Phishing",
+          "veris_category": "Social",
+          "veris_label": "Phishing",
+          "mapping_type": "direct",
+          "confidence": "high",
+          "confidence_score": 0.8,
+          "justification": "Le vishing est couvert par 'Any type of *ishing' de VERIS."
+        },
+        {
+          "veris_id": "action.social.variety.Pretexting",
+          "veris_category": "Social",
+          "veris_label": "Pretexting",
+          "mapping_type": "partiel",
+          "confidence": "medium",
+          "confidence_score": 0.55,
+          "justification": "T1566.004 repose sur 'posing as a trusted source' et 'creating a sense of urgency', i.e. un scénario inventé ; lorsque l'appel ne vise pas un transfert de données, VERIS le classe en Pretexting."
+        }
+      ],
+      "ambiguous": false,
+      "notes": null
+    },
+    {
+      "technique_id": "T1598",
+      "technique_name": "Phishing for Information",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": ["reconnaissance"],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.variety.Phishing",
+          "veris_category": "Social",
+          "veris_label": "Phishing",
+          "mapping_type": "direct",
+          "confidence": "high",
+          "confidence_score": 0.85,
+          "justification": "L'objectif de T1598 ('trick targets into divulging information, frequently credentials') correspond à la note VERIS 'Phishing always involves getting data from the victim'."
+        },
+        {
+          "veris_id": "action.social.variety.Elicitation",
+          "veris_category": "Social",
+          "veris_label": "Elicitation",
+          "mapping_type": "direct",
+          "confidence": "high",
+          "confidence_score": 0.75,
+          "justification": "T1598 mentionne l'obtention d'informations 'through the exchange of emails, instant messages, or other electronic conversation means', ce qui correspond à l'extraction subtile d'informations par la conversation."
+        },
+        {
+          "veris_id": "action.social.vector.Email",
+          "veris_category": "Social",
+          "veris_label": "Email",
+          "mapping_type": "contextuel",
+          "confidence": "medium",
+          "confidence_score": 0.5,
+          "justification": "L'échange d'emails est l'un des canaux cités par T1598."
+        }
+      ],
+      "ambiguous": true,
+      "notes": "T1598 chevauche deux varieties VERIS (Phishing et Elicitation) selon le degré de scénario inventé."
+    },
+    {
+      "technique_id": "T1598",
+      "technique_name": "Phishing for Information",
+      "sub_technique_id": "T1598.001",
+      "sub_technique_name": "Spearphishing Service",
+      "tactic(s)": ["reconnaissance"],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.variety.Elicitation",
+          "veris_category": "Social",
+          "veris_label": "Elicitation",
+          "mapping_type":

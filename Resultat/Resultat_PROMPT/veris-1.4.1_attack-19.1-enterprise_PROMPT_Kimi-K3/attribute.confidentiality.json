@@ -1,0 +1,707 @@
+{
+  "metadata": {
+    "veris_version": "1.4.1",
+    "mitre_attack_version": "19.1",
+    "scope": "attribute.confidentiality",
+    "capability_group": "attribute.confidentiality",
+    "enriched_from": "local_catalogs"
+  },
+  "veris_to_mitre": [
+    {
+      "veris_id": "attribute.confidentiality.data_disclosure",
+      "veris_category": "Confidentiality",
+      "veris_label": "data_disclosure",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1011",
+          "technique_name": "Exfiltration Over Other Network Medium",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "exfiltration"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1011",
+          "technique_name": "Exfiltration Over Other Network Medium",
+          "sub_technique_id": "T1011.001",
+          "sub_technique_name": "Exfiltration Over Bluetooth",
+          "tactic(s)": [
+            "exfiltration"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1020",
+          "technique_name": "Automated Exfiltration",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "exfiltration"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1020",
+          "technique_name": "Automated Exfiltration",
+          "sub_technique_id": "T1020.001",
+          "sub_technique_name": "Traffic Duplication",
+          "tactic(s)": [
+            "exfiltration"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1029",
+          "technique_name": "Scheduled Transfer",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "exfiltration"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1030",
+          "technique_name": "Data Transfer Size Limits",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "exfiltration"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1041",
+          "technique_name": "Exfiltration Over C2 Channel",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "exfiltration"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1048",
+          "technique_name": "Exfiltration Over Alternative Protocol",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "exfiltration"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1048",
+          "technique_name": "Exfiltration Over Alternative Protocol",
+          "sub_technique_id": "T1048.001",
+          "sub_technique_name": "Exfiltration Over Symmetric Encrypted Non-C2 Protocol",
+          "tactic(s)": [
+            "exfiltration"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1048",
+          "technique_name": "Exfiltration Over Alternative Protocol",
+          "sub_technique_id": "T1048.002",
+          "sub_technique_name": "Exfiltration Over Asymmetric Encrypted Non-C2 Protocol",
+          "tactic(s)": [
+            "exfiltration"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1048",
+          "technique_name": "Exfiltration Over Alternative Protocol",
+          "sub_technique_id": "T1048.003",
+          "sub_technique_name": "Exfiltration Over Unencrypted Non-C2 Protocol",
+          "tactic(s)": [
+            "exfiltration"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1052",
+          "technique_name": "Exfiltration Over Physical Medium",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "exfiltration"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1052",
+          "technique_name": "Exfiltration Over Physical Medium",
+          "sub_technique_id": "T1052.001",
+          "sub_technique_name": "Exfiltration over USB",
+          "tactic(s)": [
+            "exfiltration"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1537",
+          "technique_name": "Transfer Data to Cloud Account",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "exfiltration"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1567",
+          "technique_name": "Exfiltration Over Web Service",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "exfiltration"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1567",
+          "technique_name": "Exfiltration Over Web Service",
+          "sub_technique_id": "T1567.001",
+          "sub_technique_name": "Exfiltration to Code Repository",
+          "tactic(s)": [
+            "exfiltration"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1567",
+          "technique_name": "Exfiltration Over Web Service",
+          "sub_technique_id": "T1567.002",
+          "sub_technique_name": "Exfiltration to Cloud Storage",
+          "tactic(s)": [
+            "exfiltration"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1567",
+          "technique_name": "Exfiltration Over Web Service",
+          "sub_technique_id": "T1567.003",
+          "sub_technique_name": "Exfiltration to Text Storage Sites",
+          "tactic(s)": [
+            "exfiltration"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1567",
+          "technique_name": "Exfiltration Over Web Service",
+          "sub_technique_id": "T1567.004",
+          "sub_technique_name": "Exfiltration Over Webhook",
+          "tactic(s)": [
+            "exfiltration"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    }
+  ],
+  "mitre_to_veris": [
+    {
+      "technique_id": "T1011",
+      "technique_name": "Exfiltration Over Other Network Medium",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "exfiltration"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_category": "Confidentiality",
+          "veris_label": "data_disclosure",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1011",
+      "technique_name": "Exfiltration Over Other Network Medium",
+      "sub_technique_id": "T1011.001",
+      "sub_technique_name": "Exfiltration Over Bluetooth",
+      "tactic(s)": [
+        "exfiltration"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_category": "Confidentiality",
+          "veris_label": "data_disclosure",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1020",
+      "technique_name": "Automated Exfiltration",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "exfiltration"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_category": "Confidentiality",
+          "veris_label": "data_disclosure",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1020",
+      "technique_name": "Automated Exfiltration",
+      "sub_technique_id": "T1020.001",
+      "sub_technique_name": "Traffic Duplication",
+      "tactic(s)": [
+        "exfiltration"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_category": "Confidentiality",
+          "veris_label": "data_disclosure",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1029",
+      "technique_name": "Scheduled Transfer",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "exfiltration"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_category": "Confidentiality",
+          "veris_label": "data_disclosure",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1030",
+      "technique_name": "Data Transfer Size Limits",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "exfiltration"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_category": "Confidentiality",
+          "veris_label": "data_disclosure",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1041",
+      "technique_name": "Exfiltration Over C2 Channel",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "exfiltration"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_category": "Confidentiality",
+          "veris_label": "data_disclosure",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1048",
+      "technique_name": "Exfiltration Over Alternative Protocol",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "exfiltration"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_category": "Confidentiality",
+          "veris_label": "data_disclosure",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1048",
+      "technique_name": "Exfiltration Over Alternative Protocol",
+      "sub_technique_id": "T1048.001",
+      "sub_technique_name": "Exfiltration Over Symmetric Encrypted Non-C2 Protocol",
+      "tactic(s)": [
+        "exfiltration"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_category": "Confidentiality",
+          "veris_label": "data_disclosure",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1048",
+      "technique_name": "Exfiltration Over Alternative Protocol",
+      "sub_technique_id": "T1048.002",
+      "sub_technique_name": "Exfiltration Over Asymmetric Encrypted Non-C2 Protocol",
+      "tactic(s)": [
+        "exfiltration"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_category": "Confidentiality",
+          "veris_label": "data_disclosure",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1048",
+      "technique_name": "Exfiltration Over Alternative Protocol",
+      "sub_technique_id": "T1048.003",
+      "sub_technique_name": "Exfiltration Over Unencrypted Non-C2 Protocol",
+      "tactic(s)": [
+        "exfiltration"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_category": "Confidentiality",
+          "veris_label": "data_disclosure",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1052",
+      "technique_name": "Exfiltration Over Physical Medium",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "exfiltration"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_category": "Confidentiality",
+          "veris_label": "data_disclosure",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1052",
+      "technique_name": "Exfiltration Over Physical Medium",
+      "sub_technique_id": "T1052.001",
+      "sub_technique_name": "Exfiltration over USB",
+      "tactic(s)": [
+        "exfiltration"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_category": "Confidentiality",
+          "veris_label": "data_disclosure",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1537",
+      "technique_name": "Transfer Data to Cloud Account",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "exfiltration"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_category": "Confidentiality",
+          "veris_label": "data_disclosure",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1567",
+      "technique_name": "Exfiltration Over Web Service",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "exfiltration"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_category": "Confidentiality",
+          "veris_label": "data_disclosure",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1567",
+      "technique_name": "Exfiltration Over Web Service",
+      "sub_technique_id": "T1567.001",
+      "sub_technique_name": "Exfiltration to Code Repository",
+      "tactic(s)": [
+        "exfiltration"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_category": "Confidentiality",
+          "veris_label": "data_disclosure",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1567",
+      "technique_name": "Exfiltration Over Web Service",
+      "sub_technique_id": "T1567.002",
+      "sub_technique_name": "Exfiltration to Cloud Storage",
+      "tactic(s)": [
+        "exfiltration"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_category": "Confidentiality",
+          "veris_label": "data_disclosure",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1567",
+      "technique_name": "Exfiltration Over Web Service",
+      "sub_technique_id": "T1567.003",
+      "sub_technique_name": "Exfiltration to Text Storage Sites",
+      "tactic(s)": [
+        "exfiltration"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_category": "Confidentiality",
+          "veris_label": "data_disclosure",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1567",
+      "technique_name": "Exfiltration Over Web Service",
+      "sub_technique_id": "T1567.004",
+      "sub_technique_name": "Exfiltration Over Webhook",
+      "tactic(s)": [
+        "exfiltration"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_category": "Confidentiality",
+          "veris_label": "data_disclosure",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    }
+  ]
+}

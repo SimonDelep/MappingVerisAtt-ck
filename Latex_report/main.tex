@@ -1194,6 +1194,77 @@ Cette limite montre que les approches LLM externalisées ne doivent pas être é
 
 \subsection{Solution PROMPT}
 
+\subsubsection{Principe}
+
+La solution \textbf{PROMPT} (dossier \texttt{Solution/Solution\_PROMPT/}) s'appuie sur un LLM généraliste interrogé via l'API \textbf{Together AI}, sans index vectoriel ni fine-tuning. L'approche est purement fondée sur le \emph{prompt engineering} en mode \textbf{zero-shot}: un \emph{system prompt} fixe le rôle, les règles anti-hallucination et le schéma JSON attendu, un \emph{user prompt} fournit, pour chaque capability group VERIS, les données de référence et l'instruction de mapping.
+
+Contrairement à la solution RAG, aucun contexte n'est récupéré dynamiquement: le modèle reçoit les bases de données préparés(\texttt{veris\_<v>.json} et \texttt{attack\_<a>.json}) (les données sont filtrées afin d'alléger le nombre de tokens en entrée) et doit produire des \textbf{liens d'identifiants} (\texttt{veris\_id} $\rightarrow$ liste d'\texttt{attack\_ids}).\\
+Les libellés, les tactiques et les sens MITRE $\rightarrow$ VERIS sont ensuite reconstruits localement à partir des bases de données (\texttt{veris\_<v>.json} et \texttt{attack\_<a>.json}) sur le même princpie que l'enrichissement post-génération du RAG, avec le script \texttt{reconstruct\_mapping.py}.
+
+\subsubsection{Périmètre traité}
+Le traitement est découpé selon les sept capability groups du mapping expert:
+\begin{itemize}
+    \item \texttt{action.hacking}, \texttt{action.malware}, \texttt{action.social}
+    \item \texttt{attribute.integrity}, \texttt{attribute.confidentiality},
+          \texttt{attribute.availability}
+    \item \texttt{value\_chain.development}
+\end{itemize}
+Une requête LLM est émise \textbf{par capability group}. Les sept réponses sont ensuite écrites dans \texttt{Resultat/Resultat\_PROMPT/veris-<v>\_attack-<a>-enterprise\_PROMPT/}, sous la forme de fichiers \texttt{<capability>.json}.
+
+\subsubsection{Architecture logicielle}
+Le pipeline est implémenté dans le script unique \texttt{run\_mapping.py}:
+\begin{enumerate}
+	\item chargement des entrées (\texttt{-dw} ou couple \texttt{-a}/\texttt{-v}) (par défaut, on prend les dernières version des bases de données)
+	\item filtrage VERIS au groupe courant et compactage ATT\&CK (description tronquées à 250 caractères)
+    \item construction d'un user prompt par capability et chargement du \texttt{system-prompt.md}
+	\item génération LLM séquentielle (timeout 900\,s, \texttt{max\_tokens=100000})
+	\item écriture des JSON bruts (IDs) dans \texttt{\_raw/}
+    \item reconstruction locale du mapping complet (enrichissement + inversion \texttt{mitre\_to\_veris}) directement dans les \texttt{*.json} du dossier de résultats, au format attendu par les scripts de comparaison.
+
+\end{enumerate}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{l l}
+		\toprule
+		\textbf{Élément} & \textbf{Rôle} \\
+		\midrule
+		\texttt{run\_mapping.py} & Orchestration, prompts, appels API, écriture \\
+		\texttt{reconstruct\_mapping.py} & Enrichissement local IDs, production JSON finaux \\
+		\texttt{system-prompt.md}   & Rôle CTI, règles, schéma JSON de sortie \\
+    	\texttt{requirements.txt}   & Dépendance \texttt{together} \\
+		\bottomrule
+	\end{tabular}
+	\caption{Composants de la solution PROMPT}
+	\label{tab:prompt-modules}
+\end{table}
+
+\subsubsection{System Prompt}
+Le fichier \texttt{system-prompt.md} fixe le rôle CTI du LLM (VERIS vs ATT\&CK), le mode \textbf{zero-shot} et les règles anti-hallucination~: n'utiliser que les IDs fournis dans le user prompt, autoriser l'absence de mapping, et interdire toute invention d'identifiants. La sortie LLM est volontairement minimale~: uniquement des paires \texttt{veris\_id}~$\rightarrow$~\texttt{attack\_ids}, avec \texttt{mitre\_to\_veris} laissé vide (reconstruction locale ensuite). Aucun plafond artificiel n'est imposé sur le nombre de techniques associées à une variety VERIS.
+
+
+\subsubsection{Modèles Together AI}
+Deux modèles serverless ont été retenus:\\
+\texttt{moonshotai/Kimi-K3} et \texttt{deepseek-ai/DeepSeek-V4-Pro}. Ils sont aujourd'hui les modèles les plus performant sur TogetherIA. De plus, ils ont été choisi pour leur grande fenêtre de contexte adaptée à nos prompts volumineux
+
+\subsubsection{Problèmes rencontrées}
+Initialement, les catalogues étaient envoyées entier vers les modèles, la consigne stipuler de faire un mapping bidirectionnel en réponse. Ce qui a fait que les premieres run se sont conclue par des timeouts, des fichiers vides et des sorties tronquées. 
+
+\subsubsection{Correctifs effectuées}\label{subsubsec:correctif}
+Les principaux correctifs effectuées afin de réctifié les problèmes ont été de:
+\begin{itemize}
+	\item réduction des données d'entrée (filtre VERIS + ATT\&CK compact)
+	\item réduction de la sortie LLM aux seuls IDs 
+	\item reconstruction post-génération du mapping complet pour la comparaison avec le mapping expert
+	\item traitement séquentiel, validation JSON, conservation des bruts dans \texttt{\_raw/}
+\end{itemize}
+
+\subsubsection{Limites méthodologiques}
+Plusieurs choix techniques bornent l'interprétation des scores.\\
+La génération est "zero-shot" ~: contrairement à la variante RAG aucun mapping expert antérieur n'est fourni comme exemple. Les IDs ATT\&CK inconnus du catalogue local sont rejetés à la reconstruction.
+Les descriptions ATT\&CK sont tronquées à 250~caractères, ce qui peut appauvrir le signal sémantique sur les techniques longues.
+Enfin, la dépendance à une API serverless partagée (timeouts, rate limits) a fortement conditionné la faisabilité du premier pipeline et justifie le traitement séquentiel.
+
 \subsection{Synthèse des trois solutions}
 
 
@@ -1317,6 +1388,91 @@ Le modèle supervisé local obtient le meilleur F1 global. Le RAG avec exemples 
 Ces résultats indiquent qu'une approche locale simple, entraînée sur les mappings experts, peut être plus efficace qu'un LLM généraliste utilisé sans adaptation au domaine. Le principal facteur de performance n'est donc pas seulement la taille du modèle, mais aussi la proximité entre les données d'entraînement et la tâche évaluée.
 
 \subsection{Résultats --- Solution PROMPT}
+
+\subsubsection{Résultat de la premiere run}
+L'expérimentation du mapping se base sur les versions suivantes: \texttt{VERIS~1.4.1} et \texttt{ ATT\&CK~19.1} via TogetherAI.\\ 
+Le Tableau~\ref{tab:prompt-run1} résume le \textbf{premier run} (pipeline initial, avant correctifs).
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{l l l}
+    \toprule
+    \textbf{Capability} & \textbf{Kimi-K3} & \textbf{DeepSeek-V4-Pro} \\
+    \midrule
+    \texttt{action.hacking}            & JSON tronqué     & vide \\
+    \texttt{action.malware}            & JSON tronqué     & vide \\
+    \texttt{action.social}             & JSON tronqué     & vide \\
+    \texttt{attribute.availability}    & \textbf{complet} & vide \\
+    \texttt{attribute.confidentiality} & vide             & vide \\
+    \texttt{attribute.integrity}       & vide             & vide \\
+    \texttt{value\_chain.development}  & vide             & vide \\
+    \bottomrule
+  \end{tabular}
+  \caption{Premier run PROMPT (avant correctifs de pipeline).}
+  \label{tab:prompt-run1}
+\end{table}
+
+\textbf{Kimi-K3.}:\\
+Seul la capability \texttt{attribute.availability} (petite capability) a produit un JSON valide, les autres capabilities (plus larges) ont été coupés en sortie.
+
+\textbf{DeepSeek-V4-Pro.}:\\ 
+Les sept fichiers vides (timeout et/ou tokens de raisonnement sans \texttt{content} exploitable).
+
+\subsubsection{Seconde run}
+Après les correctifs appliquées (voir \ref{subsubsec:correctif}), une nouvelle expérimentation de mapping a été effectuée avec les mêmes versions des bases de donnée (\texttt{VERIS~1.4.1} et \texttt{ ATT\&CK~19.1}).\\
+Cette fois, les septs fichiers JSON de capability sont complets et valides pour les deux modèles. Les fichiers sont ensuite enrichis au format attendu par le script de comparaison (\texttt{compare\_veris\_mappings\_v2.py})
+
+Le tableau \ref{tab:prompt-run2} compare les performances globales agrégées au mapping expert.
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{l r r r r r}
+    \toprule
+    \textbf{Modèle} & \textbf{Paires sol.} & \textbf{Communes} &
+    \textbf{Préc.} & \textbf{Rapp.} & \textbf{F1} \\
+    \midrule
+    Kimi-K3          &  770 & 298 & 38,7~\% & 23,8~\% & 29,5~\% \\
+    DeepSeek-V4-Pro  & 2231 & 523 & 23,4~\% & 41,8~\% & 30,0~\% \\
+    \bottomrule
+  \end{tabular}
+  \caption{Second run PROMPT vs mapping expert (agrégé, 1250 paires expertes).}
+  \label{tab:prompt-run2}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \small
+  \begin{tabular}{l r r r r r r r}
+    \toprule
+    \textbf{Capability} & \textbf{Exp.} &
+    \multicolumn{3}{c}{\textbf{Kimi-K3}} &
+    \multicolumn{3}{c}{\textbf{DeepSeek F1}} \\
+    \cmidrule(lr){3-5} \cmidrule(lr){6-8}
+	&  & Prec. & Rapp. & F1 & Prec. & Rapp. & F1 \\
+    \midrule
+    \texttt{action.hacking}            & 534 & 37,3 & 25,1 & 30,0 & 21,3 & 30,5 & 25,1 \\
+    \texttt{action.malware}            & 405 & 40,0 & 17,3 & 24,1 & 21,1 & 44,4 & 28,6 \\
+    \texttt{action.social}             &  79 & 31,7 & 25,3 & 28,2 & 31,2 & 31,6 & 31,4 \\
+    \texttt{attribute.integrity}       &  91 & 25,3 & 26,4 & 25,8 & 13,4 & 51,6 & 21,3 \\
+    \texttt{attribute.confidentiality} &  73 &100,0 & 26,0 & 41,3 & 59,0 & 94,5 & \textbf{72,6} \\
+    \texttt{attribute.availability}    &  44 & 58,8 & 45,5 & 51,3 & 52,7 & 65,9 & 58,6 \\
+    \texttt{value\_chain.development}  &  25 & 44,0 & 44,0 & 44,0 & 88,9 & 32,0 & 47,1 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Second run PROMPT~: détail par capability group (\%).}
+  \label{tab:prompt-run2-detail}
+\end{table}
+
+Les deux modèles atteignent un F1 global de $\approx$\,30\%.\\
+Ils divergent surtout sur le compromis. En effet, on as deux positions:
+\begin{itemize}
+	\item Kimi-K3 propose moins de paires avec une précision plus haute ($\approx$ 38.7\%)
+	\item DeepSeek-V4-Pro quand a lui propose beaucoup plus de paires avec un rappel supérieur ($\approx$ 41,8 \%)
+\end{itemize}
+
+On remarque donc que \textbf{Kimi-K3} fait un mapping plus sélectif, tandis que \textbf{DeepSeek-V4-Pro} fait une couverture plus large, au prix de davantage de faux positifs.
+
+Le gain le plus marqué apparaît sur \texttt{attribute.confidentiality} (DeepSeek F1~72,6~\%) et \texttt{attribute.availability} (F1~$>$\,50~\% pour les deux), alors que les grands groupes \texttt{hacking}/\texttt{malware} restent les plus difficiles.
 
 
 %==============================================================================

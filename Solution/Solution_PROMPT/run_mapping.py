@@ -9,12 +9,12 @@ from dotenv import load_dotenv
 
 CAPABILITY=["action.hacking", "action.malware", "attribute.integrity", "attribute.confidentiality", "attribute.availability", "action.social", "value_chain.development"]
 
-# Gros prompts + modeles lents: timeout client par defaut (~60s) est trop court.
+# Global variables 
 REQUEST_TIMEOUT_S = 900.0
 MAX_PARALLEL_REQUESTS = 1
 RETRY_SLEEP_S = [5, 15, 30]
-MAX_TOKENS = 32768
-ATTACK_DESC_MAX = 400
+MAX_TOKENS = 100000
+ATTACK_DESC_MAX = 250
 
 # -------------------- ROOT PWD
 DEFAULT_DB_MAPPING = Path(__file__).resolve().parents[2] / "data_for_work" / "attack-19.1_veris-1.4.1"
@@ -80,9 +80,9 @@ Je veux que tu me traite toutes les données en rapport de la capability group {
 {data_attack}
 
 ## Instruction finale
-Produis le mapping en respectant le format JSON du system prompt.
-- veris_to_mitre: une entrée pour CHAQUE capacité VERIS fournie (no_mapping_found autorisé).
-- mitre_to_veris: UNIQUEMENT les techniques ATT&CK qui ont au moins une correspondance avec ce capability group (ne pas dumper tout le catalogue).
+Produis UNIQUEMENT le mapping VERIS → MITRE au format JSON du system prompt (IDs seulement).
+- veris_to_mitre: une entrée pour CHAQUE capacité VERIS fournie, avec la liste complète des attack_ids pertinents (pas de plafond).
+- mitre_to_veris: [].
 Réponds uniquement avec un JSON valide et complet, sans markdown.\
          """.format(veris_version=veris_version ,attack_version=attack_version , attack_domain=attack_domain , data_veris=data_veris , data_attack=data_attack , capability=capability )
     return user_prompt
@@ -99,10 +99,18 @@ def get_data(data_path:str) -> tuple[str, str]:
         print(f"error: {Path(data_path).name} file was not found")
         raise SystemExit(1)
 
+# -------------------- Filter & compact data to optimize token size limitation
 def filter_veris_for_capability(veris_data: dict, capability: str) -> dict:
-    caps = [c for c in veris_data["capabilities"] if c.get("capability_group") == capability]
+    caps = []
+    for c in veris_data["capabilities"]:
+        if c.get("capability_group") != capability:
+            continue
+        caps.append({
+            "capability_id": c["capability_id"],
+            "value": c.get("value", ""),
+            "description": c.get("description", ""),
+        })
     return {
-        "framework": veris_data.get("framework", "veris"),
         "version": veris_data["version"],
         "capability_group": capability,
         "capability_count": len(caps),
@@ -119,12 +127,9 @@ def compact_attack(attack_data: dict, max_desc: int = ATTACK_DESC_MAX) -> dict:
             "attack_id": t["attack_id"],
             "name": t["name"],
             "tactics": t.get("tactics", []),
-            "is_subtechnique": t.get("is_subtechnique"),
-            "parent_id": t.get("parent_id"),
             "description": desc,
         })
     return {
-        "framework": attack_data.get("framework", "mitre_attack"),
         "version": attack_data["version"],
         "technique_count": len(techs),
         "techniques": techs,
@@ -156,43 +161,72 @@ async def run_llm_parallel(async_client, user_prompt: str, model: str, system_pr
             else:
                 async with sem:
                     response = await _once()
-            break
+
+            msg = response.choices[0].message
+            content = (msg.content or getattr(msg, "reasoning_content", None) or "").strip()
+            finish = getattr(response.choices[0], "finish_reason", None)
+            print(f"[{capability}] finish_reason={finish} chars={len(content)}", flush=True)
+
+            if finish == "length":
+                # Retenter le même prompt ne change rien: la sortie dépasse max_tokens.
+                raise RuntimeError(
+                    f"Truncated output (finish_reason=length, chars={len(content)}). "
+                    "Ne sera pas retenté."
+                )
+            if not content:
+                raise RuntimeError(f"Empty content (finish_reason={finish})")
+
+            print(f"[{capability}] done.", flush=True)
+            return content
+        except RuntimeError as e:
+            last_error = e
+            print(f"[{capability}] {type(e).__name__}: {e}", flush=True)
+            if "Truncated output" in str(e):
+                break
+            if attempt < len(RETRY_SLEEP_S):
+                print(f"[{capability}] retry in {sleep_time}s...", flush=True)
+                await asyncio.sleep(sleep_time)
         except (RateLimitError, APITimeoutError) as e:
             last_error = e
             print(f"[{capability}] {type(e).__name__}: {e}", flush=True)
             if attempt < len(RETRY_SLEEP_S):
                 print(f"[{capability}] retry in {sleep_time}s...", flush=True)
                 await asyncio.sleep(sleep_time)
-    if response is None:
-        raise RuntimeError(
-            f"Failed after retries for {capability or 'capability'}: {last_error!r}"
-        )
-    msg = response.choices[0].message
-    content = (msg.content or getattr(msg, "reasoning_content", None) or "").strip()
-    finish = getattr(response.choices[0], "finish_reason", None)
-    print(f"[{capability}] done. finish_reason={finish} chars={len(content)}", flush=True)
-    if not content:
-        raise RuntimeError(f"Empty content for {capability} (finish_reason={finish})")
-    if finish == "length":
-        raise RuntimeError(f"Truncated output for {capability} (finish_reason=length)")
-    return content
+    raise RuntimeError(
+        f"Failed after retries for {capability or 'capability'}: {last_error!r}"
+    )
 
 # --------------- Run Parallel Request Per Capabilities
 async def map_per_capability(async_client, mapping_prompt_capability: dict, system_prompt: str, model: str, output_dir: Path) -> dict:
     capabilities = list(mapping_prompt_capability.keys())
     results = {}
     output_dir.mkdir(parents=True, exist_ok=True)
+    raw_dir = output_dir / "_raw"
+    raw_dir.mkdir(parents=True, exist_ok=True)
+
+    def _load_valid(path: Path) -> str | None:
+        if not path.exists() or path.stat().st_size <= 0:
+            return None
+        try:
+            text = path.read_text(encoding="utf-8")
+            json.loads(text)
+            return text
+        except json.JSONDecodeError:
+            return None
+
     for c in capabilities:
+        raw_file = raw_dir / f"{c}.json"
         out_file = output_dir / f"{c}.json"
-        if out_file.exists() and out_file.stat().st_size > 0:
-            try:
-                existing = out_file.read_text(encoding="utf-8")
-                json.loads(existing)
-                print(f"[{c}] skip, already valid -> {out_file}", flush=True)
-                results[c] = existing
-                continue
-            except json.JSONDecodeError:
-                print(f"[{c}] existing file invalid, regenerating...", flush=True)
+
+        existing = _load_valid(raw_file) or _load_valid(out_file)
+        if existing is not None:
+            # Si seul le final enrichi existe, on skip la génération LLM
+            if _load_valid(raw_file) is None and _load_valid(out_file) is not None:
+                print(f"[{c}] skip (mapping final déjà présent) -> {out_file}", flush=True)
+            else:
+                print(f"[{c}] skip (brut LLM déjà présent) -> {raw_file}", flush=True)
+            results[c] = existing
+            continue
 
         print(f"\n=== Starting {c} ===", flush=True)
         try:
@@ -205,9 +239,9 @@ async def map_per_capability(async_client, mapping_prompt_capability: dict, syst
                 if content.startswith("json"):
                     content = content[4:].strip()
             json.loads(content)
-            out_file.write_text(content, encoding="utf-8")
+            raw_file.write_text(content, encoding="utf-8")
             results[c] = content
-            print(f"[{c}] written -> {out_file}", flush=True)
+            print(f"[{c}] raw written -> {raw_file}", flush=True)
         except Exception as e:
             print(f"[{c}] FAILED: {e}", flush=True)
             continue
@@ -297,6 +331,39 @@ def main() -> None:
     print(f"\nDone. OK={ok}", flush=True)
     if ko:
         print(f"FAILED (à relancer): {ko}", flush=True)
+
+    if ok:
+        try:
+            from reconstruct_mapping import reconstruct_directory
+
+            raw_dir = full_path / "_raw"
+            raw_dir.mkdir(parents=True, exist_ok=True)
+
+            # S'assure que chaque OK a un brut dans _raw (génération fraîche)
+            for c in ok:
+                raw_file = raw_dir / f"{c}.json"
+                if raw_file.exists() and raw_file.stat().st_size > 0:
+                    continue
+                # fallback: si seul le final existe, on ne peut pas ré-enrichir depuis IDs
+                # (déjà enrichi) — reconstruct saura lire mitre_mappings aussi
+                out_file = full_path / f"{c}.json"
+                if out_file.exists() and out_file.stat().st_size > 0:
+                    raw_file.write_text(out_file.read_text(encoding="utf-8"), encoding="utf-8")
+
+            print(
+                f"\nReconstruction mapping final (comparaison chercheurs) -> {full_path}",
+                flush=True,
+            )
+            reconstruct_directory(raw_dir, full_path, veris_data, attack_data)
+            print(f"Bruts LLM dans {raw_dir}", flush=True)
+            print(f"Mappings finaux dans {full_path}/*.json", flush=True)
+        except Exception as e:
+            print(f"Reconstruction échouée: {e}", flush=True)
+            print(
+                "Tu peux relancer à la main: "
+                f"python reconstruct_mapping.py -i {full_path}/_raw -o {full_path}",
+                flush=True,
+            )
 
     
 if __name__ == "__main__":
