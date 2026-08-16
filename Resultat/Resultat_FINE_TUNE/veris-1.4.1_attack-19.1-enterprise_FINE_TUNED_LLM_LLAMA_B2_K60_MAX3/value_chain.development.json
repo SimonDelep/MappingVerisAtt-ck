@@ -1,0 +1,181 @@
+{
+  "metadata": {
+    "veris_version": "1.4.1",
+    "mitre_attack_version": "19.1",
+    "scope": "value_chain.development",
+    "method": "FINE_TUNED_LLM",
+    "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo"
+  },
+  "veris_to_mitre": [
+    {
+      "veris_id": "value_chain.development.variety.Bot",
+      "veris_category": "value_chain.development",
+      "veris_label": "Bot",
+      "mitre_mappings": [],
+      "no_mapping_found": true
+    },
+    {
+      "veris_id": "value_chain.development.variety.Email",
+      "veris_category": "value_chain.development",
+      "veris_label": "Email",
+      "mitre_mappings": [],
+      "no_mapping_found": true
+    },
+    {
+      "veris_id": "value_chain.development.variety.Exploit",
+      "veris_category": "value_chain.development",
+      "veris_label": "Exploit",
+      "mitre_mappings": [],
+      "no_mapping_found": true
+    },
+    {
+      "veris_id": "value_chain.development.variety.Exploit Kits",
+      "veris_category": "value_chain.development",
+      "veris_label": "Exploit Kits",
+      "mitre_mappings": [],
+      "no_mapping_found": true
+    },
+    {
+      "veris_id": "value_chain.development.variety.NA",
+      "veris_category": "value_chain.development",
+      "veris_label": "NA",
+      "mitre_mappings": [],
+      "no_mapping_found": true
+    },
+    {
+      "veris_id": "value_chain.development.variety.Other",
+      "veris_category": "value_chain.development",
+      "veris_label": "Other",
+      "mitre_mappings": [],
+      "no_mapping_found": true
+    },
+    {
+      "veris_id": "value_chain.development.variety.Payload",
+      "veris_category": "value_chain.development",
+      "veris_label": "Payload",
+      "mitre_mappings": [],
+      "no_mapping_found": true
+    },
+    {
+      "veris_id": "value_chain.development.variety.Persona",
+      "veris_category": "value_chain.development",
+      "veris_label": "Persona",
+      "mitre_mappings": [],
+      "no_mapping_found": true
+    },
+    {
+      "veris_id": "value_chain.development.variety.Physical",
+      "veris_category": "value_chain.development",
+      "veris_label": "Physical",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1583",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1583",
+          "technique_name": "",
+          "sub_technique_id": "T1583.001",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "value_chain.development.variety.Ransomware",
+      "veris_category": "value_chain.development",
+      "veris_label": "Ransomware",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1486",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1490",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "value_chain.development.variety.Trojan",
+      "veris_category": "value_chain.development",
+      "veris_label": "Trojan",
+      "mitre_mappings": [],
+      "no_mapping_found": true
+    },
+    {
+      "veris_id": "value_chain.development.variety.Unknown",
+      "veris_category": "value_chain.development",
+      "veris_label": "Unknown",
+      "mitre_mappings": [],
+      "no_mapping_found": true
+    },
+    {
+      "veris_id": "value_chain.development.variety.Website",
+      "veris_category": "value_chain.development",
+      "veris_label": "Website",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1608",
+          "technique_name": "",
+          "sub_technique_id": "T1608.004",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1189",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1550",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    }
+  ]
+}
