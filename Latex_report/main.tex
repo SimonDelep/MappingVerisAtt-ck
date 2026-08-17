@@ -80,11 +80,11 @@
 % --- §4 SOLUTION ---
 % -> Relire la partie RAG 
 % --- §5 RÉSULTATS ---
-% -> à implémenter 
+% -> tableau récap RAG v1--v14 + paliers 
 % --- §6 DISCUSSION ---
-% -> à implémenter 
+% -> analogie vs LLM, remap, limites 
 % --- §7 CONCLUSION ---
-% -> à implémenter 
+% -> F1 v14 87,0 % 
 
 % =============================================================================
 % FIN TODO RELECTURE
@@ -948,14 +948,293 @@ qui reste supérieur en F1 grâce à son fort rappel. Le choix du LLM
 apparaît donc comme un régulateur du compromis précision/rappel
 plutôt que comme un simple gain uniforme.
 
+Ces trois backends restent cependant trop conservateurs~: Llama ne
+retrouve que 192 des 1\,250 paires expertes. Nous avons donc
+poursuivi, sur Llama uniquement, une chaîne d'itérations analogiques
+(\texttt{hybrid fill} / rerank) numérotées v2 à v14. L'idée n'est
+plus de demander au LLM de «~découvrir~» le mapping, mais de
+\textbf{s'appuyer sur les mappings experts des versions antérieures}
+pour transférer, filtrer et remettre à jour les identifiants ATT\&CK
+vers la paire cible VERIS~1.4.1 / ATT\&CK~19.1.
 
+\subsubsection{Itérations analogiques Llama (v2--v14)}
+
+\paragraph{Principe commun.}
+Toutes ces versions partagent le même retrieval
+\texttt{with\_examples} (ChromaDB + MiniLM) et le même modèle
+\texttt{Llama-3.3-70B-Instruct-Turbo}. Ce qui change, c'est la
+\textbf{règle locale de décision analogique} appliquée après (ou à
+la place) de l'appel LLM~:
+\begin{enumerate}
+    \item récupérer des exemples experts des versions précédentes
+          (jamais la cible, anti-fuite)~;
+    \item en extraire les identifiants ATT\&CK déjà mappés~;
+    \item en faire l'union, un reclassement à taille constante, ou un
+          budget par capacité, selon la version~;
+    \item valider chaque identifiant dans le catalogue ATT\&CK~19.1
+          (anti-hallucination).
+\end{enumerate}
+Le Tableau~\ref{tab:rag-hybrid-summary} synthétise l'évolution
+globale~; les figures suivantes détaillent les résultats obtenue pour chaque version.
+
+\begin{table}[H]
+  \centering
+  \small
+  \begin{tabular}{l r r r r r r}
+    \toprule
+    \textbf{Version} & \textbf{Sol.} & \textbf{Comm.} & \textbf{Préc.} & \textbf{Rapp.} & \textbf{F1} & \textbf{Jac.} \\
+    \midrule
+    Llama (v1) & 404 & 192 & 47,5~\% & 15,4~\% & 23,2~\% & 13,1~\% \\
+    v2         & 817 & 281 & 34,4~\% & 22,5~\% & 27,2~\% & 15,7~\% \\
+    v3         & 1\,394 & 411 & 29,5~\% & 32,9~\% & 31,1~\% & 18,4~\% \\
+    v4         & 940 & 308 & 32,8~\% & 24,6~\% & 28,1~\% & 16,4~\% \\
+    v5         & 1\,418 & 354 & 25,0~\% & 28,3~\% & 26,5~\% & 15,3~\% \\
+    v6         & 1\,306 & 400 & 30,6~\% & 32,0~\% & 31,3~\% & 18,6~\% \\
+    v7         & 1\,028 & 316 & 30,7~\% & 25,3~\% & 27,7~\% & 16,1~\% \\
+    v8         & 1\,316 & 409 & 31,1~\% & 32,7~\% & 31,9~\% & 19,0~\% \\
+    v9         & 1\,316 & 549 & 41,7~\% & 43,9~\% & 42,8~\% & 27,2~\% \\
+    v10        & 1\,307 & 783 & 59,9~\% & 62,6~\% & 61,2~\% & 44,1~\% \\
+    v11        & 1\,185 & 971 & 81,9~\% & 77,7~\% & 79,8~\% & 66,3~\% \\
+    v12        & 1\,379 & 1\,068 & 77,4~\% & 85,4~\% & 81,2~\% & 68,4~\% \\
+    v13        & 1\,349 & 1\,127 & 83,5~\% & 90,2~\% & 86,7~\% & 76,6~\% \\
+    \textbf{v14} & \textbf{1\,379} & \textbf{1\,144} & \textbf{83,0~\%} & \textbf{91,5~\%} & \textbf{87,0~\%} & \textbf{77,0~\%} \\
+    \bottomrule
+  \end{tabular}
+  \caption{Évolution des itérations analogiques Llama
+  (\texttt{with\_examples}) sur VERIS~1.4.1 / ATT\&CK~19.1
+  (1\,250 paires expertes).}
+  \label{tab:rag-hybrid-summary}
+\end{table}
+
+\paragraph{v2 --- Plus de contexte, toujours le LLM.}
+La v2 élargit le retrieval (davantage de candidats ATT\&CK et
+d'exemples) et durcit le prompt de Llama. Le volume remonte
+(817~paires contre 404), le F1 passe à \textbf{27,2~\%}, mais la
+précision chute (34,4~\%)~: le LLM reste sous-générateur sur les
+gros scopes \texttt{hacking} / \texttt{malware}, tout en
+sur-proposant sur \texttt{value\_chain.development}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.92\linewidth]{Resultat_RAG_v2.png}
+  \caption{Résultats de la variante analogique v2
+  (Llama \texttt{with\_examples}).}
+  \label{fig:rag-v2}
+\end{figure}
+
+\paragraph{v3 --- Premier fill analogique.}
+Après la décision LLM, la v3 \textbf{ajoute} les identifiants ATT\&CK
+présents dans les exemples experts mais omis par le modèle. Le rappel
+grimpe (32,9~\%) et le F1 atteint \textbf{31,1~\%}, au prix d'une
+forte sur-génération (1\,394~paires, précision 29,5~\%), surtout sur
+\texttt{action.social} et \texttt{value\_chain.development}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.92\linewidth]{Resultat_RAG_v3.png}
+  \caption{Résultats de la variante analogique v3
+  (fill des IDs experts omis).}
+  \label{fig:rag-v3}
+\end{figure}
+
+\paragraph{v4 à v8 --- Plafonds, skips et passes supplémentaires.}
+Les versions suivantes cherchent à calmer cette sur-génération sans
+perdre le gain de rappel~:
+\begin{itemize}
+    \item \textbf{v4}~: plafond d'ajouts par capability group. Le
+          volume redescend (940~paires), F1 \textbf{28,1~\%}.
+    \item \textbf{v5}~: pas de fill sur les scopes déjà
+          sur-générés (\texttt{social}, \texttt{value\_chain}), plus
+          d'ajouts ailleurs. Le F1 recule à \textbf{26,5~\%}.
+    \item \textbf{v6}~: fill analogique plus strict (sans expansion
+          de famille)~: F1 \textbf{31,3~\%}.
+    \item \textbf{v7}~: uniquement des IDs issus d'exemples
+          (plus de fill par seule similarité)~: F1 \textbf{27,7~\%}.
+    \item \textbf{v8}~: seconde passe analogique sur les scopes
+          sous-générés. Meilleur F1 de ce palier~:
+          \textbf{31,9~\%} (1\,316~paires, 409 communes).
+\end{itemize}
+Le constat de ce palier est net~: \textbf{ajouter} des mappings
+analogiques ne suffit pas. Tant que l'on empile les IDs du LLM et
+ceux des exemples, précision et rappel s'opposent. Il faut
+\textbf{reclasser} plutôt qu'accumuler.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.92\linewidth]{Resultat_RAG_v4.png}
+  \caption{Résultats de la variante analogique v4
+  (plafonds d'ajouts par scope).}
+  \label{fig:rag-v4}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.92\linewidth]{Resultat_RAG_v5.png}
+  \caption{Résultats de la variante analogique v5
+  (skip \texttt{social} / \texttt{value\_chain}).}
+  \label{fig:rag-v5}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.92\linewidth]{Resultat_RAG_v6.png}
+  \caption{Résultats de la variante analogique v6
+  (fill analogique sans expansion de famille).}
+  \label{fig:rag-v6}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.92\linewidth]{Resultat_RAG_v7.png}
+  \caption{Résultats de la variante analogique v7
+  (IDs analogiques uniquement).}
+  \label{fig:rag-v7}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.92\linewidth]{Resultat_RAG_v8.png}
+  \caption{Résultats de la variante analogique v8
+  (seconde passe sur scopes sous-générés).}
+  \label{fig:rag-v8}
+\end{figure}
+
+\paragraph{v9 --- Reclassement à $N$ constant.}
+La v9 conserve le \textbf{même nombre} de mappings que la v8
+(1\,316), mais \textbf{remplace} les identifiants les plus faibles
+par de meilleurs candidats analogiques (score de similarité +
+présence dans les exemples). C'est le premier saut qualitatif~:
+précision 41,7~\%, rappel 43,9~\%, F1 \textbf{42,8~\%} (549
+communes). Le volume n'augmente pas, seule la \emph{composition} du
+mapping s'améliore.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.92\linewidth]{Resultat_RAG_v9.png}
+  \caption{Résultats de la variante analogique v9
+  (rerank à $N$ constant).}
+  \label{fig:rag-v9}
+\end{figure}
+
+\paragraph{v10 --- Budget analogique et score pondéré.}
+La v10 alloue le nombre de mappings \emph{par capacité} selon la
+taille de l'exemple analogique le plus proche du même groupe, tout
+en gardant un $N$ global comparable. Un score pondéré (support des
+exemples $\times$ similarité) et une déduplication parent/enfant
+évitent de garder à la fois une technique et toutes ses
+sous-techniques. Le F1 saute à \textbf{61,2~\%} (783 communes,
+précision 59,9~\%, rappel 62,6~\%).
+\texttt{attribute.confidentiality}, jusqu'ici presque vide, atteint
+un rappel de 100~\% (F1 93,6~\%).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.92\linewidth]{Resultat_RAG_v10.png}
+  \caption{Résultats de la variante analogique v10
+  (budget analogique et score pondéré).}
+  \label{fig:rag-v10}
+\end{figure}
+
+\paragraph{v11 --- Union same-label.}
+Jusqu'à la v10, l'analogue était «~le plus proche du même
+groupe~». La v11 n'accepte plus que les exemples au
+\textbf{même libellé VERIS} (et le même kind \texttt{variety} /
+\texttt{vector}), union de $K$ exemples, en ignorant les labels
+génériques \texttt{Unknown} / \texttt{Other}. Le F1 atteint
+\textbf{79,8~\%} (971 communes, précision 81,9~\%, rappel 77,7~\%).
+Une run complète avec appels LLM (\texttt{v11\_llm}) reproduit
+\textbf{exactement les mêmes métriques} que le rerank analogique
+seul, ce qui confirme que, dès lors que l'analogue same-label
+existe, le LLM n'apporte plus rien.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.92\linewidth]{Resultat_RAG_v11.png}
+  \caption{Résultats de la variante analogique v11
+  (union same-label).}
+  \label{fig:rag-v11}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.92\linewidth]{Resultat_RAG_v11_llm.png}
+  \caption{Résultats de la run v11 avec appels LLM
+  (\texttt{v11\_llm})~: mêmes scores que le rerank analogique.}
+  \label{fig:rag-v11-llm}
+\end{figure}
+
+\paragraph{v12 --- Union complète et LLM en dernier recours.}
+La v12 prend l'union de \emph{tous} les exemples same-label
+récupérés (\texttt{top-$m$}=48), conserve les parents analogiques
+même en présence d'enfants, et n'appelle le LLM que si l'analogue
+est vide (max 5 IDs). Le rappel monte à 85,4~\% et le F1 à
+\textbf{81,2~\%}, mais la précision recule (77,4~\%)~: le fallback
+LLM, sur les capacités sans analogue, n'a qu'environ 14~\% de
+précision et introduit de nombreux faux positifs.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.92\linewidth]{Resultat_RAG_v12.png}
+  \caption{Résultats de la variante analogique v12
+  (union complète et LLM si analogue vide).}
+  \label{fig:rag-v12}
+\end{figure}
+
+\paragraph{v13 --- Analogie pure, y compris Unknown/Other.}
+La v13 abandonne le LLM. Si un analogue same-label existe --- y
+compris pour \texttt{Unknown} / \texttt{Other} / \texttt{NA} --- on
+prend toute l'union~; sinon on s'abstient. C'est la meilleure
+précision de la série (83,5~\%) avec un rappel de 90,2~\% et un F1
+de \textbf{86,7~\%} (1\,127 communes). La limite devient explicite~:
+la solution \textbf{transfère} l'historique expert, elle ne
+\textbf{découvre} pas un mapping inédit.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.92\linewidth]{Resultat_RAG_v13.png}
+  \caption{Résultats de la variante analogique v13
+  (union same-label sans LLM).}
+  \label{fig:rag-v13}
+\end{figure}
+
+\paragraph{v14 --- Remap d'identifiants et découverte conservative.}
+Le vrai problème restant n'est plus «~trouver un analogue~», mais
+\textbf{porter l'historique vers ATT\&CK~19.1}. Plusieurs IDs
+anciens ont changé de code (par exemple \texttt{T1070.001}
+\texttt{Clear Windows Event Logs} devient \texttt{T1685.005}). La
+v14 fait donc trois choses~:
+\begin{enumerate}
+    \item lookup same-label dans \textbf{tout le corpus} d'exemples
+          (plus seulement le \texttt{top-$m$} vectoriel)~;
+    \item \textbf{remap flou} des IDs historiques vers le catalogue
+          19.1 (correspondance exacte, puis similarité de nom, puis
+          parent)~;
+    \item pour les labels vraiment nouveaux~: découverte
+          conservative par retrieval ATT\&CK (similarité
+          $\geq 0{,}55$, au plus un ID, filtre de tactique).
+\end{enumerate}
+Le F1 atteint \textbf{87,0~\%} (1\,144 communes, précision 83,0~\%,
+rappel 91,5~\%, Jaccard 77,0~\%). \texttt{Log tampering}, vide en
+v13 à cause d'IDs obsolètes, est à nouveau mappé. Les attributs
+\texttt{confidentiality} et \texttt{availability} restent à F1
+95--98~\%. Le résidu d'erreur se concentre surtout sur quelques
+unions analogiques trop larges (\texttt{malware.variety.backdoor\_or\_c2},
+\texttt{hacking.variety.use\_of\_stolen\_creds}) et sur les labels
+sans aucun historique mappé.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.92\linewidth]{Resultat_RAG_v14.png}
+  \caption{Résultats de la variante analogique v14
+  (corpus same-label, remap ATT\&CK et découverte conservative).}
+  \label{fig:rag-v14}
+\end{figure}
 
 
 \subsection{Solution Fine-tune}
-
 \subsection{Solution PROMPT}
-
 \subsection{Synthèse des trois solutions}
+
 
 
 %==============================================================================
@@ -964,22 +1243,62 @@ plutôt que comme un simple gain uniforme.
 
 \subsection{Configuration expérimentale}
 
+
+
 \subsection{Résultats --- Solution RAG}
 
+Pour rappel la règle locale de décision analogique est l'étape qui, pour chaque
+capacité VERIS, choisit les identifiants ATT\&CK à partir des mappings
+experts déjà connus, plutôt qu'en demandant au LLM d'inventer le
+mapping. Après le retrieval (ChromaDB + MiniLM), le système s'appuie
+uniquement sur des exemples issus des versions antérieures --- jamais
+sur la paire cible VERIS~1.4.1 / ATT\&CK~19.1, afin d'éviter toute
+fuite. Il en extrait les IDs déjà associés au même label VERIS (ou à
+un voisin), puis applique une règle déterministe~: union des IDs,
+reclassement à taille constante, ou budget analogique par capacité,
+selon la version. Un identifiant n'est retenu que s'il existe encore
+dans le catalogue ATT\&CK~19.1, soit à l'identique, soit après le
+remap flou de nom ou de parent introduit en v14. La règle est dite
+\emph{locale} parce qu'elle opère capacité par capacité, sans
+apprentissage global~: elle transfère, filtre et remet à jour
+l'historique expert, au lieu de découvrir un mapping de zéro.
+
+C'est ce levier --- et non le LLM --- qui produit les meilleurs
+résultats de l'étude. Llama seul plafonne à un F1 d'environ 23~\%~;
+la configuration analogique v14 atteint une précision de 83,0~\%, un
+rappel de 91,5~\% et un F1 de \textbf{87,0~\%} sur les 1\,250 paires
+expertes. Les attributs
+(\texttt{confidentiality}, \texttt{availability}, \texttt{integrity})
+et \texttt{value\_chain.development} dépassent même 94~\% de F1. Sur
+le protocole actuel, la solution RAG est donc nettement supérieure
+aux baselines retrieval et aux backends LLM seuls.
+
+Ces scores globaux restent toutefois difficiles à interpréter tant
+qu'on ne distingue pas ce qui a \emph{changé} d'une version à
+l'autre. Une large partie du mapping VERIS~1.4.1 / ATT\&CK~19.1 peut
+être identique à celui de VERIS~1.4.0 / ATT\&CK~16.0. Dans ce cas,
+un F1 élevé peut simplement refléter la recopie de l'historique
+stable, ce qui a peu d'intérêt opérationnel. Il faudrait donc
+réévaluer la solution \textbf{uniquement sur les mappings qui
+diffèrent} entre ces deux versions, afin de mesurer sa capacité
+réelle à suivre les écarts de vocabulaire, les IDs ATT\&CK déplacés
+et les labels VERIS nouveaux ou révisés. C'est sur ce sous-ensemble
+--- et non sur l'ensemble des 1\,250 paires --- que l'on pourra
+trancher si le RAG analogique apporte une valeur de migration, ou
+s'il se contente de transférer ce qui n'a pas bougé.
+
 \subsection{Résultats --- Solution Fine-tune}
-
 \subsection{Résultats --- Solution PROMPT}
-
-
 %==============================================================================
 \section{Discussion}
 %==============================================================================
 
 
-
 %==============================================================================
 \section{Conclusion}
 %==============================================================================
+
+
 
 
 \bibliographystyle{plain}

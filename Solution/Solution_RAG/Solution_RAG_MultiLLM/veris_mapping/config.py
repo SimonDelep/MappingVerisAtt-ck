@@ -130,6 +130,127 @@ EMBEDDING_BATCH_SIZE = int(os.getenv("RAG_EMBEDDING_BATCH_SIZE", "64"))
 GENERATION_TEMPERATURE = float(os.getenv("RAG_GENERATION_TEMPERATURE", "0.1"))
 GENERATION_MAX_TOKENS = int(os.getenv("RAG_GENERATION_MAX_TOKENS", "1200"))
 
+# v3/v4 : complément analogique après la décision LLM (sans nouvel appel API).
+HYBRID_FILL = os.getenv("RAG_HYBRID_FILL", "0").strip().lower() in {"1", "true", "yes"}
+HYBRID_FILL_VERSION = os.getenv("RAG_HYBRID_FILL_VERSION", "v3").strip().lower()
+HYBRID_MAX_ADD = int(os.getenv("RAG_HYBRID_MAX_ADD", "5"))
+RETRIEVAL_SIM_HIGH = float(os.getenv("RAG_RETRIEVAL_SIM_HIGH", "0.50"))
+RETRIEVAL_SIM_MED = float(os.getenv("RAG_RETRIEVAL_SIM_MED", "0.38"))
+# v4 : plafond d'ajouts par capability group (évite la sur-génération locale).
+HYBRID_SCOPE_MAX_ADD = {
+    "action.hacking": 5,
+    "action.malware": 4,
+    "action.social": 2,
+    "attribute.integrity": 4,
+    "attribute.confidentiality": 10,
+    "attribute.availability": 3,
+    "value_chain.development": 1,
+}
+# v5 : pas de fill sur les scopes déjà sur-générés en v2/v3.
+HYBRID_V5_SKIP_SCOPES = {
+    "action.social",
+    "value_chain.development",
+}
+HYBRID_V5_MAX_ADD = {
+    "action.hacking": 7,
+    "action.malware": 6,
+    "attribute.integrity": 5,
+    "attribute.confidentiality": 12,
+    "attribute.availability": 4,
+}
+# v6 : mêmes skips que v5, mais fill analogique type v3 (sans expansion famille).
+HYBRID_V6_MAX_ADD = {
+    "action.hacking": 5,
+    "action.malware": 5,
+    "attribute.integrity": 5,
+    "attribute.confidentiality": 8,
+    "attribute.availability": 4,
+}
+# v7 : skips v6 + uniquement IDs analogiques (pas de similarité seule).
+HYBRID_V7_MAX_ADD = {
+    "action.hacking": 7,
+    "action.malware": 4,
+    "attribute.integrity": 5,
+    "attribute.confidentiality": 12,
+    "attribute.availability": 4,
+}
+# v8 : v6 + 2e passe analogique (exemples ∩ candidats) sur scopes sous-générés.
+HYBRID_V8_EXTRA_ADD = {
+    "action.hacking": 3,
+    "attribute.confidentiality": 8,
+}
+# v10 : N global constant (somme v9) mais N local = taille de l'exemple
+# le plus proche du même groupe, puis réallocation grow/shrink.
+HYBRID_V10_SHRINK_SCOPES = {
+    "action.social",
+    "value_chain.development",
+}
+HYBRID_V10_GROW_SCOPES = {
+    "attribute.confidentiality",
+    "action.hacking",
+}
+HYBRID_V10_SCOPE_MAX_MULT = {
+    "action.hacking": 1.6,
+    "action.malware": 1.2,
+    "action.social": 1.0,
+    "attribute.integrity": 1.5,
+    "attribute.confidentiality": 6.0,
+    "attribute.availability": 1.5,
+    "value_chain.development": 1.0,
+}
+HYBRID_V10_SCOPE_TACTICS = {
+    "action.social": {
+        "initial-access",
+        "reconnaissance",
+        "execution",
+        "resource-development",
+        "lateral-movement",
+    },
+    "attribute.confidentiality": {
+        "collection",
+        "exfiltration",
+        "credential-access",
+    },
+    "attribute.availability": {
+        "impact",
+    },
+    "attribute.integrity": {
+        "impact",
+        "persistence",
+        "privilege-escalation",
+        "defense-evasion",
+        "credential-access",
+        "execution",
+        "defense-impairment",
+    },
+    "value_chain.development": {
+        "resource-development",
+    },
+}
+# v11 : analogue same-label (union de K exemples), skip Unknown/Other,
+# famille stricte, pas de padding hors-tactique.
+HYBRID_V11_TOP_M = int(os.getenv("RAG_HYBRID_V11_TOP_M", "24"))
+HYBRID_V11_ANALOG_EXAMPLES = int(os.getenv("RAG_HYBRID_V11_ANALOG_EXAMPLES", "3"))
+HYBRID_V11_SKIP_LABELS = {
+    "unknown",
+    "other",
+    "na",
+    "n/a",
+    "none",
+}
+# v12 : skip Unknown même s'il y a un analogue ; union de tous les
+# same-label ; parent conservé ; LLM seulement si analogue vide.
+HYBRID_V12_TOP_M = int(os.getenv("RAG_HYBRID_V12_TOP_M", "48"))
+HYBRID_V12_LLM_MAX = int(os.getenv("RAG_HYBRID_V12_LLM_MAX", "5"))
+# v13 : union analogique aussi pour Unknown/Other ; pas de fallback LLM.
+HYBRID_V13_TOP_M = int(os.getenv("RAG_HYBRID_V13_TOP_M", "48"))
+# v14 : corpus same-label + remap IDs ATT&CK (versions) + découverte résidu.
+HYBRID_V14_TOP_M = int(os.getenv("RAG_HYBRID_V14_TOP_M", "48"))
+HYBRID_V14_REMAP_MIN_JACC = float(os.getenv("RAG_HYBRID_V14_REMAP_MIN_JACC", "0.5"))
+HYBRID_V14_DISCOVERY_SIM = float(os.getenv("RAG_HYBRID_V14_DISCOVERY_SIM", "0.55"))
+HYBRID_V14_DISCOVERY_MAX = int(os.getenv("RAG_HYBRID_V14_DISCOVERY_MAX", "1"))
+HYBRID_V14_LLM_MAX = int(os.getenv("RAG_HYBRID_V14_LLM_MAX", "0"))
+
 
 # ==================== GROUPES VERIS ====================
 CAPABILITY_GROUPS = [
@@ -154,14 +275,14 @@ def list_example_work_dirs() -> list[Path]:
     return dirs
 
 
-def validate_config() -> None:
+def validate_config(require_api: bool = True) -> None:
     """Valide la présence des variables/fichiers essentiels."""
     if GENERATOR != "together":
         raise ValueError(
             f"Backend de génération inconnu : {GENERATOR}. "
             "Cette solution n'accepte que RAG_GENERATOR=together."
         )
-    if not TOGETHER_API_KEY:
+    if require_api and not TOGETHER_API_KEY:
         raise ValueError(
             "TOGETHER_API_KEY (ou OPENAI_API_KEY) manquante. "
             "Ajoutez-la dans .dev.env à la racine SIEM."

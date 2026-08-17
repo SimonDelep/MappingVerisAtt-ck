@@ -1,60 +1,71 @@
 \babel@toc {french}{}\relax 
-\contentsline {section}{\numberline {1}Synthèse des lectures}{3}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Doc 1 — 99\% de faux positifs}{3}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Doc 2 — UCO (Unified Cybersecurity Ontology)}{3}{subsection.1.2}%
-\contentsline {paragraph}{Apport.}{3}{section*.3}%
-\contentsline {paragraph}{Cas d'usage.}{3}{section*.4}%
-\contentsline {section}{\numberline {2}Introduction}{4}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Problématique et objectifs}{4}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Contexte --- VERIS}{4}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Contexte --- MITRE ATT\&CK}{5}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Contexte --- Le mapping}{5}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}Contexte --- Les 7 capability groups}{6}{subsection.2.5}%
-\contentsline {subsection}{\numberline {2.6}Contexte --- Versions et formats de données}{6}{subsection.2.6}%
-\contentsline {section}{\numberline {3}Méthodologie}{6}{section.3}%
-\contentsline {subsection}{\numberline {3.1}La méthode actuelle de mapping}{6}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}État de l'art --- Alarmes SIEM et modèle REACT}{7}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}État de l'art --- Ontologies et unification (UCO)}{7}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}État de l'art --- Approches IA pour l'alignement sémantique}{7}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}Notre pipeline}{7}{subsection.3.5}%
-\contentsline {subsubsection}{\numberline {3.5.1}Architecture du projet}{9}{subsubsection.3.5.1}%
-\contentsline {section}{\numberline {4}Solution}{9}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Solution RAG}{9}{subsection.4.1}%
-\contentsline {subsubsection}{\numberline {4.1.1}Principe et objectif}{9}{subsubsection.4.1.1}%
-\contentsline {subsubsection}{\numberline {4.1.2}Architecture et fonctionnement}{10}{subsubsection.4.1.2}%
-\contentsline {paragraph}{Composants communs.}{10}{section*.7}%
-\contentsline {paragraph}{Indexation et base vectorielle.}{10}{section*.9}%
-\contentsline {paragraph}{Flux global de traitement.}{11}{section*.10}%
-\contentsline {paragraph}{Paramètres communs.}{11}{section*.11}%
-\contentsline {paragraph}{Backend de décision.}{11}{section*.12}%
-\contentsline {paragraph}{Backend de décision : Calcul de la similarité cosinus.}{11}{section*.13}%
-\contentsline {subsubsection}{\numberline {4.1.3}Variante attack\_only}{11}{subsubsection.4.1.3}%
-\contentsline {paragraph}{Principe et corpus.}{11}{section*.14}%
-\contentsline {paragraph}{Fonctionnement.}{12}{section*.15}%
-\contentsline {paragraph}{Résultats et remarques.}{13}{section*.16}%
-\contentsline {subsubsection}{\numberline {4.1.4}Variante with\_examples}{13}{subsubsection.4.1.4}%
-\contentsline {paragraph}{Principe et corpus.}{13}{section*.18}%
-\contentsline {paragraph}{Fonctionnement.}{14}{section*.19}%
-\contentsline {paragraph}{Résultats et remarques.}{15}{section*.20}%
-\contentsline {subsubsection}{\numberline {4.1.5}Variante DeepSeek-V4-Flash-0731}{16}{subsubsection.4.1.5}%
-\contentsline {paragraph}{Principe et corpus.}{16}{section*.22}%
-\contentsline {paragraph}{Fonctionnement.}{16}{section*.23}%
-\contentsline {paragraph}{Résultats et remarques.}{17}{section*.24}%
-\contentsline {subsubsection}{\numberline {4.1.6}Variante Llama-3.3-70B-Instruct-Turbo}{17}{subsubsection.4.1.6}%
-\contentsline {paragraph}{Principe et corpus.}{17}{section*.26}%
-\contentsline {paragraph}{Fonctionnement.}{17}{section*.27}%
-\contentsline {paragraph}{Résultats et remarques.}{18}{section*.28}%
-\contentsline {subsubsection}{\numberline {4.1.7}Variante Qwen2.5-7B-Instruct-Turbo}{18}{subsubsection.4.1.7}%
-\contentsline {paragraph}{Principe et corpus.}{18}{section*.30}%
-\contentsline {paragraph}{Fonctionnement.}{18}{section*.31}%
-\contentsline {paragraph}{Résultats et remarques.}{19}{section*.32}%
-\contentsline {subsection}{\numberline {4.2}Solution Fine-tune}{20}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Solution PROMPT}{20}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}Synthèse des trois solutions}{20}{subsection.4.4}%
-\contentsline {section}{\numberline {5}Résultats}{20}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Configuration expérimentale}{20}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Résultats --- Solution RAG}{20}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}Résultats --- Solution Fine-tune}{20}{subsection.5.3}%
-\contentsline {subsection}{\numberline {5.4}Résultats --- Solution PROMPT}{20}{subsection.5.4}%
-\contentsline {section}{\numberline {6}Discussion}{20}{section.6}%
-\contentsline {section}{\numberline {7}Conclusion}{20}{section.7}%
+\contentsline {section}{\numberline {1}Synthèse des lectures}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Doc 1 — 99\% de faux positifs}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Doc 2 — UCO (Unified Cybersecurity Ontology)}{2}{subsection.1.2}%
+\contentsline {paragraph}{Apport.}{2}{section*.3}%
+\contentsline {paragraph}{Cas d'usage.}{2}{section*.4}%
+\contentsline {section}{\numberline {2}Introduction}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Problématique et objectifs}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Contexte --- VERIS}{3}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Contexte --- MITRE ATT\&CK}{4}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Contexte --- Le mapping}{4}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Contexte --- Les 7 capability groups}{5}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Contexte --- Versions et formats de données}{5}{subsection.2.6}%
+\contentsline {section}{\numberline {3}Méthodologie}{5}{section.3}%
+\contentsline {subsection}{\numberline {3.1}La méthode actuelle de mapping}{5}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}État de l'art --- Alarmes SIEM et modèle REACT}{6}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}État de l'art --- Ontologies et unification (UCO)}{6}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}État de l'art --- Approches IA pour l'alignement sémantique}{6}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Notre pipeline}{6}{subsection.3.5}%
+\contentsline {subsubsection}{\numberline {3.5.1}Architecture du projet}{8}{subsubsection.3.5.1}%
+\contentsline {section}{\numberline {4}Solution}{8}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Solution RAG}{8}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Principe et objectif}{8}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.2}Architecture et fonctionnement}{9}{subsubsection.4.1.2}%
+\contentsline {paragraph}{Composants communs.}{9}{section*.7}%
+\contentsline {paragraph}{Indexation et base vectorielle.}{9}{section*.9}%
+\contentsline {paragraph}{Flux global de traitement.}{10}{section*.10}%
+\contentsline {paragraph}{Paramètres communs.}{10}{section*.11}%
+\contentsline {paragraph}{Backend de décision.}{10}{section*.12}%
+\contentsline {paragraph}{Backend de décision : Calcul de la similarité cosinus.}{10}{section*.13}%
+\contentsline {subsubsection}{\numberline {4.1.3}Variante attack\_only}{10}{subsubsection.4.1.3}%
+\contentsline {paragraph}{Principe et corpus.}{10}{section*.14}%
+\contentsline {paragraph}{Fonctionnement.}{11}{section*.15}%
+\contentsline {paragraph}{Résultats et remarques.}{12}{section*.16}%
+\contentsline {subsubsection}{\numberline {4.1.4}Variante with\_examples}{12}{subsubsection.4.1.4}%
+\contentsline {paragraph}{Principe et corpus.}{12}{section*.18}%
+\contentsline {paragraph}{Fonctionnement.}{13}{section*.19}%
+\contentsline {paragraph}{Résultats et remarques.}{14}{section*.20}%
+\contentsline {subsubsection}{\numberline {4.1.5}Variante DeepSeek-V4-Flash-0731}{15}{subsubsection.4.1.5}%
+\contentsline {paragraph}{Principe et corpus.}{15}{section*.22}%
+\contentsline {paragraph}{Fonctionnement.}{15}{section*.23}%
+\contentsline {paragraph}{Résultats et remarques.}{16}{section*.24}%
+\contentsline {subsubsection}{\numberline {4.1.6}Variante Llama-3.3-70B-Instruct-Turbo}{16}{subsubsection.4.1.6}%
+\contentsline {paragraph}{Principe et corpus.}{16}{section*.26}%
+\contentsline {paragraph}{Fonctionnement.}{16}{section*.27}%
+\contentsline {paragraph}{Résultats et remarques.}{17}{section*.28}%
+\contentsline {subsubsection}{\numberline {4.1.7}Variante Qwen2.5-7B-Instruct-Turbo}{17}{subsubsection.4.1.7}%
+\contentsline {paragraph}{Principe et corpus.}{17}{section*.30}%
+\contentsline {paragraph}{Fonctionnement.}{17}{section*.31}%
+\contentsline {paragraph}{Résultats et remarques.}{18}{section*.32}%
+\contentsline {subsubsection}{\numberline {4.1.8}Itérations analogiques Llama (v2--v14)}{18}{subsubsection.4.1.8}%
+\contentsline {paragraph}{Principe commun.}{18}{section*.34}%
+\contentsline {paragraph}{v2 --- Plus de contexte, toujours le LLM.}{19}{section*.36}%
+\contentsline {paragraph}{v3 --- Premier fill analogique.}{19}{section*.38}%
+\contentsline {paragraph}{v4 à v8 --- Plafonds, skips et passes supplémentaires.}{20}{section*.40}%
+\contentsline {paragraph}{v9 --- Reclassement à $N$ constant.}{22}{section*.46}%
+\contentsline {paragraph}{v10 --- Budget analogique et score pondéré.}{22}{section*.48}%
+\contentsline {paragraph}{v11 --- Union same-label.}{23}{section*.50}%
+\contentsline {paragraph}{v12 --- Union complète et LLM en dernier recours.}{24}{section*.53}%
+\contentsline {paragraph}{v13 --- Analogie pure, y compris Unknown/Other.}{24}{section*.55}%
+\contentsline {paragraph}{v14 --- Remap d'identifiants et découverte conservative.}{24}{section*.57}%
+\contentsline {subsection}{\numberline {4.2}Solution Fine-tune}{25}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Solution PROMPT}{25}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Synthèse des trois solutions}{25}{subsection.4.4}%
+\contentsline {section}{\numberline {5}Résultats}{25}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Configuration expérimentale}{25}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Résultats --- Solution RAG}{25}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Résultats --- Solution Fine-tune}{26}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Résultats --- Solution PROMPT}{26}{subsection.5.4}%
+\contentsline {section}{\numberline {6}Discussion}{26}{section.6}%
+\contentsline {section}{\numberline {7}Conclusion}{26}{section.7}%
