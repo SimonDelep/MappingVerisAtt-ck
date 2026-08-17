@@ -1,0 +1,557 @@
+{
+  "metadata": {
+    "veris_version": "1.4.1",
+    "mitre_attack_version": "19.1",
+    "scope": "attribute.confidentiality",
+    "method": "FINE_TUNE",
+    "model": "TF-IDF + OneVsRest LogisticRegression"
+  },
+  "veris_to_mitre": [
+    {
+      "veris_id": "attribute.confidentiality.data_disclosure",
+      "veris_category": "attribute.confidentiality",
+      "veris_label": "data_disclosure",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1547",
+          "technique_name": "Boot or Logon Autostart Execution",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.1349,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1212",
+          "technique_name": "Exploitation for Credential Access",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "credential-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.1067,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1598",
+          "technique_name": "Phishing for Information",
+          "sub_technique_id": "T1598.004",
+          "sub_technique_name": "Spearphishing Voice",
+          "tactic(s)": [
+            "reconnaissance"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0844,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1558",
+          "technique_name": "Steal or Forge Kerberos Tickets",
+          "sub_technique_id": "T1558.003",
+          "sub_technique_name": "Kerberoasting",
+          "tactic(s)": [
+            "credential-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0836,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1587",
+          "technique_name": "Develop Capabilities",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0825,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1114",
+          "technique_name": "Email Collection",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "collection"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0822,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1029",
+          "technique_name": "Scheduled Transfer",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "exfiltration"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0695,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1222",
+          "technique_name": "File and Directory Permissions Modification",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "defense-impairment"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.069,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1119",
+          "technique_name": "Automated Collection",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "collection"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0668,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1133",
+          "technique_name": "External Remote Services",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "persistence",
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0544,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1555",
+          "technique_name": "Credentials from Password Stores",
+          "sub_technique_id": "T1555.002",
+          "sub_technique_name": "Securityd Memory",
+          "tactic(s)": [
+            "credential-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0539,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1552",
+          "technique_name": "Unsecured Credentials",
+          "sub_technique_id": "T1552.008",
+          "sub_technique_name": "Chat Messages",
+          "tactic(s)": [
+            "credential-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0539,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1187",
+          "technique_name": "Forced Authentication",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "credential-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0538,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1552",
+          "technique_name": "Unsecured Credentials",
+          "sub_technique_id": "T1552.006",
+          "sub_technique_name": "Group Policy Preferences",
+          "tactic(s)": [
+            "credential-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0536,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1115",
+          "technique_name": "Clipboard Data",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "collection"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0534,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1125",
+          "technique_name": "Video Capture",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "collection"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0528,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1602",
+          "technique_name": "Data from Configuration Repository",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "collection"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0523,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1602",
+          "technique_name": "Data from Configuration Repository",
+          "sub_technique_id": "T1602.001",
+          "sub_technique_name": "SNMP (MIB Dump)",
+          "tactic(s)": [
+            "collection"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0515,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "low",
+          "confidence_score": 0.0506,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ],
+      "ambiguous": true,
+      "notes": ""
+    }
+  ],
+  "mitre_to_veris": [
+    {
+      "attack_id": "T1029",
+      "technique_id": "T1029",
+      "technique_name": "Scheduled Transfer",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_label": "data_disclosure",
+          "confidence_score": 0.0695,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1114",
+      "technique_id": "T1114",
+      "technique_name": "Email Collection",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_label": "data_disclosure",
+          "confidence_score": 0.0822,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1115",
+      "technique_id": "T1115",
+      "technique_name": "Clipboard Data",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_label": "data_disclosure",
+          "confidence_score": 0.0534,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1119",
+      "technique_id": "T1119",
+      "technique_name": "Automated Collection",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_label": "data_disclosure",
+          "confidence_score": 0.0668,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1125",
+      "technique_id": "T1125",
+      "technique_name": "Video Capture",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_label": "data_disclosure",
+          "confidence_score": 0.0528,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1133",
+      "technique_id": "T1133",
+      "technique_name": "External Remote Services",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_label": "data_disclosure",
+          "confidence_score": 0.0544,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1187",
+      "technique_id": "T1187",
+      "technique_name": "Forced Authentication",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_label": "data_disclosure",
+          "confidence_score": 0.0538,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1212",
+      "technique_id": "T1212",
+      "technique_name": "Exploitation for Credential Access",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_label": "data_disclosure",
+          "confidence_score": 0.1067,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1222",
+      "technique_id": "T1222",
+      "technique_name": "File and Directory Permissions Modification",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_label": "data_disclosure",
+          "confidence_score": 0.069,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1499",
+      "technique_id": "T1499",
+      "technique_name": "Endpoint Denial of Service",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_label": "data_disclosure",
+          "confidence_score": 0.0506,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1547",
+      "technique_id": "T1547",
+      "technique_name": "Boot or Logon Autostart Execution",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_label": "data_disclosure",
+          "confidence_score": 0.1349,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1552.006",
+      "technique_id": "T1552",
+      "technique_name": "Unsecured Credentials",
+      "sub_technique_id": "T1552.006",
+      "sub_technique_name": "Group Policy Preferences",
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_label": "data_disclosure",
+          "confidence_score": 0.0536,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1552.008",
+      "technique_id": "T1552",
+      "technique_name": "Unsecured Credentials",
+      "sub_technique_id": "T1552.008",
+      "sub_technique_name": "Chat Messages",
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_label": "data_disclosure",
+          "confidence_score": 0.0539,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1555.002",
+      "technique_id": "T1555",
+      "technique_name": "Credentials from Password Stores",
+      "sub_technique_id": "T1555.002",
+      "sub_technique_name": "Securityd Memory",
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_label": "data_disclosure",
+          "confidence_score": 0.0539,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1558.003",
+      "technique_id": "T1558",
+      "technique_name": "Steal or Forge Kerberos Tickets",
+      "sub_technique_id": "T1558.003",
+      "sub_technique_name": "Kerberoasting",
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_label": "data_disclosure",
+          "confidence_score": 0.0836,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1587",
+      "technique_id": "T1587",
+      "technique_name": "Develop Capabilities",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_label": "data_disclosure",
+          "confidence_score": 0.0825,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1598.004",
+      "technique_id": "T1598",
+      "technique_name": "Phishing for Information",
+      "sub_technique_id": "T1598.004",
+      "sub_technique_name": "Spearphishing Voice",
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_label": "data_disclosure",
+          "confidence_score": 0.0844,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1602",
+      "technique_id": "T1602",
+      "technique_name": "Data from Configuration Repository",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_label": "data_disclosure",
+          "confidence_score": 0.0523,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    },
+    {
+      "attack_id": "T1602.001",
+      "technique_id": "T1602",
+      "technique_name": "Data from Configuration Repository",
+      "sub_technique_id": "T1602.001",
+      "sub_technique_name": "SNMP (MIB Dump)",
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.confidentiality.data_disclosure",
+          "veris_label": "data_disclosure",
+          "confidence_score": 0.0515,
+          "justification": "Mapping généré par un modèle local fine-tuned sur les mappings experts VERIS -> ATT&CK."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2536 @@
+{
+  "metadata": {
+    "veris_version": "1.4.1",
+    "mitre_attack_version": "19.1",
+    "scope": "action.social",
+    "capability_group": "action.social",
+    "enriched_from": "local_catalogs"
+  },
+  "veris_to_mitre": [
+    {
+      "veris_id": "action.social.variety.Baiting",
+      "veris_category": "Social",
+      "veris_label": "Baiting",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1091",
+          "technique_name": "Replication Through Removable Media",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "lateral-movement",
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1189",
+          "technique_name": "Drive-by Compromise",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1200",
+          "technique_name": "Hardware Additions",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1608",
+          "technique_name": "Stage Capabilities",
+          "sub_technique_id": "T1608.004",
+          "sub_technique_name": "Drive-by Target",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1608",
+          "technique_name": "Stage Capabilities",
+          "sub_technique_id": "T1608.006",
+          "sub_technique_name": "SEO Poisoning",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1684",
+          "technique_name": "Social Engineering",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "stealth"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "action.social.variety.Bribery",
+      "veris_category": "Social",
+      "veris_label": "Bribery",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1684",
+          "technique_name": "Social Engineering",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "stealth"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "action.social.variety.Elicitation",
+      "veris_category": "Social",
+      "veris_label": "Elicitation",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1589",
+          "technique_name": "Gather Victim Identity Information",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "reconnaissance"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1684",
+          "technique_name": "Social Engineering",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "stealth"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "action.social.variety.Evade Defenses",
+      "veris_category": "Social",
+      "veris_label": "Evade Defenses",
+      "no_mapping_found": true,
+      "mitre_mappings": [],
+      "ambiguous": false,
+      "notes": "Aucune correspondance trouvée."
+    },
+    {
+      "veris_id": "action.social.variety.Extortion",
+      "veris_category": "Social",
+      "veris_label": "Extortion",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1657",
+          "technique_name": "Financial Theft",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1684",
+          "technique_name": "Social Engineering",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "stealth"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "action.social.variety.Forgery",
+      "veris_category": "Social",
+      "veris_label": "Forgery",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1606",
+          "technique_name": "Forge Web Credentials",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "credential-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1606",
+          "technique_name": "Forge Web Credentials",
+          "sub_technique_id": "T1606.001",
+          "sub_technique_name": "Web Cookies",
+          "tactic(s)": [
+            "credential-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1606",
+          "technique_name": "Forge Web Credentials",
+          "sub_technique_id": "T1606.002",
+          "sub_technique_name": "SAML Tokens",
+          "tactic(s)": [
+            "credential-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1683",
+          "technique_name": "Generate Content",
+          "sub_technique_id": "T1683.001",
+          "sub_technique_name": "Written Content",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1683",
+          "technique_name": "Generate Content",
+          "sub_technique_id": "T1683.002",
+          "sub_technique_name": "Audio-Visual Content",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1684",
+          "technique_name": "Social Engineering",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "stealth"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "action.social.variety.Influence",
+      "veris_category": "Social",
+      "veris_label": "Influence",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1684",
+          "technique_name": "Social Engineering",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "stealth"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1684",
+          "technique_name": "Social Engineering",
+          "sub_technique_id": "T1684.001",
+          "sub_technique_name": "Impersonation",
+          "tactic(s)": [
+            "stealth"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "action.social.variety.Other",
+      "veris_category": "Social",
+      "veris_label": "Other",
+      "no_mapping_found": true,
+      "mitre_mappings": [],
+      "ambiguous": false,
+      "notes": "Aucune correspondance trouvée."
+    },
+    {
+      "veris_id": "action.social.variety.Phishing",
+      "veris_category": "Social",
+      "veris_label": "Phishing",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.001",
+          "sub_technique_name": "Spearphishing Attachment",
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.002",
+          "sub_technique_name": "Spearphishing Link",
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.003",
+          "sub_technique_name": "Spearphishing via Service",
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.004",
+          "sub_technique_name": "Spearphishing Voice",
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1598",
+          "technique_name": "Phishing for Information",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "reconnaissance"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1598",
+          "technique_name": "Phishing for Information",
+          "sub_technique_id": "T1598.001",
+          "sub_technique_name": "Spearphishing Service",
+          "tactic(s)": [
+            "reconnaissance"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1598",
+          "technique_name": "Phishing for Information",
+          "sub_technique_id": "T1598.002",
+          "sub_technique_name": "Spearphishing Attachment",
+          "tactic(s)": [
+            "reconnaissance"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1598",
+          "technique_name": "Phishing for Information",
+          "sub_technique_id": "T1598.003",
+          "sub_technique_name": "Spearphishing Link",
+          "tactic(s)": [
+            "reconnaissance"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1598",
+          "technique_name": "Phishing for Information",
+          "sub_technique_id": "T1598.004",
+          "sub_technique_name": "Spearphishing Voice",
+          "tactic(s)": [
+            "reconnaissance"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1684",
+          "technique_name": "Social Engineering",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "stealth"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "action.social.variety.Pretexting",
+      "veris_category": "Social",
+      "veris_label": "Pretexting",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1684",
+          "technique_name": "Social Engineering",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "stealth"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1684",
+          "technique_name": "Social Engineering",
+          "sub_technique_id": "T1684.001",
+          "sub_technique_name": "Impersonation",
+          "tactic(s)": [
+            "stealth"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "action.social.variety.Prompt bombing",
+      "veris_category": "Social",
+      "veris_label": "Prompt bombing",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1621",
+          "technique_name": "Multi-Factor Authentication Request Generation",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "credential-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1684",
+          "technique_name": "Social Engineering",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "stealth"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "action.social.variety.Propaganda",
+      "veris_category": "Social",
+      "veris_label": "Propaganda",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1683",
+          "technique_name": "Generate Content",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1683",
+          "technique_name": "Generate Content",
+          "sub_technique_id": "T1683.001",
+          "sub_technique_name": "Written Content",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1683",
+          "technique_name": "Generate Content",
+          "sub_technique_id": "T1683.002",
+          "sub_technique_name": "Audio-Visual Content",
+          "tactic(s)": [
+            "resource-development"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1684",
+          "technique_name": "Social Engineering",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "stealth"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "action.social.variety.Scam",
+      "veris_category": "Social",
+      "veris_label": "Scam",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1657",
+          "technique_name": "Financial Theft",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1684",
+          "technique_name": "Social Engineering",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "stealth"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "action.social.variety.Spam",
+      "veris_category": "Social",
+      "veris_label": "Spam",
+      "no_mapping_found": true,
+      "mitre_mappings": [],
+      "ambiguous": false,
+      "notes": "Aucune correspondance trouvée."
+    },
+    {
+      "veris_id": "action.social.variety.Unknown",
+      "veris_category": "Social",
+      "veris_label": "Unknown",
+      "no_mapping_found": true,
+      "mitre_mappings": [],
+      "ambiguous": false,
+      "notes": "Aucune correspondance trouvée."
+    },
+    {
+      "veris_id": "action.social.vector.Documents",
+      "veris_category": "Social",
+      "veris_label": "Documents",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1204",
+          "technique_name": "User Execution",
+          "sub_technique_id": "T1204.002",
+          "sub_technique_name": "Malicious File",
+          "tactic(s)": [
+            "execution"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.001",
+          "sub_technique_name": "Spearphishing Attachment",
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1598",
+          "technique_name": "Phishing for Information",
+          "sub_technique_id": "T1598.002",
+          "sub_technique_name": "Spearphishing Attachment",
+          "tactic(s)": [
+            "reconnaissance"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "action.social.vector.Email",
+      "veris_category": "Social",
+      "veris_label": "Email",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.001",
+          "sub_technique_name": "Spearphishing Attachment",
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.002",
+          "sub_technique_name": "Spearphishing Link",
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1598",
+          "technique_name": "Phishing for Information",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "reconnaissance"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1598",
+          "technique_name": "Phishing for Information",
+          "sub_technique_id": "T1598.002",
+          "sub_technique_name": "Spearphishing Attachment",
+          "tactic(s)": [
+            "reconnaissance"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1598",
+          "technique_name": "Phishing for Information",
+          "sub_technique_id": "T1598.003",
+          "sub_technique_name": "Spearphishing Link",
+          "tactic(s)": [
+            "reconnaissance"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1684",
+          "technique_name": "Social Engineering",
+          "sub_technique_id": "T1684.002",
+          "sub_technique_name": "Email Spoofing",
+          "tactic(s)": [
+            "stealth"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "action.social.vector.IM",
+      "veris_category": "Social",
+      "veris_label": "IM",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.003",
+          "sub_technique_name": "Spearphishing via Service",
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1598",
+          "technique_name": "Phishing for Information",
+          "sub_technique_id": "T1598.001",
+          "sub_technique_name": "Spearphishing Service",
+          "tactic(s)": [
+            "reconnaissance"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1684",
+          "technique_name": "Social Engineering",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "stealth"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "action.social.vector.In-person",
+      "veris_category": "Social",
+      "veris_label": "In-person",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1684",
+          "technique_name": "Social Engineering",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "stealth"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "action.social.vector.Other",
+      "veris_category": "Social",
+      "veris_label": "Other",
+      "no_mapping_found": true,
+      "mitre_mappings": [],
+      "ambiguous": false,
+      "notes": "Aucune correspondance trouvée."
+    },
+    {
+      "veris_id": "action.social.vector.Partner",
+      "veris_category": "Social",
+      "veris_label": "Partner",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1195",
+          "technique_name": "Supply Chain Compromise",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1195",
+          "technique_name": "Supply Chain Compromise",
+          "sub_technique_id": "T1195.001",
+          "sub_technique_name": "Compromise Software Dependencies and Development Tools",
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1195",
+          "technique_name": "Supply Chain Compromise",
+          "sub_technique_id": "T1195.002",
+          "sub_technique_name": "Compromise Software Supply Chain",
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1195",
+          "technique_name": "Supply Chain Compromise",
+          "sub_technique_id": "T1195.003",
+          "sub_technique_name": "Compromise Hardware Supply Chain",
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1199",
+          "technique_name": "Trusted Relationship",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "action.social.vector.Phone",
+      "veris_category": "Social",
+      "veris_label": "Phone",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.004",
+          "sub_technique_name": "Spearphishing Voice",
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1598",
+          "technique_name": "Phishing for Information",
+          "sub_technique_id": "T1598.004",
+          "sub_technique_name": "Spearphishing Voice",
+          "tactic(s)": [
+            "reconnaissance"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1684",
+          "technique_name": "Social Engineering",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "stealth"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "action.social.vector.Removable media",
+      "veris_category": "Social",
+      "veris_label": "Removable media",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1091",
+          "technique_name": "Replication Through Removable Media",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "lateral-movement",
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1200",
+          "technique_name": "Hardware Additions",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "action.social.vector.SMS",
+      "veris_category": "Social",
+      "veris_label": "SMS",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.003",
+          "sub_technique_name": "Spearphishing via Service",
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1598",
+          "technique_name": "Phishing for Information",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "reconnaissance"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1598",
+          "technique_name": "Phishing for Information",
+          "sub_technique_id": "T1598.001",
+          "sub_technique_name": "Spearphishing Service",
+          "tactic(s)": [
+            "reconnaissance"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1684",
+          "technique_name": "Social Engineering",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "stealth"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "action.social.vector.Social media",
+      "veris_category": "Social",
+      "veris_label": "Social media",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.003",
+          "sub_technique_name": "Spearphishing via Service",
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1598",
+          "technique_name": "Phishing for Information",
+          "sub_technique_id": "T1598.001",
+          "sub_technique_name": "Spearphishing Service",
+          "tactic(s)": [
+            "reconnaissance"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1684",
+          "technique_name": "Social Engineering",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "stealth"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "action.social.vector.Software",
+      "veris_category": "Social",
+      "veris_label": "Software",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1195",
+          "technique_name": "Supply Chain Compromise",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1204",
+          "technique_name": "User Execution",
+          "sub_technique_id": "T1204.002",
+          "sub_technique_name": "Malicious File",
+          "tactic(s)": [
+            "execution"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1204",
+          "technique_name": "User Execution",
+          "sub_technique_id": "T1204.005",
+          "sub_technique_name": "Malicious Library",
+          "tactic(s)": [
+            "execution"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "action.social.vector.Unknown",
+      "veris_category": "Social",
+      "veris_label": "Unknown",
+      "no_mapping_found": true,
+      "mitre_mappings": [],
+      "ambiguous": false,
+      "notes": "Aucune correspondance trouvée."
+    },
+    {
+      "veris_id": "action.social.vector.Virtual meeting",
+      "veris_category": "Social",
+      "veris_label": "Virtual meeting",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1684",
+          "technique_name": "Social Engineering",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "stealth"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "action.social.vector.Web application",
+      "veris_category": "Social",
+      "veris_label": "Web application",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1189",
+          "technique_name": "Drive-by Compromise",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1566",
+          "technique_name": "Phishing",
+          "sub_technique_id": "T1566.002",
+          "sub_technique_name": "Spearphishing Link",
+          "tactic(s)": [
+            "initial-access"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1684",
+          "technique_name": "Social Engineering",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "stealth"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    }
+  ],
+  "mitre_to_veris": [
+    {
+      "technique_id": "T1091",
+      "technique_name": "Replication Through Removable Media",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "lateral-movement",
+        "initial-access"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.variety.Baiting",
+          "veris_category": "Social",
+          "veris_label": "Baiting",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.vector.Removable media",
+          "veris_category": "Social",
+          "veris_label": "Removable media",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1189",
+      "technique_name": "Drive-by Compromise",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "initial-access"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.variety.Baiting",
+          "veris_category": "Social",
+          "veris_label": "Baiting",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.vector.Web application",
+          "veris_category": "Social",
+          "veris_label": "Web application",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1195",
+      "technique_name": "Supply Chain Compromise",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "initial-access"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.vector.Partner",
+          "veris_category": "Social",
+          "veris_label": "Partner",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.vector.Software",
+          "veris_category": "Social",
+          "veris_label": "Software",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1195",
+      "technique_name": "Supply Chain Compromise",
+      "sub_technique_id": "T1195.001",
+      "sub_technique_name": "Compromise Software Dependencies and Development Tools",
+      "tactic(s)": [
+        "initial-access"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.vector.Partner",
+          "veris_category": "Social",
+          "veris_label": "Partner",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1195",
+      "technique_name": "Supply Chain Compromise",
+      "sub_technique_id": "T1195.002",
+      "sub_technique_name": "Compromise Software Supply Chain",
+      "tactic(s)": [
+        "initial-access"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.vector.Partner",
+          "veris_category": "Social",
+          "veris_label": "Partner",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1195",
+      "technique_name": "Supply Chain Compromise",
+      "sub_technique_id": "T1195.003",
+      "sub_technique_name": "Compromise Hardware Supply Chain",
+      "tactic(s)": [
+        "initial-access"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.vector.Partner",
+          "veris_category": "Social",
+          "veris_label": "Partner",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1199",
+      "technique_name": "Trusted Relationship",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "initial-access"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.vector.Partner",
+          "veris_category": "Social",
+          "veris_label": "Partner",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1200",
+      "technique_name": "Hardware Additions",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "initial-access"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.variety.Baiting",
+          "veris_category": "Social",
+          "veris_label": "Baiting",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.vector.Removable media",
+          "veris_category": "Social",
+          "veris_label": "Removable media",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1204",
+      "technique_name": "User Execution",
+      "sub_technique_id": "T1204.002",
+      "sub_technique_name": "Malicious File",
+      "tactic(s)": [
+        "execution"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.vector.Documents",
+          "veris_category": "Social",
+          "veris_label": "Documents",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.vector.Software",
+          "veris_category": "Social",
+          "veris_label": "Software",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1204",
+      "technique_name": "User Execution",
+      "sub_technique_id": "T1204.005",
+      "sub_technique_name": "Malicious Library",
+      "tactic(s)": [
+        "execution"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.vector.Software",
+          "veris_category": "Social",
+          "veris_label": "Software",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1566",
+      "technique_name": "Phishing",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "initial-access"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.variety.Phishing",
+          "veris_category": "Social",
+          "veris_label": "Phishing",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.vector.Email",
+          "veris_category": "Social",
+          "veris_label": "Email",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.vector.SMS",
+          "veris_category": "Social",
+          "veris_label": "SMS",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.vector.Web application",
+          "veris_category": "Social",
+          "veris_label": "Web application",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1566",
+      "technique_name": "Phishing",
+      "sub_technique_id": "T1566.001",
+      "sub_technique_name": "Spearphishing Attachment",
+      "tactic(s)": [
+        "initial-access"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.variety.Phishing",
+          "veris_category": "Social",
+          "veris_label": "Phishing",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.vector.Documents",
+          "veris_category": "Social",
+          "veris_label": "Documents",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.vector.Email",
+          "veris_category": "Social",
+          "veris_label": "Email",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1566",
+      "technique_name": "Phishing",
+      "sub_technique_id": "T1566.002",
+      "sub_technique_name": "Spearphishing Link",
+      "tactic(s)": [
+        "initial-access"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.variety.Phishing",
+          "veris_category": "Social",
+          "veris_label": "Phishing",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.vector.Email",
+          "veris_category": "Social",
+          "veris_label": "Email",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.vector.Web application",
+          "veris_category": "Social",
+          "veris_label": "Web application",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1566",
+      "technique_name": "Phishing",
+      "sub_technique_id": "T1566.003",
+      "sub_technique_name": "Spearphishing via Service",
+      "tactic(s)": [
+        "initial-access"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.variety.Phishing",
+          "veris_category": "Social",
+          "veris_label": "Phishing",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.vector.IM",
+          "veris_category": "Social",
+          "veris_label": "IM",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.vector.SMS",
+          "veris_category": "Social",
+          "veris_label": "SMS",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.vector.Social media",
+          "veris_category": "Social",
+          "veris_label": "Social media",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1566",
+      "technique_name": "Phishing",
+      "sub_technique_id": "T1566.004",
+      "sub_technique_name": "Spearphishing Voice",
+      "tactic(s)": [
+        "initial-access"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.variety.Phishing",
+          "veris_category": "Social",
+          "veris_label": "Phishing",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.vector.Phone",
+          "veris_category": "Social",
+          "veris_label": "Phone",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1589",
+      "technique_name": "Gather Victim Identity Information",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "reconnaissance"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.variety.Elicitation",
+          "veris_category": "Social",
+          "veris_label": "Elicitation",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1598",
+      "technique_name": "Phishing for Information",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "reconnaissance"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.variety.Phishing",
+          "veris_category": "Social",
+          "veris_label": "Phishing",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.vector.Email",
+          "veris_category": "Social",
+          "veris_label": "Email",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.vector.SMS",
+          "veris_category": "Social",
+          "veris_label": "SMS",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1598",
+      "technique_name": "Phishing for Information",
+      "sub_technique_id": "T1598.001",
+      "sub_technique_name": "Spearphishing Service",
+      "tactic(s)": [
+        "reconnaissance"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.variety.Phishing",
+          "veris_category": "Social",
+          "veris_label": "Phishing",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.vector.IM",
+          "veris_category": "Social",
+          "veris_label": "IM",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.vector.SMS",
+          "veris_category": "Social",
+          "veris_label": "SMS",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.vector.Social media",
+          "veris_category": "Social",
+          "veris_label": "Social media",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1598",
+      "technique_name": "Phishing for Information",
+      "sub_technique_id": "T1598.002",
+      "sub_technique_name": "Spearphishing Attachment",
+      "tactic(s)": [
+        "reconnaissance"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.variety.Phishing",
+          "veris_category": "Social",
+          "veris_label": "Phishing",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.vector.Documents",
+          "veris_category": "Social",
+          "veris_label": "Documents",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.vector.Email",
+          "veris_category": "Social",
+          "veris_label": "Email",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1598",
+      "technique_name": "Phishing for Information",
+      "sub_technique_id": "T1598.003",
+      "sub_technique_name": "Spearphishing Link",
+      "tactic(s)": [
+        "reconnaissance"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.variety.Phishing",
+          "veris_category": "Social",
+          "veris_label": "Phishing",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.vector.Email",
+          "veris_category": "Social",
+          "veris_label": "Email",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1598",
+      "technique_name": "Phishing for Information",
+      "sub_technique_id": "T1598.004",
+      "sub_technique_name": "Spearphishing Voice",
+      "tactic(s)": [
+        "reconnaissance"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.variety.Phishing",
+          "veris_category": "Social",
+          "veris_label": "Phishing",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.vector.Phone",
+          "veris_category": "Social",
+          "veris_label": "Phone",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1606",
+      "technique_name": "Forge Web Credentials",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "credential-access"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.variety.Forgery",
+          "veris_category": "Social",
+          "veris_label": "Forgery",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1606",
+      "technique_name": "Forge Web Credentials",
+      "sub_technique_id": "T1606.001",
+      "sub_technique_name": "Web Cookies",
+      "tactic(s)": [
+        "credential-access"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.variety.Forgery",
+          "veris_category": "Social",
+          "veris_label": "Forgery",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1606",
+      "technique_name": "Forge Web Credentials",
+      "sub_technique_id": "T1606.002",
+      "sub_technique_name": "SAML Tokens",
+      "tactic(s)": [
+        "credential-access"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.variety.Forgery",
+          "veris_category": "Social",
+          "veris_label": "Forgery",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1608",
+      "technique_name": "Stage Capabilities",
+      "sub_technique_id": "T1608.004",
+      "sub_technique_name": "Drive-by Target",
+      "tactic(s)": [
+        "resource-development"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.variety.Baiting",
+          "veris_category": "Social",
+          "veris_label": "Baiting",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1608",
+      "technique_name": "Stage Capabilities",
+      "sub_technique_id": "T1608.006",
+      "sub_technique_name": "SEO Poisoning",
+      "tactic(s)": [
+        "resource-development"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.variety.Baiting",
+          "veris_category": "Social",
+          "veris_label": "Baiting",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1621",
+      "technique_name": "Multi-Factor Authentication Request Generation",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "credential-access"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.variety.Prompt bombing",
+          "veris_category": "Social",
+          "veris_label": "Prompt bombing",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1657",
+      "technique_name": "Financial Theft",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "impact"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.variety.Extortion",
+          "veris_category": "Social",
+          "veris_label": "Extortion",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.variety.Scam",
+          "veris_category": "Social",
+          "veris_label": "Scam",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1683",
+      "technique_name": "Generate Content",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "resource-development"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.variety.Propaganda",
+          "veris_category": "Social",
+          "veris_label": "Propaganda",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1683",
+      "technique_name": "Generate Content",
+      "sub_technique_id": "T1683.001",
+      "sub_technique_name": "Written Content",
+      "tactic(s)": [
+        "resource-development"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.variety.Forgery",
+          "veris_category": "Social",
+          "veris_label": "Forgery",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.variety.Propaganda",
+          "veris_category": "Social",
+          "veris_label": "Propaganda",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1683",
+      "technique_name": "Generate Content",
+      "sub_technique_id": "T1683.002",
+      "sub_technique_name": "Audio-Visual Content",
+      "tactic(s)": [
+        "resource-development"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.variety.Forgery",
+          "veris_category": "Social",
+          "veris_label": "Forgery",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.variety.Propaganda",
+          "veris_category": "Social",
+          "veris_label": "Propaganda",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1684",
+      "technique_name": "Social Engineering",
+      "sub_technique_id": null,
+      "sub_technique_name": null,
+      "tactic(s)": [
+        "stealth"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.variety.Baiting",
+          "veris_category": "Social",
+          "veris_label": "Baiting",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.variety.Bribery",
+          "veris_category": "Social",
+          "veris_label": "Bribery",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.variety.Elicitation",
+          "veris_category": "Social",
+          "veris_label": "Elicitation",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.variety.Extortion",
+          "veris_category": "Social",
+          "veris_label": "Extortion",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.variety.Forgery",
+          "veris_category": "Social",
+          "veris_label": "Forgery",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.variety.Influence",
+          "veris_category": "Social",
+          "veris_label": "Influence",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.variety.Phishing",
+          "veris_category": "Social",
+          "veris_label": "Phishing",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.variety.Pretexting",
+          "veris_category": "Social",
+          "veris_label": "Pretexting",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.variety.Prompt bombing",
+          "veris_category": "Social",
+          "veris_label": "Prompt bombing",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.variety.Propaganda",
+          "veris_category": "Social",
+          "veris_label": "Propaganda",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.variety.Scam",
+          "veris_category": "Social",
+          "veris_label": "Scam",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.vector.IM",
+          "veris_category": "Social",
+          "veris_label": "IM",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.vector.In-person",
+          "veris_category": "Social",
+          "veris_label": "In-person",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.vector.Phone",
+          "veris_category": "Social",
+          "veris_label": "Phone",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.vector.SMS",
+          "veris_category": "Social",
+          "veris_label": "SMS",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.vector.Social media",
+          "veris_category": "Social",
+          "veris_label": "Social media",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.vector.Virtual meeting",
+          "veris_category": "Social",
+          "veris_label": "Virtual meeting",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.vector.Web application",
+          "veris_category": "Social",
+          "veris_label": "Web application",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1684",
+      "technique_name": "Social Engineering",
+      "sub_technique_id": "T1684.001",
+      "sub_technique_name": "Impersonation",
+      "tactic(s)": [
+        "stealth"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.variety.Influence",
+          "veris_category": "Social",
+          "veris_label": "Influence",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "action.social.variety.Pretexting",
+          "veris_category": "Social",
+          "veris_label": "Pretexting",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "technique_id": "T1684",
+      "technique_name": "Social Engineering",
+      "sub_technique_id": "T1684.002",
+      "sub_technique_name": "Email Spoofing",
+      "tactic(s)": [
+        "stealth"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "action.social.vector.Email",
+          "veris_category": "Social",
+          "veris_label": "Email",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
+    }
+  ]
+}

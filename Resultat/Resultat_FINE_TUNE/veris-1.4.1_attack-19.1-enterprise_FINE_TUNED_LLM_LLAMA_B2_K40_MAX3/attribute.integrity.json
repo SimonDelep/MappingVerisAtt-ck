@@ -1,0 +1,448 @@
+{
+  "metadata": {
+    "veris_version": "1.4.1",
+    "mitre_attack_version": "19.1",
+    "scope": "attribute.integrity",
+    "method": "FINE_TUNED_LLM",
+    "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo"
+  },
+  "veris_to_mitre": [
+    {
+      "veris_id": "attribute.integrity.variety.Alter behavior",
+      "veris_category": "attribute.integrity",
+      "veris_label": "Alter behavior",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1036",
+          "technique_name": "",
+          "sub_technique_id": "T1036.010",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1036",
+          "technique_name": "",
+          "sub_technique_id": "T1036.011",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Created account",
+      "veris_category": "attribute.integrity",
+      "veris_label": "Created account",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1098",
+          "technique_name": "",
+          "sub_technique_id": "T1098.001",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1136",
+          "technique_name": "",
+          "sub_technique_id": "T1136.003",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Defacement",
+      "veris_category": "attribute.integrity",
+      "veris_label": "Defacement",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1491",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Fraudulent transaction",
+      "veris_category": "attribute.integrity",
+      "veris_label": "Fraudulent transaction",
+      "no_mapping_found": true,
+      "mitre_mappings": [],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Hardware tampering",
+      "veris_category": "attribute.integrity",
+      "veris_label": "Hardware tampering",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1200",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Log tampering",
+      "veris_category": "attribute.integrity",
+      "veris_label": "Log tampering",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1070",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1070",
+          "technique_name": "",
+          "sub_technique_id": "T1070.007",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1685",
+          "technique_name": "",
+          "sub_technique_id": "T1685.001",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Misrepresentation",
+      "veris_category": "attribute.integrity",
+      "veris_label": "Misrepresentation",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1684",
+          "technique_name": "",
+          "sub_technique_id": "T1684.002",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1598",
+          "technique_name": "",
+          "sub_technique_id": "T1598.003",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Modify authentication",
+      "veris_category": "attribute.integrity",
+      "veris_label": "Modify authentication",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1111",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1556",
+          "technique_name": "",
+          "sub_technique_id": "T1556.006",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Modify configuration",
+      "veris_category": "attribute.integrity",
+      "veris_label": "Modify configuration",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1543",
+          "technique_name": "",
+          "sub_technique_id": "T1543.002",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1543",
+          "technique_name": "",
+          "sub_technique_id": "T1543.003",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1112",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Modify data",
+      "veris_category": "attribute.integrity",
+      "veris_label": "Modify data",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1565",
+          "technique_name": "",
+          "sub_technique_id": "T1565.001",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1485",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Modify privileges",
+      "veris_category": "attribute.integrity",
+      "veris_label": "Modify privileges",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1037",
+          "technique_name": "",
+          "sub_technique_id": "T1037.002",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1484",
+          "technique_name": "",
+          "sub_technique_id": "T1484.001",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1543",
+          "technique_name": "",
+          "sub_technique_id": "T1543.002",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Other",
+      "veris_category": "attribute.integrity",
+      "veris_label": "Other",
+      "no_mapping_found": true,
+      "mitre_mappings": [],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Register MFA device",
+      "veris_category": "attribute.integrity",
+      "veris_label": "Register MFA device",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1098",
+          "technique_name": "",
+          "sub_technique_id": "T1098.005",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": "Register an attacker controlled MFA device to an account"
+        }
+      ],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Repurpose",
+      "veris_category": "attribute.integrity",
+      "veris_label": "Repurpose",
+      "no_mapping_found": true,
+      "mitre_mappings": [],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Software installation",
+      "veris_category": "attribute.integrity",
+      "veris_label": "Software installation",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1105",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1542",
+          "technique_name": "",
+          "sub_technique_id": "T1542.002",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1553",
+          "technique_name": "",
+          "sub_technique_id": "T1553.003",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Unknown",
+      "veris_category": "attribute.integrity",
+      "veris_label": "Unknown",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1003",
+          "technique_name": "",
+          "sub_technique_id": "T1003.008",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1027",
+          "technique_name": "",
+          "sub_technique_id": "T1027.003",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1027",
+          "technique_name": "",
+          "sub_technique_id": "T1027.006",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    }
+  ]
+}

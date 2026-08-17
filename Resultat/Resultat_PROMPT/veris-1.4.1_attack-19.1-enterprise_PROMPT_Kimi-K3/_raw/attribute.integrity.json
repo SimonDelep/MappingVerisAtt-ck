@@ -1,0 +1,90 @@
+{
+  "metadata": {
+    "veris_version": "1.4.1",
+    "mitre_attack_version": "19.1",
+    "capability_group": "attribute.integrity"
+  },
+  "veris_to_mitre": [
+    {
+      "veris_id": "attribute.integrity.variety.Alter behavior",
+      "no_mapping_found": false,
+      "attack_ids": ["T1204", "T1684", "T1684.001"]
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Created account",
+      "no_mapping_found": false,
+      "attack_ids": ["T1136", "T1136.001", "T1136.002", "T1136.003"]
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Defacement",
+      "no_mapping_found": false,
+      "attack_ids": ["T1491", "T1491.001", "T1491.002"]
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Fraudulent transaction",
+      "no_mapping_found": false,
+      "attack_ids": ["T1657"]
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Hardware tampering",
+      "no_mapping_found": false,
+      "attack_ids": ["T1200", "T1195.003", "T1542.001", "T1542.002"]
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Log tampering",
+      "no_mapping_found": false,
+      "attack_ids": ["T1070", "T1070.003", "T1685.001", "T1685.002", "T1685.004", "T1685.005", "T1685.006", "T1690"]
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Misrepresentation",
+      "no_mapping_found": false,
+      "attack_ids": ["T1036", "T1036.010", "T1078", "T1134", "T1550", "T1684.001"]
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Modify authentication",
+      "no_mapping_found": false,
+      "attack_ids": ["T1098", "T1098.001", "T1098.004", "T1556", "T1556.005", "T1556.006", "T1556.009"]
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Modify configuration",
+      "no_mapping_found": false,
+      "attack_ids": ["T1112", "T1484", "T1484.001", "T1484.002", "T1543", "T1543.001", "T1543.002", "T1543.003", "T1543.004", "T1543.005", "T1578", "T1578.005", "T1599.001", "T1601", "T1601.001", "T1601.002", "T1647", "T1666", "T1686", "T1686.001", "T1686.002", "T1686.003"]
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Modify data",
+      "no_mapping_found": false,
+      "attack_ids": ["T1565", "T1565.001"]
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Modify privileges",
+      "no_mapping_found": false,
+      "attack_ids": ["T1098", "T1098.002", "T1098.003", "T1098.006", "T1098.007", "T1134.005", "T1222", "T1222.001", "T1222.002", "T1484", "T1484.001", "T1484.002", "T1548.006"]
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Other",
+      "no_mapping_found": true,
+      "attack_ids": []
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Register MFA device",
+      "no_mapping_found": false,
+      "attack_ids": ["T1098", "T1098.005", "T1556.006"]
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Repurpose",
+      "no_mapping_found": false,
+      "attack_ids": ["T1496", "T1496.001", "T1496.002", "T1496.003", "T1496.004"]
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Software installation",
+      "no_mapping_found": false,
+      "attack_ids": ["T1105", "T1505", "T1505.001", "T1505.002", "T1505.003", "T1505.004", "T1505.005", "T1505.006", "T1176", "T1176.001", "T1176.002", "T1525", "T1554", "T1601.001"]
+    },
+    {
+      "veris_id": "attribute.integrity.variety.Unknown",
+      "no_mapping_found": true,
+      "attack_ids": []
+    }
+  ],
+  "mitre_to_veris": []
+}

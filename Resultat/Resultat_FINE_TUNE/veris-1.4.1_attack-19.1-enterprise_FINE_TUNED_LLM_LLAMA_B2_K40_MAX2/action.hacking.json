@@ -1,0 +1,1701 @@
+{
+  "metadata": {
+    "veris_version": "1.4.1",
+    "mitre_attack_version": "19.1",
+    "scope": "action.hacking",
+    "method": "FINE_TUNED_LLM",
+    "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo"
+  },
+  "veris_to_mitre": [
+    {
+      "veris_id": "action.hacking.variety.Abuse of functionality",
+      "veris_category": "action.hacking",
+      "veris_label": "Abuse of functionality",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1027",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1053",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.AitM",
+      "veris_category": "action.hacking",
+      "veris_label": "AitM",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1557",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1557",
+          "technique_name": "",
+          "sub_technique_id": "T1557.003",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.Backdoor",
+      "veris_category": "action.hacking",
+      "veris_label": "Backdoor",
+      "no_mapping_found": true,
+      "mitre_mappings": [],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.Brute force",
+      "veris_category": "action.hacking",
+      "veris_label": "Brute force",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1110",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1110",
+          "technique_name": "",
+          "sub_technique_id": "T1110.001",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.Buffer overflow",
+      "veris_category": "action.hacking",
+      "veris_label": "Buffer overflow",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1203",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.CSRF",
+      "veris_category": "action.hacking",
+      "veris_label": "CSRF",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1566",
+          "technique_name": "",
+          "sub_technique_id": "T1566.002",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.Cache poisoning",
+      "veris_category": "action.hacking",
+      "veris_label": "Cache poisoning",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1557",
+          "technique_name": "",
+          "sub_technique_id": "T1557.002",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.Cryptanalysis",
+      "veris_category": "action.hacking",
+      "veris_label": "Cryptanalysis",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1600",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.Disable controls",
+      "veris_category": "action.hacking",
+      "veris_label": "Disable controls",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1553",
+          "technique_name": "",
+          "sub_technique_id": "T1553.006",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": "Disable or interfere with security controls"
+        },
+        {
+          "technique_id": "T1553",
+          "technique_name": "",
+          "sub_technique_id": "T1553.003",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": "Disable or interfere with security controls"
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.DoS",
+      "veris_category": "action.hacking",
+      "veris_label": "DoS",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1498",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": "Denial of service"
+        },
+        {
+          "technique_id": "T1498",
+          "technique_name": "",
+          "sub_technique_id": "T1498.002",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": "Denial of service"
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.Evade Defenses",
+      "veris_category": "action.hacking",
+      "veris_label": "Evade Defenses",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1211",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1027",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.Exploit misconfig",
+      "veris_category": "action.hacking",
+      "veris_label": "Exploit misconfig",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1190",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1553",
+          "technique_name": "",
+          "sub_technique_id": "T1553.001",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.Exploit vuln",
+      "veris_category": "action.hacking",
+      "veris_label": "Exploit vuln",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1068",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1203",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.Forced browsing",
+      "veris_category": "action.hacking",
+      "veris_label": "Forced browsing",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1068",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1203",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.Format string attack",
+      "veris_category": "action.hacking",
+      "veris_label": "Format string attack",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1203",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.Fuzz testing",
+      "veris_category": "action.hacking",
+      "veris_label": "Fuzz testing",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1203",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.HTTP request smuggling",
+      "veris_category": "action.hacking",
+      "veris_label": "HTTP request smuggling",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1499",
+          "technique_name": "",
+          "sub_technique_id": "T1499.002",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.HTTP request splitting",
+      "veris_category": "action.hacking",
+      "veris_label": "HTTP request splitting",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1499",
+          "technique_name": "",
+          "sub_technique_id": "T1499.002",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.HTTP response smuggling",
+      "veris_category": "action.hacking",
+      "veris_label": "HTTP response smuggling",
+      "no_mapping_found": true,
+      "mitre_mappings": [],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.HTTP response splitting",
+      "veris_category": "action.hacking",
+      "veris_label": "HTTP response splitting",
+      "no_mapping_found": true,
+      "mitre_mappings": [],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.Hijack",
+      "veris_category": "action.hacking",
+      "veris_label": "Hijack",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1553",
+          "technique_name": "",
+          "sub_technique_id": "T1553.003",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1563",
+          "technique_name": "",
+          "sub_technique_id": "T1563.002",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.Insecure deserialization",
+      "veris_category": "action.hacking",
+      "veris_label": "Insecure deserialization",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1190",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.Integer overflows",
+      "veris_category": "action.hacking",
+      "veris_label": "Integer overflows",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1203",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.LDAP injection",
+      "veris_category": "action.hacking",
+      "veris_label": "LDAP injection",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1055",
+          "technique_name": "",
+          "sub_technique_id": "T1055.009",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.Mail command injection",
+      "veris_category": "action.hacking",
+      "veris_label": "Mail command injection",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1071",
+          "technique_name": "",
+          "sub_technique_id": "T1071.003",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.Null byte injection",
+      "veris_category": "action.hacking",
+      "veris_label": "Null byte injection",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1027",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.OS commanding",
+      "veris_category": "action.hacking",
+      "veris_label": "OS commanding",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1059",
+          "technique_name": "",
+          "sub_technique_id": "T1059.004",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.Offline cracking",
+      "veris_category": "action.hacking",
+      "veris_label": "Offline cracking",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1003",
+          "technique_name": "",
+          "sub_technique_id": "T1003.008",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1110",
+          "technique_name": "",
+          "sub_technique_id": "T1110.002",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.Other",
+      "veris_category": "action.hacking",
+      "veris_label": "Other",
+      "no_mapping_found": true,
+      "mitre_mappings": [],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.Pass-the-hash",
+      "veris_category": "action.hacking",
+      "veris_label": "Pass-the-hash",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1550",
+          "technique_name": "",
+          "sub_technique_id": "T1550.002",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1556",
+          "technique_name": "",
+          "sub_technique_id": "T1556.007",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.Path traversal",
+      "veris_category": "action.hacking",
+      "veris_label": "Path traversal",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1190",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1210",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.Profile host",
+      "veris_category": "action.hacking",
+      "veris_label": "Profile host",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1018",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1046",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.Prompt injection",
+      "veris_category": "action.hacking",
+      "veris_label": "Prompt injection",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1027",
+          "technique_name": "",
+          "sub_technique_id": "T1027.006",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1204",
+          "technique_name": "",
+          "sub_technique_id": "T1204.002",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.RFI",
+      "veris_category": "action.hacking",
+      "veris_label": "RFI",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1203",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1055",
+          "technique_name": "",
+          "sub_technique_id": "T1055.001",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.Reverse engineering",
+      "veris_category": "action.hacking",
+      "veris_label": "Reverse engineering",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1203",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1210",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.Routing detour",
+      "veris_category": "action.hacking",
+      "veris_label": "Routing detour",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1210",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1573",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.SQLi",
+      "veris_category": "action.hacking",
+      "veris_label": "SQLi",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1190",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": "SQL injection. Child of 'Exploit vuln'."
+        },
+        {
+          "technique_id": "T1203",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": "SQL injection. Child of 'Exploit vuln'."
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.SSI injection",
+      "veris_category": "action.hacking",
+      "veris_label": "SSI injection",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1190",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": "SSI injection. Child of 'Exploit vuln'."
+        },
+        {
+          "technique_id": "T1203",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": "SSI injection. Child of 'Exploit vuln'."
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.Scan network",
+      "veris_category": "action.hacking",
+      "veris_label": "Scan network",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1595",
+          "technique_name": "",
+          "sub_technique_id": "T1595.002",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": "Vulnerability Scanning"
+        }
+      ],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.Session fixation",
+      "veris_category": "action.hacking",
+      "veris_label": "Session fixation",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1210",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": "Exploitation of Remote Services"
+        }
+      ],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.Session prediction",
+      "veris_category": "action.hacking",
+      "veris_label": "Session prediction",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1212",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": "Credential or session prediction. Child of 'Exploit vuln'."
+        },
+        {
+          "technique_id": "T1556",
+          "technique_name": "",
+          "sub_technique_id": "T1556.007",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": "Credential or session prediction. Child of 'Exploit vuln'."
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.Session replay",
+      "veris_category": "action.hacking",
+      "veris_label": "Session replay",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1212",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": "Session replay. Child of 'Exploit vuln'."
+        },
+        {
+          "technique_id": "T1556",
+          "technique_name": "",
+          "sub_technique_id": "T1556.007",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": "Session replay. Child of 'Exploit vuln'."
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.Soap array abuse",
+      "veris_category": "action.hacking",
+      "veris_label": "Soap array abuse",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1027",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1055",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.Special element injection",
+      "veris_category": "action.hacking",
+      "veris_label": "Special element injection",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1027",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1055",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.URL redirector abuse",
+      "veris_category": "action.hacking",
+      "veris_label": "URL redirector abuse",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1566",
+          "technique_name": "",
+          "sub_technique_id": "T1566.002",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": "URL redirector abuse. Child of 'Exploit vuln'."
+        },
+        {
+          "technique_id": "T1684",
+          "technique_name": "",
+          "sub_technique_id": "T1684.002",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": "URL redirector abuse. Child of 'Exploit vuln'."
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.Unknown",
+      "veris_category": "action.hacking",
+      "veris_label": "Unknown",
+      "no_mapping_found": true,
+      "mitre_mappings": [],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.Use of stolen creds",
+      "veris_category": "action.hacking",
+      "veris_label": "Use of stolen creds",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1003",
+          "technique_name": "",
+          "sub_technique_id": "T1003.001",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1003",
+          "technique_name": "",
+          "sub_technique_id": "T1003.005",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.User breakout",
+      "veris_category": "action.hacking",
+      "veris_label": "User breakout",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1484",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1484",
+          "technique_name": "",
+          "sub_technique_id": "T1484.001",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.Virtual machine escape",
+      "veris_category": "action.hacking",
+      "veris_label": "Virtual machine escape",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1611",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.XML attribute blowup",
+      "veris_category": "action.hacking",
+      "veris_label": "XML attribute blowup",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1068",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.XML entity expansion",
+      "veris_category": "action.hacking",
+      "veris_label": "XML entity expansion",
+      "no_mapping_found": true,
+      "mitre_mappings": [],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.XML external entities",
+      "veris_category": "action.hacking",
+      "veris_label": "XML external entities",
+      "no_mapping_found": true,
+      "mitre_mappings": [],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.XML injection",
+      "veris_category": "action.hacking",
+      "veris_label": "XML injection",
+      "no_mapping_found": true,
+      "mitre_mappings": [],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.XPath injection",
+      "veris_category": "action.hacking",
+      "veris_label": "XPath injection",
+      "no_mapping_found": true,
+      "mitre_mappings": [],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.XQuery injection",
+      "veris_category": "action.hacking",
+      "veris_label": "XQuery injection",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1059",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1203",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.variety.XSS",
+      "veris_category": "action.hacking",
+      "veris_label": "XSS",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1189",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1203",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.vector.3rd party desktop",
+      "veris_category": "action.hacking",
+      "veris_label": "3rd party desktop",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1070",
+          "technique_name": "",
+          "sub_technique_id": "T1070.006",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1204",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.vector.Backdoor",
+      "veris_category": "action.hacking",
+      "veris_label": "Backdoor",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1078",
+          "technique_name": "",
+          "sub_technique_id": "T1078.004",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1480",
+          "technique_name": "",
+          "sub_technique_id": "T1480.001",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.vector.Command shell",
+      "veris_category": "action.hacking",
+      "veris_label": "Command shell",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1021",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": "Remote shell"
+        },
+        {
+          "technique_id": "T1021",
+          "technique_name": "",
+          "sub_technique_id": "T1021.001",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": "Remote shell"
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.vector.Desktop sharing",
+      "veris_category": "action.hacking",
+      "veris_label": "Desktop sharing",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1021",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": "Graphical desktop sharing (RDP, VNC, PCAnywhere, Citrix)"
+        },
+        {
+          "technique_id": "T1021",
+          "technique_name": "",
+          "sub_technique_id": "T1021.001",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": "Graphical desktop sharing (RDP, VNC, PCAnywhere, Citrix)"
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.vector.Desktop sharing software",
+      "veris_category": "action.hacking",
+      "veris_label": "Desktop sharing software",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1219",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": "Superset of 'Desktop sharing' and '3rd party desktop'.  Please use in place of the other two"
+        }
+      ],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.vector.Hypervisor",
+      "veris_category": "action.hacking",
+      "veris_label": "Hypervisor",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1611",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": "Hypervisor break-out attack"
+        }
+      ],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.vector.Inter-tenant",
+      "veris_category": "action.hacking",
+      "veris_label": "Inter-tenant",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1189",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1608",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.vector.Other",
+      "veris_category": "action.hacking",
+      "veris_label": "Other",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1556",
+          "technique_name": "",
+          "sub_technique_id": "T1556.007",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1072",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.vector.Other network service",
+      "veris_category": "action.hacking",
+      "veris_label": "Other network service",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1133",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1210",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.vector.Partner",
+      "veris_category": "action.hacking",
+      "veris_label": "Partner",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1199",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1650",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.vector.Physical access",
+      "veris_category": "action.hacking",
+      "veris_label": "Physical access",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1200",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1669",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.vector.Unknown",
+      "veris_category": "action.hacking",
+      "veris_label": "Unknown",
+      "no_mapping_found": true,
+      "mitre_mappings": [],
+      "ambiguous": false,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.vector.VPN",
+      "veris_category": "action.hacking",
+      "veris_label": "VPN",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1071",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1071",
+          "technique_name": "",
+          "sub_technique_id": "T1071.001",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    },
+    {
+      "veris_id": "action.hacking.vector.Web application",
+      "veris_category": "action.hacking",
+      "veris_label": "Web application",
+      "no_mapping_found": false,
+      "mitre_mappings": [
+        {
+          "technique_id": "T1071",
+          "technique_name": "",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        },
+        {
+          "technique_id": "T1071",
+          "technique_name": "",
+          "sub_technique_id": "T1071.001",
+          "sub_technique_name": null,
+          "tactic(s)": [],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "justification": ""
+        }
+      ],
+      "ambiguous": true,
+      "notes": "Normalisé depuis la sortie LLM."
+    }
+  ]
+}

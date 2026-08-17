@@ -2,7 +2,9 @@
   "metadata": {
     "veris_version": "1.4.1",
     "mitre_attack_version": "19.1",
-    "scope": "Périmètre limité au capability group VERIS attribute.availability (8 varieties : Acceleration, Degradation, Destruction, Interruption, Loss, Obscuration, Other, Unknown) et aux techniques/sub-techniques MITRE ATT&CK Enterprise v19.1 en rapport avec un impact sur la disponibilité (essentiellement la tactique Impact : T1485, T1486, T1489, T1490, T1495, T1496, T1498, T1499, T1529, T1531, T1561, T1657, T1667 et leurs sub-techniques). Les techniques Impact relevant de l'intégrité (T1491 Defacement, T1565 Data Manipulation) sont hors périmètre car elles correspondent à attribute.integrity."
+    "scope": "attribute.availability",
+    "capability_group": "attribute.availability",
+    "enriched_from": "local_catalogs"
   },
   "veris_to_mitre": [
     {
@@ -12,7 +14,7 @@
       "no_mapping_found": true,
       "mitre_mappings": [],
       "ambiguous": false,
-      "notes": "Aucune technique MITRE fournie ne décrit une accélération intentionnelle des systèmes ou ressources comme effet adverse ; les techniques d'impact du catalogue visent la dégradation, l'interruption, la destruction, le chiffrement ou l'arrêt, jamais l'accélération."
+      "notes": "Aucune correspondance trouvée."
     },
     {
       "veris_id": "attribute.availability.variety.Degradation",
@@ -25,147 +27,186 @@
           "technique_name": "Resource Hijacking",
           "sub_technique_id": null,
           "sub_technique_name": null,
-          "tactic(s)": ["impact"],
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.9,
-          "justification": "La description indique que l'adversaire 'leverage the resources of co-opted systems to complete resource-intensive tasks, which may impact system and/or hosted service availability', ce qui correspond exactement à une dégradation de performance sans interruption totale."
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
         },
         {
-          "technique_id": "T1496.001",
-          "technique_name": "Compute Hijacking",
+          "technique_id": "T1496",
+          "technique_name": "Resource Hijacking",
           "sub_technique_id": "T1496.001",
           "sub_technique_name": "Compute Hijacking",
-          "tactic(s)": ["impact"],
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.9,
-          "justification": "La description mentionne que l'adversaire 'may consume enough system resources to negatively impact and/or cause affected machines to become unresponsive', ce qui est une dégradation de performance par consommation de ressources de calcul."
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
         },
         {
-          "technique_id": "T1496.002",
-          "technique_name": "Bandwidth Hijacking",
+          "technique_id": "T1496",
+          "technique_name": "Resource Hijacking",
           "sub_technique_id": "T1496.002",
           "sub_technique_name": "Bandwidth Hijacking",
-          "tactic(s)": ["impact"],
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.85,
-          "justification": "La description indique que l'usage de la bande passante des systèmes cooptés 'may impact system and/or hosted service availability', ce qui constitue une dégradation de la disponibilité réseau."
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
         },
         {
-          "technique_id": "T1496.003",
-          "technique_name": "SMS Pumping",
+          "technique_id": "T1496",
+          "technique_name": "Resource Hijacking",
           "sub_technique_id": "T1496.003",
           "sub_technique_name": "SMS Pumping",
-          "tactic(s)": ["impact"],
-          "mapping_type": "partiel",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
           "confidence": "medium",
           "confidence_score": 0.6,
-          "justification": "La description précise que 'SMS costs may increase and communication channels may become overwhelmed' ; la saturation des canaux de communication correspond à une dégradation, mais l'objectif principal reste la fraude financière."
+          "justification": ""
         },
         {
-          "technique_id": "T1496.004",
-          "technique_name": "Cloud Service Hijacking",
+          "technique_id": "T1496",
+          "technique_name": "Resource Hijacking",
           "sub_technique_id": "T1496.004",
           "sub_technique_name": "Cloud Service Hijacking",
-          "tactic(s)": ["impact"],
-          "mapping_type": "partiel",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
           "confidence": "medium",
           "confidence_score": 0.6,
-          "justification": "La description indique que l'abus d'applications SaaS compromises 'may cause the victim to incur significant financial costs, use up service quotas, and otherwise impact availability' ; l'épuisement des quotas correspond à une dégradation de service."
+          "justification": ""
         },
         {
           "technique_id": "T1498",
           "technique_name": "Network Denial of Service",
           "sub_technique_id": null,
           "sub_technique_name": null,
-          "tactic(s)": ["impact"],
-          "mapping_type": "partiel",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
           "confidence": "medium",
-          "confidence_score": 0.65,
-          "justification": "La description vise à 'degrade or block the availability of targeted resources' ; le volet 'degrade' correspond à Degradation, le volet 'block' relevant plutôt de Interruption."
+          "confidence_score": 0.6,
+          "justification": ""
         },
         {
-          "technique_id": "T1498.001",
-          "technique_name": "Direct Network Flood",
+          "technique_id": "T1498",
+          "technique_name": "Network Denial of Service",
           "sub_technique_id": "T1498.001",
           "sub_technique_name": "Direct Network Flood",
-          "tactic(s)": ["impact"],
-          "mapping_type": "partiel",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
           "confidence": "medium",
           "confidence_score": 0.6,
-          "justification": "La description mentionne que l'attaque 'may also reduce the availability and functionality of the targeted system(s) and network', ce qui recouvre une dégradation avant saturation complète."
+          "justification": ""
         },
         {
-          "technique_id": "T1498.002",
-          "technique_name": "Reflection Amplification",
+          "technique_id": "T1498",
+          "technique_name": "Network Denial of Service",
           "sub_technique_id": "T1498.002",
           "sub_technique_name": "Reflection Amplification",
-          "tactic(s)": ["impact"],
-          "mapping_type": "partiel",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
           "confidence": "medium",
           "confidence_score": 0.6,
-          "justification": "La description indique que l'attaque 'may also reduce the availability and functionality of the targeted system(s) and network', incluant un état dégradé avant le blocage complet."
+          "justification": ""
         },
         {
           "technique_id": "T1499",
           "technique_name": "Endpoint Denial of Service",
           "sub_technique_id": null,
           "sub_technique_name": null,
-          "tactic(s)": ["impact"],
-          "mapping_type": "partiel",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
           "confidence": "medium",
-          "confidence_score": 0.65,
-          "justification": "La description vise à 'degrade or block the availability of services to users' ; le volet 'degrade' correspond à Degradation."
+          "confidence_score": 0.6,
+          "justification": ""
         },
         {
-          "technique_id": "T1499.001",
-          "technique_name": "OS Exhaustion Flood",
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
           "sub_technique_id": "T1499.001",
           "sub_technique_name": "OS Exhaustion Flood",
-          "tactic(s)": ["impact"],
-          "mapping_type": "partiel",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
           "confidence": "medium",
           "confidence_score": 0.6,
-          "justification": "La description indique que l'attaque peut rendre le serveur 'sluggish and/or unresponsive' ; l'état 'sluggish' correspond à une dégradation de performance."
+          "justification": ""
         },
         {
-          "technique_id": "T1499.002",
-          "technique_name": "Service Exhaustion Flood",
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
           "sub_technique_id": "T1499.002",
           "sub_technique_name": "Service Exhaustion Flood",
-          "tactic(s)": ["impact"],
-          "mapping_type": "partiel",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
           "confidence": "medium",
           "confidence_score": 0.6,
-          "justification": "La description mentionne 'an impact to the availability of the service when done in volume' via l'épuisement des ressources de calcul (ex: renégociation SSL), ce qui correspond à une dégradation progressive."
+          "justification": ""
         },
         {
-          "technique_id": "T1499.003",
-          "technique_name": "Application Exhaustion Flood",
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
           "sub_technique_id": "T1499.003",
           "sub_technique_name": "Application Exhaustion Flood",
-          "tactic(s)": ["impact"],
-          "mapping_type": "partiel",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
           "confidence": "medium",
           "confidence_score": 0.6,
-          "justification": "La description indique que des requêtes répétées sur des fonctionnalités gourmandes 'may be able to exhaust system resources and deny access to the application', l'épuisement progressif des ressources correspondant à une dégradation."
+          "justification": ""
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": "T1499.004",
+          "sub_technique_name": "Application or System Exploitation",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
         },
         {
           "technique_id": "T1667",
           "technique_name": "Email Bombing",
           "sub_technique_id": null,
           "sub_technique_name": null,
-          "tactic(s)": ["impact"],
-          "mapping_type": "partiel",
-          "confidence": "low",
-          "confidence_score": 0.35,
-          "justification": "La description indique que l'adversaire inonde les boîtes mail pour 'bury legitimate emails in a flood of spam and disrupt business operations', ce qui dégrade l'utilisabilité du service de messagerie sans le rendre totalement indisponible."
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
         }
       ],
       "ambiguous": false,
-      "notes": "Correspondance la plus forte avec Resource Hijacking et ses sub-techniques (dégradation par consommation de ressources). Les techniques DoS ne correspondent que partiellement car elles visent aussi le blocage complet (Interruption)."
+      "notes": ""
     },
     {
       "veris_id": "attribute.availability.variety.Destruction",
@@ -178,81 +219,95 @@
           "technique_name": "Data Destruction",
           "sub_technique_id": null,
           "sub_technique_name": null,
-          "tactic(s)": ["impact"],
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.95,
-          "justification": "La description indique que l'adversaire 'may destroy data and files on specific systems or in large numbers on a network to interrupt availability', rendant les données irrécupérables : correspondance directe avec Destruction."
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
         },
         {
-          "technique_id": "T1485.001",
-          "technique_name": "Lifecycle-Triggered Deletion",
+          "technique_id": "T1485",
+          "technique_name": "Data Destruction",
           "sub_technique_id": "T1485.001",
           "sub_technique_name": "Lifecycle-Triggered Deletion",
-          "tactic(s)": ["impact"],
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.9,
-          "justification": "La description indique que l'adversaire modifie les politiques de cycle de vie d'un bucket cloud 'to destroy all objects stored within', ce qui est une destruction de données stockées."
-        },
-        {
-          "technique_id": "T1561",
-          "technique_name": "Disk Wipe",
-          "sub_technique_id": null,
-          "sub_technique_name": null,
-          "tactic(s)": ["impact"],
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.9,
-          "justification": "La description indique que l'adversaire 'may wipe or corrupt raw disk data on specific systems or in large numbers in a network to interrupt availability', ce qui constitue une destruction du contenu des disques."
-        },
-        {
-          "technique_id": "T1561.001",
-          "technique_name": "Disk Content Wipe",
-          "sub_technique_id": "T1561.001",
-          "sub_technique_name": "Disk Content Wipe",
-          "tactic(s)": ["impact"],
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.9,
-          "justification": "La description indique que l'adversaire 'may erase the contents of storage devices... rendering the data irrecoverable', ce qui est une destruction directe des données."
-        },
-        {
-          "technique_id": "T1561.002",
-          "technique_name": "Disk Structure Wipe",
-          "sub_technique_id": "T1561.002",
-          "sub_technique_name": "Disk Structure Wipe",
-          "tactic(s)": ["impact"],
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.9,
-          "justification": "La description indique que l'adversaire 'may corrupt or wipe the disk data structures on a hard drive necessary to boot a system', détruisant les structures critiques (MBR, table de partitions) du disque."
-        },
-        {
-          "technique_id": "T1495",
-          "technique_name": "Firmware Corruption",
-          "sub_technique_id": null,
-          "sub_technique_name": null,
-          "tactic(s)": ["impact"],
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.85,
-          "justification": "La description indique que l'adversaire 'may overwrite or corrupt the flash memory contents of system BIOS or other firmware... to render them inoperable or unable to boot', ce qui est une destruction/corruption du firmware."
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
         },
         {
           "technique_id": "T1490",
           "technique_name": "Inhibit System Recovery",
           "sub_technique_id": null,
           "sub_technique_name": null,
-          "tactic(s)": ["impact"],
-          "mapping_type": "contextuel",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
           "confidence": "medium",
-          "confidence_score": 0.55,
-          "justification": "La description indique que l'adversaire supprime les sauvegardes et désactive les fonctions de récupération 'to augment the effects of Data Destruction and Data Encrypted for Impact' ; la destruction des sauvegardes est une forme de destruction, mais l'objectif principal est d'empêcher la récupération."
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1495",
+          "technique_name": "Firmware Corruption",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1561",
+          "technique_name": "Disk Wipe",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1561",
+          "technique_name": "Disk Wipe",
+          "sub_technique_id": "T1561.001",
+          "sub_technique_name": "Disk Content Wipe",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1561",
+          "technique_name": "Disk Wipe",
+          "sub_technique_id": "T1561.002",
+          "sub_technique_name": "Disk Structure Wipe",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
         }
       ],
       "ambiguous": false,
-      "notes": "Correspondances directes fortes avec les techniques de destruction de données, d'effacement de disque et de corruption de firmware."
+      "notes": ""
     },
     {
       "veris_id": "attribute.availability.variety.Interruption",
@@ -265,223 +320,169 @@
           "technique_name": "Service Stop",
           "sub_technique_id": null,
           "sub_technique_name": null,
-          "tactic(s)": ["impact"],
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.95,
-          "justification": "La description indique que l'adversaire 'may stop or disable services on a system to render those services unavailable to legitimate users', ce qui est exactement une interruption de service."
-        },
-        {
-          "technique_id": "T1529",
-          "technique_name": "System Shutdown/Reboot",
-          "sub_technique_id": null,
-          "sub_technique_name": null,
-          "tactic(s)": ["impact"],
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.9,
-          "justification": "La description indique que l'adversaire 'may shutdown/reboot systems to interrupt access to, or aid in the destruction of, those systems', ce qui correspond directement à une interruption de disponibilité."
-        },
-        {
-          "technique_id": "T1531",
-          "technique_name": "Account Access Removal",
-          "sub_technique_id": null,
-          "sub_technique_name": null,
-          "tactic(s)": ["impact"],
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.9,
-          "justification": "La description indique que l'adversaire 'may interrupt availability of system and network resources by inhibiting access to accounts utilized by legitimate users', ce qui est une interruption d'accès aux ressources."
-        },
-        {
-          "technique_id": "T1498",
-          "technique_name": "Network Denial of Service",
-          "sub_technique_id": null,
-          "sub_technique_name": null,
-          "tactic(s)": ["impact"],
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.85,
-          "justification": "La description vise à 'degrade or block the availability of targeted resources to users' ; le volet 'block' correspond à une interruption complète de la disponibilité réseau."
-        },
-        {
-          "technique_id": "T1498.001",
-          "technique_name": "Direct Network Flood",
-          "sub_technique_id": "T1498.001",
-          "sub_technique_name": "Direct Network Flood",
-          "tactic(s)": ["impact"],
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.85,
-          "justification": "La description indique que l'adversaire envoie un volume élevé de trafic 'to cause a denial of service (DoS)', saturant la bande passante et interrompant l'accès au service ciblé."
-        },
-        {
-          "technique_id": "T1498.002",
-          "technique_name": "Reflection Amplification",
-          "sub_technique_id": "T1498.002",
-          "sub_technique_name": "Reflection Amplification",
-          "tactic(s)": ["impact"],
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.85,
-          "justification": "La description indique que l'adversaire réfléchit un volume élevé de trafic vers la cible 'to cause a denial of service (DoS)', provoquant une interruption de la disponibilité."
-        },
-        {
-          "technique_id": "T1499",
-          "technique_name": "Endpoint Denial of Service",
-          "sub_technique_id": null,
-          "sub_technique_name": null,
-          "tactic(s)": ["impact"],
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.85,
-          "justification": "La description vise à 'degrade or block the availability of services to users' ; le volet 'block' correspond à une interruption de service au niveau de l'endpoint."
-        },
-        {
-          "technique_id": "T1499.001",
-          "technique_name": "OS Exhaustion Flood",
-          "sub_technique_id": "T1499.001",
-          "sub_technique_name": "OS Exhaustion Flood",
-          "tactic(s)": ["impact"],
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.85,
-          "justification": "La description indique que l'épuisement des limites de l'OS peut 'prevent access to any TCP service provided by the server', ce qui est une interruption de service."
-        },
-        {
-          "technique_id": "T1499.002",
-          "technique_name": "Service Exhaustion Flood",
-          "sub_technique_id": "T1499.002",
-          "sub_technique_name": "Service Exhaustion Flood",
-          "tactic(s)": ["impact"],
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.85,
-          "justification": "La description indique que l'adversaire cible les services réseau (DNS, web) 'to conduct a denial of service (DoS)', provoquant une interruption de disponibilité du service."
-        },
-        {
-          "technique_id": "T1499.003",
-          "technique_name": "Application Exhaustion Flood",
-          "sub_technique_id": "T1499.003",
-          "sub_technique_name": "Application Exhaustion Flood",
-          "tactic(s)": ["impact"],
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.85,
-          "justification": "La description indique que l'épuisement des ressources peut 'deny access to the application or the server itself', ce qui est une interruption d'accès à l'application."
-        },
-        {
-          "technique_id": "T1499.004",
-          "technique_name": "Application or System Exploitation",
-          "sub_technique_id": "T1499.004",
-          "sub_technique_name": "Application or System Exploitation",
-          "tactic(s)": ["impact"],
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.85,
-          "justification": "La description indique que l'adversaire exploite des vulnérabilités 'that can cause an application or system to crash and deny availability to users', ce qui est une interruption par crash."
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
         },
         {
           "technique_id": "T1495",
           "technique_name": "Firmware Corruption",
           "sub_technique_id": null,
           "sub_technique_name": null,
-          "tactic(s)": ["impact"],
-          "mapping_type": "partiel",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
           "confidence": "medium",
           "confidence_score": 0.6,
-          "justification": "La description indique que la corruption du firmware rend les équipements 'inoperable or unable to boot, thus denying the availability to use the devices and/or the system' ; l'interruption est une conséquence de la destruction du firmware."
+          "justification": ""
         },
         {
-          "technique_id": "T1561.002",
-          "technique_name": "Disk Structure Wipe",
-          "sub_technique_id": "T1561.002",
-          "sub_technique_name": "Disk Structure Wipe",
-          "tactic(s)": ["impact"],
-          "mapping_type": "partiel",
+          "technique_id": "T1498",
+          "technique_name": "Network Denial of Service",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
           "confidence": "medium",
           "confidence_score": 0.6,
-          "justification": "La description indique que l'effacement des structures de disque rend 'the system unable to boot', provoquant une interruption de disponibilité du système en plus de la destruction des structures."
+          "justification": ""
         },
         {
-          "technique_id": "T1490",
-          "technique_name": "Inhibit System Recovery",
-          "sub_technique_id": null,
-          "sub_technique_name": null,
-          "tactic(s)": ["impact"],
-          "mapping_type": "contextuel",
+          "technique_id": "T1498",
+          "technique_name": "Network Denial of Service",
+          "sub_technique_id": "T1498.001",
+          "sub_technique_name": "Direct Network Flood",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
           "confidence": "medium",
-          "confidence_score": 0.5,
-          "justification": "La description indique que l'adversaire supprime sauvegardes et options de récupération, ce qui prolonge l'interruption de disponibilité causée par d'autres techniques (Data Destruction, Data Encrypted for Impact) sans être lui-même la cause première de l'interruption."
+          "confidence_score": 0.6,
+          "justification": ""
         },
         {
-          "technique_id": "T1667",
-          "technique_name": "Email Bombing",
+          "technique_id": "T1498",
+          "technique_name": "Network Denial of Service",
+          "sub_technique_id": "T1498.002",
+          "sub_technique_name": "Reflection Amplification",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
           "sub_technique_id": null,
           "sub_technique_name": null,
-          "tactic(s)": ["impact"],
-          "mapping_type": "partiel",
-          "confidence": "low",
-          "confidence_score": 0.35,
-          "justification": "La description indique que l'inondation d'e-mails peut 'disrupt business operations' et noyer les messages légitimes, ce qui peut interrompre l'usage normal de la messagerie, bien que l'effet soit plutôt une dégradation qu'une coupure franche."
-        }
-      ],
-      "ambiguous": false,
-      "notes": "Correspondances directes nombreuses : arrêt de services, arrêt/redémarrage système, suppression d'accès aux comptes et dénis de service (réseau et endpoint)."
-    },
-    {
-      "veris_id": "attribute.availability.variety.Loss",
-      "veris_category": "Availability",
-      "veris_label": "Loss",
-      "no_mapping_found": false,
-      "mitre_mappings": [
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": "T1499.001",
+          "sub_technique_name": "OS Exhaustion Flood",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": "T1499.002",
+          "sub_technique_name": "Service Exhaustion Flood",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": "T1499.003",
+          "sub_technique_name": "Application Exhaustion Flood",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1499",
+          "technique_name": "Endpoint Denial of Service",
+          "sub_technique_id": "T1499.004",
+          "sub_technique_name": "Application or System Exploitation",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "technique_id": "T1529",
+          "technique_name": "System Shutdown/Reboot",
+          "sub_technique_id": null,
+          "sub_technique_name": null,
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
         {
           "technique_id": "T1531",
           "technique_name": "Account Access Removal",
           "sub_technique_id": null,
           "sub_technique_name": null,
-          "tactic(s)": ["impact"],
-          "mapping_type": "partiel",
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
           "confidence": "medium",
           "confidence_score": 0.6,
-          "justification": "La description indique que les comptes 'may be deleted, locked, or manipulated... to remove access to accounts' ; la suppression ou le verrouillage de comptes correspond à une perte d'accès durable aux ressources."
-        },
-        {
-          "technique_id": "T1490",
-          "technique_name": "Inhibit System Recovery",
-          "sub_technique_id": null,
-          "sub_technique_name": null,
-          "tactic(s)": ["impact"],
-          "mapping_type": "partiel",
-          "confidence": "medium",
-          "confidence_score": 0.6,
-          "justification": "La description indique que l'adversaire supprime sauvegardes, shadow copies, snapshots et images 'to deny access to available backups and recovery options', ce qui correspond à une perte définitive des options de restauration."
-        },
-        {
-          "technique_id": "T1485",
-          "technique_name": "Data Destruction",
-          "sub_technique_id": null,
-          "sub_technique_name": null,
-          "tactic(s)": ["impact"],
-          "mapping_type": "contextuel",
-          "confidence": "medium",
-          "confidence_score": 0.5,
-          "justification": "La description indique que la destruction rend 'stored data irrecoverable by forensic techniques', ce qui équivaut à une perte définitive des données ; la correspondance principale reste toutefois Destruction."
-        },
-        {
-          "technique_id": "T1657",
-          "technique_name": "Financial Theft",
-          "sub_technique_id": null,
-          "sub_technique_name": null,
-          "tactic(s)": ["impact"],
-          "mapping_type": "contextuel",
-          "confidence": "low",
-          "confidence_score": 0.3,
-          "justification": "La description mentionne un vol de ressources monétaires 'at the expense of the availability of these resources for victims' ; la perte porte sur des actifs financiers et non sur la disponibilité de systèmes ou de données, d'où une correspondance faible et contextuelle."
+          "justification": ""
         }
       ],
-      "ambiguous": true,
-      "notes": "Aucune technique MITRE ne correspond exactement à une 'perte' générique d'actif ; les candidats les plus proches sont la suppression d'accès aux comptes (T1531) et la suppression des sauvegardes (T1490). La perte non intentionnelle (ex: perte physique d'un appareil) n'a aucun équivalent dans MITRE ATT&CK."
+      "ambiguous": false,
+      "notes": ""
+    },
+    {
+      "veris_id": "attribute.availability.variety.Loss",
+      "veris_category": "Availability",
+      "veris_label": "Loss",
+      "no_mapping_found": true,
+      "mitre_mappings": [],
+      "ambiguous": false,
+      "notes": "Aucune correspondance trouvée."
     },
     {
       "veris_id": "attribute.availability.variety.Obscuration",
@@ -494,15 +495,17 @@
           "technique_name": "Data Encrypted for Impact",
           "sub_technique_id": null,
           "sub_technique_name": null,
-          "tactic(s)": ["impact"],
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.95,
-          "justification": "La description VERIS mentionne explicitement 'Conversion or obscuration (ransomware)' et T1486 décrit le chiffrement de données 'to interrupt availability... render stored data inaccessible by encrypting files... (ransomware)' : correspondance directe et exacte."
+          "tactic(s)": [
+            "impact"
+          ],
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
         }
       ],
       "ambiguous": false,
-      "notes": "Correspondance directe unique et forte : Obscuration est la variety VERIS utilisée pour le ransomware, qui est précisément l'objet de T1486."
+      "notes": ""
     },
     {
       "veris_id": "attribute.availability.variety.Other",
@@ -511,7 +514,7 @@
       "no_mapping_found": true,
       "mitre_mappings": [],
       "ambiguous": false,
-      "notes": "Variety fourre-tout sans contenu sémantique propre ('Other') ; aucun mapping fondé ne peut être établi à partir de la seule description fournie."
+      "notes": "Aucune correspondance trouvée."
     },
     {
       "veris_id": "attribute.availability.variety.Unknown",
@@ -520,7 +523,7 @@
       "no_mapping_found": true,
       "mitre_mappings": [],
       "ambiguous": false,
-      "notes": "Variety marqueur d'absence d'information ('Unknown') ; aucun mapping fondé ne peut être établi à partir de la seule description fournie."
+      "notes": "Aucune correspondance trouvée."
     }
   ],
   "mitre_to_veris": [
@@ -529,672 +532,656 @@
       "technique_name": "Data Destruction",
       "sub_technique_id": null,
       "sub_technique_name": null,
-      "tactic(s)": ["impact"],
+      "tactic(s)": [
+        "impact"
+      ],
       "no_mapping_found": false,
       "veris_mappings": [
         {
           "veris_id": "attribute.availability.variety.Destruction",
           "veris_category": "Availability",
           "veris_label": "Destruction",
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.95,
-          "justification": "La technique vise à 'destroy data and files... to interrupt availability to systems, services, and network resources', ce qui correspond exactement à la variety Destruction."
-        },
-        {
-          "veris_id": "attribute.availability.variety.Loss",
-          "veris_category": "Availability",
-          "veris_label": "Loss",
-          "mapping_type": "contextuel",
+          "mapping_type": "related_to",
           "confidence": "medium",
-          "confidence_score": 0.5,
-          "justification": "La description précise que les données sont rendues 'irrecoverable by forensic techniques', ce qui peut aussi être constaté comme une perte définitive de données dans VERIS."
+          "confidence_score": 0.6,
+          "justification": ""
         }
       ],
       "ambiguous": false,
-      "notes": "Mapping principal vers Destruction ; Loss est une lecture secondaire possible selon la manière dont l'incident est enregistré."
+      "notes": ""
     },
     {
-      "technique_id": "T1485.001",
-      "technique_name": "Lifecycle-Triggered Deletion",
+      "technique_id": "T1485",
+      "technique_name": "Data Destruction",
       "sub_technique_id": "T1485.001",
       "sub_technique_name": "Lifecycle-Triggered Deletion",
-      "tactic(s)": ["impact"],
+      "tactic(s)": [
+        "impact"
+      ],
       "no_mapping_found": false,
       "veris_mappings": [
         {
           "veris_id": "attribute.availability.variety.Destruction",
           "veris_category": "Availability",
           "veris_label": "Destruction",
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.9,
-          "justification": "La sub-technique décrit la modification des politiques de cycle de vie d'un bucket cloud 'to destroy all objects stored within', ce qui est une destruction de données stockées."
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
         }
       ],
       "ambiguous": false,
-      "notes": null
+      "notes": ""
     },
     {
       "technique_id": "T1486",
       "technique_name": "Data Encrypted for Impact",
       "sub_technique_id": null,
       "sub_technique_name": null,
-      "tactic(s)": ["impact"],
+      "tactic(s)": [
+        "impact"
+      ],
       "no_mapping_found": false,
       "veris_mappings": [
         {
           "veris_id": "attribute.availability.variety.Obscuration",
           "veris_category": "Availability",
           "veris_label": "Obscuration",
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.95,
-          "justification": "La description VERIS d'Obscuration cite explicitement 'Conversion or obscuration (ransomware)' et T1486 décrit le chiffrement de données pour les rendre inaccessibles (ransomware) : correspondance directe."
-        },
-        {
-          "veris_id": "attribute.availability.variety.Interruption",
-          "veris_category": "Availability",
-          "veris_label": "Interruption",
-          "mapping_type": "contextuel",
+          "mapping_type": "related_to",
           "confidence": "medium",
-          "confidence_score": 0.55,
-          "justification": "La description indique que le chiffrement vise 'to interrupt availability to system and network resources', l'interruption de disponibilité étant l'effet constaté du chiffrement."
+          "confidence_score": 0.6,
+          "justification": ""
         }
       ],
       "ambiguous": false,
-      "notes": "Obscuration est le mapping VERIS canonique du ransomware ; Interruption peut être co-enregistrée selon l'incident."
+      "notes": ""
     },
     {
       "technique_id": "T1489",
       "technique_name": "Service Stop",
       "sub_technique_id": null,
       "sub_technique_name": null,
-      "tactic(s)": ["impact"],
+      "tactic(s)": [
+        "impact"
+      ],
       "no_mapping_found": false,
       "veris_mappings": [
         {
           "veris_id": "attribute.availability.variety.Interruption",
           "veris_category": "Availability",
           "veris_label": "Interruption",
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.95,
-          "justification": "La technique vise à 'stop or disable services on a system to render those services unavailable to legitimate users', ce qui est exactement une interruption de service."
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
         }
       ],
       "ambiguous": false,
-      "notes": null
+      "notes": ""
     },
     {
       "technique_id": "T1490",
       "technique_name": "Inhibit System Recovery",
       "sub_technique_id": null,
       "sub_technique_name": null,
-      "tactic(s)": ["impact"],
+      "tactic(s)": [
+        "impact"
+      ],
       "no_mapping_found": false,
       "veris_mappings": [
         {
-          "veris_id": "attribute.availability.variety.Loss",
+          "veris_id": "attribute.availability.variety.Destruction",
           "veris_category": "Availability",
-          "veris_label": "Loss",
-          "mapping_type": "direct",
+          "veris_label": "Destruction",
+          "mapping_type": "related_to",
           "confidence": "medium",
-          "confidence_score": 0.65,
-          "justification": "La technique vise à 'deny access to available backups and recovery options' en supprimant shadow copies, catalogues de sauvegarde, snapshots et images, ce qui correspond à une perte des moyens de restauration."
-        },
-        {
-          "veris_id": "attribute.availability.variety.Interruption",
-          "veris_category": "Availability",
-          "veris_label": "Interruption",
-          "mapping_type": "contextuel",
-          "confidence": "medium",
-          "confidence_score": 0.5,
-          "justification": "La description indique que cette technique sert 'to augment the effects of Data Destruction and Data Encrypted for Impact', prolongeant ainsi l'interruption de disponibilité causée par ces techniques."
+          "confidence_score": 0.6,
+          "justification": ""
         }
       ],
       "ambiguous": false,
-      "notes": "La technique ne rend pas le système indisponible directement mais supprime les moyens de le restaurer ; Loss est le mapping le plus proche dans attribute.availability."
+      "notes": ""
     },
     {
       "technique_id": "T1495",
       "technique_name": "Firmware Corruption",
       "sub_technique_id": null,
       "sub_technique_name": null,
-      "tactic(s)": ["impact"],
+      "tactic(s)": [
+        "impact"
+      ],
       "no_mapping_found": false,
       "veris_mappings": [
         {
           "veris_id": "attribute.availability.variety.Destruction",
           "veris_category": "Availability",
           "veris_label": "Destruction",
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.85,
-          "justification": "La technique consiste à 'overwrite or corrupt the flash memory contents of system BIOS or other firmware', ce qui est une destruction/corruption d'un composant essentiel du système."
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
         },
         {
           "veris_id": "attribute.availability.variety.Interruption",
           "veris_category": "Availability",
           "veris_label": "Interruption",
-          "mapping_type": "partiel",
+          "mapping_type": "related_to",
           "confidence": "medium",
           "confidence_score": 0.6,
-          "justification": "La description indique que la corruption rend les équipements 'inoperable or unable to boot, thus denying the availability to use the devices and/or the system', ce qui se traduit aussi par une interruption de disponibilité."
+          "justification": ""
         }
       ],
       "ambiguous": false,
-      "notes": null
+      "notes": ""
     },
     {
       "technique_id": "T1496",
       "technique_name": "Resource Hijacking",
       "sub_technique_id": null,
       "sub_technique_name": null,
-      "tactic(s)": ["impact"],
+      "tactic(s)": [
+        "impact"
+      ],
       "no_mapping_found": false,
       "veris_mappings": [
         {
           "veris_id": "attribute.availability.variety.Degradation",
           "veris_category": "Availability",
           "veris_label": "Degradation",
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.9,
-          "justification": "La technique consiste à détourner les ressources des systèmes pour des tâches intensives 'which may impact system and/or hosted service availability', ce qui correspond à une dégradation de performance."
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
         }
       ],
       "ambiguous": false,
-      "notes": null
+      "notes": ""
     },
     {
-      "technique_id": "T1496.001",
-      "technique_name": "Compute Hijacking",
+      "technique_id": "T1496",
+      "technique_name": "Resource Hijacking",
       "sub_technique_id": "T1496.001",
       "sub_technique_name": "Compute Hijacking",
-      "tactic(s)": ["impact"],
+      "tactic(s)": [
+        "impact"
+      ],
       "no_mapping_found": false,
       "veris_mappings": [
         {
           "veris_id": "attribute.availability.variety.Degradation",
           "veris_category": "Availability",
           "veris_label": "Degradation",
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.9,
-          "justification": "La description indique que l'adversaire 'may consume enough system resources to negatively impact and/or cause affected machines to become unresponsive' (ex: minage de cryptomonnaie), ce qui est une dégradation de performance."
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
         }
       ],
       "ambiguous": false,
-      "notes": null
+      "notes": ""
     },
     {
-      "technique_id": "T1496.002",
-      "technique_name": "Bandwidth Hijacking",
+      "technique_id": "T1496",
+      "technique_name": "Resource Hijacking",
       "sub_technique_id": "T1496.002",
       "sub_technique_name": "Bandwidth Hijacking",
-      "tactic(s)": ["impact"],
+      "tactic(s)": [
+        "impact"
+      ],
       "no_mapping_found": false,
       "veris_mappings": [
         {
           "veris_id": "attribute.availability.variety.Degradation",
           "veris_category": "Availability",
           "veris_label": "Degradation",
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.85,
-          "justification": "La description indique que le détournement de la bande passante 'may impact system and/or hosted service availability', ce qui correspond à une dégradation de la disponibilité réseau."
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
         }
       ],
       "ambiguous": false,
-      "notes": null
+      "notes": ""
     },
     {
-      "technique_id": "T1496.003",
-      "technique_name": "SMS Pumping",
+      "technique_id": "T1496",
+      "technique_name": "Resource Hijacking",
       "sub_technique_id": "T1496.003",
       "sub_technique_name": "SMS Pumping",
-      "tactic(s)": ["impact"],
+      "tactic(s)": [
+        "impact"
+      ],
       "no_mapping_found": false,
       "veris_mappings": [
         {
           "veris_id": "attribute.availability.variety.Degradation",
           "veris_category": "Availability",
           "veris_label": "Degradation",
-          "mapping_type": "partiel",
+          "mapping_type": "related_to",
           "confidence": "medium",
           "confidence_score": 0.6,
-          "justification": "La description indique que 'SMS costs may increase and communication channels may become overwhelmed' ; la saturation des canaux de communication correspond à une dégradation, l'objectif principal étant la fraude financière."
+          "justification": ""
         }
       ],
       "ambiguous": false,
-      "notes": null
+      "notes": ""
     },
     {
-      "technique_id": "T1496.004",
-      "technique_name": "Cloud Service Hijacking",
+      "technique_id": "T1496",
+      "technique_name": "Resource Hijacking",
       "sub_technique_id": "T1496.004",
       "sub_technique_name": "Cloud Service Hijacking",
-      "tactic(s)": ["impact"],
+      "tactic(s)": [
+        "impact"
+      ],
       "no_mapping_found": false,
       "veris_mappings": [
         {
           "veris_id": "attribute.availability.variety.Degradation",
           "veris_category": "Availability",
           "veris_label": "Degradation",
-          "mapping_type": "partiel",
+          "mapping_type": "related_to",
           "confidence": "medium",
           "confidence_score": 0.6,
-          "justification": "La description indique que l'abus de services SaaS compromis 'may cause the victim to incur significant financial costs, use up service quotas, and otherwise impact availability', l'épuisement des quotas correspondant à une dégradation de service."
+          "justification": ""
         }
       ],
       "ambiguous": false,
-      "notes": null
+      "notes": ""
     },
     {
       "technique_id": "T1498",
       "technique_name": "Network Denial of Service",
       "sub_technique_id": null,
       "sub_technique_name": null,
-      "tactic(s)": ["impact"],
+      "tactic(s)": [
+        "impact"
+      ],
       "no_mapping_found": false,
       "veris_mappings": [
-        {
-          "veris_id": "attribute.availability.variety.Interruption",
-          "veris_category": "Availability",
-          "veris_label": "Interruption",
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.9,
-          "justification": "La technique vise à 'degrade or block the availability of targeted resources to users' par saturation de la bande passante ; le blocage correspond à une interruption."
-        },
         {
           "veris_id": "attribute.availability.variety.Degradation",
           "veris_category": "Availability",
           "veris_label": "Degradation",
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.8,
-          "justification": "La même description couvre explicitement la dégradation ('degrade... the availability') avant ou sans blocage complet."
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "attribute.availability.variety.Interruption",
+          "veris_category": "Availability",
+          "veris_label": "Interruption",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
         }
       ],
       "ambiguous": false,
-      "notes": "Les deux volets 'degrade' et 'block' de la description justifient le double mapping Interruption/Degradation."
+      "notes": ""
     },
     {
-      "technique_id": "T1498.001",
-      "technique_name": "Direct Network Flood",
+      "technique_id": "T1498",
+      "technique_name": "Network Denial of Service",
       "sub_technique_id": "T1498.001",
       "sub_technique_name": "Direct Network Flood",
-      "tactic(s)": ["impact"],
+      "tactic(s)": [
+        "impact"
+      ],
       "no_mapping_found": false,
       "veris_mappings": [
-        {
-          "veris_id": "attribute.availability.variety.Interruption",
-          "veris_category": "Availability",
-          "veris_label": "Interruption",
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.85,
-          "justification": "La sub-technique décrit l'envoi direct d'un volume élevé de paquets 'to cause a denial of service (DoS)', saturant le réseau et interrompant l'accès au service."
-        },
         {
           "veris_id": "attribute.availability.variety.Degradation",
           "veris_category": "Availability",
           "veris_label": "Degradation",
-          "mapping_type": "partiel",
+          "mapping_type": "related_to",
           "confidence": "medium",
           "confidence_score": 0.6,
-          "justification": "La description mentionne que l'attaque 'may also reduce the availability and functionality of the targeted system(s) and network', ce qui inclut un état dégradé."
+          "justification": ""
+        },
+        {
+          "veris_id": "attribute.availability.variety.Interruption",
+          "veris_category": "Availability",
+          "veris_label": "Interruption",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
         }
       ],
       "ambiguous": false,
-      "notes": null
+      "notes": ""
     },
     {
-      "technique_id": "T1498.002",
-      "technique_name": "Reflection Amplification",
+      "technique_id": "T1498",
+      "technique_name": "Network Denial of Service",
       "sub_technique_id": "T1498.002",
       "sub_technique_name": "Reflection Amplification",
-      "tactic(s)": ["impact"],
+      "tactic(s)": [
+        "impact"
+      ],
       "no_mapping_found": false,
       "veris_mappings": [
-        {
-          "veris_id": "attribute.availability.variety.Interruption",
-          "veris_category": "Availability",
-          "veris_label": "Interruption",
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.85,
-          "justification": "La sub-technique décrit une attaque par réflexion/amplification 'to cause a denial of service (DoS)', interrompant la disponibilité de la cible."
-        },
         {
           "veris_id": "attribute.availability.variety.Degradation",
           "veris_category": "Availability",
           "veris_label": "Degradation",
-          "mapping_type": "partiel",
+          "mapping_type": "related_to",
           "confidence": "medium",
           "confidence_score": 0.6,
-          "justification": "La description mentionne que l'attaque 'may also reduce the availability and functionality of the targeted system(s) and network', ce qui inclut un état dégradé."
+          "justification": ""
+        },
+        {
+          "veris_id": "attribute.availability.variety.Interruption",
+          "veris_category": "Availability",
+          "veris_label": "Interruption",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
         }
       ],
       "ambiguous": false,
-      "notes": null
+      "notes": ""
     },
     {
       "technique_id": "T1499",
       "technique_name": "Endpoint Denial of Service",
       "sub_technique_id": null,
       "sub_technique_name": null,
-      "tactic(s)": ["impact"],
+      "tactic(s)": [
+        "impact"
+      ],
       "no_mapping_found": false,
       "veris_mappings": [
-        {
-          "veris_id": "attribute.availability.variety.Interruption",
-          "veris_category": "Availability",
-          "veris_label": "Interruption",
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.9,
-          "justification": "La technique vise à 'degrade or block the availability of services to users' au niveau de l'endpoint ; le blocage correspond à une interruption."
-        },
         {
           "veris_id": "attribute.availability.variety.Degradation",
           "veris_category": "Availability",
           "veris_label": "Degradation",
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.8,
-          "justification": "La même description couvre explicitement la dégradation ('degrade... the availability of services') sans blocage complet."
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "attribute.availability.variety.Interruption",
+          "veris_category": "Availability",
+          "veris_label": "Interruption",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
         }
       ],
       "ambiguous": false,
-      "notes": "Double mapping justifié par les deux volets 'degrade' et 'block' de la description."
+      "notes": ""
     },
     {
-      "technique_id": "T1499.001",
-      "technique_name": "OS Exhaustion Flood",
+      "technique_id": "T1499",
+      "technique_name": "Endpoint Denial of Service",
       "sub_technique_id": "T1499.001",
       "sub_technique_name": "OS Exhaustion Flood",
-      "tactic(s)": ["impact"],
+      "tactic(s)": [
+        "impact"
+      ],
       "no_mapping_found": false,
       "veris_mappings": [
-        {
-          "veris_id": "attribute.availability.variety.Interruption",
-          "veris_category": "Availability",
-          "veris_label": "Interruption",
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.85,
-          "justification": "La description indique que l'épuisement des limites de l'OS peut 'prevent access to any TCP service provided by the server', ce qui est une interruption de service."
-        },
         {
           "veris_id": "attribute.availability.variety.Degradation",
           "veris_category": "Availability",
           "veris_label": "Degradation",
-          "mapping_type": "partiel",
+          "mapping_type": "related_to",
           "confidence": "medium",
           "confidence_score": 0.6,
-          "justification": "La description mentionne que le serveur peut devenir 'sluggish and/or unresponsive', l'état 'sluggish' correspondant à une dégradation de performance."
+          "justification": ""
+        },
+        {
+          "veris_id": "attribute.availability.variety.Interruption",
+          "veris_category": "Availability",
+          "veris_label": "Interruption",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
         }
       ],
       "ambiguous": false,
-      "notes": null
+      "notes": ""
     },
     {
-      "technique_id": "T1499.002",
-      "technique_name": "Service Exhaustion Flood",
+      "technique_id": "T1499",
+      "technique_name": "Endpoint Denial of Service",
       "sub_technique_id": "T1499.002",
       "sub_technique_name": "Service Exhaustion Flood",
-      "tactic(s)": ["impact"],
+      "tactic(s)": [
+        "impact"
+      ],
       "no_mapping_found": false,
       "veris_mappings": [
-        {
-          "veris_id": "attribute.availability.variety.Interruption",
-          "veris_category": "Availability",
-          "veris_label": "Interruption",
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.85,
-          "justification": "La description indique que l'adversaire cible les services réseau (DNS, web) 'to conduct a denial of service (DoS)', provoquant une interruption de disponibilité."
-        },
         {
           "veris_id": "attribute.availability.variety.Degradation",
           "veris_category": "Availability",
           "veris_label": "Degradation",
-          "mapping_type": "partiel",
+          "mapping_type": "related_to",
           "confidence": "medium",
           "confidence_score": 0.6,
-          "justification": "La description mentionne 'an impact to the availability of the service when done in volume' par épuisement des cycles de calcul, ce qui correspond à une dégradation progressive."
+          "justification": ""
+        },
+        {
+          "veris_id": "attribute.availability.variety.Interruption",
+          "veris_category": "Availability",
+          "veris_label": "Interruption",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
         }
       ],
       "ambiguous": false,
-      "notes": null
+      "notes": ""
     },
     {
-      "technique_id": "T1499.003",
-      "technique_name": "Application Exhaustion Flood",
+      "technique_id": "T1499",
+      "technique_name": "Endpoint Denial of Service",
       "sub_technique_id": "T1499.003",
       "sub_technique_name": "Application Exhaustion Flood",
-      "tactic(s)": ["impact"],
+      "tactic(s)": [
+        "impact"
+      ],
       "no_mapping_found": false,
       "veris_mappings": [
-        {
-          "veris_id": "attribute.availability.variety.Interruption",
-          "veris_category": "Availability",
-          "veris_label": "Interruption",
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.85,
-          "justification": "La description indique que l'épuisement des ressources peut 'deny access to the application or the server itself', ce qui est une interruption d'accès."
-        },
         {
           "veris_id": "attribute.availability.variety.Degradation",
           "veris_category": "Availability",
           "veris_label": "Degradation",
-          "mapping_type": "partiel",
+          "mapping_type": "related_to",
           "confidence": "medium",
           "confidence_score": 0.6,
-          "justification": "L'épuisement progressif des ressources par requêtes répétées sur des fonctionnalités gourmandes correspond à une dégradation avant le déni complet."
-        }
-      ],
-      "ambiguous": false,
-      "notes": null
-    },
-    {
-      "technique_id": "T1499.004",
-      "technique_name": "Application or System Exploitation",
-      "sub_technique_id": "T1499.004",
-      "sub_technique_name": "Application or System Exploitation",
-      "tactic(s)": ["impact"],
-      "no_mapping_found": false,
-      "veris_mappings": [
+          "justification": ""
+        },
         {
           "veris_id": "attribute.availability.variety.Interruption",
           "veris_category": "Availability",
           "veris_label": "Interruption",
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.85,
-          "justification": "La description indique que l'exploitation de vulnérabilités 'can cause an application or system to crash and deny availability to users', ce qui est une interruption par crash."
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
         }
       ],
       "ambiguous": false,
-      "notes": null
+      "notes": ""
+    },
+    {
+      "technique_id": "T1499",
+      "technique_name": "Endpoint Denial of Service",
+      "sub_technique_id": "T1499.004",
+      "sub_technique_name": "Application or System Exploitation",
+      "tactic(s)": [
+        "impact"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.availability.variety.Degradation",
+          "veris_category": "Availability",
+          "veris_label": "Degradation",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        },
+        {
+          "veris_id": "attribute.availability.variety.Interruption",
+          "veris_category": "Availability",
+          "veris_label": "Interruption",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
     },
     {
       "technique_id": "T1529",
       "technique_name": "System Shutdown/Reboot",
       "sub_technique_id": null,
       "sub_technique_name": null,
-      "tactic(s)": ["impact"],
+      "tactic(s)": [
+        "impact"
+      ],
       "no_mapping_found": false,
       "veris_mappings": [
         {
           "veris_id": "attribute.availability.variety.Interruption",
           "veris_category": "Availability",
           "veris_label": "Interruption",
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.9,
-          "justification": "La technique vise à 'shutdown/reboot systems to interrupt access to... those systems' et la description précise que cela 'may disrupt access to computer resources for legitimate users', ce qui est exactement une interruption."
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
         }
       ],
       "ambiguous": false,
-      "notes": null
+      "notes": ""
     },
     {
       "technique_id": "T1531",
       "technique_name": "Account Access Removal",
       "sub_technique_id": null,
       "sub_technique_name": null,
-      "tactic(s)": ["impact"],
+      "tactic(s)": [
+        "impact"
+      ],
       "no_mapping_found": false,
       "veris_mappings": [
         {
           "veris_id": "attribute.availability.variety.Interruption",
           "veris_category": "Availability",
           "veris_label": "Interruption",
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.9,
-          "justification": "La technique vise à 'interrupt availability of system and network resources by inhibiting access to accounts utilized by legitimate users', ce qui correspond directement à une interruption d'accès."
-        },
-        {
-          "veris_id": "attribute.availability.variety.Loss",
-          "veris_category": "Availability",
-          "veris_label": "Loss",
-          "mapping_type": "partiel",
+          "mapping_type": "related_to",
           "confidence": "medium",
           "confidence_score": 0.6,
-          "justification": "La description précise que les comptes 'may be deleted, locked, or manipulated... to remove access', la suppression de comptes pouvant être constatée comme une perte d'accès durable."
+          "justification": ""
         }
       ],
       "ambiguous": false,
-      "notes": null
+      "notes": ""
     },
     {
       "technique_id": "T1561",
       "technique_name": "Disk Wipe",
       "sub_technique_id": null,
       "sub_technique_name": null,
-      "tactic(s)": ["impact"],
-      "no_mapping_found": false,
-      "veris_mappings": [
-        {
-          "veris_id": "attribute.availability.variety.Destruction",
-          "veris_category": "Availability",
-          "veris_label": "Destruction",
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.9,
-          "justification": "La technique consiste à 'wipe or corrupt raw disk data on specific systems or in large numbers in a network to interrupt availability', ce qui est une destruction du contenu des disques."
-        }
+      "tactic(s)": [
+        "impact"
       ],
-      "ambiguous": false,
-      "notes": null
-    },
-    {
-      "technique_id": "T1561.001",
-      "technique_name": "Disk Content Wipe",
-      "sub_technique_id": "T1561.001",
-      "sub_technique_name": "Disk Content Wipe",
-      "tactic(s)": ["impact"],
       "no_mapping_found": false,
       "veris_mappings": [
         {
           "veris_id": "attribute.availability.variety.Destruction",
           "veris_category": "Availability",
           "veris_label": "Destruction",
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.9,
-          "justification": "La sub-technique consiste à 'erase the contents of storage devices... rendering the data irrecoverable', ce qui est une destruction directe des données stockées."
-        }
-      ],
-      "ambiguous": false,
-      "notes": null
-    },
-    {
-      "technique_id": "T1561.002",
-      "technique_name": "Disk Structure Wipe",
-      "sub_technique_id": "T1561.002",
-      "sub_technique_name": "Disk Structure Wipe",
-      "tactic(s)": ["impact"],
-      "no_mapping_found": false,
-      "veris_mappings": [
-        {
-          "veris_id": "attribute.availability.variety.Destruction",
-          "veris_category": "Availability",
-          "veris_label": "Destruction",
-          "mapping_type": "direct",
-          "confidence": "high",
-          "confidence_score": 0.9,
-          "justification": "La sub-technique consiste à 'corrupt or wipe the disk data structures on a hard drive necessary to boot a system' (MBR, table de partitions), ce qui est une destruction des structures critiques du disque."
-        },
-        {
-          "veris_id": "attribute.availability.variety.Interruption",
-          "veris_category": "Availability",
-          "veris_label": "Interruption",
-          "mapping_type": "partiel",
+          "mapping_type": "related_to",
           "confidence": "medium",
           "confidence_score": 0.6,
-          "justification": "La description indique que l'effacement rend 'the system unable to boot', provoquant une interruption de disponibilité du système en conséquence de la destruction."
+          "justification": ""
         }
       ],
       "ambiguous": false,
-      "notes": null
+      "notes": ""
     },
     {
-      "technique_id": "T1657",
-      "technique_name": "Financial Theft",
-      "sub_technique_id": null,
-      "sub_technique_name": null,
-      "tactic(s)": ["impact"],
+      "technique_id": "T1561",
+      "technique_name": "Disk Wipe",
+      "sub_technique_id": "T1561.001",
+      "sub_technique_name": "Disk Content Wipe",
+      "tactic(s)": [
+        "impact"
+      ],
       "no_mapping_found": false,
       "veris_mappings": [
         {
-          "veris_id": "attribute.availability.variety.Loss",
+          "veris_id": "attribute.availability.variety.Destruction",
           "veris_category": "Availability",
-          "veris_label": "Loss",
-          "mapping_type": "contextuel",
-          "confidence": "low",
-          "confidence_score": 0.3,
-          "justification": "La description mentionne un vol de ressources monétaires 'at the expense of the availability of these resources for victims' ; la perte porte sur des actifs financiers et non sur la disponibilité de systèmes ou de données, d'où une correspondance faible et contextuelle."
+          "veris_label": "Destruction",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
         }
       ],
       "ambiguous": false,
-      "notes": "Le vol financier n'est pas un impact de disponibilité au sens VERIS (qui porte sur les actifs informationnels) ; le mapping vers Loss est uniquement contextuel et de faible confiance."
+      "notes": ""
+    },
+    {
+      "technique_id": "T1561",
+      "technique_name": "Disk Wipe",
+      "sub_technique_id": "T1561.002",
+      "sub_technique_name": "Disk Structure Wipe",
+      "tactic(s)": [
+        "impact"
+      ],
+      "no_mapping_found": false,
+      "veris_mappings": [
+        {
+          "veris_id": "attribute.availability.variety.Destruction",
+          "veris_category": "Availability",
+          "veris_label": "Destruction",
+          "mapping_type": "related_to",
+          "confidence": "medium",
+          "confidence_score": 0.6,
+          "justification": ""
+        }
+      ],
+      "ambiguous": false,
+      "notes": ""
     },
     {
       "technique_id": "T1667",
       "technique_name": "Email Bombing",
       "sub_technique_id": null,
       "sub_technique_name": null,
-      "tactic(s)": ["impact"],
+      "tactic(s)": [
+        "impact"
+      ],
       "no_mapping_found": false,
       "veris_mappings": [
         {
           "veris_id": "attribute.availability.variety.Degradation",
           "veris_category": "Availability",
           "veris_label": "Degradation",
-          "mapping_type": "partiel",
+          "mapping_type": "related_to",
           "confidence": "medium",
-          "confidence_score": 0.55,
-          "justification": "La description indique que l'inondation d'e-mails vise à 'bury legitimate emails in a flood of spam and disrupt business operations', ce qui dégrade l'utilisabilité de la messagerie sans la couper totalement."
-        },
-        {
-          "veris_id": "attribute.availability.variety.Interruption",
-          "veris_category": "Availability",
-          "veris_label": "Interruption",
-          "mapping_type": "partiel",
-          "confidence": "low",
-          "confidence_score": 0.4,
-          "justification": "La description mentionne que des milliers d'e-mails peuvent 'effectively overload the victim's inbox' et perturber les opérations, ce qui peut atteindre le niveau d'une interruption d'usage de la messagerie dans les cas extrêmes."
+          "confidence_score": 0.6,
+          "justification": ""
         }
       ],
-      "ambiguous": true,
-      "notes": "Hésitation entre Degradation (effet principal : noyer les e-mails légitimes) et Interruption (surcharge extrême de la boîte) ; aucune des deux n'est une correspondance parfaitement directe."
+      "ambiguous": false,
+      "notes": ""
     }
   ]
 }
