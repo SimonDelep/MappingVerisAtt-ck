@@ -1232,12 +1232,6 @@ sans aucun historique mappé.
   \label{fig:rag-v14}
 \end{figure}
 
-
-\subsection{Solution Fine-tune}
-\subsection{Solution PROMPT}
-
-
-
 \subsection{Solution Fine-tune}
 
 \subsubsection{Principe général}
@@ -1819,14 +1813,110 @@ Ils divergent surtout sur le compromis. En effet, on as deux positions:
 On remarque donc que \textbf{Kimi-K3} fait un mapping plus sélectif, tandis que \textbf{DeepSeek-V4-Pro} fait une couverture plus large, au prix de davantage de faux positifs.
 
 Le gain le plus marqué apparaît sur \texttt{attribute.confidentiality} (DeepSeek F1~72,6~\%) et \texttt{attribute.availability} (F1~$>$\,50~\% pour les deux), alors que les grands groupes \texttt{hacking}/\texttt{malware} restent les plus difficiles.
-%==============================================================================
-\section{Discussion}
-%==============================================================================
-
 
 %==============================================================================
 \section{Conclusion}
 %==============================================================================
+\subsection{Récapitulatif du travail}
+
+Ce projet visait à automatiser le mapping VERIS $\rightarrow$ MITRE ATT\&CK
+et à le comparer à la référence CTID sur la paire cible VERIS~1.4.1 /
+ATT\&CK~19.1 (sept capability groups, 1\,250 paires expertes). Trois
+familles de solutions ont été mises en concurrence, toutes évaluées
+avec le même format de sortie et le même comparateur.
+
+La voie \textbf{RAG} combine un retrieval local (ChromaDB + MiniLM)
+et, selon les versions, un LLM Together.ai. Le levier décisif n'est
+cependant pas le modèle de langage~: c'est la \emph{règle locale de
+décision analogique}, qui transfère les mappings experts des versions
+antérieures (anti-fuite~: jamais la paire cible), puis valide ou
+remappe les identifiants vers le catalogue ATT\&CK~19.1.
+
+La voie \textbf{Fine-tune} est une approche supervisée locale légère
+(TF-IDF, One-vs-Rest, régression logistique), complétée par des
+essais LLM zero-shot (Llama 3.3 70B et Qwen 2.5 7B). Elle apprend à
+reproduire des associations déjà annotées, sans RAG analogique.
+
+La voie \textbf{PROMPT} interroge des LLM généralistes (Kimi-K3,
+DeepSeek-V4-Pro) à partir d'un prompt et de candidats ATT\&CK, sans
+index analogique local. Un premier run a échoué (JSON tronqué ou
+vide)~; après correctifs de pipeline, les sept fichiers de capability
+ont pu être produits et comparés aux experts.
+
+\subsection{Synthèse des résultats}
+
+Sur le protocole actuel, le classement est net.
+
+La solution RAG analogique \textbf{v14} est de loin la plus
+performante~: précision 83,0~\%, rappel 91,5~\%, F1 \textbf{87,0~\%}
+(1\,144 paires communes). Llama seul, sans analogie, restait autour
+de 23~\% de F1~; les paliers v9--v11 montrent que c'est le
+reclassement same-label, et non le LLM, qui transforme le score. Les
+attributs et \texttt{value\_chain.development} dépassent 94~\% de F1~;
+le résidu d'erreur se concentre surtout sur les gros groupes
+\texttt{action.hacking} et \texttt{action.malware}.
+
+Le Fine-tune local arrive ensuite, mais nettement plus bas. La
+meilleure configuration (\texttt{T005\_K20}) atteint un F1 de
+41,3~\% (576 communes). Les LLM zero-shot de cette famille restent
+faibles~: 12,4~\% de F1 pour Llama (\texttt{B2\_K40}) et 6,4~\% pour
+Qwen. Sans analogie historique, un modèle généraliste sous-génère et
+produit beaucoup de faux positifs.
+
+Le PROMPT se situe au même ordre de grandeur que le Fine-tune local
+dans sa partie LLM, autour de 30~\% de F1 une fois le pipeline
+stabilisé. Kimi-K3 est plus sélectif (précision 38,7~\%, F1 29,5~\%),
+DeepSeek-V4-Pro plus couvrant (rappel 41,8~\%, F1 30,0~\%). Les
+groupes volumineux \texttt{hacking}/\texttt{malware} restent les plus
+difficiles, comme pour les autres approches.
+
+Autrement dit~: \textbf{transférer l'historique expert} (RAG
+analogique) surpasse largement \textbf{apprendre un classifieur}
+(Fine-tune) ou \textbf{demander au LLM d'inventer le mapping}
+(PROMPT / zero-shot).
+
+\subsection{Bilan}
+
+Ces très bons scores RAG doivent toutefois être lus avec prudence.
+Une grande partie du mapping VERIS~1.4.1 / ATT\&CK~19.1 peut être
+identique à celui de VERIS~1.4.0 / ATT\&CK~16.0. Un F1 de 87~\% peut
+alors refléter surtout la recopie de l'historique stable, ce qui a
+peu d'intérêt opérationnel si l'objectif est d'accompagner une
+\textit{mise à jour} de versions. Il faudrait réévaluer les solutions,
+en particulier le RAG, \textbf{uniquement sur les mappings qui
+diffèrent} d'une version à l'autre (labels révisés, IDs ATT\&CK
+déplacés, capacités nouvelles). C'est sur ce sous-ensemble que l'on
+saura si l'analogie apporte une vraie valeur de migration, ou si elle
+se contente de transférer ce qui n'a pas bougé.
+
+Deux autres limites encadrent le bilan. D'une part, Fine-tune et
+PROMPT n'exploitent pas (ou peu) les versions antérieures de la même
+manière que le RAG~: leur écart de performance n'est donc pas
+uniquement un écart de «~modèle~», c'est aussi un écart de signal
+historique. D'autre part, même en analogie, les labels sans
+historique et les unions trop larges restent des sources d'erreur.
+La piste naturelle n'est pas de remplacer le RAG analogique par un
+LLM plus gros, mais de le mesurer --- et éventuellement de le borner
+--- là où le mapping a réellement changé.
+
+\subsection{Conclusion}
+
+Trois approches ont été construites et comparées au mapping CTID
+VERIS~1.4.1 / ATT\&CK~19.1. Le Fine-tune supervisé local plafonne à
+un F1 de 41,3~\%~; le prompt engineering se situe autour de 30~\%~;
+les LLM seuls restent plus bas encore. La famille RAG analogique,
+en s'appuyant sur les mappings experts des versions antérieures et
+sur un remap vers ATT\&CK~19.1, atteint un F1 de \textbf{87,0~\%}
+(précision 83,0~\%, rappel 91,5~\%).
+
+Ce résultat montre qu'automatiser le mapping est possible lorsque
+l'on \emph{transfère} un historique expert, beaucoup moins lorsque
+l'on demande à un modèle de le redécouvrir. La prochaine évaluation
+nécessaire est toutefois plus stricte~: ne mesurer que les
+correspondances qui changent entre VERIS~1.4.0 / ATT\&CK~16.0 et
+VERIS~1.4.1 / ATT\&CK~19.1, afin de confirmer la valeur réelle de
+cette analogie lors d'une migration de versions.
+
 
 
 

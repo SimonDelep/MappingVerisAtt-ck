@@ -1,21 +1,21 @@
 \babel@toc {french}{}\relax 
-\contentsline {figure}{\numberline {1}{\ignorespaces Pipeline global du projet~: données brutes, trois solutions IA et comparaison aux experts.}}{7}{figure.caption.6}%
-\contentsline {figure}{\numberline {2}{\ignorespaces Résultats de la variante \texttt {attack\_only} sur la version cible VERIS~1.4.1 / ATT\&CK~19.1.}}{12}{figure.caption.17}%
-\contentsline {figure}{\numberline {3}{\ignorespaces Résultats de la variante \texttt {with\_examples} sur la version cible VERIS~1.4.1 / ATT\&CK~19.1.}}{14}{figure.caption.21}%
-\contentsline {figure}{\numberline {4}{\ignorespaces Résultats de la variante DeepSeek-V4-Flash-0731 (\texttt {with\_examples}) sur VERIS~1.4.1 / ATT\&CK~19.1.}}{16}{figure.caption.25}%
-\contentsline {figure}{\numberline {5}{\ignorespaces Résultats de la variante Llama-3.3-70B-Instruct-Turbo (\texttt {with\_examples}) sur VERIS~1.4.1 / ATT\&CK~19.1.}}{17}{figure.caption.29}%
-\contentsline {figure}{\numberline {6}{\ignorespaces Résultats de la variante Qwen2.5-7B-Instruct-Turbo (\texttt {with\_examples}) sur VERIS~1.4.1 / ATT\&CK~19.1.}}{18}{figure.caption.33}%
-\contentsline {figure}{\numberline {7}{\ignorespaces Résultats de la variante analogique v2 (Llama \texttt {with\_examples}).}}{19}{figure.caption.37}%
-\contentsline {figure}{\numberline {8}{\ignorespaces Résultats de la variante analogique v3 (fill des IDs experts omis).}}{20}{figure.caption.39}%
-\contentsline {figure}{\numberline {9}{\ignorespaces Résultats de la variante analogique v4 (plafonds d'ajouts par scope).}}{20}{figure.caption.41}%
-\contentsline {figure}{\numberline {10}{\ignorespaces Résultats de la variante analogique v5 (skip \texttt {social} / \texttt {value\_chain}).}}{21}{figure.caption.42}%
-\contentsline {figure}{\numberline {11}{\ignorespaces Résultats de la variante analogique v6 (fill analogique sans expansion de famille).}}{21}{figure.caption.43}%
-\contentsline {figure}{\numberline {12}{\ignorespaces Résultats de la variante analogique v7 (IDs analogiques uniquement).}}{21}{figure.caption.44}%
-\contentsline {figure}{\numberline {13}{\ignorespaces Résultats de la variante analogique v8 (seconde passe sur scopes sous-générés).}}{22}{figure.caption.45}%
-\contentsline {figure}{\numberline {14}{\ignorespaces Résultats de la variante analogique v9 (rerank à $N$ constant).}}{22}{figure.caption.47}%
-\contentsline {figure}{\numberline {15}{\ignorespaces Résultats de la variante analogique v10 (budget analogique et score pondéré).}}{23}{figure.caption.49}%
-\contentsline {figure}{\numberline {16}{\ignorespaces Résultats de la variante analogique v11 (union same-label).}}{23}{figure.caption.51}%
-\contentsline {figure}{\numberline {17}{\ignorespaces Résultats de la run v11 avec appels LLM (\texttt {v11\_llm})~: mêmes scores que le rerank analogique.}}{23}{figure.caption.52}%
-\contentsline {figure}{\numberline {18}{\ignorespaces Résultats de la variante analogique v12 (union complète et LLM si analogue vide).}}{24}{figure.caption.54}%
-\contentsline {figure}{\numberline {19}{\ignorespaces Résultats de la variante analogique v13 (union same-label sans LLM).}}{24}{figure.caption.56}%
-\contentsline {figure}{\numberline {20}{\ignorespaces Résultats de la variante analogique v14 (corpus same-label, remap ATT\&CK et découverte conservative).}}{25}{figure.caption.58}%
+\contentsline {figure}{\numberline {1}{\ignorespaces Pipeline global du projet~: données brutes, trois solutions IA et comparaison aux experts.}}{9}{figure.caption.6}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Résultats de la variante \texttt {attack\_only} sur la version cible VERIS~1.4.1 / ATT\&CK~19.1.}}{14}{figure.caption.17}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Résultats de la variante \texttt {with\_examples} sur la version cible VERIS~1.4.1 / ATT\&CK~19.1.}}{16}{figure.caption.21}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Résultats de la variante DeepSeek-V4-Flash-0731 (\texttt {with\_examples}) sur VERIS~1.4.1 / ATT\&CK~19.1.}}{18}{figure.caption.25}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Résultats de la variante Llama-3.3-70B-Instruct-Turbo (\texttt {with\_examples}) sur VERIS~1.4.1 / ATT\&CK~19.1.}}{19}{figure.caption.29}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Résultats de la variante Qwen2.5-7B-Instruct-Turbo (\texttt {with\_examples}) sur VERIS~1.4.1 / ATT\&CK~19.1.}}{20}{figure.caption.33}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Résultats de la variante analogique v2 (Llama \texttt {with\_examples}).}}{21}{figure.caption.37}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Résultats de la variante analogique v3 (fill des IDs experts omis).}}{22}{figure.caption.39}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Résultats de la variante analogique v4 (plafonds d'ajouts par scope).}}{22}{figure.caption.41}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Résultats de la variante analogique v5 (skip \texttt {social} / \texttt {value\_chain}).}}{23}{figure.caption.42}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Résultats de la variante analogique v6 (fill analogique sans expansion de famille).}}{23}{figure.caption.43}%
+\contentsline {figure}{\numberline {12}{\ignorespaces Résultats de la variante analogique v7 (IDs analogiques uniquement).}}{23}{figure.caption.44}%
+\contentsline {figure}{\numberline {13}{\ignorespaces Résultats de la variante analogique v8 (seconde passe sur scopes sous-générés).}}{24}{figure.caption.45}%
+\contentsline {figure}{\numberline {14}{\ignorespaces Résultats de la variante analogique v9 (rerank à $N$ constant).}}{24}{figure.caption.47}%
+\contentsline {figure}{\numberline {15}{\ignorespaces Résultats de la variante analogique v10 (budget analogique et score pondéré).}}{25}{figure.caption.49}%
+\contentsline {figure}{\numberline {16}{\ignorespaces Résultats de la variante analogique v11 (union same-label).}}{25}{figure.caption.51}%
+\contentsline {figure}{\numberline {17}{\ignorespaces Résultats de la run v11 avec appels LLM (\texttt {v11\_llm})~: mêmes scores que le rerank analogique.}}{25}{figure.caption.52}%
+\contentsline {figure}{\numberline {18}{\ignorespaces Résultats de la variante analogique v12 (union complète et LLM si analogue vide).}}{26}{figure.caption.54}%
+\contentsline {figure}{\numberline {19}{\ignorespaces Résultats de la variante analogique v13 (union same-label sans LLM).}}{26}{figure.caption.56}%
+\contentsline {figure}{\numberline {20}{\ignorespaces Résultats de la variante analogique v14 (corpus same-label, remap ATT\&CK et découverte conservative).}}{27}{figure.caption.58}%
