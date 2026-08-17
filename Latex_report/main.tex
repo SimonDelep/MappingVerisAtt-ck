@@ -951,19 +951,17 @@ plutôt que comme un simple gain uniforme.
 
 
 
-\subsection{Solution Fine-tune}
+
 
 \subsection{Solution Fine-tune}
 
 \subsubsection{Principe général}
 
-La solution \textbf{Fine-tune} vise à générer automatiquement des mappings entre les capacités VERIS et les techniques MITRE ATT\&CK à partir des mappings experts disponibles. Contrairement à une approche fondée uniquement sur un prompt, cette solution exploite les associations déjà établies par les experts afin d'apprendre une relation entre la description textuelle d'une capacité VERIS et les techniques ATT\&CK correspondantes.
+La solution \textbf{Fine-tune} vise à générer automatiquement des mappings entre les capacités VERIS et les techniques MITRE ATT\&CK à partir des mappings experts disponibles. Contrairement à une approche par simple prompt, cette solution exploite les associations déjà établies par les experts afin d'apprendre une relation entre la description textuelle d'une capacité VERIS et les techniques ATT\&CK correspondantes.
 
 Dans le cadre de ce projet, le terme \emph{fine-tune} désigne une approche supervisée locale légère. Il ne s'agit pas d'un réentraînement complet d'un grand modèle de langage de type Llama, Mistral ou Gemma avec LoRA ou QLoRA. Le choix retenu repose plutôt sur une chaîne classique de traitement automatique du langage combinant une vectorisation TF-IDF, une classification multi-label et une régression logistique.
 
 Ce choix présente plusieurs avantages dans le contexte du projet. D'une part, le volume de données annotées est limité, ce qui rend difficile l'entraînement efficace d'un grand modèle de langage. D'autre part, une approche locale est plus simple à reproduire, moins coûteuse et indépendante d'une API externe. Elle permet également de produire directement des fichiers JSON structurés, compatibles avec le comparateur du projet.
-
-Cette solution sert donc de compromis entre une approche purement statistique et une approche LLM plus coûteuse. Elle cherche à exploiter au mieux les mappings experts déjà disponibles, tout en conservant une exécution locale et reproductible.
 
 \subsubsection{Données utilisées}
 
@@ -1004,6 +1002,31 @@ Le fichier principal de cette solution est :
 \begin{verbatim}
 Solution/Solution_FINE_TUNE/run_mapping.py
 \end{verbatim}
+
+\paragraph{Architecture logicielle.}
+
+La solution Fine-tune est volontairement plus légère que les approches RAG et PROMPT, mais elle suit tout de même une architecture structurée. Le script principal regroupe les étapes de chargement des données, de construction du jeu d'entraînement, d'apprentissage du modèle, de prédiction et d'écriture des fichiers de sortie.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{l l}
+\toprule
+\textbf{Composant} & \textbf{Rôle} \\
+\midrule
+\texttt{run\_mapping.py} & Orchestration complète du pipeline Fine-tune local \\
+\texttt{mapping\_des\_experts.json} & Référence utilisée pour construire les labels supervisés \\
+\texttt{veris\_1.4.1.json} & Capacités VERIS transformées en représentations textuelles \\
+\texttt{attack\_19.1.json} & Catalogue des techniques MITRE ATT\&CK candidates \\
+\texttt{TfidfVectorizer} & Transformation des textes VERIS en vecteurs numériques \\
+\texttt{MultiLabelBinarizer} & Encodage multi-label des techniques MITRE associées \\
+\texttt{OneVsRestClassifier} & Décomposition du problème multi-label en décisions binaires \\
+\texttt{LogisticRegression} & Modèle de décision utilisé pour prédire les techniques ATT\&CK \\
+\bottomrule
+\end{tabular}
+\caption{Composants principaux de la solution Fine-tune locale.}
+\label{tab:fine-tune-modules}
+\end{table}
 
 Le pipeline suit plusieurs étapes. Les données VERIS, ATT\&CK et les mappings experts sont d'abord chargés depuis le dossier de travail. Les capacités VERIS sont ensuite transformées en représentations textuelles à partir de leur identifiant, de leur capability group, de leur label et de leur description. Cette représentation permet de fournir au modèle un contexte textuel suffisant pour apprendre des rapprochements sémantiques.
 
@@ -1068,6 +1091,14 @@ La configuration retenue pour le meilleur résultat local est :
 python Solution/Solution_FINE_TUNE/run_mapping.py --threshold 0.05 --top-k 20 --output-name FINE_TUNE_T005_K20
 \end{verbatim}
 
+\subsubsection{Limites de l'approche locale}
+
+Même si le modèle supervisé local obtient les meilleurs résultats dans cette partie, il présente plusieurs limites. La première concerne sa dépendance aux mappings experts utilisés pour l'entraînement : le modèle apprend principalement à reproduire les associations déjà présentes dans les données, et peut donc avoir plus de difficulté à généraliser vers des capacités très différentes ou vers de nouvelles versions du framework.
+
+La seconde limite vient de la représentation textuelle utilisée. La vectorisation TF-IDF capture les mots et groupes de mots importants, mais elle ne modélise pas le sens profond d'une phrase comme le ferait un modèle de langage moderne. Deux descriptions sémantiquement proches mais formulées avec un vocabulaire différent peuvent donc être moins bien rapprochées.
+
+Enfin, le choix des paramètres \texttt{threshold} et \texttt{top-k} influence fortement le compromis entre précision et rappel. Un réglage trop strict réduit les faux positifs mais manque davantage de mappings experts, tandis qu'un réglage trop permissif augmente le rappel au prix d'une précision plus faible. La configuration retenue correspond donc à un compromis empirique, déterminé à partir des résultats obtenus avec le script de comparaison.
+
 \subsubsection{Variante LLM zero-shot}
 
 En complément du modèle supervisé local, une variante basée sur un LLM déjà entraîné a été expérimentée. Cette variante est implémentée dans :
@@ -1076,7 +1107,7 @@ En complément du modèle supervisé local, une variante basée sur un LLM déj�
 Solution/Solution_FINE_TUNE/run_mapping_llm.py
 \end{verbatim}
 
-Elle utilise un modèle LLM via l'API Together AI. Le modèle principalement retenu est :
+Elle utilise des modèles LLM via l'API Together AI. Le modèle principalement retenu est :
 
 \begin{verbatim}
 meta-llama/Llama-3.3-70B-Instruct-Turbo
@@ -1086,45 +1117,45 @@ Ce modèle n'est pas réentraîné dans le cadre du projet. Il est utilisé en \
 
 Le script LLM reprend la même logique de sortie que le modèle local : sept fichiers JSON sont générés, un par capability group VERIS. Pour limiter la taille des prompts, les capacités VERIS sont traitées par batchs. Le script permet également de choisir le modèle, de limiter le nombre d'éléments traités et de contrôler le nombre de candidats ATT\&CK fournis au modèle.
 
-Les principaux paramètres sont :
+\paragraph{Provenance des modèles utilisés.}
+
+Les modèles utilisés dans cette variante ne sont pas développés directement dans le cadre du projet. Ils proviennent de familles de modèles pré-entraînés et instruction-tuned publiées par des acteurs externes, puis sont appelés via la plateforme Together AI. Dans notre cas, Together AI joue le rôle de fournisseur d'API et d'environnement d'exécution, tandis que les modèles eux-mêmes proviennent de leurs éditeurs respectifs.
+
+Le modèle \texttt{meta-llama/Llama-3.3-70B-Instruct-Turbo} appartient à la famille Llama développée par Meta. Il s'agit d'un modèle de langage de 70 milliards de paramètres, pré-entraîné puis adapté au suivi d'instructions. Il est utilisé ici uniquement en inférence, sans réentraînement ni fine-tuning supplémentaire.
+
+Le modèle \texttt{Qwen/Qwen2.5-7B-Instruct-Turbo}, testé en complément, appartient à la famille Qwen développée par Alibaba Cloud. Il s'agit également d'un modèle instruction-tuned, utilisé via Together AI afin de comparer son comportement avec celui de Llama sur la même tâche de génération de mappings VERIS vers MITRE ATT\&CK.
+
+Les principaux paramètres du script LLM sont :
 
 \begin{itemize}
     \item \texttt{--model} : choix du modèle LLM ;
     \item \texttt{--batch-size} : nombre de capacités VERIS envoyées dans un même appel ;
     \item \texttt{--top-k-attack} : nombre de techniques ATT\&CK candidates fournies au modèle ;
     \item \texttt{--limit-per-scope} : limite optionnelle du nombre d'éléments traités par scope ;
-    \item \texttt{--output-name} : nom du dossier de sortie.
+    \item \texttt{--output-name} : nom du dossier de sortie généré dans les résultats.
 \end{itemize}
 
-La meilleure configuration Llama validée est :
+Une configuration de référence a d'abord été obtenue avec :
 
 \begin{verbatim}
 python Solution/Solution_FINE_TUNE/run_mapping_llm.py --model meta-llama/Llama-3.3-70B-Instruct-Turbo --batch-size 2 --top-k-attack 30 --output-name FINE_TUNED_LLM_LLAMA_B2_K30
+\end{verbatim}
+
+Des tests complémentaires ont ensuite été réalisés avec davantage de candidats MITRE. La meilleure configuration Llama obtenue est :
+
+\begin{verbatim}
+python Solution/Solution_FINE_TUNE/run_mapping_llm.py --model meta-llama/Llama-3.3-70B-Instruct-Turbo --batch-size 2 --top-k-attack 40 --output-name FINE_TUNED_LLM_LLAMA_B2_K40
 \end{verbatim}
 
 \subsubsection{Paramétrage expérimental}
 
 Le script LLM a été conçu pour faciliter la comparaison de plusieurs configurations expérimentales sans modifier directement le code source. Les principaux paramètres du pipeline peuvent être définis depuis la ligne de commande, ce qui permet de reproduire plus facilement les essais et de comparer différents modèles ou réglages.
 
-Les paramètres les plus importants sont :
+Une première configuration de référence a été lancée avec \texttt{--batch-size 2} et \texttt{--top-k-attack 30}. Elle correspond au dossier \texttt{FINE\_TUNED\_LLM\_LLAMA\_B2\_K30}. Cette configuration a servi de base de comparaison pour les tests suivants.
 
-\begin{itemize}
-    \item \texttt{--model} : modèle LLM utilisé pour la génération ;
-    \item \texttt{--batch-size} : nombre de capacités VERIS traitées dans un même appel au modèle ;
-    \item \texttt{--top-k-attack} : nombre de techniques MITRE ATT\&CK candidates fournies au modèle ;
-    \item \texttt{--limit-per-scope} : nombre maximal de capacités VERIS traitées par capability group, principalement utilisé pour les tests rapides ;
-    \item \texttt{--output-name} : nom du dossier de sortie généré dans les résultats.
-\end{itemize}
+Les expérimentations complémentaires ont ensuite augmenté le nombre de techniques MITRE candidates fournies au modèle. La configuration \texttt{B2\_K40} utilise toujours des batchs de deux capacités VERIS, mais fournit quarante techniques MITRE candidates par appel. Cette configuration a permis d'obtenir le meilleur résultat Llama en F1.
 
-Ce paramétrage permet d'éviter de figer les choix expérimentaux dans le script. Il devient ainsi possible de lancer plusieurs configurations successives en modifiant uniquement les arguments de la commande.
-
-Par exemple, la meilleure configuration Llama validée a été lancée avec la commande suivante :
-
-\begin{verbatim}
-python Solution/Solution_FINE_TUNE/run_mapping_llm.py --model meta-llama/Llama-3.3-70B-Instruct-Turbo --batch-size 2 --top-k-attack 30 --output-name FINE_TUNED_LLM_LLAMA_B2_K30
-\end{verbatim}
-
-Dans cette configuration, le modèle Llama 3.3 70B Instruct Turbo est utilisé avec des batchs de deux capacités VERIS et trente techniques MITRE ATT\&CK candidates par appel. Ce réglage vise à limiter la taille du prompt tout en laissant suffisamment de choix au modèle pour retrouver des correspondances pertinentes.
+Des variantes plus strictes ont également été testées en limitant, lors d'une étape de post-traitement, le nombre de mappings MITRE conservés pour chaque capacité VERIS. L'objectif était de réduire le nombre total de solutions générées tout en essayant de conserver un maximum de paires communes avec les mappings experts.
 
 Le paramètre \texttt{--batch-size} agit principalement sur la stabilité des réponses. Un batch trop grand augmente la taille du prompt et peut provoquer des réponses JSON moins fiables. À l'inverse, un batch plus petit améliore la lisibilité du prompt, mais augmente le nombre d'appels API nécessaires.
 
@@ -1174,21 +1205,21 @@ Ce fichier n'est pas destiné à être ajouté au dépôt GitHub, car il contien
 
 L'utilisation d'une API externe a également un impact sur la reproductibilité des expériences. Une même commande peut être relancée localement, mais elle nécessite toujours que la clé API soit valide et que le compte dispose de crédits suffisants. Cela distingue cette approche du modèle supervisé local, qui peut être exécuté sans appel réseau une fois les données et les dépendances installées.
 
-Cette contrainte est apparue lors de la tentative d'amélioration de la configuration Llama. Une expérience supplémentaire avait été préparée avec la configuration suivante :
+Cette contrainte est apparue lors d'une première tentative d'amélioration de la configuration Llama. Une expérience supplémentaire avait été préparée avec la configuration suivante :
 
 \begin{verbatim}
 FINE_TUNED_LLM_LLAMA_B2_K40_MAX2
 \end{verbatim}
 
-L'objectif était d'augmenter le nombre de candidats MITRE ATT\&CK fournis au modèle avec \texttt{--top-k-attack 40}, tout en limitant le nombre de mappings conservés par capacité VERIS avec \texttt{--max-mappings-per-veris 2}. Cette stratégie devait permettre de réduire le nombre total de solutions générées tout en essayant d'augmenter les paires communes avec les mappings experts.
+L'objectif était d'augmenter le nombre de candidats MITRE ATT\&CK fournis au modèle avec \texttt{--top-k-attack 40}, tout en limitant le nombre de mappings conservés par capacité VERIS. Cette stratégie devait permettre de réduire le nombre total de solutions générées tout en essayant d'augmenter les paires communes avec les mappings experts.
 
-Cependant, cette expérience n'a pas pu être évaluée correctement, car l'API Together a renvoyé l'erreur suivante :
+Une première exécution n'a pas pu aboutir, car l'API Together a renvoyé l'erreur suivante :
 
 \begin{verbatim}
 402 Credit limit exceeded
 \end{verbatim}
 
-Les fichiers générés à la suite de cette erreur ne contenaient pas de véritables réponses du modèle, mais des sorties vides ou de repli. Ils n'ont donc pas été retenus dans les résultats finaux.
+Après l'obtention de nouveaux crédits API, l'expérience a toutefois pu être relancée et évaluée. Les résultats montrent que la limitation du nombre de mappings réduit bien le nombre total de solutions générées, mais qu'elle peut également supprimer des mappings corrects. Cette contrainte illustre donc à la fois la dépendance aux crédits API et l'importance d'évaluer expérimentalement les compromis entre précision, rappel et nombre de solutions générées.
 
 Cette limite montre que les approches LLM externalisées ne doivent pas être évaluées uniquement selon leurs performances théoriques. Leur coût, leur dépendance à un fournisseur externe, les quotas disponibles et la stabilité des réponses doivent également être pris en compte. Dans ce contexte, le modèle local supervisé présente un avantage important : il reste entièrement reproductible localement et ne dépend pas d'un service tiers au moment de l'exécution.
 
@@ -1281,110 +1312,99 @@ Enfin, la dépendance à une API serverless partagée (timeouts, rate limits) a 
 
 \subsubsection{Résultats du modèle supervisé local}
 
-Plusieurs configurations ont été évaluées afin d'observer l'effet du seuil de confiance et du nombre maximal de techniques conservées par capacité VERIS. Le Tableau~\ref{tab:fine-tune-resultats} présente les principales configurations testées.
+La première série d'expérimentations concerne le modèle supervisé local basé sur TF-IDF, One-vs-Rest et régression logistique. Plusieurs configurations ont été testées en faisant varier le seuil de confiance et le nombre maximal de techniques MITRE conservées par capacité VERIS.
 
 \begin{table}[H]
 \centering
 \small
-\begin{tabular}{lrrrrr}
+\begin{tabular}{lrrrrrr}
 \toprule
-\textbf{Configuration} & \textbf{Seuil} & \textbf{Top-k} & \textbf{Précision} & \textbf{Rappel} & \textbf{F1} \\
+Configuration & Solutions & Communes & Précision & Rappel & F1 & Jaccard \\
 \midrule
-\texttt{FINE\_TUNE} & 0.20 & 5 & 58.9\% & 9.8\% & 16.9\% \\
-\texttt{FINE\_TUNE\_T010\_K10} & 0.10 & 10 & 68.0\% & 18.7\% & 29.4\% \\
-\texttt{FINE\_TUNE\_T005\_K10} & 0.05 & 10 & 35.4\% & 37.2\% & 36.3\% \\
-\texttt{FINE\_TUNE\_T005\_K15} & 0.05 & 15 & 36.7\% & 43.1\% & 39.7\% \\
-\texttt{FINE\_TUNE\_T005\_K20} & 0.05 & 20 & 37.4\% & 46.1\% & \textbf{41.3\%} \\
+\texttt{FINE\_TUNE} & 209 & 123 & 58.9~\% & 9.8~\% & 16.9~\% & 9.2~\% \\
+\texttt{FINE\_TUNE\_T010\_K10} & 344 & 234 & 68.0~\% & 18.7~\% & 29.4~\% & 17.2~\% \\
+\texttt{FINE\_TUNE\_T0055\_K15} & 1117 & 469 & 42.0~\% & 37.5~\% & 39.6~\% & 24.7~\% \\
+\texttt{FINE\_TUNE\_T005\_K10} & 1315 & 465 & 35.4~\% & 37.2~\% & 36.3~\% & 22.1~\% \\
+\texttt{FINE\_TUNE\_T005\_K15} & 1467 & 539 & 36.7~\% & 43.1~\% & 39.7~\% & 24.7~\% \\
+\texttt{FINE\_TUNE\_T005\_K20} & 1541 & 576 & 37.4~\% & 46.1~\% & \textbf{41.3~\%} & 26.0~\% \\
 \bottomrule
 \end{tabular}
-\caption{Résultats du modèle supervisé local selon les hyperparamètres.}
-\label{tab:fine-tune-resultats}
+\caption{Résultats globaux du modèle supervisé local Fine-tune}
+\label{tab:fine-tune-local-results}
 \end{table}
 
-La configuration \texttt{FINE\_TUNE} initiale produit une précision correcte, mais un rappel très faible. Le modèle est alors trop strict : il propose peu de mappings et ne retrouve qu'une faible partie des paires expertes.
-
-La configuration \texttt{FINE\_TUNE\_T010\_K10} augmente fortement la précision, mais le rappel reste limité. Cette configuration génère donc des prédictions plus fiables, mais elle ne couvre pas suffisamment le mapping expert.
-
-Les configurations avec un seuil de \texttt{0.05} améliorent nettement le rappel. L'augmentation progressive du \texttt{top-k} permet de retrouver davantage de paires expertes sans dégrader excessivement la précision. La meilleure configuration obtenue est donc :
-
-\begin{verbatim}
-FINE_TUNE_T005_K20
-\end{verbatim}
-
-Elle atteint un F1 de \textbf{41.3~\%}, ce qui en fait le meilleur résultat global obtenu pour cette solution.
+La meilleure configuration du modèle local est \texttt{FINE\_TUNE\_T005\_K20}. Elle obtient un F1 de 41.3~\%, avec une précision de 37.4~\% et un rappel de 46.1~\%. Cette configuration ne présente pas la meilleure précision brute, mais elle offre le meilleur équilibre global entre précision et rappel. Elle retrouve 576 paires communes avec les mappings experts, ce qui en fait le meilleur résultat obtenu dans la partie Fine-tune.
 
 \subsubsection{Résultats de la variante LLM zero-shot}
 
-La variante LLM zero-shot a été évaluée avec plusieurs configurations autour du modèle Llama 3.3 70B Instruct Turbo. L'objectif était d'observer l'effet de la taille des batchs et du nombre de candidats ATT\&CK fournis au modèle.
+En complément du modèle local, plusieurs essais ont été réalisés avec Llama 3.3 70B Instruct Turbo via l'API Together. Le modèle n'a pas été réentraîné dans ce projet : il est utilisé en zero-shot, uniquement à partir d'un prompt et d'une liste de techniques MITRE candidates.
+
+Une première configuration de référence, \texttt{B2\_K30}, avait été obtenue avec un batch size de 2 et 30 techniques MITRE candidates. Des tests complémentaires ont ensuite été réalisés afin d'essayer d'obtenir davantage de paires communes avec les experts tout en réduisant le nombre total de mappings générés. Pour cela, le nombre de candidats MITRE a été augmenté, puis des variantes plus strictes ont été évaluées en limitant, lors d'une étape de post-traitement, le nombre de mappings conservés par capacité VERIS.
 
 \begin{table}[H]
 \centering
 \small
-\begin{tabular}{lrrrrr}
+\begin{tabular}{lrrrrrr}
 \toprule
-\textbf{Configuration} & \textbf{Batch} & \textbf{Top-k ATT\&CK} & \textbf{Précision} & \textbf{Rappel} & \textbf{F1} \\
+Configuration Llama & Solutions & Communes & Précision & Rappel & F1 & Jaccard \\
 \midrule
-\texttt{FINE\_TUNED\_LLM\_BATCH5} & 5 & 15 & 13.6\% & 3.1\% & 5.1\% \\
-\texttt{LLAMA\_B3\_K25} & 3 & 25 & 15.4\% & 6.2\% & 8.9\% \\
-\texttt{LLAMA\_B2\_K30} & 2 & 30 & 17.0\% & 6.4\% & \textbf{9.3\%} \\
+\texttt{BATCH5} & 286 & 39 & 13.6~\% & 3.1~\% & 5.1~\% & 2.6~\% \\
+\texttt{B3\_K25} & 507 & 78 & 15.4~\% & 6.2~\% & 8.9~\% & 4.6~\% \\
+\texttt{B2\_K30} & 471 & 80 & 17.0~\% & 6.4~\% & 9.3~\% & 4.9~\% \\
+\texttt{B2\_K40} & 562 & 112 & 19.9~\% & 9.0~\% & \textbf{12.4~\%} & 6.6~\% \\
+\texttt{B2\_K40\_MAX2} & 290 & 74 & 25.5~\% & 5.9~\% & 9.6~\% & 5.0~\% \\
+\texttt{B2\_K40\_MAX3} & 365 & 76 & 20.8~\% & 6.1~\% & 9.4~\% & 4.9~\% \\
+\texttt{B2\_K50\_MAX2} & 239 & 57 & 23.8~\% & 4.6~\% & 7.7~\% & 4.0~\% \\
+\texttt{B2\_K50\_MAX3} & 326 & 68 & 20.9~\% & 5.4~\% & 8.6~\% & 4.5~\% \\
+\texttt{B2\_K60\_MAX3} & 291 & 71 & 24.4~\% & 5.7~\% & 9.2~\% & 4.8~\% \\
 \bottomrule
 \end{tabular}
-\caption{Résultats du LLM Llama utilisé en zero-shot.}
-\label{tab:llama-resultats}
+\caption{Résultats globaux des expérimentations Llama zero-shot}
+\label{tab:llama-zero-shot-results}
 \end{table}
 
-La réduction de la taille des batchs améliore la qualité des réponses. Avec un batch plus petit, le modèle traite moins de capacités VERIS à la fois, ce qui rend le prompt plus lisible. L'augmentation du nombre de candidats ATT\&CK permet également de donner au modèle davantage de possibilités pour retrouver les correspondances expertes.
+La meilleure configuration Llama est \texttt{B2\_K40}. Elle obtient 112 paires communes avec les experts, contre 80 pour \texttt{B2\_K30}, et améliore le F1 de 9.3~\% à 12.4~\%. Cette configuration montre que l'augmentation du nombre de techniques candidates MITRE ATT\&CK peut aider le modèle à retrouver davantage de mappings corrects. En revanche, elle génère aussi davantage de solutions : 562 contre 471 pour \texttt{B2\_K30}.
 
-La meilleure configuration Llama validée est :
+Les variantes avec limitation du nombre de mappings par capacité VERIS répondent à un autre objectif : réduire le nombre total de mappings générés. La configuration \texttt{B2\_K40\_MAX2} descend à 290 solutions et améliore la précision à 25.5~\%. Cependant, elle ne retrouve que 74 paires communes, contre 80 pour \texttt{B2\_K30} et 112 pour \texttt{B2\_K40}. L'objectif de réduction du nombre de solutions est donc atteint, mais l'objectif d'augmentation du nombre de paires communes ne l'est pas.
 
-\begin{verbatim}
-FINE_TUNED_LLM_LLAMA_B2_K30
-\end{verbatim}
+Ces résultats montrent que la limitation du nombre de mappings par capacité VERIS permet de réduire les faux positifs, mais qu'elle peut aussi supprimer des mappings corrects. Le meilleur résultat Llama en performance globale reste donc \texttt{B2\_K40}, tandis que \texttt{B2\_K40\_MAX2} constitue la variante la plus stricte.
 
-Elle obtient un F1 de \textbf{9.3~\%}. Ce score reste nettement inférieur à celui du modèle supervisé local. Ce résultat montre que le LLM zero-shot est capable de produire des mappings exploitables, mais qu'il ne parvient pas à reproduire efficacement le mapping expert sans entraînement spécifique.
+\subsubsection{Test complémentaire avec Qwen}
 
-\subsubsection{Tentative d'amélioration supplémentaire}
+Afin de vérifier si les résultats obtenus avec Llama pouvaient être améliorés par un autre modèle de langage, des tests complémentaires ont été réalisés avec le modèle \texttt{Qwen/Qwen2.5-7B-Instruct-Turbo}, également accessible via l'API Together. L'objectif n'était pas de modifier l'approche principale, mais de comparer plusieurs LLM généralistes sur la même tâche de génération de mappings VERIS vers MITRE ATT\&CK.
 
-Une configuration plus stricte a été préparée afin de répondre à l'objectif d'augmenter le nombre de paires communes avec les experts tout en réduisant le nombre de solutions générées. Cette configuration reposait sur deux modifications :
-
-\begin{itemize}
-    \item augmenter le nombre de candidats ATT\&CK avec \texttt{--top-k-attack 40} ;
-    \item limiter le nombre de mappings conservés par capacité VERIS avec \texttt{--max-mappings-per-veris 2}.
-\end{itemize}
-
-La configuration prévue était :
-
-\begin{verbatim}
-FINE_TUNED_LLM_LLAMA_B2_K40_MAX2
-\end{verbatim}
-
-Cependant, ce test n'a pas pu être évalué correctement, car l'API Together a renvoyé une erreur \texttt{402 Credit limit exceeded}. Les fichiers générés à la suite de cette erreur ne contenaient pas de véritables réponses LLM, mais des fallbacks vides. Cette configuration n'a donc pas été retenue dans les résultats finaux.
-
-\subsubsection{Comparaison avec les autres approches}
-
-Le Tableau~\ref{tab:comparaison-approches} compare le meilleur résultat de la solution Fine-tune avec les autres approches évaluées dans le projet.
+Plusieurs configurations ont été évaluées en faisant varier la taille des lots et le nombre de techniques MITRE candidates fournies au modèle. Les résultats obtenus sont présentés dans le tableau~\ref{tab:qwen-results}.
 
 \begin{table}[H]
 \centering
 \small
-\begin{tabular}{lrrrr}
+\begin{tabular}{lrrrrrr}
 \toprule
-\textbf{Méthode} & \textbf{Précision} & \textbf{Rappel} & \textbf{F1} & \textbf{Jaccard} \\
+Configuration & Solutions & Communes & Précision & Rappel & F1 & Jaccard \\
 \midrule
-Modèle supervisé local \texttt{FINE\_TUNE\_T005\_K20} & 37.4\% & 46.1\% & \textbf{41.3\%} & 26.0\% \\
-RAG avec exemples & 18.9\% & 49.7\% & 27.4\% & 15.9\% \\
-RAG attack-only & 7.2\% & 15.4\% & 9.8\% & 5.2\% \\
-LLM Llama zero-shot \texttt{B2\_K30} & 17.0\% & 6.4\% & 9.3\% & 4.9\% \\
-Qwen / DeepSeek & 0.0\% & 0.0\% & 0.0\% & 0.0\% \\
+\texttt{Qwen25 7B B1\_K30} & 875 & 68 & 7.8~\% & 5.4~\% & 6.4~\% & 3.3~\% \\
+\texttt{Qwen25 7B B2\_K40} & 642 & 53 & 8.3~\% & 4.2~\% & 5.6~\% & 2.9~\% \\
+\texttt{Qwen25 7B B1\_K40} & 272 & 24 & 8.8~\% & 1.9~\% & 3.2~\% & 1.6~\% \\
+\texttt{Qwen25 7B B1\_K60} & 350 & 12 & 3.4~\% & 1.0~\% & 1.5~\% & 0.8~\% \\
 \bottomrule
 \end{tabular}
-\caption{Comparaison des meilleures configurations évaluées.}
-\label{tab:comparaison-approches}
+\caption{Comparaison des configurations Qwen testées pour le mapping VERIS vers MITRE ATT\&CK.}
+\label{tab:qwen-results}
 \end{table}
 
-Le modèle supervisé local obtient le meilleur F1 global. Le RAG avec exemples obtient un rappel légèrement supérieur, mais au prix d'une précision plus faible. Le LLM Llama zero-shot reste exploitable, mais son rappel est trop limité pour rivaliser avec les approches exploitant directement les mappings experts.
+La meilleure configuration Qwen est \texttt{Qwen25 7B B1\_K30}. Elle génère 875 paires de mapping, dont 68 sont communes avec la référence experte, pour une précision de 7.8~\%, un rappel de 5.4~\% et un F1 global de 6.4~\%. Cette configuration améliore les autres variantes Qwen testées, notamment \texttt{B2\_K40}, qui atteint 53 paires communes et un F1 de 5.6~\%.
 
-Ces résultats indiquent qu'une approche locale simple, entraînée sur les mappings experts, peut être plus efficace qu'un LLM généraliste utilisé sans adaptation au domaine. Le principal facteur de performance n'est donc pas seulement la taille du modèle, mais aussi la proximité entre les données d'entraînement et la tâche évaluée.
+Cependant, ces résultats restent nettement inférieurs à ceux obtenus avec Llama. La meilleure configuration Llama, \texttt{LLAMA\_B2\_K40}, produit 562 paires de mapping, dont 112 communes avec les experts, avec une précision de 19.9~\%, un rappel de 9.0~\% et un F1 de 12.4~\%. Llama conserve donc un meilleur équilibre entre volume de mappings générés, nombre de correspondances correctes et qualité globale de la prédiction.
+
+Ces tests montrent que le choix du LLM influence fortement la qualité du mapping généré. Même si Qwen a pu être exécuté correctement, il produit davantage de faux positifs et retrouve moins de correspondances expertes que Llama. Qwen n'est donc pas retenu comme meilleure variante LLM ; il reste un essai complémentaire permettant de confirmer que \texttt{LLAMA\_B2\_K40} est la configuration LLM la plus pertinente parmi celles testées.
+
+\subsubsection{Synthèse des résultats Fine-tune}
+
+Les résultats de la solution Fine-tune montrent que le modèle supervisé local constitue la meilleure variante de cette approche. La configuration \texttt{FINE\_TUNE\_T005\_K20} obtient le meilleur équilibre entre précision et rappel, avec un F1 de 41.3~\%. Elle retrouve 576 paires communes avec les mappings experts, ce qui indique que l'apprentissage supervisé à partir des associations existantes est particulièrement adapté à cette tâche.
+
+Les variantes LLM zero-shot restent utiles pour l'analyse, mais elles sont moins performantes dans ce contexte. La meilleure configuration Llama est \texttt{B2\_K40}, avec un F1 de 12.4~\%. Elle améliore la configuration de référence \texttt{B2\_K30}, mais reste limitée par l'absence d'entraînement spécifique sur les mappings VERIS--MITRE.
+
+Le test complémentaire avec Qwen confirme cette tendance. Même si le modèle \texttt{Qwen25 7B B1\_K30} a pu générer des mappings exploitables, ses résultats restent inférieurs à ceux de Llama. Dans le cadre de cette solution, le modèle local supervisé reste donc la variante la plus pertinente, tandis que les modèles LLM zero-shot servent surtout de comparaison expérimentale.
 
 \subsection{Résultats --- Solution PROMPT}
 
